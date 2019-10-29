@@ -1,0 +1,66 @@
+#!/usr/bin/env node
+'use strict';
+
+// remove vuepress
+if (process.argv[2] === 'vuepress') {
+    process.argv.splice(2, 1);
+}
+
+const yParser = require('yargs-parser');
+const argv = yParser(process.argv.slice(2));
+
+const { service } = require('@micro-app/cli');
+const { logger } = require('@micro-app/shared-utils');
+
+// 注册插件
+require('../src/plugins/register')(service);
+
+function autoCreateConfig() {
+    return service.run('vuepress', argv);
+}
+
+let vuepressConfig = autoCreateConfig();
+
+if (argv._[0] === 'dev') { // refresh
+    const { watchFiles } = require('../src/utils');
+    watchFiles(vuepressConfig, target => {
+        logger.info('REFRESH Config !!! --> ', target);
+        if (target.endsWith('.js')) { // Bust cache.
+            delete require.cache[target];
+        }
+        vuepressConfig = autoCreateConfig();
+    });
+}
+
+const { CLI } = require('vuepress/lib/util');
+const registerCoreCommands = require('vuepress/lib/registerCoreCommands');
+const handleUnknownCommand = require('vuepress/lib/handleUnknownCommand');
+
+const OPTIONS = {
+    sourceDir: vuepressConfig.sourceDir,
+    theme: '@vuepress/default',
+    siteConfig: new Proxy(vuepressConfig, {
+        get(target, name) {
+            return vuepressConfig[name];
+        },
+    }),
+};
+
+CLI({
+    async beforeParse(cli) {
+        registerCoreCommands(cli, OPTIONS);
+        await handleUnknownCommand(cli, OPTIONS);
+        cli.version(require('../package.json').version).help();
+    },
+
+    async afterParse(cli) {
+        if (!process.argv.slice(2).length) {
+            cli.outputHelp();
+        }
+
+        if (process.env.NODE_ENV === 'MICRO_APP_TEST') {
+            logger.debug('MICRO_APP_TEST --> Exit!!!');
+            process.exit(0);
+        }
+    },
+});
