@@ -13,13 +13,13 @@
         "src",
         "bin"
     ],
-    "homepage": "https://github.com/MicrosApp/MicroApp-Plugin-VuePress-CLI",
+    "homepage": "https://github.com/MicroAppJS/MicroApp-Plugin-VuePress-CLI",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/MicrosApp/MicroApp-Plugin-VuePress-CLI.git"
+        "url": "git+https://github.com/MicroAppJS/MicroApp-Plugin-VuePress-CLI.git"
     },
     "bugs": {
-        "url": "https://github.com/MicrosApp/MicroApp-Plugin-VuePress-CLI/issues"
+        "url": "https://github.com/MicroAppJS/MicroApp-Plugin-VuePress-CLI/issues"
     },
     "keywords": [
         "micro",
@@ -38,9 +38,10 @@
         "@micro-app/core": ">=0.2.2"
     },
     "devDependencies": {
-        "@micro-app/cli": "^0.2.1",
+        "@micro-app/cli": "^0.2.0",
         "@micro-app/core": "^0.2.2",
         "@micro-app/plugin-deploy-command": "^0.1.1",
+        "@micro-app/plugin-webpack-adapter": "^0.1.1",
         "@types/jest": "^24.0.19",
         "babel-eslint": "^10.0.3",
         "coveralls": "^3.0.7",

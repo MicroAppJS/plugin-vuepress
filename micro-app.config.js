@@ -11,6 +11,7 @@ module.exports = {
     },
 
     plugins: [
+        '@micro-app/plugin-webpack-adapter',
         '@micro-app/plugin-deploy-command',
     ],
 };

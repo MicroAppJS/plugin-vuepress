@@ -39,13 +39,22 @@ Examples:
         });
         api.logger.debug('resolveAlias: ', JSON.stringify(resolveAlias, false, 4));
 
+        // suppoer some webpackConfig
+        const webpackConfig = _.isFunction(api.resolveWebpackConfig) ? api.resolveWebpackConfig() : false;
+
         if (config.chainWebpack && _.isFunction(config.chainWebpack)) {
             const orginalChainWebpack = config.chainWebpack;
             config.chainWebpack = function(config, isServer) {
+                if (webpackConfig) {
+                    return orginalChainWebpack(config.merge(webpackConfig), isServer);
+                }
                 return orginalChainWebpack(injectWebpackAlias(resolveAlias, config, isServer), isServer);
             };
         } else {
             config.chainWebpack = function(config, isServer) {
+                if (webpackConfig) {
+                    return config.merge(webpackConfig);
+                }
                 return injectWebpackAlias(resolveAlias, config, isServer);
             };
         }

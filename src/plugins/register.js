@@ -22,7 +22,7 @@ module.exports = function(service) {
         const name = item.name;
         const description = item.description;
         service.registerPlugin({
-            id: `vuepress-cli:plugins-extends-${name}`,
+            id: `vuepress-cli:plugin-extend-${name}`,
             link: path.resolve(__dirname, './extends', name),
             description,
         });
@@ -32,7 +32,7 @@ module.exports = function(service) {
         const name = item.name;
         const description = item.description;
         service.registerPlugin({
-            id: `vuepress-cli:plugins-commands-${name}`,
+            id: `vuepress-cli:plugin-command-${name}`,
             link: path.resolve(__dirname, './commands', name),
             description,
         });
