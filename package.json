@@ -3,11 +3,10 @@
     "version": "0.0.1",
     "description": "[Plugin] adapter vuepress cli plugin.",
     "main": "src/index.js",
-    "bin": {
-        "micro-app-vue": "bin/micro-app-vuepress"
-    },
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "dev": "micro-app vuepress dev",
+        "build": "micro-app vuepress build"
     },
     "files": [
         "src",
@@ -34,17 +33,16 @@
     },
     "license": "MIT",
     "peerDependencies": {
-        "@micro-app/cli": ">=0.2.1",
-        "@micro-app/core": ">=0.2.2"
+        "@micro-app/cli": ">=0.3.0",
+        "@micro-app/plugin-webpack": ">=0.0.1"
     },
     "devDependencies": {
-        "@micro-app/cli": "^0.2.0",
-        "@micro-app/core": "^0.2.2",
+        "@micro-app/cli": "file:../MicroApp-CLI",
+        "@micro-app/plugin-webpack": "file:../MicroApp-Plugin-Webpack",
         "@micro-app/plugin-deploy-command": "^0.1.1",
-        "@micro-app/plugin-webpack-adapter": "^0.1.1",
-        "@types/jest": "^24.0.19",
+        "@types/jest": "^24.0.23",
         "babel-eslint": "^10.0.3",
-        "coveralls": "^3.0.7",
+        "coveralls": "^3.0.9",
         "eslint": "^5.16.0",
         "eslint-config-2o3t": "^1.1.17",
         "jest": "^24.9.0",

@@ -1,11 +1,11 @@
 'use strict';
 
 module.exports = {
-    title: 'Micro App',
+    title: 'Micro APP | Plugin VuePress CLI',
     sourceDir: 'docs',
     sidebars: {
         '/guide/': {
-            '/': [ '导航', '1', '2', '3', '4' ],
+            '/': [ '导航', '1', '234', '3', '4' ],
             '/en/': 'Guide',
         },
         '/guide1/': '',
@@ -42,7 +42,7 @@ module.exports = {
     },
     themeConfig: {
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
-        repo: 'MicroAppJS/MicroApp-Core',
+        repo: 'MicroAppJS/MicroApp-Plugin-VuePress-CLI',
         // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
         // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
         // repoLabel: '查看源码',

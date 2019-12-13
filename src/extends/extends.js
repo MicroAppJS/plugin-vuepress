@@ -5,7 +5,7 @@ const { _, fs } = require('@micro-app/shared-utils');
 
 module.exports = (api, opts) => {
 
-    const CONSTANTS = require('../../../constants');
+    const CONSTANTS = require('../constants');
 
     const logger = api.logger;
 
@@ -55,9 +55,9 @@ module.exports = (api, opts) => {
             themeConfig.nav = buildNavs('/');
         }
         return {
+            ...selfVuepressConfig,
             sourceDir,
             serviceWorker: true,
-            ...selfVuepressConfig,
             themeConfig,
         };
     });

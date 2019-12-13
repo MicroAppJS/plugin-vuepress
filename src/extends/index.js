@@ -11,3 +11,8 @@ module.exports = function extendVuepress(api, opts) {
     registerExtends(api, opts);
 
 };
+
+
+module.exports.configuration = {
+    description: '针对 vuepress 配置信息进行扩展.',
+};

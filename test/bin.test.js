@@ -1,5 +1,5 @@
 'use strict';
-process.env.NODE_ENV = 'MICRO_APP_TEST';
+process.env.MICRO_APP_TEST = 'true';
 
 /* global expect */
 
@@ -11,7 +11,7 @@ describe('VuePress Bin test', () => {
     it('help run', async () => {
         const shelljs = require('shelljs');
 
-        const { code, stderr } = shelljs.exec('node bin/micro-app-vuepress', {
+        const { code, stderr } = shelljs.exec('node node_modules/.bin/micro-app vuepress', {
             cwd: CWD,
             timeout: TIMEOUT,
             env: process.env,
@@ -25,7 +25,7 @@ describe('VuePress Bin test', () => {
     it('dev run', async () => {
         const shelljs = require('shelljs');
 
-        const { code, stderr } = shelljs.exec('node bin/micro-app-vuepress dev', {
+        const { code, stderr } = shelljs.exec('node node_modules/.bin/micro-app vuepress dev', {
             cwd: CWD,
             timeout: TIMEOUT,
             env: process.env,
@@ -39,7 +39,7 @@ describe('VuePress Bin test', () => {
     it('build run', async () => {
         const shelljs = require('shelljs');
 
-        const { code, stderr } = shelljs.exec('node bin/micro-app-vuepress build', {
+        const { code, stderr } = shelljs.exec('node node_modules/.bin/micro-app vuepress build', {
             cwd: CWD,
             timeout: TIMEOUT,
             env: process.env,
@@ -53,7 +53,7 @@ describe('VuePress Bin test', () => {
     it('dev run docs', async () => {
         const shelljs = require('shelljs');
 
-        const { code, stderr } = shelljs.exec('node bin/micro-app-vuepress dev docs', {
+        const { code, stderr } = shelljs.exec('node node_modules/.bin/micro-app vuepress dev docs', {
             cwd: CWD,
             timeout: TIMEOUT,
             env: process.env,
