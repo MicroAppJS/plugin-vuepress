@@ -73,9 +73,25 @@ function createBuildNavsFactory(selfVuepressConfig) {
             _navs = Object.keys(navs);
         }
         return _navs.map(key => {
+            if (_.isPlainObject(key)) {
+                return key; // 原始配置
+            }
             if (_.isPlainObject(navs)) {
+                const item = _.isPlainObject(navs[key]) ? navs[key][lang] : navs[key];
+                if (_.isPlainObject(item)) {
+                    return {
+                        ...item,
+                        link: localsLink(lang, key),
+                    };
+                }
                 return {
-                    text: _.isPlainObject(navs[key]) ? navs[key][lang] : navs[key],
+                    text: item,
+                    link: localsLink(lang, key),
+                };
+            }
+            if (_.isPlainObject(navs[key])) {
+                return {
+                    ...navs[key],
                     link: localsLink(lang, key),
                 };
             }
@@ -83,9 +99,9 @@ function createBuildNavsFactory(selfVuepressConfig) {
                 text: navs[key],
                 link: localsLink(lang, key),
             };
-        }).reduce((arrs, { link, text }) => {
+        }).reduce((arrs, item) => {
             return arrs.concat({
-                link, text,
+                ...item,
             });
         }, []);
     };
@@ -131,13 +147,13 @@ function loadSidebar(root, filepath, title) {
         }).concat(files.filter(file => {
             return !/\.md$/i.test(file);
         }).reduce((arrs, file, index) => {
-            const subTitle = Array.isArray(title) && title[index];
-            const sub = loadSidebar(p, file, subTitle);
+            const subTitle = Array.isArray(title) && title[index] || false;
+            const sub = loadSidebar(p, file, Array.isArray(subTitle) ? subTitle.slice(1) : subTitle);
             const subs = sub[file];
             if (!Array.isArray(subs)) {
                 return arrs.concat(path.join(file, subs));
             }
-            return arrs.concat(subs.map(_f => {
+            const children = subs.map(_f => {
                 if (_.isPlainObject(_f)) {
                     if (_f.children) {
                         _f.children = _f.children.map(_ff => {
@@ -149,11 +165,22 @@ function loadSidebar(root, filepath, title) {
                 }
                 _f = _f || '/'; // 可能是 README
                 return path.join(file, _f);
-            }));
+            });
+            const firstSubTitle = Array.isArray(subTitle) ? subTitle[0] : subTitle;
+            if (firstSubTitle && subs.length > 1) {
+                return arrs.concat({
+                    // sidebarDepth: 2,
+                    collapsable: false,
+                    title: firstSubTitle,
+                    children,
+                });
+            }
+            return arrs.concat(children);
         }, []));
         const currTitle = !!title && Array.isArray(title) ? false : title;
         return {
             [filepath]: !currTitle ? result : [{
+                // sidebarDepth: 2,
                 collapsable: false,
                 title: currTitle,
                 children: result,

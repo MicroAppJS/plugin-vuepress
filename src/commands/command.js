@@ -67,41 +67,41 @@ function createConfig(api, args, opts) {
     const { _, smartMerge } = require('@micro-app/shared-utils');
     const path = require('path');
 
+    const root = api.root;
+
     const vuepressConfig = api.vuepressConfig;
     vuepressConfig.sourceDir = args._ && args._[1] || vuepressConfig.sourceDir || '.';
 
     const loadConfig = require('@vuepress/core/lib/node/loadConfig');
 
-    const vuepressDir = path.resolve(vuepressConfig.sourceDir, '.vuepress');
+    const vuepressDir = path.resolve(root, vuepressConfig.sourceDir, '.vuepress');
     const siteConfig = loadConfig(vuepressDir) || {};
 
     const customConfig = require('../config');
     const config = smartMerge({}, customConfig, vuepressConfig, siteConfig, opts);
 
-    const microsConfig = api.microsConfig;
-    const resolveAlias = Object.keys(microsConfig).map(key => {
-        const microConfig = microsConfig[key];
-        return microConfig.resolveAlias;
-    });
-    api.logger.debug('resolveAlias: ', JSON.stringify(resolveAlias, false, 4));
+    const options = api.config || {};
+    const resolveAlias = options.resolveAlias || {};
+    const resolveShared = options.resolveShared || {};
+    const nodeModulesPaths = options.nodeModulesPaths || [];
 
-    // suppoer some webpackConfig
-    const webpackConfig = _.isFunction(api.resolveWebpackConfig) ? api.resolveWebpackConfig() : false;
+    api.logger.debug('resolveAlias: ', JSON.stringify(resolveAlias, false, 4));
+    api.logger.debug('resolveShared: ', JSON.stringify(resolveShared, false, 4));
 
     if (config.chainWebpack && _.isFunction(config.chainWebpack)) {
         const orginalChainWebpack = config.chainWebpack;
         config.chainWebpack = function(config, isServer) {
-            if (webpackConfig) {
-                return orginalChainWebpack(config.merge(webpackConfig), isServer);
+            if (isServer) {
+                return orginalChainWebpack(injectWebpackAlias(config, resolveShared, nodeModulesPaths), isServer);
             }
-            return orginalChainWebpack(injectWebpackAlias(resolveAlias, config, isServer), isServer);
+            return orginalChainWebpack(injectWebpackAlias(config, resolveAlias, nodeModulesPaths), isServer);
         };
     } else {
         config.chainWebpack = function(config, isServer) {
-            if (webpackConfig) {
-                return config.merge(webpackConfig);
+            if (isServer) {
+                return injectWebpackAlias(config, resolveShared, nodeModulesPaths);
             }
-            return injectWebpackAlias(resolveAlias, config, isServer);
+            return injectWebpackAlias(config, resolveAlias, nodeModulesPaths);
         };
     }
 
@@ -114,11 +114,12 @@ function createConfig(api, args, opts) {
     return config;
 }
 
-function injectWebpackAlias(resolveAlias, config) {
-    resolveAlias.forEach(alias => {
-        Object.keys(alias).forEach(aliasKey => {
-            config.resolve.alias.set(aliasKey, alias[aliasKey]);
-        });
-    });
+function injectWebpackAlias(config, alias, nodeModulesPaths) {
+    config.resolve
+        .modules
+        .merge(nodeModulesPaths)
+        .end()
+        .alias
+        .merge(alias);
     return config;
 }
