@@ -1,0 +1,57 @@
+{
+    "name": "@micro-app/plugin-vuepress",
+    "version": "0.0.1",
+    "description": "[Plugin] adapter vuepress plugin.",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "jest",
+        "dev": "micro-app vuepress dev",
+        "build": "micro-app vuepress build",
+        "deploy": "micro-app vuepress deploy --base /plugin-vuepress/"
+    },
+    "files": [
+        "src",
+        "bin"
+    ],
+    "homepage": "https://github.com/MicroAppJS/plugin-vuepress",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MicroAppJS/plugin-vuepress.git"
+    },
+    "bugs": {
+        "url": "https://github.com/MicroAppJS/plugin-vuepress/issues"
+    },
+    "keywords": [
+        "micro",
+        "micro-app",
+        "plugin",
+        "vuepress",
+        "cli"
+    ],
+    "author": {
+        "name": "Zyao89",
+        "email": "zyao89@gmail.com"
+    },
+    "license": "MIT",
+    "peerDependencies": {
+        "@micro-app/cli": ">=0.3.0"
+    },
+    "devDependencies": {
+        "@micro-app/cli": "^0.3.0-alpha.2",
+        "@types/jest": "^24.0.24",
+        "babel-eslint": "^10.0.3",
+        "coveralls": "^3.0.9",
+        "eslint": "^5.16.0",
+        "eslint-config-2o3t": "^1.1.17",
+        "jest": "^24.9.0"
+    },
+    "dependencies": {
+        "@micro-app/shared-utils": "^0.1.10",
+        "@vuepress/plugin-back-to-top": "^1.2.0",
+        "@vuepress/plugin-google-analytics": "^1.2.0",
+        "@vuepress/plugin-medium-zoom": "^1.2.0",
+        "@vuepress/plugin-pwa": "^1.2.0",
+        "execa": "^3.4.0",
+        "vuepress": "^1.2.0"
+    }
+}
