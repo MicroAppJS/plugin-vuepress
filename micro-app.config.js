@@ -12,7 +12,5 @@ module.exports = {
 
     plugins: [
         __dirname,
-        '@micro-app/plugin-webpack',
-        '@micro-app/plugin-deploy-command',
     ],
 };

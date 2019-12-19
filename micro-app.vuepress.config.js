@@ -18,7 +18,7 @@ module.exports = {
         repoLabel: '查看源码',
         editLinkText: '在 GitHub 上编辑此页',
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
-        repo: 'MicroAppJS/MicroApp-Plugin-VuePress-CLI',
+        repo: 'MicroAppJS/plugin-vuepress',
         // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
         // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
         // repoLabel: '查看源码',
@@ -40,5 +40,9 @@ module.exports = {
         // search: false,
         // searchMaxSuggestions: 10,
         // displayAllHeaders: true // 默认值：false
+    },
+    deploy: {
+        repo: 'git@github.com:MicroAppJS/plugin-vuepress.git',
+        branch: 'gh-pages',
     },
 };

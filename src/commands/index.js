@@ -40,6 +40,10 @@ module.exports = function vuepressCommand(api, opts) {
                 '--debug': 'eject in debug mode',
             },
             info: 'Shows debugging information about the local environment.',
+            deploy: {
+                '': '部署到自定义服务上',
+                '--type': '部署方式类型. (default: github)',
+            },
         },
         details: `
 Examples:
@@ -58,11 +62,16 @@ Examples:
         if (!args._ || !args._.length) {
             return api.runCommand('help', { _: [ 'vuepress' ] });
         }
+
+        // do something
+        if (args._[0] === 'deploy') {
+            const deployCommand = require('./deploy');
+            return deployCommand(api, args, opts);
+        }
         return runCommand(api, args, opts);
     });
-
 };
 
 module.exports.configuration = {
-    description: '合并所有 vuepress 配置.',
+    description: 'vuepress 终端命令合集.',
 };

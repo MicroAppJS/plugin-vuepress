@@ -54,12 +54,18 @@ module.exports = (api, opts) => {
             // buid nav
             themeConfig.nav = buildNavs('/');
         }
-        return {
+
+        const dest = selfVuepressConfig.dest || '.vuepress/dist';
+
+        const finalResult = {
             ...selfVuepressConfig,
             sourceDir,
+            dest: path.resolve(docsDirRoot, dest),
             serviceWorker: true,
             themeConfig,
         };
+
+        return finalResult;
     });
 
 };
