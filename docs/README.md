@@ -19,3 +19,22 @@ footer: MIT Licensed | Copyright © 2019-present, Zyao89
 ::: warning 注意
 请确保你的 Node.js 版本 >= 8.6。
 :::
+
+``` bash
+# 安装，如果已经依赖了，请直接下一步
+yarn add -D @micro-app/cli # 或者：npm install -D @micro-app/cli
+```
+
+``` bash
+# 安装 vuepress plugin
+yarn add -D @micro-app/plugin-vuepress # 或者：npm install -D @micro-app/plugin-vuepress
+
+# 新建一个 docs 文件夹
+mkdir docs
+
+# 新建一个 markdown 文件
+echo '# Hello MicroApp VuePress!' > docs/README.md
+
+# 开始写作
+npx micro-app vuepress dev docs
+```

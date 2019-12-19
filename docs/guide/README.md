@@ -4,7 +4,7 @@
 
 ## 如何工作
 
-它的底层还是 `VuePress`，所以 `VuePress` 的所有配置功能这里都是支持的。
+`@micro-app/plugin-vuepress` 只是一个插件，它的底层还是 `VuePress`，所以 `VuePress` 的所有配置功能这里都是支持的。
 
 ## 快速上手
 
@@ -31,10 +31,10 @@ yarn add -D @micro-app/plugin-vuepress # 或者：npm install -D @micro-app/plug
 mkdir docs
 
 # 新建一个 markdown 文件
-echo '# Hello VuePress!' > docs/README.md
+echo '# Hello MicroApp VuePress!' > docs/README.md
 
 # 开始写作
-npx vuepress dev docs
+npx micro-app vuepress dev docs
 ```
 
 ::: warning 注意

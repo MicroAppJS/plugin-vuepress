@@ -7,7 +7,7 @@
         "test": "jest",
         "dev": "micro-app vuepress dev",
         "build": "micro-app vuepress build",
-        "deploy": "micro-app vuepress deploy --base plugin-vuepress"
+        "deploy": "micro-app vuepress deploy --base /plugin-vuepress/"
     },
     "files": [
         "src",
@@ -46,7 +46,7 @@
         "jest": "^24.9.0"
     },
     "dependencies": {
-        "@micro-app/shared-utils": "^0.1.9",
+        "@micro-app/shared-utils": "^0.1.10",
         "@vuepress/plugin-back-to-top": "^1.2.0",
         "@vuepress/plugin-google-analytics": "^1.2.0",
         "@vuepress/plugin-medium-zoom": "^1.2.0",

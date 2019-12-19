@@ -37,29 +37,27 @@ module.exports = (api, argv, opts) => {
         return OPTIONS;
     });
 
-    chain.then(OPTIONS => {
-        const { CLI } = require('vuepress/lib/util');
-        const registerCoreCommands = require('vuepress/lib/registerCoreCommands');
+    chain = chain.then(OPTIONS => {
+        const { yUnParser } = require('@micro-app/shared-utils');
+        const CAC = require('cac');
         const handleUnknownCommand = require('vuepress/lib/handleUnknownCommand');
+        const registerCoreCommands = require('./lib/registerCoreCommands');
 
-        return CLI({
-            async beforeParse(cli) {
-                registerCoreCommands(cli, OPTIONS);
-                await handleUnknownCommand(cli, OPTIONS);
-                cli.version(require('../../package.json').version).help();
-            },
-
-            async afterParse(cli) {
-                if (!process.argv.slice(2).length) {
-                    cli.outputHelp();
-                }
-
+        const cli = CAC();
+        return Promise.resolve()
+            .then(() => registerCoreCommands(cli, OPTIONS))
+            .then(() => handleUnknownCommand(cli, OPTIONS))
+            .then(() => {
+                const orginalArgv = process.argv.slice(0, 2).concat(yUnParser(argv));
+                return cli.parse(orginalArgv, { run: false });
+            })
+            .then(() => {
                 if (process.env.MICRO_APP_TEST) {
                     logger.debug('MICRO_APP_TEST --> Exit!!!');
                     process.exit(0);
                 }
-            },
-        });
+                return cli.runMatchedCommand();
+            });
     });
 
     return chain;

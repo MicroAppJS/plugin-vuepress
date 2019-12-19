@@ -54,10 +54,9 @@ Examples:
           `.trim(),
     }, args => {
         const runCommand = require('./command');
-        // 这里要处理一下，如果 process.argv 中包含 vuepress， 则需要去除
-        const index = process.argv.indexOf('vuepress');
-        if (index > -1) {
-            process.argv.splice(index, 1);
+        // 这里要处理一下，如果 args 中包含 vuepress， 则需要去除
+        if (args._[0] === 'vuepress') {
+            args._.splice(0, 1);
         }
         if (!args._ || !args._.length) {
             return api.runCommand('help', { _: [ 'vuepress' ] });

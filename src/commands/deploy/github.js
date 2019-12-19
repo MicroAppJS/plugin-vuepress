@@ -26,8 +26,6 @@ module.exports = function(api, argv, opts) {
         repo = `git@github.com:${repo}.git`;
     }
 
-    const buildCMD = deployOpts.build || 'npx micro-app vuepress build';
-
     const path = require('path');
     const root = api.root;
 
@@ -52,12 +50,20 @@ module.exports = function(api, argv, opts) {
     const destDirRoot = path.resolve(docsDirRoot, vuepressConfig.dest);
 
     // # clear
-    logger.info('[VuePress > Deploy > Github]', 'Remove Dest:', destDirRoot);
-    chain = chain.then(() => fs.remove(destDirRoot));
+    chain = chain.then(() => {
+        logger.info('[VuePress > Deploy > Github]', 'Remove Dest:', destDirRoot);
+        return fs.remove(destDirRoot);
+    });
 
     // # build
     // npm run docs:build
-    chain = chain.then(() => execa.command(buildCMD, execaOptions(root)));
+    chain = chain.then(() => {
+        logger.info('[VuePress > Deploy > Github]', 'Building...');
+        const args = _.cloneDeep(argv);
+        args._[0] = 'build'; // 切为 build
+        const runCommand = require('../command');
+        return runCommand(api, args, opts);
+    });
 
     // # navigate into the build output directory
     // cd docs/.vuepress/dist
@@ -98,12 +104,26 @@ module.exports = function(api, argv, opts) {
     chain = chain.catch(err => {
         spinner.fail(err.message || 'Deploy Error!');
         throw err;
-    }).then(() => spinner.succeed('Deployed!'));
+    }).then(() => {
+        spinner.succeed('Deploy Successful!');
+        // https://<USERNAME>.github.io/<REPO>
+        const url = createURL(repo);
+        logger.logo(`Open Browser, URL: ${chalk.yellow(url)}`);
+    });
 
     // cd -
 
     return chain;
 };
+
+function createURL(repo) {
+    if (repo.includes(':')) {
+        repo = repo.split(':')[1];
+    }
+    repo = repo.replace(/\.git$/, '');
+    const infos = repo.split('/');
+    return `https://${infos[0]}.github.io/${infos[1]}`;
+}
 
 function execaOptions(cwd, stdout = 'inherit') {
     return { cwd, stdout };
