@@ -108,7 +108,7 @@ module.exports = function(api, argv, opts) {
         spinner.succeed('Deploy Successful!');
         // https://<USERNAME>.github.io/<REPO>
         const url = createURL(repo);
-        logger.logo(`Open Browser, URL: ${chalk.yellow(url)}`);
+        logger.logo(`Open Browser, URL: ${chalk.underline.blue(url)}`);
     });
 
     // cd -

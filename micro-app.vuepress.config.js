@@ -2,7 +2,7 @@
 
 module.exports = {
     sourceDir: 'docs',
-    title: 'VuePress',
+    title: 'Micro APP Plugin - VuePress',
     description: '🔌 多模块可插拔插件的微应用框架',
     sidebars: {
         '/guide/': [ '基础', '深入' ],
