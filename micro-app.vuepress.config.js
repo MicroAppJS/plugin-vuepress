@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+    type: 'blog',
     sourceDir: 'docs',
     title: 'Micro APP Plugin - VuePress',
     description: '🔌 多模块可插拔插件的微应用框架',
@@ -16,6 +17,7 @@ module.exports = {
         logo: '/logo.png',
         lastUpdated: '上次编辑时间',
         repoLabel: '查看源码',
+        repoIcon: 'github',
         editLinkText: '在 GitHub 上编辑此页',
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
         repo: 'MicroAppJS/plugin-vuepress',
@@ -40,6 +42,20 @@ module.exports = {
         // search: false,
         // searchMaxSuggestions: 10,
         // displayAllHeaders: true // 默认值：false
+        svgIconsDir: 'icons',
+        footer: {
+            powerby: true,
+            copyright: '2019 - present, Zyao89',
+            // beian: 'abc',
+        },
+        friendLinks: [
+            {
+                title: 'abc',
+                logo: '/logo.png',
+                link: 'http://www.baidu.com',
+                description: 'abcdsd',
+            },
+        ],
     },
     deploy: {
         repo: 'git@github.com:MicroAppJS/plugin-vuepress.git',

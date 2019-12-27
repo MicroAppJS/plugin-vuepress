@@ -1,3 +1,21 @@
+---
+categories:
+    - abc
+    - dfg
+tags:
+    - ccc
+    - ccc1
+    - ccc2
+    - ccc3
+    - ccc4
+    - ccc5
+    - ccc6
+    - ccc61
+    - ccc62
+    - ccc634
+    - ccc64
+---
+
 # 介绍
 
 `@micro-app/plugin-vuepress` 只是作为 `VuePress` 的增强，用于适配 `@micro-app` 系列的功能补充插件。
@@ -18,12 +36,12 @@
 
 因此，在你使用前，请确认是否依赖了 `@micro-app/cli` ？
 
-``` bash
+```bash
 # 安装，如果已经依赖了，请直接下一步
 yarn add -D @micro-app/cli # 或者：npm install -D @micro-app/cli
 ```
 
-``` bash
+```bash
 # 安装 vuepress plugin
 yarn add -D @micro-app/plugin-vuepress # 或者：npm install -D @micro-app/plugin-vuepress
 
@@ -43,24 +61,24 @@ npx micro-app vuepress dev docs
 
 接着，在 `package.json` 里加一些脚本:
 
-``` json
+```json
 {
-  "scripts": {
-    "docs:dev": "micro-app vuepress dev docs",
-    "docs:build": "micro-app vuepress build docs"
-  }
+    "scripts": {
+        "docs:dev": "micro-app vuepress dev docs",
+        "docs:build": "micro-app vuepress build docs"
+    }
 }
 ```
 
 然后就可以开始写作了:
 
-``` bash
+```bash
 yarn docs:dev # 或者：npm run docs:dev
 ```
 
 要生成静态的 HTML 文件，运行：
 
-``` bash
+```bash
 yarn docs:build # 或者：npm run docs:build
 ```
 
