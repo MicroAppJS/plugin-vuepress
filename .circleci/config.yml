@@ -23,7 +23,6 @@ jobs:
                   paths:
                       - ./node_modules
             - run: yarn run test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-
     deploy:
         docker:
             # specify the version you desire here
@@ -46,3 +45,9 @@ jobs:
                   paths:
                       - ./node_modules
             - run: yarn run deploy
+workflows:
+    version: 2
+    build_and_deploy:
+        jobs:
+            - build
+            - deploy
