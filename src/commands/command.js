@@ -54,7 +54,7 @@ module.exports = (api, argv, opts) => {
             .then(() => {
                 if (process.env.MICRO_APP_TEST) {
                     logger.debug('MICRO_APP_TEST --> Exit!!!');
-                    return process.exit(0);
+                    return;
                 }
                 return cli.runMatchedCommand();
             });
