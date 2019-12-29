@@ -46,19 +46,3 @@ jobs:
                   paths:
                       - ./node_modules
             - run: yarn run deploy
-
-workflows:
-    version: 2
-    workflow:
-        jobs:
-            - build:
-                  filters:
-                      branches:
-                          ignore:
-                              - docs
-                              - gh-pages
-            - deploy:
-                  filters:
-                      branches:
-                          only:
-                              - master
