@@ -1,42 +1,44 @@
 <template>
-    <div class="theme-default-content" :class="[$style.root, { 'custom': hideTitle }]">
-        <template v-if="visible">
-            <h1 v-if="!hideTitle" :class="$style.title">{{ title }}</h1>
-            <div :class="$style.rows">
-                <span v-if="frontmatter.categories" :class="$style.tags">
-                    <SvgIcon :class="$style.icon" name="category"></SvgIcon>
-                    <span
-                        v-for="(subItem, subIndex) in categories"
-                        :key="subIndex"
-                        :active="currentTag === subItem"
-                        :class="$style.tagItem"
-                        @click="goCategories(subItem)"
-                    >{{subItem}}</span>
-                </span>
-                <span v-if="frontmatter.author || $i18nText('author')">
-                    <SvgIcon :class="$style.icon" name="author"></SvgIcon>
-                    <span>{{ frontmatter.author || $i18nText('author') }}</span>
-                </span>
-                <span v-if="frontmatter.date">
-                    <SvgIcon :class="$style.icon" name="date"></SvgIcon>
-                    <span>{{ frontmatter.date | formatDateValue }}</span>
-                </span>
-                <span v-else-if="info.lastUpdated">
-                    <SvgIcon :class="$style.icon" name="date"></SvgIcon>
-                    <span>{{ info.lastUpdated }}</span>
-                </span>
-                <span v-if="frontmatter.tags" :class="$style.tags">
-                    <SvgIcon :class="$style.icon" name="tags"></SvgIcon>
-                    <span
-                        v-for="(subItem, subIndex) in tags"
-                        :key="subIndex"
-                        :active="currentTag === subItem"
-                        :class="$style.tagItem"
-                        @click="goTags(subItem)"
-                    >{{subItem}}</span>
-                </span>
-            </div>
-        </template>
+    <div
+        v-if="visible"
+        class="theme-default-content"
+        :class="[$style.root, { 'custom': hideTitle }]"
+    >
+        <h1 v-if="!hideTitle" :class="$style.title">{{ title }}</h1>
+        <div :class="$style.rows">
+            <span v-if="frontmatter.categories" :class="$style.tags">
+                <SvgIcon :class="$style.icon" name="category"></SvgIcon>
+                <span
+                    v-for="(subItem, subIndex) in categories"
+                    :key="subIndex"
+                    :active="currentTag === subItem"
+                    :class="$style.tagItem"
+                    @click="goCategories(subItem)"
+                >{{subItem}}</span>
+            </span>
+            <span v-if="frontmatter.author || $i18nText('author')">
+                <SvgIcon :class="$style.icon" name="author"></SvgIcon>
+                <span>{{ frontmatter.author || $i18nText('author') }}</span>
+            </span>
+            <span v-if="frontmatter.date">
+                <SvgIcon :class="$style.icon" name="date"></SvgIcon>
+                <span>{{ frontmatter.date | formatDateValue }}</span>
+            </span>
+            <span v-else-if="info.lastUpdated">
+                <SvgIcon :class="$style.icon" name="date"></SvgIcon>
+                <span>{{ info.lastUpdated }}</span>
+            </span>
+            <span v-if="frontmatter.tags" :class="$style.tags">
+                <SvgIcon :class="$style.icon" name="tags"></SvgIcon>
+                <span
+                    v-for="(subItem, subIndex) in tags"
+                    :key="subIndex"
+                    :active="currentTag === subItem"
+                    :class="$style.tagItem"
+                    @click="goTags(subItem)"
+                >{{subItem}}</span>
+            </span>
+        </div>
     </div>
 </template>
 
