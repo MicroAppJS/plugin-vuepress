@@ -20,9 +20,6 @@ export default {
         Categories,
         BlogPosts,
     },
-    mounted() {
-        console.warn(this.$categoriePosts);
-    },
 };
 </script>
 <style lang="stylus" module>

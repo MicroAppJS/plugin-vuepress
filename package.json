@@ -3,6 +3,9 @@
     "version": "0.0.1",
     "description": "[Plugin] adapter vuepress plugin.",
     "main": "src/index.js",
+    "bin": {
+        "micro-app-vuepress": "bin/micro-app-vuepress"
+    },
     "scripts": {
         "test": "jest",
         "dev": "micro-app vuepress dev",
@@ -54,7 +57,6 @@
         "@vuepress/plugin-google-analytics": "^1.2.0",
         "@vuepress/plugin-medium-zoom": "^1.2.0",
         "@vuepress/plugin-pwa": "^1.2.0",
-        "execa": "^3.4.0",
         "remove-markdown": "^0.3.0",
         "svg-sprite-loader": "^4.1.6",
         "svgo": "^1.3.2",

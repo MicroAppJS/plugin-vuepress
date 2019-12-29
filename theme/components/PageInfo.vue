@@ -80,7 +80,7 @@ export default {
     computed: {
         visible() {
             return Object.keys(this.frontmatter).some(key => {
-                return ['title', 'date', 'tags'].includes(key);
+                return [ 'title', 'date', 'tags' ].includes(key);
             });
         },
         frontmatter() {
@@ -122,9 +122,6 @@ export default {
             }
             this.$router.push({ path });
         },
-    },
-    mounted() {
-        console.warn(this.info);
     },
 };
 </script>

@@ -14,9 +14,6 @@ module.exports = (options, ctx) => {
         redirect: themeConfig.redirect !== false,
     });
 
-    const siteConfig = ctx.siteConfig || {};
-    const isLocales = !!siteConfig.locales || !!themeConfig.locales || false;
-
     const vuepressDir = ctx.vuepressDir;
     const iconsDir = path.resolve(vuepressDir, 'public', 'icons');
     const iconsLibDir = path.resolve(__dirname, 'icons');
@@ -36,39 +33,7 @@ module.exports = (options, ctx) => {
         return false;
     };
 
-    const type = options.type || themeConfig.type || 'doc';
     const plugins = [ ...defaultThemeConfig.plugins || [] ];
-
-    console.warn(type);
-
-    // TODO more
-    if (type === 'blog') {
-        const blogConfig = themeConfig.blogConfig = themeConfig.blogConfig || {};
-        plugins.push([ '@vuepress/blog', getBlogPluginOptions(blogConfig) ]);
-    }
-    if (themeConfig.pwa) {
-        plugins.push([
-            '@vuepress/pwa',
-            {
-                serviceWorker: true,
-                updatePopup: true,
-            },
-        ]);
-    }
-    if (isLocales) {
-        if (themeConfig.redirect) {
-            plugins.push([ 'redirect', {
-                // 提供多语言重定向功能
-                // 它会自动从 `/foo/bar/` 定向到 `/:locale/foo/bar/`，如果对应的页面存在
-                locales: true,
-            }]);
-        }
-    }
-
-    plugins.push('@vuepress/medium-zoom');
-    plugins.push('@vuepress/back-to-top');
-    // 流程图
-    plugins.push('flowchart');
 
     const finalConfig = {
         define: {
@@ -120,7 +85,7 @@ module.exports = (options, ctx) => {
                 .plugin('custom-style')
                 .use(require('./plugins/customStyle'));
         },
-        plugins,
+        plugins: registerPlugins(plugins, ctx),
     };
 
     // Generate summary.
@@ -145,6 +110,41 @@ module.exports = (options, ctx) => {
     return finalConfig;
 };
 
+function registerPlugins(plugins, ctx) {
+    const themeConfig = ctx.themeConfig;
+    const siteConfig = ctx.siteConfig || {};
+    const type = siteConfig.type || themeConfig.type || 'doc';
+    const isLocales = !!siteConfig.locales || !!themeConfig.locales || false;
+
+    // TODO more
+    if (type === 'blog') {
+        const blogConfig = themeConfig.blogConfig = themeConfig.blogConfig || {};
+        plugins.push([ '@vuepress/blog', getBlogPluginOptions(blogConfig) ]);
+    }
+    if (themeConfig.pwa) {
+        plugins.push([
+            '@vuepress/pwa',
+            {
+                serviceWorker: true,
+                updatePopup: true,
+            },
+        ]);
+    }
+    if (isLocales) {
+        if (themeConfig.redirect) {
+            plugins.push([ 'redirect', {
+                // 提供多语言重定向功能
+                // 它会自动从 `/foo/bar/` 定向到 `/:locale/foo/bar/`，如果对应的页面存在
+                locales: true,
+            }]);
+        }
+    }
+    plugins.push('@vuepress/medium-zoom');
+    plugins.push('@vuepress/back-to-top');
+    // 流程图
+    plugins.push('flowchart');
+    return plugins;
+}
 
 function getBlogPluginOptions(blogConfig) {
     // 初始化默认值

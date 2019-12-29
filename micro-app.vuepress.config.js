@@ -2,7 +2,8 @@
 
 module.exports = {
     // type: 'blog',
-    smoothScroll: true,
+    // logo: '/logo.png',
+    // smoothScroll: true,
     sourceDir: 'docs',
     locales: {
         '/': {
@@ -25,7 +26,6 @@ module.exports = {
         // },
     },
 
-    logo: '/logo.png',
     lastUpdated: '上次编辑时间',
     repoLabel: '查看源码',
     repoIcon: 'github',

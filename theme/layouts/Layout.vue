@@ -47,8 +47,5 @@ export default {
             return 'Home';
         },
     },
-    mounted() {
-        console.warn(this);
-    },
 };
 </script>

@@ -6,13 +6,10 @@ module.exports = function(api, argv, opts) {
 
     // logger.info('[VuePress > Deploy > Github]', '我正在努力实现！💪');
 
-    const { _, fs, chalk, prompt } = require('@micro-app/shared-utils');
-    const execa = require('execa');
+    const { _, fs, chalk, prompt, execa } = require('@micro-app/shared-utils');
 
-    const createConfig = require('../createConfig');
-    const vuepressConfig = createConfig(api, argv, opts);
-
-    const deployOpts = vuepressConfig.deploy || false;
+    const selfVuepressConfig = api.selfVuepressConfig || {};
+    const deployOpts = selfVuepressConfig.deploy || false;
     if (!_.isPlainObject(deployOpts)) {
         logger.throw('[VuePress > Deploy > Github]', '必须在 micro-app.vuepress.config.js 中声明 deploy: {} !');
     }
@@ -28,6 +25,9 @@ module.exports = function(api, argv, opts) {
 
     const path = require('path');
     const root = api.root;
+
+    const createConfig = require('../createConfig');
+    const vuepressConfig = createConfig(api, argv, opts);
 
     let chain = Promise.resolve();
 
