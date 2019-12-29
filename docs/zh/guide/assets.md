@@ -17,8 +17,6 @@
 ![Image from dependency](~some-dependency/image.png)
 ```
 
-### alias
-
 `@micro-app` 拥有自己的别名配置方式，可以在 `micro-app.config.js` 中如下配置：
 
 ```js

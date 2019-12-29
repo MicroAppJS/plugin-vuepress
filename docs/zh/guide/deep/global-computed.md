@@ -67,3 +67,23 @@
 ## $themeConfig
 
 即 `siteConfig.themeConfig`。
+
+## $type
+
+这是现在网站的类型。（如：`doc`, `blog`）
+
+## $posts
+
+所有文章列表。
+
+## $tagPosts
+
+所有标签文章列表。
+
+## $categoriePosts
+
+所有分类文章列表。
+
+## $blogConfig
+
+博客配置，即 `themeConfig.blogConfig`。

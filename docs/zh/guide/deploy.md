@@ -32,9 +32,11 @@ module.exports = {
 };
 ```
 
-执行一下命令：
+执行以下命令：
 
-
+```sh
+npm run docs:deploy
+```
 
 ## 其它方式
 
