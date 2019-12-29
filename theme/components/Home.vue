@@ -2,54 +2,86 @@
     <main :class="$style.home" aria-labelledby="main-title">
         <header :class="[ $style.hero, $slots.mask ? $style.hasMask : '' ]">
             <slot name="mask"></slot>
-            <img
-                :class="$style.logo"
-                v-if="data.heroImage"
-                :src="$withBase(data.heroImage)"
-                :alt="data.heroAlt || 'hero'"
-            />
+            <div :class="[ $style.headerWrapper, heroImage ? $style.hasHeroImage : '' ]">
+                <div v-if="heroImage" :class="$style.headerItem">
+                    <img
+                        :class="$style.logo"
+                        :src="$withBase(heroImage)"
+                        :alt="frontmatter.heroAlt || 'hero'"
+                    />
+                </div>
+                <div>
+                    <h1
+                        v-if="frontmatter.heroText !== null"
+                        :class="[ heroImage ? '' : $style.notImg ]"
+                        id="main-title"
+                    >{{ heroText }}</h1>
 
-            <h1
-                v-if="data.heroText !== null"
-                :class="[ data.heroImage ? '' : $style.notImg ]"
-                id="main-title"
-            >{{ heroText }}</h1>
+                    <p v-if="frontmatter.tagline !== null" :class="$style.description">{{ tagline }}</p>
 
-            <p v-if="data.tagline !== null" :class="$style.description">{{ tagline }}</p>
+                    <p
+                        v-if="frontmatter.badges && Array.isArray(frontmatter.badges)"
+                        :class="$style.badges"
+                    >
+                        <span v-for="(item, index) in frontmatter.badges" :key="index">
+                            <iframe
+                                v-if="!/^https?/.test(item)"
+                                :src="`https://ghbtns.com/github-btn.html?${item}`"
+                                frameborder="0"
+                                scrolling="0"
+                                width="auto"
+                                height="20px"
+                                style="min-width: 100px; max-width: 120px;"
+                            ></iframe>
+                            <img style="padding-right: 20px;" v-else :src="$withBase(item)" alt />
+                        </span>
+                    </p>
 
-            <p v-if="data.badges && Array.isArray(data.badges)" :class="$style.badges">
-                <span v-for="(item, index) in data.badges" :key="index">
-                    <iframe
-                        v-if="!/^https?/.test(item)"
-                        :src="`https://ghbtns.com/github-btn.html?${item}`"
-                        frameborder="0"
-                        scrolling="0"
-                        width="auto"
-                        height="20px"
-                        style="min-width: 100px; max-width: 120px;"
-                    ></iframe>
-                    <img style="padding-right: 20px;" v-else :src="$withBase(item)" alt />
-                </span>
-            </p>
-
-            <p v-if="data.actionText && data.actionLink" :class="$style.action">
-                <NavLink :class="$style.actionButton" :item="actionLink" />
-            </p>
+                    <p v-if="actions && actions.length" :class="$style.action">
+                        <NavLink
+                            v-for="(item, index) in actions"
+                            :key="index"
+                            :class="$style.actionButton"
+                            :item="item"
+                        />
+                    </p>
+                </div>
+            </div>
         </header>
 
-        <div v-if="data.features && data.features.length" :class="$style.features">
-            <section v-for="(feature, index) in data.features" :key="index" :class="$style.feature">
-                <div :class="[ $style.wrapper, index % 2 === 1 ? $style.even : '' ]">
-                    <div v-if="feature.image" :class="$style.wrapperImg">
-                        <img :src="$withBase(feature.image)" alt />
-                    </div>
-                    <div v-if="feature.title" :class="$style.wrapperText">
-                        <h2>{{ feature.title }}</h2>
-                        <p>{{ feature.details }}</p>
-                    </div>
+        <template v-if="featuresNotImage">
+            <div
+                v-if="features && features.length"
+                :class="$style.features"
+                simple
+                :line="!$slots.mask"
+            >
+                <div
+                    :class="$style.feature"
+                    v-for="(feature, index) in features"
+                    :key="index"
+                    simple
+                >
+                    <h2>{{ feature.title }}</h2>
+                    <p>{{ feature.details }}</p>
                 </div>
-            </section>
-        </div>
+            </div>
+        </template>
+        <template v-else>
+            <div v-if="features && features.length" :class="$style.features">
+                <section v-for="(feature, index) in features" :key="index" :class="$style.feature">
+                    <div :class="[ $style.wrapper, index % 2 === 1 ? $style.even : '' ]">
+                        <div v-if="feature.image" :class="$style.wrapperImg">
+                            <img :src="$withBase(feature.image)" alt />
+                        </div>
+                        <div v-if="feature.title" :class="$style.wrapperText">
+                            <h2>{{ feature.title }}</h2>
+                            <p>{{ feature.details }}</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </template>
 
         <slot>
             <Content :class="[ 'theme-default-content', $style.custom ]" />
@@ -63,20 +95,56 @@ export default {
     name: 'Home',
     components: { NavLink },
     computed: {
-        data() {
+        frontmatter() {
             return this.$page.frontmatter;
         },
+        heroImage() {
+            return this.frontmatter.heroImage || false;
+        },
         heroText() {
-            return this.data.heroText || this.$title || 'Hello';
+            return this.frontmatter.heroText || this.$title || 'Hello';
         },
         tagline() {
-            return this.data.tagline || this.$description || 'Welcome to your VuePress site';
+            return (
+                this.frontmatter.tagline ||
+                this.$description ||
+                'Welcome to your VuePress site'
+            );
+        },
+        actionText() {
+            const actionText = this.frontmatter.actionText;
+            if (Array.isArray(actionText)) {
+                return actionText;
+            }
+            if (typeof actionText === 'string') {
+                return [ actionText ];
+            }
+            return [];
         },
         actionLink() {
-            return {
-                link: this.data.actionLink,
-                text: this.data.actionText,
-            };
+            const actionLink = this.frontmatter.actionLink;
+            if (Array.isArray(actionLink)) {
+                return actionLink;
+            }
+            if (typeof actionLink === 'string') {
+                return [ actionLink ];
+            }
+            return [];
+        },
+        actions() {
+            const actionLink = this.actionLink;
+            return this.actionText.map((text, index) => {
+                return {
+                    link: actionLink[index] || '/',
+                    text,
+                };
+            });
+        },
+        features() {
+            return this.frontmatter.features || [];
+        },
+        featuresNotImage() {
+            return !this.features.some(item => !!item.image);
         },
     },
 };
@@ -93,15 +161,34 @@ export default {
         text-align: center;
         box-sizing: border-box;
         overflow: hidden;
+        margin-bottom: 3rem;
 
         &.hasMask {
             z-index: 1;
             min-height: 450px;
         }
 
+        .headerWrapper {
+            max-width: 1240px;
+            width: 90%;
+            margin: 0 auto;
+
+            &.hasHeroImage {
+                text-align: left;
+                justify-content: space-between;
+                flex-direction: row-reverse;
+                align-items: center;
+                display: flex;
+            }
+
+            .headerItem {
+                margin-left: 6rem;
+            }
+        }
+
         img.logo {
             max-width: 100%;
-            max-height: 280px;
+            max-height: 1000px;
             display: block;
             margin: 3rem auto 1.5rem;
         }
@@ -116,17 +203,18 @@ export default {
 
         h1, .description, .action, .badges {
             margin: 2rem auto;
+            padding: 10px;
         }
 
-        .action {
-            margin-bottom: 6rem;
+        .badges {
+            margin: auto;
         }
 
         .description {
             max-width: 35rem;
             font-size: 1.2rem;
-            line-height: 1.3;
-            color: lighten($textColor, 30%);
+            line-height: 1.7;
+            color: lighten($textColor, 10%);
         }
 
         .actionButton {
@@ -134,27 +222,47 @@ export default {
             font-size: 1.2rem;
             color: #fff;
             background-color: $accentColor;
-            padding: 0.8rem 1.6rem;
+            padding: 0.6rem 1.2rem;
             border-radius: $borderRadius;
-            transition: background-color 0.1s ease;
+            transition: all 0.3s ease;
             box-sizing: border-box;
             border-bottom: 1px solid darken($accentColor, 10%);
+            margin-right: 1rem;
 
             &:hover {
-                background-color: lighten($accentColor, 10%);
+                background-color: lighten($accentColor, 20%);
+            }
+
+            &:not(:first-child) {
+                color: $accentColor;
+                border: 1px solid darken($accentColor, 10%);
+                background-color: #fff;
+            }
+
+            &:last-child {
+                margin-right: 0;
             }
         }
     }
 
     .features {
-        // border-top: 1px solid $borderColor;
-        padding: 1.2rem 0;
-        margin-top: 2.5rem;
+        padding: 0 0 1.2rem;
+        margin-top: 0;
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
         align-content: stretch;
         justify-content: space-between;
+
+        &[simple] {
+            padding: 1.2rem;
+            max-width: 1200px;
+            margin: auto;
+
+            &[line] {
+                border-top: 1px solid $borderColor;
+            }
+        }
     }
 
     .feature {
@@ -164,6 +272,12 @@ export default {
 
         &:nth-child(even) {
             background: rgba(27, 31, 35, 0.05);
+        }
+
+        &[simple] {
+            flex-basis: 30%;
+            max-width: 30%;
+            background: none;
         }
 
         .wrapper {
@@ -184,7 +298,6 @@ export default {
 
         .wrapperImg {
             flex: 0 1 100%;
-            max-width: 20rem;
             margin: auto;
 
             img {
@@ -215,12 +328,29 @@ export default {
     .custom {
         max-width: 960px;
         margin: 0px auto;
-        padding: 2rem 1.2rem;
+        padding: 0 1.2rem 2rem;
     }
 }
 
 @media (max-width: $MQMobile) {
     .home {
+        .hero {
+            .headerWrapper {
+                &.hasHeroImage {
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+                .headerItem {
+                    margin-left: 0;
+                }
+            }
+
+            img.logo {
+                max-height: 300px;
+            }
+        }
+
         .features {
             flex-direction: column;
         }
@@ -230,9 +360,15 @@ export default {
             padding: 0 2.5rem;
             margin: auto;
 
+            &[simple] {
+                max-width: 100%;
+                margin: 0;
+            }
+
             .wrapper {
                 flex-direction: column;
                 padding: 2rem 0;
+                min-height: 15rem;
 
                 &.even {
                     flex-direction: column-reverse;
@@ -253,7 +389,7 @@ export default {
 @media (max-width: $MQMobileNarrow) {
     .home {
         .hero {
-            img {
+            img.logo {
                 max-height: 210px;
                 margin: 2rem auto 1.2rem;
             }
@@ -268,10 +404,6 @@ export default {
 
             h1, .description, .action {
                 margin: 1.2rem auto;
-            }
-
-            .action {
-                margin-bottom: 4rem;
             }
 
             .description {

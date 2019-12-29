@@ -53,6 +53,7 @@ export default {
     position: relative;
     list-style: none;
     padding-left: 0;
+    margin: 1.2rem 0;
 
     .item {
         position: relative;

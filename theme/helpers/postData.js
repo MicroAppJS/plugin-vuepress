@@ -1,10 +1,10 @@
 // 过滤博客数据
 export function filterPosts(posts, isTimeline) {
     posts = posts.filter(item => {
-        const { title, frontmatter: { home, date, publish } } = item;
+        const { title, frontmatter: { home, date, private: isPrivate } } = item;
         return isTimeline === true
-            ? !(home === true || title === undefined || date === undefined || publish === false)
-            : !(home === true || title === undefined || publish === false);
+            ? !(home === true || title === undefined || date === undefined || isPrivate !== true)
+            : !(home === true || title === undefined || isPrivate !== true);
     });
     return posts;
 }

@@ -12,57 +12,74 @@ module.exports = (api, opts) => {
     api.extendConfig('selfVuepressConfig', {
         description: '当前工程下的 vuepress 配置',
     }, function() {
-        const selfConfig = api.selfConfig || {};
         const root = api.root;
-        let config = api.parseConfig(CONSTANTS.NAME, selfConfig.key);
+        let config = api.parseConfig(CONSTANTS.NAME);
         if (_.isEmpty(config)) {
             config = api.extraConfig.vuepress || {};
         }
         logger.debug('selfVuepressConfig', JSON.stringify(config, false, 4));
-        return Object.assign({
-            root,
-        }, config);
+        return Object.assign({}, config, { root });
     });
 
     api.extendConfig('vuepressConfig', {
-        description: '所有工程合并后的 vuepress 配置',
+        description: '将我们自己的配置转成 vuepress 配置',
     }, function() {
         const selfVuepressConfig = api.selfVuepressConfig || {};
+        const root = selfVuepressConfig.root;
 
-        const sourceDir = selfVuepressConfig.sourceDir || 'docs';
-        const docsDirRoot = path.resolve(api.root, sourceDir);
-        let themeConfig = selfVuepressConfig.themeConfig || {};
+        // 取 otherConfig
+        const otherConfig = selfVuepressConfig.otherConfig || {};
+        // 取公共值
+        const orgkeys = [
+            'root', 'sourceDir',
+            'base', 'title', 'description', 'head', 'host', 'port', 'dest',
+            'locales',
+        ];
+        const orgkeys2 = [
+            'markdown', 'plugins',
+        ];
+        const commonConfig = _.pick(selfVuepressConfig, [].concat(orgkeys).concat(orgkeys2));
+        const sourceDir = commonConfig.sourceDir || 'docs';
+        const dest = commonConfig.dest || '.vuepress/dist';
 
-        const buildSidebar = createBuildSidebarFactory(docsDirRoot, selfVuepressConfig);
-        const buildNavs = createBuildNavsFactory(selfVuepressConfig);
+        const docsDirRoot = path.resolve(root, sourceDir);
 
-        const locales = selfVuepressConfig.locales || {};
-        if (locales && Object.keys(locales).length > 0) {
-            const localKeys = Object.keys(locales);
-            localKeys.forEach(key => {
-                themeConfig.locales = themeConfig.locales || {};
-                const localsItem = Object.assign(themeConfig.locales[key] || {}, locales[key] || {});
-                themeConfig.locales[key] = buildSidebar(localsItem, key);
+        // let themeConfig = selfVuepressConfig.themeConfig || {};
 
-                // buid nav
-                themeConfig.locales[key].nav = buildNavs(key);
-            });
-        } else {
-            const _themeConfig = Object.assign({}, selfVuepressConfig, themeConfig);
-            themeConfig = buildSidebar(_themeConfig, '/');
+        // const buildSidebar = createBuildSidebarFactory(docsDirRoot, selfVuepressConfig);
+        // const buildNavs = createBuildNavsFactory(selfVuepressConfig);
 
-            // buid nav
-            themeConfig.nav = buildNavs('/');
-        }
+        // const locales = selfVuepressConfig.locales || {};
+        // if (locales && Object.keys(locales).length > 0) {
+        //     const localKeys = Object.keys(locales);
+        //     localKeys.forEach(key => {
+        //         themeConfig.locales = themeConfig.locales || {};
+        //         const localsItem = Object.assign(themeConfig.locales[key] || {}, locales[key] || {});
+        //         themeConfig.locales[key] = buildSidebar(localsItem, key);
 
-        const dest = selfVuepressConfig.dest || '.vuepress/dist';
+        //         // buid nav
+        //         themeConfig.locales[key].nav = buildNavs(key);
+        //     });
+        // } else {
+        //     const _themeConfig = Object.assign({}, selfVuepressConfig, themeConfig);
+        //     themeConfig = buildSidebar(_themeConfig, '/');
+
+        //     // buid nav
+        //     themeConfig.nav = buildNavs('/');
+        // }
+
+        const themeConfig = _.cloneDeep(selfVuepressConfig);
+        orgkeys2.forEach(key => {
+            delete themeConfig[key];
+        });
 
         const finalResult = {
-            ...selfVuepressConfig,
+            ...commonConfig,
+            ...otherConfig,
             sourceDir,
             dest: path.resolve(docsDirRoot, dest),
-            serviceWorker: true,
             themeConfig,
+            root,
         };
 
         return finalResult;

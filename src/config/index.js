@@ -3,15 +3,7 @@
 const path = require('path');
 
 module.exports = {
-    plugins: {
-        '@vuepress/back-to-top': true,
-        '@vuepress/pwa': {
-            serviceWorker: true,
-            updatePopup: true,
-        },
-        '@vuepress/medium-zoom': true,
-    },
-
+    serviceWorker: true,
     // TODO custom theme
     theme: path.resolve(__dirname, '../../theme/index.js'),
     themeConfig: {

@@ -65,8 +65,8 @@ export default {
             }
             const viewBox = this.xml.default.viewBox.split(' ');
             return {
-                width: viewBox[ 2 ] || 0,
-                height: viewBox[ 3 ] || 0,
+                width: viewBox[2] || 0,
+                height: viewBox[3] || 0,
                 id: '#' + this.xml.default.id,
             };
         },
@@ -109,7 +109,6 @@ export default {
                 width: height * this.scale,
                 height,
             };
-
         },
     },
     watch: {
@@ -123,14 +122,31 @@ export default {
     methods: {
         load() {
             let chain = Promise.resolve();
-            chain = chain.then(() => import(/* webpackMode: 'lazy-once', webpackChunkName: 'icon-svg' */ '@icons/' + this.name + '.svg'));
-            chain = chain.catch(() => import(/* webpackMode: 'lazy-once', webpackChunkName: 'icon-svg' */ '@internal-icons/' + this.name + '.svg'));
+            chain = chain.then(() =>
+                import(/* webpackMode: 'lazy-once', webpackChunkName: 'icon-svg' */ '@icons/' +
+                    this.name +
+                    '.svg')
+            );
+            chain = chain.catch(() =>
+                import(/* webpackMode: 'lazy-once', webpackChunkName: 'icon-svg' */ '@internal-icons/' +
+                    this.name +
+                    '.svg')
+            );
             const $themeConfig = this.$themeConfig || {};
-            if ($themeConfig.svgIconsDir) { // custom
-                chain = chain.catch(() => import(/* webpackMode: 'lazy-once', webpackChunkName: 'icon-svg' */ '@svg-icons/' + this.name + '.svg'));
+            if ($themeConfig.svgIconsDir) {
+                // custom
+                chain = chain.catch(() =>
+                    import(/* webpackMode: 'lazy-once', webpackChunkName: 'icon-svg' */ '@svg-icons/' +
+                        this.name +
+                        '.svg')
+                );
             }
             chain = chain.catch(err => {
-                console.error('[SvgIcon warn]', `Cannot find name: "${this.name}".\n`, err); // 提示
+                console.error(
+                    '[SvgIcon warn]',
+                    `Cannot find name: "${this.name}".\n`,
+                    err
+                ); // 提示
                 return null;
             });
             return chain;

@@ -13,9 +13,9 @@
                         @click="goCategories(subItem)"
                     >{{subItem}}</span>
                 </span>
-                <span v-if="frontmatter.author || $themeConfig.author">
+                <span v-if="frontmatter.author || $i18nText('author')">
                     <SvgIcon :class="$style.icon" name="author"></SvgIcon>
-                    <span>{{ frontmatter.author || $themeConfig.author }}</span>
+                    <span>{{ frontmatter.author || $i18nText('author') }}</span>
                 </span>
                 <span v-if="frontmatter.date">
                     <SvgIcon :class="$style.icon" name="date"></SvgIcon>

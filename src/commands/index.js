@@ -51,7 +51,7 @@ Examples:
     micro-app vuepress build
     ${chalk.gray('# dev')}
     micro-app vuepress dev
-          `.trim(),
+`.trim(),
     }, args => {
         const runCommand = require('./command');
         // 这里要处理一下，如果 args 中包含 vuepress， 则需要去除

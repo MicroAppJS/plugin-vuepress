@@ -28,8 +28,14 @@ export default ({
                 return this.$posts;
             },
             $blogConfig() {
-                console.warn('blogConfig: ', this.$themeConfig.blog);
-                return this.$themeConfig.blog || {};
+                return this.$themeConfig.blogConfig || {};
+            },
+        },
+        methods: {
+            $i18nText(key, value) {
+                return this.$themeLocaleConfig[key]
+                || this.$themeConfig[key]
+                || value;
             },
         },
     });

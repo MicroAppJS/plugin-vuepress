@@ -8,12 +8,9 @@
             <SvgIcon :class="$style.icon" name="beian"></SvgIcon>
             <NavLink :item="beian" hideOutboundIcon></NavLink>
         </span>
-        <span>
+        <span v-if="copyright">
             <SvgIcon :class="$style.icon" name="copyright"></SvgIcon>
-            <a v-if="footer.copyright">{{ footer.copyright }}</a>
-            <a v-else-if="$themeConfig.author || $site.title">
-                <span>{{ $themeConfig.author || $site.title }}</span>
-            </a>
+            <a>{{ copyright }}</a>
         </span>
     </footer>
 </template>
@@ -31,7 +28,11 @@ export default {
     },
     computed: {
         footer() {
-            return this.$themeConfig.footer || {};
+            const _footer = this.$i18nText('footer') || {};
+            return Object.assign({ // 默认值
+                powerby: true,
+                copyright: true,
+            }, _footer);
         },
         beian() {
             if (typeof this.footer.beian === 'string') {
@@ -41,6 +42,16 @@ export default {
                 };
             }
             return this.footer.beian;
+        },
+        copyright() {
+            const cr = this.footer.copyright;
+            if (typeof cr === 'string') {
+                return cr;
+            }
+            if (cr === true) {
+                return this.$i18nText('copyright') || false;
+            }
+            return false;
         },
     },
 };

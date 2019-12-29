@@ -1,9 +1,6 @@
 <template>
     <div :class="$style.root">
-        <img
-            :class="$style.avatar"
-            :src="$frontmatter.avatar ? $withBase($frontmatter.avatar) : require('@theme/assets/images/avatar.png')"
-        />
+        <img :class="$style.avatar" :src="$withBase(avatar)" />
         <h3 :class="$style.name" v-if="author">{{ author }}</h3>
         <div :class="$style.num">
             <div>
@@ -22,8 +19,11 @@
 export default {
     name: 'PersonalInfo',
     computed: {
+        avatar() {
+            return this.$frontmatter.avatar || require('@theme/assets/avatar.svg');
+        },
         author() {
-            return this.$themeConfig.author || this.$site.title;
+            return this.$i18nText('author') || this.$frontmatter.author || this.$site.title;
         },
     },
 };

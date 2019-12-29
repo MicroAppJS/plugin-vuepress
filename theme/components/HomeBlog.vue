@@ -24,12 +24,12 @@
                         </h4>
                         <TagList :list="$tags.list" />
                     </template>
-                    <template v-if="$themeConfig.friendLinks && $themeConfig.friendLinks.length">
+                    <template v-if="friendLinks && friendLinks.length">
                         <hr />
                         <h4>
                             <SvgIcon name="friend" :class="$style.icon" />友链
                         </h4>
-                        <FriendLinks :list="$themeConfig.friendLinks" />
+                        <FriendLinks :list="friendLinks" />
                     </template>
                 </div>
             </div>
@@ -60,6 +60,9 @@ export default {
                 style.backgroundImage = `url(${this.$withBase(this.data.banner)})`;
             }
             return style;
+        },
+        friendLinks() {
+            return this.$themeConfig.friendLinks;
         },
     },
     methods: {

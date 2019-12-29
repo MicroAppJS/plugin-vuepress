@@ -4,19 +4,23 @@ module.exports = (options, ctx) => {
     const defaultTheme = require('@vuepress/theme-default');
     const defaultThemeConfig = defaultTheme(options, ctx);
 
-    let themeConfig = ctx.themeConfig || {};
-    themeConfig = Object.assign(themeConfig, {
-        summary: themeConfig.summary === undefined ? true : themeConfig.summary,
+    let themeConfig = ctx.themeConfig = ctx.themeConfig || {};
+    themeConfig = Object.assign(ctx.themeConfig, {
+        summary: themeConfig.summary !== false,
         summaryLength: typeof themeConfig.summaryLength === 'number'
             ? themeConfig.summaryLength
             : 200,
-        pwa: !!themeConfig.pwa,
+        pwa: themeConfig.pwa !== false,
+        redirect: themeConfig.redirect !== false,
     });
+
+    const siteConfig = ctx.siteConfig || {};
+    const isLocales = !!siteConfig.locales || !!themeConfig.locales || false;
 
     const vuepressDir = ctx.vuepressDir;
     const iconsDir = path.resolve(vuepressDir, 'public', 'icons');
     const iconsLibDir = path.resolve(__dirname, 'icons');
-    const svgIconsDir = themeConfig.svgIconsDir && path.resolve(vuepressDir, themeConfig.svgIconsDir) || '';
+    const svgIconsDir = themeConfig.svgIconsDir && path.resolve(vuepressDir, themeConfig.svgIconsDir) || iconsLibDir;
 
     const iconsFilterFn = filePath => {
         if (filePath.startsWith(iconsLibDir)) {
@@ -39,7 +43,7 @@ module.exports = (options, ctx) => {
 
     // TODO more
     if (type === 'blog') {
-        const blogConfig = themeConfig.blog = themeConfig.blog || {};
+        const blogConfig = themeConfig.blogConfig = themeConfig.blogConfig || {};
         plugins.push([ '@vuepress/blog', getBlogPluginOptions(blogConfig) ]);
     }
     if (themeConfig.pwa) {
@@ -51,7 +55,18 @@ module.exports = (options, ctx) => {
             },
         ]);
     }
+    if (isLocales) {
+        if (themeConfig.redirect) {
+            plugins.push([ 'redirect', {
+                // 提供多语言重定向功能
+                // 它会自动从 `/foo/bar/` 定向到 `/:locale/foo/bar/`，如果对应的页面存在
+                locales: true,
+            }]);
+        }
+    }
 
+    plugins.push('@vuepress/medium-zoom');
+    plugins.push('@vuepress/back-to-top');
     // 流程图
     plugins.push('flowchart');
 
@@ -69,9 +84,7 @@ module.exports = (options, ctx) => {
                 '@default-theme': defaultThemeDir,
                 '@icons': iconsDir,
                 '@internal-icons': iconsLibDir,
-                ...(svgIconsDir ? {
-                    '@svg-icons': svgIconsDir,
-                } : {}),
+                '@svg-icons': svgIconsDir,
             };
         },
         chainWebpack(config /* , isServer */) {

@@ -11,10 +11,6 @@ export default {
 .navbar {
     box-shadow: $boxShadow;
 
-    a:not(:hover)>.icon {
-        color: #999;
-    }
-
     .nav-links a:hover, .nav-links a.router-link-active {
         color: $accentColor;
     }
