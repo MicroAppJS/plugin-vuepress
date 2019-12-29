@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+'use strict';
+
+process.env.MICRO_APP_VUEPRESS_RUNNING = true;
+
+const yParser = require('yargs-parser');
+const argv = yParser(process.argv.slice(2));
+const { service } = require('@micro-app/cli');
+const path = require('path');
+
+[ 'extends', 'commands' ].forEach(name => {
+    service.registerPlugin({
+        id: `cli:plugin-extend-vuepress-${name}`,
+        link: path.resolve(__dirname, `../src/${name}/index.js`),
+    });
+});
+
+service.run('vuepress', argv);

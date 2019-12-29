@@ -12,6 +12,12 @@ module.exports = (api, argv, opts) => {
     let chain = Promise.resolve();
 
     chain = chain.then(() => autoCreateConfig());
+
+    if (process.env.MICRO_APP_TEST) {
+        logger.debug('MICRO_APP_TEST --> Exit!!!');
+        return chain;
+    }
+
     chain = chain.then(vuepressConfig => {
 
         if (argv._[0] === 'dev') { // refresh
@@ -52,10 +58,6 @@ module.exports = (api, argv, opts) => {
                 return cli.parse(orginalArgv, { run: false });
             })
             .then(() => {
-                if (process.env.MICRO_APP_TEST) {
-                    logger.debug('MICRO_APP_TEST --> Exit!!!');
-                    process.exit(0);
-                }
                 return cli.runMatchedCommand();
             });
     });

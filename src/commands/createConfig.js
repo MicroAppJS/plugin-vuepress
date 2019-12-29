@@ -4,10 +4,9 @@ module.exports = function createConfig(api, args, opts) {
     const { _, smartMerge } = require('@micro-app/shared-utils');
     const path = require('path');
 
-    const root = api.root;
-
     const vuepressConfig = api.vuepressConfig;
     vuepressConfig.sourceDir = args._ && args._[1] || vuepressConfig.sourceDir || '.';
+    const root = vuepressConfig.root;
 
     const loadConfig = require('@vuepress/core/lib/node/loadConfig');
 

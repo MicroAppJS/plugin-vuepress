@@ -1,16 +1,10 @@
 'use strict';
 
-module.exports = {
-    type: '', // types 类型
+const config = {};
 
-    alias: { // 前端
-        '@config': {
-            link: 'src',
-            description: '配置',
-        },
-    },
+// 兼容两种启动方式
+if (!process.env.MICRO_APP_VUEPRESS_RUNNING) {
+    config.plugins = [ __dirname ];
+}
 
-    plugins: [
-        __dirname,
-    ],
-};
+module.exports = config;
