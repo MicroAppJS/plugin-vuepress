@@ -16,10 +16,13 @@ jobs:
             - name: Checkout
               uses: actions/checkout@master
 
-            - name: yarn install, make test-coverage
+            - name: yarn install
+              run: yarn --network-timeout 600000
+
+            - name: yarn install coveralls
               run: |
-                  yarn install
-                  make test-coverage
+                  yarn install -D coveralls
+                  yarn run test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 
             - name: Coveralls
               uses: coverallsapp/github-action@master
