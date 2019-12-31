@@ -1,7 +1,9 @@
 'use strict';
 
 module.exports = function(api, argv, opts) {
-    // TODO 增加部署 github 脚本
+    // 增加部署 github 脚本
+    // https://github.com/marketplace/actions/deploy-to-github-pages
+    // https://github.com/JamesIves/github-pages-deploy-action/blob/dev/src/constants.ts
     const logger = api.logger;
 
     // logger.info('[VuePress > Deploy > Github]', '我正在努力实现！💪');
@@ -19,8 +21,10 @@ module.exports = function(api, argv, opts) {
         logger.throw('[VuePress > Deploy > Github]', 'deploy.repo must be string!');
     }
 
+    const token = process.env.GITHUB_TOKEN || process.env.ACCESS_TOKEN || 'git';
+
     if (repo && !repo.includes(':')) {
-        repo = `git@github.com:${repo}.git`;
+        repo = `${token}@github.com:${repo}.git`;
     }
 
     const path = require('path');
@@ -94,7 +98,7 @@ module.exports = function(api, argv, opts) {
     // # if you are deploying to https://<USERNAME>.github.io/<REPO>
     // # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 
-    let branch = deployOpts.branch || 'gh-pages';
+    let branch = deployOpts.branch || process.env.BRANCH || 'gh-pages';
     if (branch && branch !== 'master') {
         branch = `master:${branch}`;
     }

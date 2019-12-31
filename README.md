@@ -8,6 +8,7 @@
 [![CircleCI][CircleCI-img]][CircleCI-url]
 [![NPM Version][npm-img]][npm-url]
 [![NPM Download][download-img]][download-url]
+[![Github Actions Coveralls][Github-Actions-Coveralls]][]
 
 [Coverage-img]: https://coveralls.io/repos/github/MicroAppJS/plugin-vuepress/badge.svg?branch=master
 [Coverage-url]: https://coveralls.io/github/MicroAppJS/plugin-vuepress?branch=master
@@ -17,6 +18,7 @@
 [npm-url]: https://npmjs.org/package/@micro-app/plugin-vuepress
 [download-img]: https://img.shields.io/npm/dm/@micro-app/plugin-vuepress.svg?style=flat-square
 [download-url]: https://npmjs.org/package/@micro-app/plugin-vuepress
+[Github-Actions-Coveralls]: https://github.com/MicroAppJS/plugin-vuepress/workflows/Coveralls/badge.svg
 
 ## Install
 

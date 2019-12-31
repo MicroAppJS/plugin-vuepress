@@ -11,7 +11,7 @@ module.exports = (options, ctx) => {
             ? themeConfig.summaryLength
             : 200,
         pwa: themeConfig.pwa !== false,
-        redirect: themeConfig.redirect !== false,
+        redirect: themeConfig.redirect === undefined ? true : themeConfig.redirect,
     });
 
     const vuepressDir = ctx.vuepressDir;
@@ -132,12 +132,20 @@ function registerPlugins(plugins, ctx) {
     }
     if (isLocales) {
         if (themeConfig.redirect) {
-            plugins.push([ 'redirect', {
+            const redirectOpts = themeConfig.redirect === true ? {
                 // 提供多语言重定向功能
                 // 它会自动从 `/foo/bar/` 定向到 `/:locale/foo/bar/`，如果对应的页面存在
                 locales: true,
-            }]);
+            } : themeConfig.redirect;
+            plugins.push([ 'redirect', redirectOpts ]);
         }
+    }
+
+    const GAID = themeConfig.GAID;
+    if (GAID && typeof GAID === 'string') {
+        plugins.push([ '@vuepress/google-analytics', {
+            ga: GAID, // UA-00000000-0 项目生成后生成的 ID 值
+        }]);
     }
     plugins.push('@vuepress/medium-zoom');
     plugins.push('@vuepress/back-to-top');
