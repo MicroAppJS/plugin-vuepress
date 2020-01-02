@@ -15,7 +15,8 @@ module.exports = {
             selectText: '选择语言',
             ariaLabel: '选择语言',
             editLinkText: '在 GitHub 上编辑此页',
-            lastUpdated: '上次更新',
+            lastUpdated: '上次编辑时间',
+            repoLabel: '查看源码',
             sidebar: getSidebar('zh'),
             nav: getNav('zh'),
         },
@@ -26,10 +27,7 @@ module.exports = {
         // },
     },
 
-    lastUpdated: '上次编辑时间',
-    repoLabel: '查看源码',
     repoIcon: 'github',
-    editLinkText: '在 GitHub 上编辑此页',
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
     repo: 'MicroAppJS/plugin-vuepress',
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为

@@ -1,9 +1,13 @@
 import OutboundLink from '@theme/components/OutboundLink';
 import { filterPosts } from '@theme/helpers/postData.js';
+import ClipboardJS from 'clipboard';
 
 export default ({
     Vue,
 }) => {
+    // 注册到vue原型上
+    Vue.prototype.ClipboardJS = ClipboardJS;
+    // mixin
     Vue.mixin({
         computed: {
             $type() {

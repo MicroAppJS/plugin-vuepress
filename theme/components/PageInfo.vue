@@ -4,7 +4,10 @@
         class="theme-default-content"
         :class="[$style.root, { 'custom': hideTitle }]"
     >
-        <h1 v-if="!hideTitle" :class="$style.title">{{ title }}</h1>
+        <h1 v-if="!hideTitle" :class="$style.title">
+            {{ title }}
+            <Badge v-if="frontmatter.type" style="margin-left: 5px;" :text="frontmatter.type"></Badge>
+        </h1>
         <div :class="$style.rows">
             <span v-if="frontmatter.categories" :class="$style.tags">
                 <SvgIcon :class="$style.icon" name="category"></SvgIcon>

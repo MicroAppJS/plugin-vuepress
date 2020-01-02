@@ -7,7 +7,7 @@
                 <NavLink :item="post.path">{{ post.title }}</NavLink>
             </h2>
             <article :class="$style.summary">
-                {{ post.frontmatter.summary || post.summary }}
+                {{ post.frontmatter.summary || '' }}
                 <!-- <Content :post-key="post.key" slot-key="summary" /> -->
             </article>
             <PageInfo :class="$style.info" :info="post" hideTitle />
