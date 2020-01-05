@@ -5,7 +5,7 @@
             <Categories :list="$categories.list" simple />
 
             <!-- 博客列表 -->
-            <BlogPosts :posts="$categoriePosts" />
+            <BlogPosts :posts="$postsForCategories" />
         </div>
     </Layout>
 </template>
@@ -15,6 +15,7 @@ import Layout from '@theme/layouts/Layout.vue';
 import Categories from '@theme/components/Categories.vue';
 import BlogPosts from '@theme/components/BlogPosts.vue';
 export default {
+    name: 'CategoriesLayout',
     components: {
         Layout,
         Categories,

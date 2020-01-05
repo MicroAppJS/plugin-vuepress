@@ -36,3 +36,32 @@ export default {
     },
 };
 </script>
+
+<style lang="stylus">
+@media (min-width: $MQMobile) {
+    .nav-item > a:not(.external) {
+        &:before {
+            content: '';
+            position: absolute;
+            left: 51%;
+            right: 51%;
+            bottom: 0;
+            background: lighten($accentColor, 8%);
+            height: 2px;
+            transition-property: left, right;
+            transition-duration: 0.3s;
+            transition-timing-function: ease-out;
+        }
+
+        &:hover, &.router-link-active {
+            margin-bottom: -2px;
+            border-bottom: 2px solid transparent;
+
+            &:before {
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+}
+</style>

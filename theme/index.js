@@ -36,7 +36,7 @@ module.exports = (options, ctx) => {
                 if (filePath.startsWith(iconsDir)) {
                     return true;
                 }
-                // TODO 通过配置可扩展地址，如：options.svgIconsDir = []
+                // 通过配置可扩展地址，如：svgIconsDir = ''
                 if (svgIconsDir && filePath.startsWith(svgIconsDir)) {
                     return true;
                 }
@@ -86,6 +86,7 @@ module.exports = (options, ctx) => {
         },
         plugins: require('./plugins/register')(ctx),
 
+        // TODO Blog https://github.com/meteorlxy/vuepress-theme-meteorlxy/blob/master/lib/plugins/blog/index.js
         // extendPageData(pageCtx) {
         //     const strippedContent = pageCtx._strippedContent;
         //     if (!strippedContent) {

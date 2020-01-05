@@ -2,7 +2,14 @@
     <div :class="$style.posts" ref="postsRef">
         <slot name="top"></slot>
 
-        <div v-for="post in currentPosts" :key="post.key" :class="$style.post">
+        <TransitionFadeSlide
+            tag="div"
+            direction="x"
+            :delay="0.2 * index"
+            v-for="{post, index} in currentPosts"
+            :key="post.key"
+            :class="$style.post"
+        >
             <h2 :class="$style.title">
                 <NavLink :item="post.path">{{ post.title }}</NavLink>
             </h2>
@@ -11,7 +18,7 @@
                 <!-- <Content :post-key="post.key" slot-key="summary" /> -->
             </article>
             <PageInfo :class="$style.info" :info="post" hideTitle />
-        </div>
+        </TransitionFadeSlide>
 
         <!-- 分页 -->
         <div :class="$style.pagation">
@@ -31,12 +38,14 @@
 import NavLink from '@theme/components/NavLink.vue';
 import PageInfo from '@theme/components/PageInfo.vue';
 import Pagination from '@theme/components/Pagination.vue';
+import TransitionFadeSlide from '@theme/components/TransitionFadeSlide.vue';
 export default {
     name: 'BlogPosts',
     components: {
         NavLink,
         PageInfo,
         Pagination,
+        TransitionFadeSlide,
     },
     props: {
         posts: {

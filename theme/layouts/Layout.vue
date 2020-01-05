@@ -16,14 +16,16 @@
             </Sidebar>
         </slot>
 
-        <slot>
-            <component :is="HomeMode" v-if="$page.frontmatter.home" />
+        <TransitionFadeSlide>
+            <slot>
+                <component :is="HomeMode" v-if="$page.frontmatter.home" />
 
-            <Page v-else :sidebar-items="sidebarItems">
-                <slot name="page-top" slot="top" />
-                <slot name="page-bottom" slot="bottom" />
-            </Page>
-        </slot>
+                <Page v-else :sidebar-items="sidebarItems">
+                    <slot name="page-top" slot="top" />
+                    <slot name="page-bottom" slot="bottom" />
+                </Page>
+            </slot>
+        </TransitionFadeSlide>
 
         <Footer v-if="$page.frontmatter.footer" />
     </div>
@@ -33,9 +35,10 @@
 import ParentLayout from '@default-theme/layouts/Layout.vue';
 import Footer from '@theme/components/Footer.vue';
 import HomeBlog from '@theme/components/HomeBlog.vue';
+import TransitionFadeSlide from '@theme/components/TransitionFadeSlide.vue';
 export default {
     extends: ParentLayout,
-    components: { Footer, HomeBlog },
+    components: { Footer, HomeBlog, TransitionFadeSlide },
     computed: {
         HomeMode() {
             switch (this.$type) {

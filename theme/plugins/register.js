@@ -1,11 +1,14 @@
 module.exports = registerPlugins;
 
+const { _, logger } = require('@micro-app/shared-utils');
+
 function registerPlugins(ctx) {
     const themeConfig = ctx.themeConfig;
-    themeConfig.smoothScroll = themeConfig.smoothScroll === true;
+    themeConfig.smoothScroll = themeConfig.smoothScroll !== false;
     themeConfig.activeHeaderLinks = themeConfig.activeHeaderLinks !== false;
     themeConfig.pwa = themeConfig.pwa !== false;
     themeConfig.redirect = themeConfig.redirect === undefined ? true : themeConfig.redirect;
+    themeConfig.comment = _.isPlainObject(themeConfig.comment) ? themeConfig.comment : false;
 
     const plugins = [
         '@vuepress/search',
@@ -81,6 +84,33 @@ function registerPlugins(ctx) {
     plugins.push('@vuepress/back-to-top');
     // 流程图
     plugins.push('flowchart');
+
+    const shouldUseLastUpdated = (
+        themeConfig.lastUpdated
+        || Object.keys(siteConfig.locales && themeConfig.locales || {}).some(base => themeConfig.locales[base].lastUpdated)
+    );
+    if (shouldUseLastUpdated) {
+        plugins.push([ require('./fileInfos'), true ]);
+    }
+
+    if (themeConfig.comment) { // 评论
+        const comment = themeConfig.comment;
+        switch (comment.type) {
+            case 'vssue':
+            default: {
+                comment.type = 'vssue';
+                plugins.push([ '@vssue/vuepress-plugin-vssue', Object.assign({
+                    platform: 'github',
+                    // platform: 'github-v4',
+                    // 其他的 Vssue 配置
+                    // owner: 'OWNER_OF_REPO',
+                    // repo: 'NAME_OF_REPO',
+                    // clientId: 'YOUR_CLIENT_ID',
+                    // clientSecret: 'YOUR_CLIENT_SECRET',
+                }, themeConfig.comment) ]);
+            }
+        }
+    }
 
     return plugins;
 }

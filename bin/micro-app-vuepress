@@ -11,7 +11,7 @@ let MicroAppCLI = tryRequire('@micro-app/cli');
 if (!MicroAppCLI) {
     logger.info('[auto]', 'npm install @micro-app/cli');
     const { exitCode, stderr } = execa.sync('npm', [ 'install', '@micro-app/cli', '--no-save', '--no-package-lock' ], {
-        cwd: path.resolve(__dirname, '../'),
+        cwd: process.cwd(),
         stdio: 'inherit',
     });
     if (exitCode) {

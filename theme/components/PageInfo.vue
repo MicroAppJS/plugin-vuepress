@@ -27,9 +27,13 @@
                 <SvgIcon :class="$style.icon" name="date"></SvgIcon>
                 <span>{{ frontmatter.date | formatDateValue }}</span>
             </span>
-            <span v-else-if="info.lastUpdated">
+            <span v-else-if="info.birthTimeFormat">
                 <SvgIcon :class="$style.icon" name="date"></SvgIcon>
-                <span>{{ info.lastUpdated }}</span>
+                <span>{{ info.birthTimeFormat }}</span>
+            </span>
+            <span v-else-if="info.lastUpdatedFormat">
+                <SvgIcon :class="$style.icon" name="date"></SvgIcon>
+                <span>{{ info.lastUpdatedFormat }}</span>
             </span>
             <span v-if="frontmatter.tags" :class="$style.tags">
                 <SvgIcon :class="$style.icon" name="tags"></SvgIcon>

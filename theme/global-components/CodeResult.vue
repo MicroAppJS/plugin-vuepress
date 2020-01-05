@@ -2,11 +2,12 @@
     <div :class="$style.root">
         <div :class="$style.head" :more="more">
             <div :class="$style.tools">
-                <span ref="clipboardRef" :data-clipboard-text="orgCode">
-                    <SvgIcon :class="$style.icon" name="copy"></SvgIcon>
+                <span v-if="copyMessage">{{ copyMessage }}</span>
+                <span ref="clipboardRef" :data-clipboard-text="orgCode" :class="$style.icon">
+                    <SvgIcon name="copy"></SvgIcon>
                 </span>
-                <span v-if="isSupportMore" @click="more = !more">
-                    <SvgIcon :class="$style.icon" name="more"></SvgIcon>
+                <span v-if="isSupportMore" @click="more = !more" :class="$style.icon">
+                    <SvgIcon name="more"></SvgIcon>
                 </span>
             </div>
         </div>
@@ -62,15 +63,27 @@ export default {
             return '';
         },
     },
+    watch: {
+        copyMessage(nV) {
+            if (nV) {
+                clearTimeout(this.iCopyMessageTimer);
+                this.iCopyMessageTimer = setTimeout(() => {
+                    this.copyMessage = null;
+                }, 3000);
+            }
+        },
+    },
     mounted() {
         this.clipboard = new this.ClipboardJS(this.$refs.clipboardRef);
-        this.clipboard.on('success', function(e) {
+        this.clipboard.on('success', e => {
             console.warn('Copy Success!');
+            this.copyMessage = 'Copy Success!';
             e.clearSelection();
         });
 
-        this.clipboard.on('error', function(e) {
+        this.clipboard.on('error', e => {
             console.warn('Copy Fail!');
+            this.copyMessage = 'Copy Fail!';
         });
     },
     beforeDestroy() {
@@ -90,7 +103,7 @@ export default {
 .head {
     position: relative;
     text-align: right;
-    border-top: 1px solid darken($borderColor, 30%);
+    border-top: 1px solid darken($borderColor, 40%);
     padding: 0.5rem;
 
     &[more] {
@@ -100,9 +113,16 @@ export default {
 
 .tools {
     position: relative;
+    font-size: 12px;
 
     .icon {
         margin-left: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+            color: $accentColor;
+        }
     }
 }
 
