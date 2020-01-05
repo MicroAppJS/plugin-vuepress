@@ -1,5 +1,5 @@
 module.exports = md => {
-    const fence = md.renderer.rules.fence;
+    const fence = md.renderer.rules.fence.bind(md.renderer.rules);
     md.renderer.rules.fence = (...args) => {
         const rawCode = fence(...args);
 
@@ -11,5 +11,4 @@ module.exports = md => {
 
         return finalCode;
     };
-
 };

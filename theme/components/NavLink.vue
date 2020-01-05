@@ -2,6 +2,8 @@
     <RouterLink
         v-if="isInternal"
         class="nav-link"
+        :class="$style.link"
+        :line="line"
         :to="link"
         :exact="exact"
         @focusout.native="focusoutAction"
@@ -13,6 +15,8 @@
         v-else
         :href="link"
         class="nav-link external"
+        :class="$style.link"
+        :line="line"
         :target="target"
         :rel="rel"
         @focusout="focusoutAction"
@@ -33,6 +37,7 @@ export default {
         item: {
             required: true,
         },
+        line: Boolean,
         hideOutboundIcon: Boolean,
     },
     computed: {
@@ -83,3 +88,29 @@ export default {
     },
 };
 </script>
+
+<style lang="stylus" module>
+.link {
+    transition: color 0.3s;
+
+    &[line] {
+        &:before {
+            content: '';
+            position: absolute;
+            left: 51%;
+            right: 51%;
+            bottom: 0;
+            background: lighten($accentColor, 8%);
+            height: 2px;
+            transition-property: left, right;
+            transition-duration: 0.3s;
+            transition-timing-function: ease-out;
+        }
+
+        &:hover:before {
+            left: 0;
+            right: 0;
+        }
+    }
+}
+</style>

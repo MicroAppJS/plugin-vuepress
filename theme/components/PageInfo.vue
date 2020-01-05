@@ -4,7 +4,10 @@
         class="theme-default-content"
         :class="[$style.root, { 'custom': hideTitle }]"
     >
-        <h1 v-if="!hideTitle" :class="$style.title">{{ title }}</h1>
+        <h1 v-if="!hideTitle" :class="$style.title">
+            {{ title }}
+            <Badge v-if="frontmatter.type" style="margin-left: 5px;" :text="frontmatter.type"></Badge>
+        </h1>
         <div :class="$style.rows">
             <span v-if="frontmatter.categories" :class="$style.tags">
                 <SvgIcon :class="$style.icon" name="category"></SvgIcon>
@@ -24,9 +27,13 @@
                 <SvgIcon :class="$style.icon" name="date"></SvgIcon>
                 <span>{{ frontmatter.date | formatDateValue }}</span>
             </span>
-            <span v-else-if="info.lastUpdated">
+            <span v-else-if="info.birthTimeFormat">
                 <SvgIcon :class="$style.icon" name="date"></SvgIcon>
-                <span>{{ info.lastUpdated }}</span>
+                <span>{{ info.birthTimeFormat }}</span>
+            </span>
+            <span v-else-if="info.lastUpdatedFormat">
+                <SvgIcon :class="$style.icon" name="date"></SvgIcon>
+                <span>{{ info.lastUpdatedFormat }}</span>
             </span>
             <span v-if="frontmatter.tags" :class="$style.tags">
                 <SvgIcon :class="$style.icon" name="tags"></SvgIcon>

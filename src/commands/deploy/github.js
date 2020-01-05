@@ -16,7 +16,7 @@ module.exports = function(api, argv, opts) {
         logger.throw('[VuePress > Deploy > Github]', '必须在 micro-app.vuepress.config.js 中声明 deploy: {} !');
     }
 
-    let repo = deployOpts.repo || false;
+    let repo = deployOpts.repo || selfVuepressConfig.repo || false;
     if (!_.isString(repo)) {
         logger.throw('[VuePress > Deploy > Github]', 'deploy.repo must be string!');
     }

@@ -5,7 +5,7 @@
             <TagList :list="$tags.list" simple />
 
             <!-- 博客列表 -->
-            <BlogPosts :posts="$tagPosts" />
+            <BlogPosts :posts="$postsForTags" />
         </div>
     </Layout>
 </template>
@@ -15,7 +15,7 @@ import Layout from '@theme/layouts/Layout.vue';
 import TagList from '@theme/components/TagList.vue';
 import BlogPosts from '@theme/components/BlogPosts.vue';
 export default {
-    name: 'Tags',
+    name: 'TagsLayout',
     components: {
         Layout,
         TagList,

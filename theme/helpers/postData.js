@@ -1,17 +1,16 @@
 // 过滤博客数据
 export function filterPosts(posts, isTimeline) {
-    posts = posts.filter(item => {
+    return posts.filter(item => {
         const { title, frontmatter: { home, date, private: isPrivate } } = item;
         return isTimeline === true
-            ? !(home === true || title === undefined || date === undefined || isPrivate !== true)
-            : !(home === true || title === undefined || isPrivate !== true);
+            ? !(home === true || title === undefined || date === undefined || isPrivate === true)
+            : !(home === true || title === undefined || isPrivate === true);
     });
-    return posts;
 }
 
 // 排序博客数据
 export function sortPostsByStickyAndDate(posts) {
-    posts.sort((prev, next) => {
+    return posts.sort((prev, next) => {
         const prevSticky = prev.frontmatter.sticky;
         const nextSticky = next.frontmatter.sticky;
         if (prevSticky && nextSticky) {
@@ -25,6 +24,7 @@ export function sortPostsByStickyAndDate(posts) {
     });
 }
 
+// 按时间排序，如果没有 Date 属性则过滤掉
 export function sortPostsByDate(posts) {
     return posts.sort((prev, next) => {
         return compareDate(prev, next);
@@ -37,6 +37,8 @@ export function compareDate(a, b) {
 }
 
 // 获取时间的数字类型
-export function getTimeNum(date) {
-    return new Date(date.frontmatter.date).getTime();
+export function getTimeNum(obj) {
+    const date = obj.frontmatter.date || obj.birthTimestamp || obj.lastUpdatedTimestamp || Date.now();
+    obj.date = new Date(date);
+    return obj.date.getTime();
 }

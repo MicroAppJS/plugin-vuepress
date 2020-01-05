@@ -1,12 +1,30 @@
 #!/usr/bin/env node
 'use strict';
 
-process.env.MICRO_APP_VUEPRESS_RUNNING = true;
-
+process.env.MICRO_APP_VUEPRESS_DIRECT_RUNNING = true;
 const yParser = require('yargs-parser');
 const argv = yParser(process.argv.slice(2));
-const { service } = require('@micro-app/cli');
 const path = require('path');
+
+const { tryRequire, logger, execa } = require('@micro-app/shared-utils');
+let MicroAppCLI = tryRequire('@micro-app/cli');
+if (!MicroAppCLI) {
+    logger.info('[auto]', 'npm install @micro-app/cli');
+    const { exitCode, stderr } = execa.sync('npm', [ 'install', '@micro-app/cli', '--no-save', '--no-package-lock' ], {
+        cwd: process.cwd(),
+        stdio: 'inherit',
+    });
+    if (exitCode) {
+        logger.throw(stderr);
+    }
+    const importFresh = require('import-fresh'); // 依赖 @micro-app/shared-utils
+    MicroAppCLI = importFresh('@micro-app/cli');
+}
+if (!MicroAppCLI) {
+    logger.throw("Cannot find module '@micro-app/cli'!");
+}
+
+const { service } = MicroAppCLI;
 
 [ 'extends', 'commands' ].forEach(name => {
     service.registerPlugin({

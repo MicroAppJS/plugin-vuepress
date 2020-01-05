@@ -76,11 +76,11 @@
 
 所有文章列表。
 
-## $tagPosts
+## $postsForTags
 
 所有标签文章列表。
 
-## $categoriePosts
+## $postsForCategories
 
 所有分类文章列表。
 

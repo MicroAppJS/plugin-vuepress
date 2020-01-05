@@ -35,25 +35,30 @@ module.exports = {
 | author | `<SvgIcon name="author"/>` | <SvgIcon name="author"/> |
 | beian | `<SvgIcon name="beian"/>` | <SvgIcon name="beian"/> |
 | category | `<SvgIcon name="category"/>` | <SvgIcon name="category"/> |
+| copy | `<SvgIcon name="copy"/>` | <SvgIcon name="copy"/> |
 | copyright | `<SvgIcon name="copyright"/>` | <SvgIcon name="copyright"/> |
 | date | `<SvgIcon name="date"/>` | <SvgIcon name="date"/> |
+| doc | `<SvgIcon name="doc"/>` | <SvgIcon name="doc"/> |
 | friend | `<SvgIcon name="friend"/>` | <SvgIcon name="friend"/> |
 | github | `<SvgIcon name="github"/>` | <SvgIcon name="github"/> |
+| guide | `<SvgIcon name="guide"/>` | <SvgIcon name="guide"/> |
+| help | `<SvgIcon name="help"/>` | <SvgIcon name="help"/> |
+| home | `<SvgIcon name="home"/>` | <SvgIcon name="home"/> |
+| info | `<SvgIcon name="info"/>` | <SvgIcon name="info"/> |
 | link | `<SvgIcon name="link"/>` | <SvgIcon name="link"/> |
+| more | `<SvgIcon name="more"/>` | <SvgIcon name="more"/> |
+| package | `<SvgIcon name="package"/>` | <SvgIcon name="package"/> |
+| rss | `<SvgIcon name="rss"/>` | <SvgIcon name="rss"/> |
+| run | `<SvgIcon name="run"/>` | <SvgIcon name="run"/> |
 | tags | `<SvgIcon name="tags"/>` | <SvgIcon name="tags"/> |
 | zap | `<SvgIcon name="zap"/>` | <SvgIcon name="zap"/> |
-| home | `<SvgIcon name="home"/>` | <SvgIcon name="home"/> |
-| package | `<SvgIcon name="package"/>` | <SvgIcon name="package"/> |
-| help | `<SvgIcon name="help"/>` | <SvgIcon name="help"/> |
-| info | `<SvgIcon name="info"/>` | <SvgIcon name="info"/> |
-| doc | `<SvgIcon name="doc"/>` | <SvgIcon name="doc"/> |
-| rss | `<SvgIcon name="rss"/>` | <SvgIcon name="rss"/> |
 
 使用方式如下：
 
 ```vue
 <SvgIcon name="tags"/>
 <SvgIcon name="tags" size="20"/>
+<SvgIcon name="tags" size="32"/>
 ```
 
 ## Options

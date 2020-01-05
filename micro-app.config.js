@@ -3,7 +3,7 @@
 const config = {};
 
 // 兼容两种启动方式
-if (!process.env.MICRO_APP_VUEPRESS_RUNNING) {
+if (!process.env.MICRO_APP_VUEPRESS_DIRECT_RUNNING) {
     config.plugins = [ __dirname ];
 }
 
