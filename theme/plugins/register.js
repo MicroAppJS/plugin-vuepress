@@ -1,6 +1,6 @@
 module.exports = registerPlugins;
 
-const { _, logger } = require('@micro-app/shared-utils');
+const { _ } = require('@micro-app/shared-utils');
 
 function registerPlugins(ctx) {
     const themeConfig = ctx.themeConfig;
@@ -44,8 +44,7 @@ function registerPlugins(ctx) {
     const isLocales = !!siteConfig.locales || !!themeConfig.locales || false;
 
     if (type === 'blog') {
-        const blogConfig = themeConfig.blogConfig = initBlogConfig(themeConfig.blogConfig || {});
-        plugins.push([ '@vuepress/blog', getBlogPluginOptions(blogConfig) ]);
+        plugins.push([ '@vuepress/blog', getBlogPluginOptions(themeConfig.blogConfig) ]);
         // TODO more blog plugins
     }
 
@@ -115,17 +114,9 @@ function registerPlugins(ctx) {
     return plugins;
 }
 
-function initBlogConfig(blogConfig) {
-    // 初始化默认值
-    blogConfig.categoriesPath = blogConfig.categoriesPath || '/categories/';
-    blogConfig.tagsPath = blogConfig.tagsPath || '/tags/';
-    blogConfig.timelinePath = blogConfig.timelinePath || '/timeline/';
-    blogConfig.pageSize = parseInt(blogConfig.pageSize) || 10;
-    return blogConfig;
-}
-
 function getBlogPluginOptions(blogConfig) {
     return {
+        permalink: '/:regular',
         frontmatters: [
             {
                 id: 'categories',

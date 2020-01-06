@@ -1,21 +1,27 @@
 const path = require('path');
+const moment = require('moment');
+
+const ensureBothSlash = str => str.replace(/^\/?(.*)\/?$/, '/$1/');
 
 module.exports = (options, ctx) => {
     const defaultTheme = require('@vuepress/theme-default');
     const defaultThemeConfig = defaultTheme(options, ctx);
 
+    const siteConfig = ctx.siteConfig || {};
     const themeConfig = ctx.themeConfig = ctx.themeConfig || {};
+    const type = siteConfig.type || themeConfig.type || 'doc';
 
     const vuepressDir = ctx.vuepressDir;
     const iconsDir = path.resolve(vuepressDir, 'public', 'icons');
     const iconsLibDir = path.resolve(__dirname, 'icons');
     const svgIconsDir = themeConfig.svgIconsDir && path.resolve(vuepressDir, themeConfig.svgIconsDir) || iconsLibDir;
 
+    // blog config
+    const blogConfig = themeConfig.blogConfig = initBlogConfig(themeConfig.blogConfig || {});
+
     const finalConfig = {
         define: {
-            THEME_BLOG_PAGINATION_COMPONENT: themeConfig.paginationComponent
-                ? themeConfig.paginationComponent
-                : 'Pagination',
+            THEME_BUILD_DATE: moment().format(),
         },
         alias() {
             const defaultThemeConfigAlias = defaultThemeConfig.alias();
@@ -86,26 +92,31 @@ module.exports = (options, ctx) => {
         },
         plugins: require('./plugins/register')(ctx),
 
-        // TODO Blog https://github.com/meteorlxy/vuepress-theme-meteorlxy/blob/master/lib/plugins/blog/index.js
-        // extendPageData(pageCtx) {
-        //     const strippedContent = pageCtx._strippedContent;
-        //     if (!strippedContent) {
-        //         return;
-        //     }
-        //     // Generate summary.
-        //     if (themeConfig.summary) {
-        //         const removeMd = require('remove-markdown');
-        //         pageCtx.summary =
-        //                 removeMd(
-        //                     strippedContent
-        //                         .trim()
-        //                         .replace(/^#+\s+(.*)/, '')
-        //                 )
-        //                     .slice(0, themeConfig.summaryLength)
-        //         + ' ...';
-        //     }
-        // },
+        // Blog https://github.com/meteorlxy/vuepress-theme-meteorlxy/blob/master/lib/plugins/blog/index.js
+        extendPageData($page) {
+            // const strippedContent = pageCtx._strippedContent;
+            // if (!strippedContent) {
+            //     return;
+            // }
+            if (type === 'blog') {
+                if ($page.path.startsWith(ensureBothSlash(blogConfig.postsDir))) {
+                    $page.frontmatter.permalink = $page.frontmatter.permalink || blogConfig.permalink;
+                }
+            }
+        },
     };
 
     return finalConfig;
 };
+
+
+function initBlogConfig(blogConfig) {
+    // 初始化默认值
+    blogConfig.categoriesPath = blogConfig.categoriesPath || '/categories/';
+    blogConfig.tagsPath = blogConfig.tagsPath || '/tags/';
+    blogConfig.timelinePath = blogConfig.timelinePath || '/timeline/';
+    blogConfig.pageSize = parseInt(blogConfig.pageSize) || 10;
+    blogConfig.postsDir = blogConfig.postsDir || 'posts';
+    blogConfig.permalink = blogConfig.permalink || '/posts/:year/:month/:day/:slug.html';
+    return blogConfig;
+}

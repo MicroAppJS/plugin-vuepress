@@ -14,6 +14,8 @@ module.exports = {
         tagsPath: "/tags/",
         timelinePath: "/timeline/",
         pageSize: 10,
+        postsDir: 'posts',
+        permalink: '/posts/:year/:month/:day/:slug.html',
     }
 }
 ```
@@ -47,3 +49,29 @@ module.exports = {
 - 默认值: `10`
 
 分页大小，默认为每页 10 条。
+
+### postsDir
+
+- 类型: `string`
+- 默认值: `posts`
+
+博客文章的根目录。
+
+### permalink
+
+- 类型: `string`
+- 默认值: `/posts/:year/:month/:day/:slug.html`
+
+`postsDir` 目录下的文章使用的永久链接格式。
+
+#### 模板变量
+
+| 变量 | 介绍 |
+| --- | --- |
+| :year | 文章发布的年份 (4数字) |
+| :month | 文章发布的月份 (2数字) |
+| :i_month | 文章发布的月份 (前面不带0) |
+| :day | 文章发布的日份 (2数字) |
+| :i_day | 文章发布的日份 (前面不带0) |
+| :slug | 蛞蝓化文件路径 (不带扩展名) |
+| :regular | VuePress默认的生成永久链接的方式 |
