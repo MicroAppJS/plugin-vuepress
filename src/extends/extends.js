@@ -32,14 +32,14 @@ module.exports = (api, opts) => {
         // 取公共值
         const orgkeys = [
             'root', 'sourceDir',
-            'base', 'title', 'description', 'head', 'host', 'port', 'dest',
-            'locales',
+            'base', 'title', 'description', 'host', 'port', 'dest',
+            'locales', 'head',
         ];
         const orgkeys2 = [
             'markdown', 'plugins',
         ];
         const commonConfig = _.pick(selfVuepressConfig, [].concat(orgkeys).concat(orgkeys2));
-        const sourceDir = commonConfig.sourceDir || 'docs';
+        const sourceDir = commonConfig.sourceDir || '.';
         const dest = commonConfig.dest || '.vuepress/dist';
 
         const docsDirRoot = path.resolve(root, sourceDir);

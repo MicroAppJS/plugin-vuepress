@@ -22,12 +22,12 @@ module.exports = (options = {}, context) => ({
 });
 
 function defaultTimestamp(lastUpdated) {
-    const timestamp = Date.parse(lastUpdated);
+    const timestamp = new Date(lastUpdated);
     return timestamp;
 }
 
 function defaultTransformer(timestamp, lang) {
-    const m = moment(timestamp).locale(lang);
+    const m = moment(timestamp).utc().locale(lang);
     return m.format('llll');
 }
 

@@ -2,25 +2,31 @@ import { filterPosts, sortPostsByDate } from '@theme/helpers/postData.js';
 
 export default {
     computed: {
+        $lang() {
+            const lang = this.$themeConfig.lang || 'en-US';
+            return this.$frontmatter.lang || this.$localeConfig.lang || lang;
+        },
         $type() {
             return this.$themeConfig.type || 'doc';
         },
         $posts() {
             const pages = this.$site.pages || [];
             const posts = filterPosts(pages);
-            return posts;
+            return sortPostsByDate([].concat(posts));
         },
         $postsForTags() {
             if (this.$currentTags) {
                 const pages = this.$currentTags.pages || [];
-                return filterPosts(pages);
+                const posts = filterPosts(pages);
+                return sortPostsByDate([].concat(posts));
             }
             return this.$posts;
         },
         $postsForCategories() {
             if (this.$currentCategories) {
                 const pages = this.$currentCategories.pages || [];
-                return filterPosts(pages);
+                const posts = filterPosts(pages);
+                return sortPostsByDate([].concat(posts));
             }
             return this.$posts;
         },

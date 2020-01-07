@@ -8,7 +8,10 @@
         >
             <router-link :to="item.path">
                 <span :class="$style.name">{{ item.name }}</span>
-                <span :class="$style.num" :style="customStyle(index)">{{ item.pages.length }}</span>
+                <span
+                    :class="$style.num"
+                    :style="customStyle(index, item.name == currentCategory)"
+                >{{ item.pages.length }}</span>
             </router-link>
         </li>
     </ul>
@@ -41,7 +44,10 @@ export default {
         },
     },
     methods: {
-        customStyle(index) {
+        customStyle(index, active) {
+            if (this.simple && active) {
+                return { color: getOneColor(index) };
+            }
             return { backgroundColor: getOneColor(index) };
         },
     },
@@ -53,7 +59,8 @@ export default {
     position: relative;
     list-style: none;
     padding-left: 0;
-    margin: 1.2rem 0;
+    margin: 0;
+    line-height: 1;
 
     .item {
         position: relative;
@@ -64,9 +71,39 @@ export default {
         box-shadow: $boxShadow;
         background-color: $backgroundColor;
 
+        &:hover {
+            transform: translateY(-0.1rem);
+        }
+
+        a {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0.8rem;
+            align-items: center;
+
+            .name {
+                margin-right: 6px;
+            }
+
+            .num {
+                min-width: 1.2rem;
+                height: 1.2rem;
+                text-align: center;
+                line-height: 1.2rem;
+                border-radius: $borderRadius;
+                background: #eee;
+                font-size: 0.6rem;
+                color: #fff;
+            }
+        }
+
         &[simple] {
             display: inline-block;
-            margin-right: 0.4rem;
+            margin: 0.4rem;
+
+            a {
+                padding: 0.2rem 0.6rem;
+            }
         }
 
         &[simple].active {
@@ -76,30 +113,9 @@ export default {
             .name {
                 color: #fff;
             }
-        }
-
-        &:hover {
-            transform: translateY(-0.1rem);
-        }
-
-        a {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.4rem 0.8rem;
-
-            .name {
-                margin-right: 6px;
-            }
 
             .num {
-                width: 1.6rem;
-                height: 1.6rem;
-                text-align: center;
-                line-height: 1.6rem;
-                border-radius: $borderRadius;
-                background: #eee;
-                font-size: 0.6rem;
-                color: #fff;
+                background: #fff;
             }
         }
     }

@@ -8,6 +8,9 @@ export default {
 
 <style lang="stylus">
 .sidebar {
+    background-color: transparent;
+    font-size: 14px;
+
     .sidebar-sub-headers {
         margin-right: 1rem;
 
