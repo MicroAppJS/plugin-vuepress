@@ -86,6 +86,7 @@ export default {
 <style lang="stylus" module>
 .posts {
     position: relative;
+    margin: 0 10px;
 
     .post {
         position: relative;
@@ -111,6 +112,7 @@ export default {
 
         .summary {
             word-break: break-all;
+            opacity: 0.85;
         }
 
         .info {

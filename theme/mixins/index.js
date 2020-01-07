@@ -43,11 +43,13 @@ export default {
                 }
                 return obj;
             }, {});
-            return Object.keys(sortP).sort().map(year => {
-                return {
-                    year, data: sortP[year],
-                };
-            });
+            return Object.keys(sortP)
+                .sort((a, b) => parseInt(b) - parseInt(a))
+                .map(year => {
+                    return {
+                        year, data: sortP[year],
+                    };
+                });
         },
         $blogConfig() {
             return this.$themeConfig.blogConfig || {};

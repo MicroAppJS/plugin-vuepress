@@ -69,6 +69,11 @@ export default {
 }
 
 .desc {
+    .year {
+        &:before {
+            background: $accentColor;
+        }
+    }
 }
 
 .wrapper {

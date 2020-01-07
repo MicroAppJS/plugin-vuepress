@@ -85,6 +85,7 @@ export default {
     box-shadow: $boxShadow;
     transition: all 0.3s;
     border-radius: $borderRadius;
+    border-left: 0.3rem solid $accentColor;
 
     &:hover {
         box-shadow: $boxShadowHover;

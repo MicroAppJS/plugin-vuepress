@@ -122,6 +122,8 @@ export default {
     }
 
     .nav-dropdown {
+        min-width: 100px;
+
         .dropdown-item {
             color: inherit;
             line-height: 1.7rem;

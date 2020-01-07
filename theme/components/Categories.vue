@@ -9,6 +9,7 @@
             <router-link :to="item.path">
                 <span :class="$style.name">{{ item.name }}</span>
                 <span
+                    v-if="!simple"
                     :class="$style.num"
                     :style="customStyle(index, item.name == currentCategory)"
                 >{{ item.pages.length }}</span>
@@ -32,7 +33,7 @@ export default {
             }
             const pages = this.$posts || [];
             return [
-                { name: 'ALL', path: categoriesPath, pages },
+                // { name: 'ALL', path: categoriesPath, pages },
                 ...this.list,
             ];
         },
@@ -78,45 +79,40 @@ export default {
         a {
             display: flex;
             justify-content: space-between;
-            padding: 0.4rem 0.8rem;
+            padding: 0.6rem 0.8rem;
             align-items: center;
+        }
 
-            .name {
-                margin-right: 6px;
-            }
-
-            .num {
-                min-width: 1.2rem;
-                height: 1.2rem;
-                text-align: center;
-                line-height: 1.2rem;
-                border-radius: $borderRadius;
-                background: #eee;
-                font-size: 0.6rem;
-                color: #fff;
-            }
+        .num {
+            min-width: 1.2rem;
+            height: 1.2rem;
+            text-align: center;
+            line-height: 1.2rem;
+            border-radius: $borderRadius;
+            background-color: #eee;
+            font-size: 0.6rem;
+            color: #fff;
+            margin-left: 6px;
         }
 
         &[simple] {
+            vertical-align: middle;
             display: inline-block;
-            margin: 0.4rem;
+            margin: 0.3rem;
+            background-color: darken($accentColor, 60%);
+            font-size: 13px;
 
             a {
-                padding: 0.2rem 0.6rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .name {
+                color: #fff;
             }
         }
 
         &[simple].active {
-            color: #fff;
-            background-color: lighten($accentColor, 20%);
-
-            .name {
-                color: #fff;
-            }
-
-            .num {
-                background: #fff;
-            }
+            background-color: $accentColor;
         }
     }
 }

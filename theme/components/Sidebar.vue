@@ -10,6 +10,7 @@ export default {
 .sidebar {
     background-color: transparent;
     font-size: 14px;
+    transition: all 0.3s;
 
     .sidebar-sub-headers {
         margin-right: 1rem;
@@ -22,5 +23,9 @@ export default {
             border-radius: $borderRadius;
         }
     }
+}
+
+.sidebar-open .sidebar {
+    background-color: rgba($backgroundColor, 0.98);
 }
 </style>
