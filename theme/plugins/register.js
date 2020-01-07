@@ -115,7 +115,7 @@ function registerPlugins(ctx) {
 }
 
 function getBlogPluginOptions(blogConfig) {
-    return {
+    const options = {
         permalink: '/:regular',
         frontmatters: [
             {
@@ -141,4 +141,5 @@ function getBlogPluginOptions(blogConfig) {
             },
         ],
     };
+    return options;
 }

@@ -1,11 +1,13 @@
 <template>
-    <Layout>
+    <Layout hideSidebar>
         <div :class="$style.root">
-            <!-- 标签集合 -->
-            <Categories :list="$categories.list" simple />
-
             <!-- 博客列表 -->
-            <BlogPosts :posts="$postsForCategories" />
+            <BlogWrapper :posts="$postsForCategories">
+                <template slot="posts-top">
+                    <!-- 标签集合 -->
+                    <Categories :list="$categories.list" simple />
+                </template>
+            </BlogWrapper>
         </div>
     </Layout>
 </template>
@@ -13,13 +15,13 @@
 <script>
 import Layout from '@theme/layouts/Layout.vue';
 import Categories from '@theme/components/Categories.vue';
-import BlogPosts from '@theme/components/BlogPosts.vue';
+import BlogWrapper from '@theme/components/BlogWrapper.vue';
 export default {
     name: 'CategoriesLayout',
     components: {
         Layout,
         Categories,
-        BlogPosts,
+        BlogWrapper,
     },
 };
 </script>

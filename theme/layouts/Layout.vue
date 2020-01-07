@@ -7,14 +7,17 @@
     >
         <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
 
-        <slot name="sidebar">
-            <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-
+        <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
+        <TransitionFadeSlide direction="x">
             <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
                 <slot name="sidebar-top" slot="top" />
                 <slot name="sidebar-bottom" slot="bottom" />
             </Sidebar>
-        </slot>
+        </TransitionFadeSlide>
+
+        <TransitionFadeSlide>
+            <Header v-if="$page.frontmatter.home || showHeader" />
+        </TransitionFadeSlide>
 
         <TransitionFadeSlide>
             <slot>
@@ -33,12 +36,17 @@
 
 <script>
 import ParentLayout from '@default-theme/layouts/Layout.vue';
+import Header from '@theme/components/Header.vue';
 import Footer from '@theme/components/Footer.vue';
 import HomeBlog from '@theme/components/HomeBlog.vue';
 import TransitionFadeSlide from '@theme/components/TransitionFadeSlide.vue';
 export default {
     extends: ParentLayout,
-    components: { Footer, HomeBlog, TransitionFadeSlide },
+    components: { Header, Footer, HomeBlog, TransitionFadeSlide },
+    props: {
+        showHeader: Boolean,
+        hideSidebar: Boolean,
+    },
     computed: {
         HomeMode() {
             switch (this.$type) {
@@ -48,6 +56,15 @@ export default {
                     break;
             }
             return 'Home';
+        },
+        shouldShowSidebar() {
+            const { frontmatter } = this.$page;
+            return (
+                !frontmatter.home
+                && frontmatter.sidebar !== false
+                && this.sidebarItems.length
+                && !this.hideSidebar
+            );
         },
     },
 };

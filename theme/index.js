@@ -1,5 +1,6 @@
 const path = require('path');
 const moment = require('moment');
+const { fs } = require('@micro-app/shared-utils');
 
 const ensureBothSlash = str => str.replace(/^\/?(.*)\/?$/, '/$1/');
 
@@ -10,6 +11,7 @@ module.exports = (options, ctx) => {
     const siteConfig = ctx.siteConfig || {};
     const themeConfig = ctx.themeConfig = ctx.themeConfig || {};
     const type = siteConfig.type || themeConfig.type || 'doc';
+    const lang = siteConfig.lang || themeConfig.lang || 'en-US';
 
     const vuepressDir = ctx.vuepressDir;
     const iconsDir = path.resolve(vuepressDir, 'public', 'icons');
@@ -21,7 +23,7 @@ module.exports = (options, ctx) => {
 
     const finalConfig = {
         define: {
-            THEME_BUILD_DATE: moment().format(),
+            THEME_BUILD_DATE: moment().format('llll'),
         },
         alias() {
             const defaultThemeConfigAlias = defaultThemeConfig.alias();
@@ -29,7 +31,7 @@ module.exports = (options, ctx) => {
             return {
                 ...defaultThemeConfigAlias,
                 '@default-theme': defaultThemeDir,
-                '@icons': iconsDir,
+                '@icons': fs.existsSync(iconsDir) ? iconsDir : iconsLibDir,
                 '@internal-icons': iconsLibDir,
                 '@svg-icons': svgIconsDir,
             };
@@ -101,6 +103,12 @@ module.exports = (options, ctx) => {
             if (type === 'blog') {
                 if ($page.path.startsWith(ensureBothSlash(blogConfig.postsDir))) {
                     $page.frontmatter.permalink = $page.frontmatter.permalink || blogConfig.permalink;
+                    if ($page.frontmatter.date) {
+                        const $lang = $page.frontmatter.lang || $page._computed.$localeConfig.lang || lang;
+                        $page.frontmatter.dateFormat = moment($page.frontmatter.date)
+                            .utc().locale($lang)
+                            .format('llll');
+                    }
                 }
             }
         },
@@ -115,6 +123,7 @@ function initBlogConfig(blogConfig) {
     blogConfig.categoriesPath = blogConfig.categoriesPath || '/categories/';
     blogConfig.tagsPath = blogConfig.tagsPath || '/tags/';
     blogConfig.timelinePath = blogConfig.timelinePath || '/timeline/';
+    blogConfig.timelineTitle = blogConfig.timelineTitle || 'Tomorrow will be better!';
     blogConfig.pageSize = parseInt(blogConfig.pageSize) || 10;
     blogConfig.postsDir = blogConfig.postsDir || 'posts';
     blogConfig.permalink = blogConfig.permalink || '/posts/:year/:month/:day/:slug.html';

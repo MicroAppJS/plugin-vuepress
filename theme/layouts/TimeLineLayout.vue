@@ -1,11 +1,11 @@
 <template>
-    <Layout>
+    <Layout hideSidebar>
         <div :class="$style.root">
-            <!-- 标签集合 -->
-            <!-- <TagList :list="$tags.list" simple /> -->
-
             <!-- 年份列表 -->
             <ul :class="$style.wrapper">
+                <li :class="$style.desc">
+                    <h3 :class="$style.year">{{ title }}</h3>
+                </li>
                 <li v-for="(item, i) in $postsForTimeline" :key="i" :class="$style.item">
                     <h3 :class="$style.year">{{ item.year }}</h3>
                     <ul :class="$style.yearWrapper">
@@ -54,7 +54,9 @@ export default {
         },
     },
     computed: {
-        // $postsForTimeline
+        title() {
+            return this.$blogConfig.timelineTitle;
+        },
     },
 };
 </script>
@@ -64,6 +66,14 @@ export default {
     margin: 0px auto;
     display: block;
     max-width: 1126px;
+}
+
+.desc {
+    .year {
+        &:before {
+            background: $accentColor;
+        }
+    }
 }
 
 .wrapper {
@@ -149,6 +159,7 @@ export default {
             color: #888;
             font-size: 16px;
             transition: all 0.3s;
+            margin-left: 10px;
         }
 
         &:hover {

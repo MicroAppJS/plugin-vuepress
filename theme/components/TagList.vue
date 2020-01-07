@@ -48,7 +48,7 @@ export default {
 
 <style lang="stylus" module>
 .root {
-    margin: 30px 0;
+    position: relative;
 
     span {
         vertical-align: middle;

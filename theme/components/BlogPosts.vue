@@ -2,22 +2,17 @@
     <div :class="$style.posts" ref="postsRef">
         <slot name="top"></slot>
 
-        <TransitionFadeSlide
-            tag="div"
-            direction="x"
-            :delay="0.2 * index"
-            v-for="{post, index} in currentPosts"
-            :key="post.key"
-            :class="$style.post"
-        >
-            <h2 :class="$style.title">
-                <NavLink :item="post.path">{{ post.title }}</NavLink>
-            </h2>
-            <article :class="$style.summary">
-                {{ post.frontmatter.summary || '' }}
-                <!-- <Content :post-key="post.key" slot-key="summary" /> -->
-            </article>
-            <PageInfo :class="$style.info" :info="post" hideTitle />
+        <TransitionFadeSlide direction="x" group>
+            <div v-for="(post, index) in currentPosts" :key="post.key" :class="$style.post">
+                <h2 :key="`title-${index}`" :class="$style.title">
+                    <NavLink :item="post.path">{{ post.title }}</NavLink>
+                </h2>
+                <article :key="`summary-${index}`" :class="$style.summary">
+                    {{ post.frontmatter.summary || '' }}
+                    <!-- <Content :post-key="post.key" slot-key="summary" /> -->
+                </article>
+                <PageInfo :key="`info-${index}`" :class="$style.info" :info="post" hideTitle />
+            </div>
         </TransitionFadeSlide>
 
         <!-- 分页 -->
@@ -68,7 +63,8 @@ export default {
             const limit = this.limit;
             const start = (this.currentPage - 1) * limit;
             const end = start + limit;
-            return this.posts.slice(start, end);
+            const posts = [].concat(this.posts);
+            return posts.slice(start, end);
         },
     },
     methods: {
@@ -89,6 +85,9 @@ export default {
 
 <style lang="stylus" module>
 .posts {
+    position: relative;
+    margin: 0 10px;
+
     .post {
         position: relative;
         padding: 10px 20px;
@@ -113,6 +112,7 @@ export default {
 
         .summary {
             word-break: break-all;
+            opacity: 0.85;
         }
 
         .info {

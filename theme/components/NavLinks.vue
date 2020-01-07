@@ -23,6 +23,7 @@
 
 <script>
 import ParentLayout from '@default-theme/components/NavLinks.vue';
+import { resolveNavLinkItem } from '@default-theme/util';
 export default {
     name: 'NavLinks',
     extends: ParentLayout,
@@ -32,6 +33,20 @@ export default {
             if (this.$themeConfig.repoIcon) {
                 return this.$themeConfig.repoIcon;
             }
+        },
+        userLinks() {
+            return (this.nav || []).map(link => {
+                if (link && [ 'category', 'categories' ].includes(link.role) && this.$categories && this.$categories.length > 0) {
+                    link.items = this.$categories.list.map(item => {
+                        item.link = item.path;
+                        item.text = item.name;
+                        return item;
+                    });
+                }
+                return Object.assign(resolveNavLinkItem(link), {
+                    items: (link.items || []).map(resolveNavLinkItem),
+                });
+            });
         },
     },
 };

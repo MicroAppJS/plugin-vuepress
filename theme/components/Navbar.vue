@@ -10,9 +10,16 @@ export default {
 <style lang="stylus">
 .navbar {
     box-shadow: $boxShadow;
+    background-color: rgba($backgroundColor, 0.85);
 
-    .nav-links a:hover, .nav-links a.router-link-active {
-        color: $accentColor;
+    .links {
+        background-color: transparent;
+    }
+
+    .nav-links {
+        a:hover, a.router-link-active {
+            color: $accentColor;
+        }
     }
 }
 </style>
