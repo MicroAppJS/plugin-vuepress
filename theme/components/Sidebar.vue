@@ -8,7 +8,6 @@ export default {
 
 <style lang="stylus">
 .sidebar {
-    background-color: transparent;
     font-size: 14px;
     transition: all 0.3s;
 
@@ -16,11 +15,11 @@ export default {
         margin-right: 1rem;
 
         a.sidebar-link.active {
-            font-weight: 600;
-            color: #fff;
-            background-color: alpha($accentColor, 0.95);
-            box-sizing: border-box;
-            border-radius: $borderRadius;
+            // font-weight: 600;
+            // color: #fff;
+            // background-color: alpha($accentColor, 0.95);
+            // box-sizing: border-box;
+            // border-radius: $borderRadius;
         }
     }
 }

@@ -10,7 +10,6 @@ export default {
 <style lang="stylus">
 .navbar {
     box-shadow: $boxShadow;
-    background-color: rgba($backgroundColor, 0.85);
 
     .links {
         background-color: transparent;
