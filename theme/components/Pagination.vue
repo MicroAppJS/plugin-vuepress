@@ -76,7 +76,7 @@ export default {
     line-height: 1.42857143;
     color: $accentColor;
     text-decoration: none;
-    background-color: #fff;
+    background-color: $backgroundColor;
     border: 1px solid #ddd;
 }
 
@@ -107,9 +107,9 @@ export default {
 }
 
 .pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {
-    color: #ddd;
+    color: rgba($textColor, 0.65);
     cursor: not-allowed;
-    background-color: #fff;
+    background-color: $backgroundColor;
     border-color: #ddd;
 }
 

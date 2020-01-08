@@ -13,6 +13,16 @@ export default {
 
     .links {
         background-color: transparent;
+
+        .search-box {
+            input {
+                background-color: $backgroundColor;
+            }
+
+            .suggestions {
+                background-color: $backgroundColor;
+            }
+        }
     }
 
     .nav-links {

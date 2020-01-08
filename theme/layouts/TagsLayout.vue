@@ -1,13 +1,16 @@
 <template>
     <Layout hideSidebar>
-        <div :class="$style.root">
+        <HeaderBoxInfo :current="$currentTags" />
+        <div :class="$style.wrapper">
+            <slot name="top"></slot>
             <!-- 博客列表 -->
             <BlogWrapper :posts="$postsForTags">
                 <template slot="posts-top">
                     <!-- 标签集合 -->
-                    <TagList :list="$tags.list" simple />
+                    <TagList v-if="$tags.length" :list="$tags.list" simple />
                 </template>
             </BlogWrapper>
+            <slot name="bottom"></slot>
         </div>
     </Layout>
 </template>
@@ -16,22 +19,22 @@
 import Layout from '@theme/layouts/Layout.vue';
 import TagList from '@theme/components/TagList.vue';
 import BlogWrapper from '@theme/components/BlogWrapper.vue';
+import HeaderBoxInfo from '@theme/components/HeaderBoxInfo.vue';
 export default {
     name: 'TagsLayout',
     components: {
         Layout,
         TagList,
         BlogWrapper,
-    },
-    computed: {
+        HeaderBoxInfo,
     },
 };
 </script>
 <style lang="stylus" module>
-.root {
-    padding: $navbarHeight 10px 0;
-    margin: 0px auto;
+.wrapper {
+    position: relative;
     display: block;
     max-width: 1126px;
+    margin: 0px auto;
 }
 </style>

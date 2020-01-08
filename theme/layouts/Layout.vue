@@ -8,27 +8,27 @@
         <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
 
         <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-        <TransitionFadeSlide direction="x">
-            <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
-                <slot name="sidebar-top" slot="top" />
-                <slot name="sidebar-bottom" slot="bottom" />
-            </Sidebar>
-        </TransitionFadeSlide>
+        <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
+            <slot name="sidebar-top" slot="top" />
+            <slot name="sidebar-bottom" slot="bottom" />
+        </Sidebar>
 
         <TransitionFadeSlide>
             <Header v-if="$page.frontmatter.home || showHeader" />
         </TransitionFadeSlide>
 
-        <TransitionFadeSlide>
+        <div :class="$style.content" :custom="!!$slots.default">
             <slot>
-                <component :is="HomeMode" v-if="$page.frontmatter.home" />
+                <TransitionFadeSlide>
+                    <component :is="HomeMode" v-if="$page.frontmatter.home" />
 
-                <Page v-else :sidebar-items="sidebarItems">
-                    <slot name="page-top" slot="top" />
-                    <slot name="page-bottom" slot="bottom" />
-                </Page>
+                    <Page v-else :sidebar-items="sidebarItems">
+                        <slot name="page-top" slot="top" />
+                        <slot name="page-bottom" slot="bottom" />
+                    </Page>
+                </TransitionFadeSlide>
             </slot>
-        </TransitionFadeSlide>
+        </div>
 
         <Footer v-if="$page.frontmatter.footer" />
     </div>
@@ -69,3 +69,13 @@ export default {
     },
 };
 </script>
+
+<style lang="stylus" module>
+.content {
+    display: block;
+
+    &[custom] {
+        padding-top: $navbarHeight;
+    }
+}
+</style>

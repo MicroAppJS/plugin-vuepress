@@ -1,7 +1,12 @@
 <template>
     <div :class="[ $style.hero, hasMask ? $style.hasMask : '' ]">
         <slot name="mask">
-            <span v-if="frontmatter.banner" :class="$style.mask" :style="maskStyle"></span>
+            <span
+                v-if="frontmatter.banner"
+                :class="$style.mask"
+                class="banner-mask"
+                :style="maskStyle"
+            ></span>
         </slot>
         <div :class="[ $style.headerWrapper, heroImage ? $style.hasHeroImage : '' ]">
             <div v-if="heroImage" :class="$style.headerItem">
@@ -107,6 +112,10 @@ export default {
         },
         maskStyle() {
             const style = {};
+            const bannerMaskStyle = this.frontmatter.bannerMaskStyle;
+            if (bannerMaskStyle) {
+                Object.assign(style, bannerMaskStyle);
+            }
             const banner = this.frontmatter.banner;
             if (banner) {
                 style.backgroundImage = `url(${this.$withBase(banner)})`;
@@ -170,7 +179,7 @@ export default {
         max-width: 36rem;
         font-size: 1.2rem;
         line-height: 1.7;
-        color: lighten($textColor, 10%);
+        color: rgba($textColor, 0.8);
     }
 
     .actionButton {
@@ -204,11 +213,6 @@ export default {
         z-index: 1;
         min-height: 350px;
         padding-bottom: 50px;
-        color: #ffffff;
-
-        .description {
-            color: darken(#ffffff, 20%);
-        }
     }
 }
 
@@ -274,7 +278,7 @@ export default {
     &:after {
         display: block;
         content: '';
-        background: rgba(0, 0, 0, 0.65);
+        // background: rgba(0, 0, 0, 0.65);
         position: absolute;
         top: 0;
         bottom: 0;

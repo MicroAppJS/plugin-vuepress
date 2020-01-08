@@ -59,11 +59,11 @@ export default {
 
 <style lang="stylus" module>
 .footer {
-    padding: 1.5rem 2.5rem;
+    padding: 1.5rem;
     border-top: 1px solid $borderColor;
     text-align: center;
     color: lighten($textColor, 25%);
-    font-size: 14px;
+    font-size: 12px;
 
     > span {
         margin-left: 1rem;
