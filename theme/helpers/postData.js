@@ -39,7 +39,7 @@ export function compareDate(a, b) {
 // 获取时间的数字类型
 export function getTimeNum(obj) {
     let date = obj.frontmatter.date || obj.birthTimestamp || obj.lastUpdatedTimestamp || Date.now();
-    if (date.includes('.')) { // 简单去时区
+    if (typeof date === 'string' && date.includes('.')) { // 简单去时区
         date = date.split('.')[0];
     }
     obj.date = new Date(date);

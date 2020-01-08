@@ -13,9 +13,12 @@ module.exports = {
         categoriesPath: "/categories/",
         tagsPath: "/tags/",
         timelinePath: "/timeline/",
+        timelineTitle: 'Tomorrow will be better!',
         pageSize: 10,
         postsDir: 'posts',
         permalink: '/posts/:year/:month/:day/:slug.html',
+
+        sitemap: {}, // default: undefined
     }
 }
 ```
@@ -42,6 +45,13 @@ module.exports = {
 - 默认值: `/timeline/`
 
 时间轴链接地址。
+
+### timelineTitle
+
+- 类型: `string`
+- 默认值: `Tomorrow will be better!`
+
+时间轴顶部展示信息。
 
 ### pageSize
 
@@ -75,3 +85,18 @@ module.exports = {
 | :i_day | 文章发布的日份 (前面不带0) |
 | :slug | 蛞蝓化文件路径 (不带扩展名) |
 | :regular | VuePress默认的生成永久链接的方式 |
+
+### sitemap
+
+- 类型: `object`
+- 默认值: `undefined`
+
+It will be enabled when hostname is provided. e.g.
+
+```js
+{
+  hostname: 'https://yourdomain'
+}
+```
+
+The 404 page is excluded by default. Further options, please head to [vuepress-plugin-sitemap](https://github.com/ekoeryanto/vuepress-plugin-sitemap#options)

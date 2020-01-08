@@ -92,25 +92,6 @@ function registerPlugins(ctx) {
         plugins.push([ require('./fileInfos'), true ]);
     }
 
-    if (themeConfig.comment) { // 评论
-        const comment = themeConfig.comment;
-        switch (comment.type) {
-            case 'vssue':
-            default: {
-                comment.type = 'vssue';
-                plugins.push([ '@vssue/vuepress-plugin-vssue', Object.assign({
-                    platform: 'github',
-                    // platform: 'github-v4',
-                    // 其他的 Vssue 配置
-                    // owner: 'OWNER_OF_REPO',
-                    // repo: 'NAME_OF_REPO',
-                    // clientId: 'YOUR_CLIENT_ID',
-                    // clientSecret: 'YOUR_CLIENT_SECRET',
-                }, themeConfig.comment) ]);
-            }
-        }
-    }
-
     return plugins;
 }
 
@@ -141,5 +122,20 @@ function getBlogPluginOptions(blogConfig) {
             },
         ],
     };
+
+    if (blogConfig.comment) { // 评论
+        const others = _.cloneDeep(blogConfig.comment);
+        const type = others.type;
+        delete others.type;
+        options.comment = {
+            service: type,
+            ...others,
+        };
+    }
+
+    if (blogConfig.sitemap) {
+        const sitemap = _.cloneDeep(blogConfig.sitemap);
+        options.sitemap = sitemap;
+    }
     return options;
 }

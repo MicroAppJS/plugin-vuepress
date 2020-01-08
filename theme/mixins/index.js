@@ -52,6 +52,7 @@ export default {
                 });
         },
         $blogConfig() {
+            if (this.$type !== 'blog') return {};
             return this.$themeConfig.blogConfig || {};
         },
     },
