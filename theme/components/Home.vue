@@ -34,17 +34,18 @@
             </div>
         </template>
 
-        <slot>
-            <Content :class="[ 'theme-default-content', $style.custom ]" />
-        </slot>
+        <Content :class="[ 'theme-default-content', 'custom', $style.custom ]" />
+
+        <slot></slot>
     </main>
 </template>
 
 <script>
 import NavLink from '@theme/components/NavLink.vue';
+import TransitionFadeSlide from '@theme/components/TransitionFadeSlide.vue';
 export default {
     name: 'Home',
-    components: { NavLink },
+    components: { NavLink, TransitionFadeSlide },
     computed: {
         frontmatter() {
             return this.$page.frontmatter;
@@ -148,7 +149,7 @@ export default {
     .custom {
         max-width: 960px;
         margin: 0px auto;
-        padding: 0 1.2rem 2rem;
+        // padding: 0 1.2rem 2rem;
     }
 }
 

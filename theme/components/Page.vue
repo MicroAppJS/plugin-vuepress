@@ -4,7 +4,7 @@
 
         <PageInfo :info="$page" />
 
-        <TransitionFadeSlide>
+        <TransitionFadeSlide direction="x">
             <Content class="theme-default-content" :class="$style.content" />
         </TransitionFadeSlide>
 

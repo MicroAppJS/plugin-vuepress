@@ -1,5 +1,6 @@
 <template>
     <Layout hideSidebar>
+        <HeaderBoxInfo :current="$currentCategories" />
         <div :class="$style.root">
             <!-- 年份列表 -->
             <ul :class="$style.wrapper">
@@ -33,6 +34,7 @@
 <script>
 import Layout from '@theme/layouts/Layout.vue';
 import TransitionFadeSlide from '@theme/components/TransitionFadeSlide.vue';
+import HeaderBoxInfo from '@theme/components/HeaderBoxInfo.vue';
 function padZero(num) {
     if (String(num).length < 2) {
         return `0${num}`;
@@ -44,6 +46,7 @@ export default {
     components: {
         Layout,
         TransitionFadeSlide,
+        HeaderBoxInfo,
     },
     filters: {
         dateFormat(date) {
@@ -62,7 +65,6 @@ export default {
 </script>
 <style lang="stylus" module>
 .root {
-    padding: $navbarHeight 10px 0;
     margin: 0px auto;
     display: block;
     max-width: 1126px;
@@ -72,7 +74,18 @@ export default {
     .year {
         &:before {
             background: $accentColor;
+            animation: sharking 3s ease-in-out infinite alternate;
         }
+    }
+}
+
+@keyframes sharking {
+    from {
+        background: $backgroundColor;
+    }
+
+    to {
+        background: $accentColor;
     }
 }
 
@@ -80,7 +93,7 @@ export default {
     position: relative;
     box-sizing: border-box;
     max-width: 740px;
-    margin: 8rem auto 4rem;
+    margin: 4rem auto;
     list-style: none;
     padding: 0 0 0 1.2rem;
 
@@ -134,7 +147,7 @@ export default {
         .date {
             width: 40px;
             line-height: 30px;
-            color: #888;
+            color: rgba($textColor, 0.85);
             font-size: 12px;
             transition: all 0.3s;
 
@@ -156,7 +169,7 @@ export default {
 
         .title {
             line-height: 30px;
-            color: #888;
+            color: rgba($textColor, 0.85);
             font-size: 16px;
             transition: all 0.3s;
             margin-left: 10px;

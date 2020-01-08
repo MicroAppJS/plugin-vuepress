@@ -1,18 +1,22 @@
 <template>
-    <div :class="$style.root" v-if="visible">
-        <Vssue v-if="type === 'vssue'" />
+    <div :class="$style.root" v-if="visible" :type="type">
+        <CommentComp />
     </div>
 </template>
 
 <script>
+import CommentComp from '@vuepress/plugin-blog/lib/client/components/Comment';
 export default {
     name: 'Comment',
+    components: {
+        CommentComp,
+    },
     computed: {
         visible() {
-            return !!this.$themeConfig.comment;
+            return !!this.$blogConfig.comment;
         },
         comment() {
-            return this.$themeConfig.comment || {};
+            return this.$blogConfig.comment || {};
         },
         type() {
             return this.comment.type || 'vssue';

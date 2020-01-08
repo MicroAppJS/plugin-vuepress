@@ -20,10 +20,10 @@ export default {
     name: 'PersonalInfo',
     computed: {
         avatar() {
-            return this.$frontmatter.avatar || require('@theme/assets/avatar.svg');
+            return this.$frontmatter.avatar || this.$i18nText('avatar') || require('@theme/assets/avatar.svg');
         },
         author() {
-            return this.$i18nText('author') || this.$frontmatter.author || this.$site.title;
+            return this.$frontmatter.author || this.$i18nText('author') || this.$site.title;
         },
     },
 };

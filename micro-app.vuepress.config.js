@@ -73,14 +73,6 @@ module.exports = {
         repo: 'git@github.com:MicroAppJS/plugin-vuepress.git',
         branch: 'gh-pages',
     },
-
-    comment: {
-        type: 'vssue', // default: vssue
-        owner: 'MicroAppJS',
-        repo: 'plugin-vuepress',
-        clientId: process.env.GITHUB_CLIENT_ID,
-        clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    },
 };
 
 function getSidebar(lang = 'zh') {
