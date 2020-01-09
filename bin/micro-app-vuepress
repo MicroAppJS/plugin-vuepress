@@ -6,24 +6,8 @@ const yParser = require('yargs-parser');
 const argv = yParser(process.argv.slice(2));
 const path = require('path');
 
-const { tryRequire, logger, execa } = require('@micro-app/shared-utils');
+const { tryRequire, logger } = require('@micro-app/shared-utils');
 let MicroAppCLI = tryRequire('@micro-app/cli');
-if (!MicroAppCLI) {
-    const importFresh = require('import-fresh'); // 依赖 @micro-app/shared-utils
-    try {
-        MicroAppCLI = importFresh('@micro-app/cli');
-    } catch (error) {
-        logger.info('[auto]', 'npm install @micro-app/cli');
-        const { exitCode, stderr } = execa.sync('npm', [ 'install', '@micro-app/cli', '--no-save', '--no-package-lock' ], {
-            cwd: __dirname,
-            stdio: 'inherit',
-        });
-        if (exitCode) {
-            logger.throw(stderr);
-        }
-        MicroAppCLI = importFresh('@micro-app/cli');
-    }
-}
 if (!MicroAppCLI) {
     logger.throw("Cannot find module '@micro-app/cli'!");
 }
