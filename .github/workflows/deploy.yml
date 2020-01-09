@@ -13,23 +13,15 @@ jobs:
             - name: Build
               run: |
                   npm install
-            #       npm run-script build
-            #   env:
-            #       GAID: ${{ secrets.GAID }}
-            #       GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
-            #       GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
-
-            - name: Deploy
-              run: |
-                  npm run-script deploy
+                  npm run-script build
               env:
                   GAID: ${{ secrets.GAID }}
                   GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
                   GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
+
+            - name: Deploy
+              uses: JamesIves/github-pages-deploy-action@releases/v3
+              with:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            # - name: Deploy
-            #   uses: JamesIves/github-pages-deploy-action@releases/v3
-            #   with:
-            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            #       BRANCH: gh-pages
-            #       FOLDER: docs/.vuepress/dist
+                  BRANCH: gh-pages
+                  FOLDER: docs/.vuepress/dist
