@@ -76,13 +76,13 @@ export default {
     mounted() {
         this.clipboard = new this.ClipboardJS(this.$refs.clipboardRef);
         this.clipboard.on('success', e => {
-            console.warn('Copy Success!');
+            // console.warn('Copy Success!');
             this.copyMessage = 'Copy Success!';
             e.clearSelection();
         });
 
         this.clipboard.on('error', e => {
-            console.warn('Copy Fail!');
+            console.warn('Copy Fail!', e);
             this.copyMessage = 'Copy Fail!';
         });
     },

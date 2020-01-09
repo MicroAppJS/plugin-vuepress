@@ -10,7 +10,7 @@
         "test": "jest",
         "dev": "micro-app vuepress dev",
         "build": "micro-app vuepress build",
-        "create": "micro-app vuepress create --type post --base test --classify",
+        "create": "micro-app vuepress create --type post --base __test --classify categories",
         "deploy": "micro-app vuepress deploy --base /plugin-vuepress/"
     },
     "files": [

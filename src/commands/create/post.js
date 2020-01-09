@@ -72,8 +72,12 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
         const dirs = [ BASE_ROOT ];
         // 是否自动分组（按年）
         if (argv.classify) {
-            const year = moment().format('YYYY');
-            dirs.push(year);
+            if ([ 'categories' ].includes(argv.classify)) {
+                dirs.push(info.categories.replace(/^\[/, '').replace(/\]$/, '').split(',')[0]);
+            } else {
+                const year = moment().format('YYYY');
+                dirs.push(year);
+            }
         }
         dirs.push(info.title);
         const mdDirname = path.resolve(...dirs);
