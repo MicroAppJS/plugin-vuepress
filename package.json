@@ -1,6 +1,6 @@
 {
     "name": "@micro-app/plugin-vuepress",
-    "version": "0.0.11",
+    "version": "0.0.12",
     "description": "[Plugin] adapter vuepress plugin.",
     "main": "src/index.js",
     "bin": {
@@ -10,7 +10,7 @@
         "test": "jest",
         "dev": "micro-app vuepress dev",
         "build": "micro-app vuepress build",
-        "create": "micro-app vuepress create --base test --classify",
+        "create": "micro-app vuepress create --type post --base test --classify",
         "deploy": "micro-app vuepress deploy --base /plugin-vuepress/"
     },
     "files": [
