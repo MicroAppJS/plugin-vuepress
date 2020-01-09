@@ -146,7 +146,7 @@ export default {
         }
     }
 
-    .custom {
+    .custom[class] {
         max-width: 960px;
         margin: 0px auto;
         // padding: 0 1.2rem 2rem;
