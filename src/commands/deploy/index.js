@@ -16,14 +16,14 @@ module.exports = function(api, argv, opts) {
         }
         default:
             chain = chain.then(() => {
-                logger.warn('[VuePress > Deploy]', `Not Found type: ${type}!`);
+                logger.warn('[VP > Deploy]', `Not Found type: ${type}!`);
             });
             break;
     }
 
     return chain.then(() => {
-        logger.success('[VuePress > Deploy]', 'Done!');
+        logger.success('[VP > Deploy]', 'Done!');
     }).catch(err => {
-        logger.error('[VuePress > Deploy]', err);
+        logger.error('[VP > Deploy]', err);
     });
 };

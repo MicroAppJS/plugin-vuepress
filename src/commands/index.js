@@ -44,6 +44,11 @@ module.exports = function vuepressCommand(api, opts) {
                 '': '部署到自定义服务上',
                 '--type': '部署方式类型. (default: github)',
             },
+            create: {
+                '': '快速创建文章模版',
+                '--base': '文章默认路径. (default: posts)',
+                '--type': '创建文件类型. (default: post)',
+            },
         },
         details: `
 Examples:
@@ -63,9 +68,9 @@ Examples:
         }
 
         // do something
-        if (args._[0] === 'deploy') {
-            const deployCommand = require('./deploy');
-            return deployCommand(api, args, opts);
+        if ([ 'deploy', 'create' ].includes(args._[0])) {
+            const otherCommand = require(`./${args._[0]}`);
+            return otherCommand(api, args, opts);
         }
         return runCommand(api, args, opts);
     });
