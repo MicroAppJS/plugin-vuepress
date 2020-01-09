@@ -979,10 +979,10 @@
     dotenv "^8.2.0"
     dotenv-expand "^5.1.0"
 
-"@micro-app/plugin-deploy-command@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-deploy-command/-/plugin-deploy-command-0.1.2.tgz#dbb968936856e21744ba7e4a0453768c8799c74d"
-  integrity sha512-vs8HRxoE9EuDAzthJequRbdLlFXnKCTNhEK8TT3VLCxoPvtJlcK0DbFj4tbpPjStLjA192Vy5+WnZaR2jRl2eg==
+"@micro-app/plugin-deploy-command@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-deploy-command/-/plugin-deploy-command-0.1.4.tgz#8c4e5ce184c8fdc27afee579fafbb3c7fc475d1b"
+  integrity sha512-Q589QBPmwxYhPcPAAkg1d1loKEtD2sPiIAmoPJ46TDDWHxdUnAoJcQb46he5WkMNz/qLlZLDPAYtIPn9doAO8Q==
   dependencies:
     shelljs "^0.8.3"
 
