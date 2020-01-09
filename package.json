@@ -9,9 +9,10 @@
     "scripts": {
         "test": "jest",
         "dev": "micro-app vuepress dev",
-        "build": "micro-app vuepress build",
+        "build": "micro-app vuepress build --base /plugin-vuepress/",
         "create": "micro-app vuepress create --type post --base __test --classify categories",
-        "deploy": "micro-app vuepress deploy --base /plugin-vuepress/"
+        "deploy": "micro-app deploy",
+        "vp:deploy": "micro-app vuepress deploy --base /plugin-vuepress/"
     },
     "files": [
         "bin",
@@ -44,6 +45,7 @@
         "@micro-app/cli": ">=0.3.0"
     },
     "devDependencies": {
+        "@micro-app/plugin-deploy-command": "^0.1.2",
         "@types/jest": "^24.0.25",
         "babel-eslint": "^10.0.3",
         "eslint": "^5.16.0",

@@ -20,8 +20,13 @@ jobs:
                   GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
 
             - name: Deploy
-              uses: JamesIves/github-pages-deploy-action@master
-              with:
+              run: npm run-script deploy
+              env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  BRANCH: gh-pages
-                  FOLDER: docs/.vuepress/dist
+                  GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            # - name: Deploy
+            #   uses: JamesIves/github-pages-deploy-action@master
+            #   with:
+            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            #       BRANCH: gh-pages
+            #       FOLDER: docs/.vuepress/dist
