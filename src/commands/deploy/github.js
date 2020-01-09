@@ -83,6 +83,9 @@ module.exports = function(api, argv, opts) {
     const spinner = logger.spinner('Strat Deploying...');
     chain = chain.then(() => spinner.start());
 
+    // git init
+    chain = chain.then(() => execa('git', [ 'init' ], execaOptions(destDirRoot, 'pipe')));
+
     if (_.isString(deployOpts.name)) {
         chain = chain.then(() => execa('git', [ 'config', 'user.name', deployOpts.name ], execaOptions(destDirRoot, 'pipe')));
     }
@@ -90,8 +93,6 @@ module.exports = function(api, argv, opts) {
         chain = chain.then(() => execa('git', [ 'config', 'user.email', deployOpts.email ], execaOptions(destDirRoot, 'pipe')));
     }
 
-    // git init
-    chain = chain.then(() => execa('git', [ 'init' ], execaOptions(destDirRoot, 'pipe')));
     // git add -A
     chain = chain.then(() => execa('git', [ 'add', '-A' ], execaOptions(destDirRoot, 'pipe')));
     // git commit -m 'deploy'
