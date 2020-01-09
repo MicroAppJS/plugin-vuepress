@@ -6,19 +6,19 @@ module.exports = function(api, argv, opts) {
     // https://github.com/JamesIves/github-pages-deploy-action/blob/dev/src/constants.ts
     const logger = api.logger;
 
-    // logger.info('[VuePress > Deploy > Github]', '我正在努力实现！💪');
+    // logger.info('[VP > Deploy > Github]', '我正在努力实现！💪');
 
     const { _, fs, chalk, prompt, execa } = require('@micro-app/shared-utils');
 
     const selfVuepressConfig = api.selfVuepressConfig || {};
     const deployOpts = selfVuepressConfig.deploy || false;
     if (!_.isPlainObject(deployOpts)) {
-        logger.throw('[VuePress > Deploy > Github]', '必须在 micro-app.vuepress.config.js 中声明 deploy: {} !');
+        logger.throw('[VP > Deploy > Github]', '必须在 micro-app.vuepress.config.js 中声明 deploy: {} !');
     }
 
     let repo = deployOpts.repo || selfVuepressConfig.repo || false;
     if (!_.isString(repo)) {
-        logger.throw('[VuePress > Deploy > Github]', 'deploy.repo must be string!');
+        logger.throw('[VP > Deploy > Github]', 'deploy.repo must be string!');
     }
 
     const token = process.env.GITHUB_TOKEN || process.env.ACCESS_TOKEN || 'git';
@@ -40,7 +40,7 @@ module.exports = function(api, argv, opts) {
         const base = vuepressConfig.base;
         if (!repo.includes('.github.io') && !base) {
             // 这里需要询问是否继续？ prompt
-            logger.warn('[VuePress > Deploy > Github]', 'You should check your configuration! "config.base"');
+            logger.warn('[VP > Deploy > Github]', 'You should check your configuration! "config.base"');
             return prompt.confirm('Are you sure to continue?').then(answer => {
                 return answer ? Promise.resolve() : Promise.reject('Interrupt task!');
             });
@@ -55,14 +55,14 @@ module.exports = function(api, argv, opts) {
 
     // # clear
     chain = chain.then(() => {
-        logger.info('[VuePress > Deploy > Github]', 'Remove Dest:', destDirRoot);
+        logger.info('[VP > Deploy > Github]', 'Remove Dest:', destDirRoot);
         return fs.remove(destDirRoot);
     });
 
     // # build
     // npm run docs:build
     chain = chain.then(() => {
-        logger.info('[VuePress > Deploy > Github]', 'Building...');
+        logger.info('[VP > Deploy > Github]', 'Building...');
         const args = _.cloneDeep(argv);
         args._[0] = 'build'; // 切为 build
         const runCommand = require('../command');
