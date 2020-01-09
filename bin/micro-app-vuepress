@@ -6,14 +6,11 @@ const yParser = require('yargs-parser');
 const argv = yParser(process.argv.slice(2));
 const path = require('path');
 
-const { tryRequire, logger, execa, env } = require('@micro-app/shared-utils');
+const { tryRequire, logger, execa } = require('@micro-app/shared-utils');
 let MicroAppCLI = tryRequire('@micro-app/cli');
 if (!MicroAppCLI) {
-    logger.info('[auto]', 'install @micro-app/cli');
-    const hasYarn = env.hasYarn();
-    const _cmd = hasYarn ? 'yarn' : 'npm';
-    const _argv = hasYarn ? [ 'add', '-D' ] : [ 'install', '-D' ];
-    const { exitCode, stderr } = execa.sync(_cmd, _argv.concat('@micro-app/cli'), {
+    logger.info('[auto]', 'npm install @micro-app/cli');
+    const { exitCode, stderr } = execa.sync('npm', [ 'install', '@micro-app/cli', '--no-save', '--no-package-lock' ], {
         cwd: process.cwd(),
         stdio: 'inherit',
     });
