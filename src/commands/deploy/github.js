@@ -94,7 +94,7 @@ module.exports = function(api, argv, opts) {
     }
 
     // git add -A
-    chain = chain.then(() => execa('git', [ 'add', '-A' ], execaOptions(destDirRoot, 'pipe')));
+    chain = chain.then(() => execa('git', [ 'add', '--all', '.' ], execaOptions(destDirRoot, 'pipe')));
     // git commit -m 'deploy'
     const message = deployOpts.message || ':pencil: deploy';
     chain = chain.then(() => execa('git', [ 'commit', '-m', message ], execaOptions(destDirRoot, 'pipe')));

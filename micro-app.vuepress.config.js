@@ -72,8 +72,6 @@ module.exports = {
     deploy: {
         repo: 'git@github.com:MicroAppJS/plugin-vuepress.git',
         branch: 'gh-pages',
-        name: 'zyao89',
-        email: '305161066@qq.com',
     },
 };
 
