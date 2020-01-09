@@ -108,7 +108,7 @@ module.exports = function(api, argv, opts) {
 
     let branch = deployOpts.branch || process.env.BRANCH || 'gh-pages';
     if (branch && branch !== 'master') {
-        branch = `master:${branch}`;
+        branch = `HEAD:${branch}`;
     }
     chain = chain.then(() => { spinner.text = 'Pushing ' + chalk.gray(`(${repo} ${branch})`) + ' ...'; });
     chain = chain.then(() => execa('git', [ 'push', '-f', repo, branch ], execaOptions(destDirRoot)));
