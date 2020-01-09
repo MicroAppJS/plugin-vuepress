@@ -26,7 +26,6 @@ jobs:
                   GAID: ${{ secrets.GAID }}
                   GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
                   GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
-              with:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             # - name: Deploy
             #   uses: JamesIves/github-pages-deploy-action@releases/v3
