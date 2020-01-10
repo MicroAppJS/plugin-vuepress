@@ -17,7 +17,7 @@ module.exports = {
         pageSize: 10,
         postsDir: 'posts',
         permalink: '/posts/:year/:month/:day/:slug.html',
-
+        copyright: true,
         sitemap: {}, // default: undefined
     }
 }
@@ -86,6 +86,13 @@ module.exports = {
 | :slug | 蛞蝓化文件路径 (不带扩展名) |
 | :regular | VuePress默认的生成永久链接的方式 |
 
+### copyright
+
+- 类型: `boolean|string`
+- 默认值: `true`
+
+是否在文章下方增加版权信息，和自定义内容。
+
 ### sitemap
 
 - 类型: `object`
@@ -95,7 +102,8 @@ It will be enabled when hostname is provided. e.g.
 
 ```js
 {
-  hostname: 'https://yourdomain'
+    hostname: 'https://yourdomain'
+    // or siteUrl
 }
 ```
 
