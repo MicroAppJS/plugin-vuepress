@@ -52,8 +52,6 @@
 </template>
 
 <script>
-// 引入时间格式化js文件
-import { formatDate } from '@theme/helpers';
 export default {
     props: {
         info: {

@@ -1,9 +1,12 @@
 const fs = require('fs');
 const moment = require('moment');
 
-module.exports = (options = {}, context) => ({
+module.exports = (options = {}, ctx) => ({
     extendPageData($page) {
-        const $lang = $page._computed.$lang;
+        const siteConfig = ctx.siteConfig || {};
+        const themeConfig = ctx.themeConfig;
+        const lang = siteConfig.lang || themeConfig.lang || 'en-US';
+        const $lang = $page.frontmatter.lang || $page._computed.$localeConfig.lang || lang;
         if ($page.lastUpdated) {
             const lastUpdatedTimestamp = defaultTimestamp($page.lastUpdated);
             $page.lastUpdatedTimestamp = lastUpdatedTimestamp;

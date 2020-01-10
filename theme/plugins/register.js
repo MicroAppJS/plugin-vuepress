@@ -40,13 +40,7 @@ function registerPlugins(ctx) {
     ];
 
     const siteConfig = ctx.siteConfig || {};
-    const type = siteConfig.type || themeConfig.type || 'doc';
     const isLocales = !!siteConfig.locales || !!themeConfig.locales || false;
-
-    if (type === 'blog') {
-        plugins.push([ '@vuepress/blog', getBlogPluginOptions(themeConfig.blogConfig) ]);
-        // TODO more blog plugins
-    }
 
     // pwa
     if (themeConfig.pwa) {
@@ -93,49 +87,4 @@ function registerPlugins(ctx) {
     }
 
     return plugins;
-}
-
-function getBlogPluginOptions(blogConfig) {
-    const options = {
-        permalink: '/:regular',
-        frontmatters: [
-            {
-                id: 'categories',
-                keys: [ 'category', 'categories' ],
-                path: blogConfig.categoriesPath,
-                layout: 'CategoriesLayout',
-                scopeLayout: 'CategoriesLayout',
-            },
-            {
-                id: 'tags',
-                keys: [ 'tag', 'tags' ],
-                path: blogConfig.tagsPath,
-                layout: 'TagsLayout',
-                scopeLayout: 'TagsLayout',
-            },
-            {
-                id: 'timeline',
-                keys: [ 'timeline' ],
-                path: blogConfig.timelinePath,
-                layout: 'TimeLineLayout',
-                scopeLayout: 'TimeLineLayout',
-            },
-        ],
-    };
-
-    if (blogConfig.comment) { // 评论
-        const others = _.cloneDeep(blogConfig.comment);
-        const type = others.type;
-        delete others.type;
-        options.comment = {
-            service: type,
-            ...others,
-        };
-    }
-
-    if (blogConfig.sitemap) {
-        const sitemap = _.cloneDeep(blogConfig.sitemap);
-        options.sitemap = sitemap;
-    }
-    return options;
 }

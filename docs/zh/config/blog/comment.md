@@ -4,7 +4,7 @@
 
 ## Introduce
 
-通过 `comment` 配置评论组件, 只支持 `blog` 类型。
+通过 `blogConfig.comment` 配置评论组件, 只支持 `blog` 类型。
 
 ## Usage
 
