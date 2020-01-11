@@ -17,7 +17,7 @@ module.exports = {
         pageSize: 10,
         postsDir: 'posts',
         permalink: '/posts/:year/:month/:day/:slug.html',
-        copyright: true,
+        copyright: true, // or { text: '', noSelect: false, noCopy: false, minLength: 0 }
         sitemap: {}, // default: undefined
     }
 }
@@ -88,10 +88,31 @@ module.exports = {
 
 ### copyright
 
-- 类型: `boolean|string`
+- 类型: `boolean|string|object`
 - 默认值: `true`
 
 是否在文章下方增加版权信息，和自定义内容。
+
+#### copyright.noCopy
+
+- 类型: `boolean`
+- 默认值: `false`
+
+是否禁止选中。
+
+#### copyright.noSelect
+
+- 类型: `boolean`
+- 默认值: `false`
+
+是否禁止选中。
+
+#### copyright.minLength
+
+- 类型: `number`
+- 默认值: `0`
+
+触发剪贴板组件或 noCopy 效果的最小文本长度。
 
 ### sitemap
 
