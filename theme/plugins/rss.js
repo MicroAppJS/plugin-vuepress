@@ -33,20 +33,20 @@ module.exports = (options, ctx) => {
                     return !(home === true || title === undefined || isPrivate === true);
                 })
                 .filter(page => filter(page.frontmatter))
-                .map(page => ({ ...page, date: new Date(page.frontmatter.date || '') }))
+                .map(page => ({ ...page, date: new Date(page.frontmatter.date || page.birthTimestamp || '') }))
                 .sort((a, b) => b.date - a.date)
                 .map(page => {
-                    logger.warn(page);
                     const frontmatter = page.frontmatter || {};
-                    const categories = Array.isArray(frontmatter.categories) ? frontmatter.categories.join(',') : _.isString(frontmatter.categories) && frontmatter.categories || '';
-                    const tags = Array.isArray(frontmatter.tags) ? frontmatter.tags.join(',') : _.isString(frontmatter.tags) && frontmatter.tags || '';
+                    const categories = Array.isArray(frontmatter.categories) ? frontmatter.categories : _.isString(frontmatter.categories) && [ frontmatter.categories ];
+                    const tags = Array.isArray(frontmatter.tags) ? frontmatter.tags : _.isString(frontmatter.tags) && [ frontmatter.tags ];
                     return {
                         title: page.title,
                         description: page.excerpt,
-                        url: `${siteUrl}${page.path}`,
-                        categories, tags,
+                        url: `${siteUrl}${decodeURIComponent(page.path)}`,
+                        guid: page.path,
+                        categories: [].concat(categories, tags),
                         author: frontmatter.author || author,
-                        date: frontmatter.dateFormat || page.date,
+                        date: page.date,
                     };
                 })
                 .slice(0, count)
