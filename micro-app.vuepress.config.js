@@ -6,7 +6,7 @@ module.exports = {
     // smoothScroll: true,
     sourceDir: 'docs',
     locales: {
-        '/': {
+        '/zh/': {
             lang: 'zh-CN',
             title: 'Plugin - VuePress',
             description: '一款简洁而优雅的 博客 & 文档 主题, 依赖于 Micro App 微应用框架',

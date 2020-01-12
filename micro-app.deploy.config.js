@@ -11,4 +11,8 @@ module.exports = {
     repo: `https://${repoToken}@github.com/MicroAppJS/plugin-vuepress.git`,
     branch: 'gh-pages',
     dist: 'docs/.vuepress/dist',
+    user: {
+        name: 'Zyao89',
+        email: 'zyao89@gmail.com',
+    },
 };
