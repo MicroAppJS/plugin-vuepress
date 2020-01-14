@@ -7,27 +7,33 @@
     >
         <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
 
-        <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-        <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
-            <slot name="sidebar-top" slot="top" />
-            <slot name="sidebar-bottom" slot="bottom" />
-        </Sidebar>
-
         <TransitionFadeSlide>
             <Header v-if="$page.frontmatter.home || showHeader" />
         </TransitionFadeSlide>
 
-        <div :class="$style.content" :custom="!!$slots.default">
-            <slot>
-                <TransitionFadeSlide>
-                    <component :is="HomeMode" v-if="$page.frontmatter.home" />
+        <div class="main-wrapper">
+            <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
+            <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
+                <slot name="sidebar-top" slot="top" />
+                <slot name="sidebar-bottom" slot="bottom" />
+            </Sidebar>
 
-                    <Page v-else :sidebar-items="sidebarItems">
-                        <slot name="page-top" slot="top" />
-                        <slot name="page-bottom" slot="bottom" />
-                    </Page>
-                </TransitionFadeSlide>
-            </slot>
+            <TransitionFadeSlide direction="x">
+                <slot>
+                    <component :is="HomeMode" v-if="$page.frontmatter.home" />
+                    <div
+                        v-else
+                        :class="$style.content"
+                        class="main-content"
+                        :custom="!!$slots.default"
+                    >
+                        <Page :sidebar-items="sidebarItems">
+                            <slot name="page-top" slot="top" />
+                            <slot name="page-bottom" slot="bottom" />
+                        </Page>
+                    </div>
+                </slot>
+            </TransitionFadeSlide>
         </div>
 
         <Footer v-if="$page.frontmatter.footer" />
@@ -77,5 +83,17 @@ export default {
     &[custom] {
         padding-top: $navbarHeight;
     }
+}
+</style>
+
+<style lang="stylus">
+.main-wrapper {
+    position: relative;
+}
+
+.main-content {
+    position: relative;
+    flex: auto;
+    display: flex;
 }
 </style>

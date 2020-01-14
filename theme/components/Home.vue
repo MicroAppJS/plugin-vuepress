@@ -65,6 +65,7 @@ export default {
     padding: $navbarHeight 0 0;
     margin: 0px auto;
     display: block;
+    width: 100%;
 
     .features {
         padding: 0 0 1.2rem;
