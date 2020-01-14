@@ -1,0 +1,20 @@
+.navbar-inner
+    max-width $maxWidth;
+
+.main-wrapper
+    display: flex;
+    align-items: stretch;
+
+.sidebar
+    width: 'calc((100% - %s)/2 + %s)' % ($maxWidth $sidebarWidth);
+    min-width: $sidebarWidth;
+    padding-left: 'calc((100% - %s)/2)' % $maxWidth;
+
+.main-content
+    margin: 0 auto;
+    width: 'calc(100% - %s)' % $sidebarWidth;
+
+
+.theme-container.no-sidebar
+    .main-wrapper
+        flex-direction: column;

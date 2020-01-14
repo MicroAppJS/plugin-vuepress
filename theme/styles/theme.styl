@@ -10,9 +10,6 @@ body
   font-size 16px
   color $textColor
 
-.page
-  padding-left $sidebarWidth
-
 .navbar
   position fixed
   z-index 20
@@ -34,18 +31,16 @@ body
   display none
 
 .sidebar
-  font-size 16px
-  background-color transparent
-  width $sidebarWidth
-  position fixed
-  z-index 10
-  margin 0
-  top $navbarHeight
-  left 0
-  bottom 0
+  top: $navbarHeight;
   box-sizing border-box
   border-right 1px solid $borderColor
+  position: relative;
+  flex: 0 0 auto;
+  min-height: 100vh;
   overflow-y auto
+  z-index 10
+  left 0
+  bottom 0
 
 {$contentClass}:not(.custom)
   @extend $wrapper
@@ -188,7 +183,3 @@ th, td
     .sidebar
       display none
 
-    .page
-      padding-left 0
-
-@require '~@theme/styles/mobile.styl'

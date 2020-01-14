@@ -43,8 +43,12 @@ export default {
         author() {
             return this.$frontmatter.author || this.$i18nText('author') || this.$site.title;
         },
+        siteUrl() {
+            return this.$blogConfig.siteUrl || this.$themeConfig.siteUrl || this.$site.siteUrl;
+        },
         relativePath() {
-            return String(location).replace(/#.+$/, '');
+            if (!this.siteUrl) return false;
+            return `${this.siteUrl}${decodeURIComponent(this.info.path)}`;
         },
     },
 };
