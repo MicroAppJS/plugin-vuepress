@@ -11,12 +11,14 @@
             <Header v-if="$page.frontmatter.home || showHeader" />
         </TransitionFadeSlide>
 
-        <div class="main-wrapper">
+        <div :class="$style.wrapper" class="main-wrapper">
             <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-            <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
-                <slot name="sidebar-top" slot="top" />
-                <slot name="sidebar-bottom" slot="bottom" />
-            </Sidebar>
+            <div class="aside">
+                <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
+                    <slot name="sidebar-top" slot="top" />
+                    <slot name="sidebar-bottom" slot="bottom" />
+                </Sidebar>
+            </div>
 
             <TransitionFadeSlide direction="x">
                 <slot>
@@ -78,22 +80,15 @@ export default {
 
 <style lang="stylus" module>
 .content {
+    position: relative;
     display: block;
 
     &[custom] {
         padding-top: $navbarHeight;
     }
 }
-</style>
 
-<style lang="stylus">
-.main-wrapper {
+.wrapper {
     position: relative;
-}
-
-.main-content {
-    position: relative;
-    flex: auto;
-    display: flex;
 }
 </style>

@@ -54,6 +54,7 @@ export default {
 <style lang="stylus" module>
 .root {
     padding-top: $navbarHeight;
+    max-width: $contentWidth;
 }
 
 .content[class][role=content] {
