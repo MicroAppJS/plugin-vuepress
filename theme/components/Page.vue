@@ -16,7 +16,7 @@
 
         <slot name="bottom" />
 
-        <Comment />
+        <Comment class="theme-default-content" />
     </main>
 </template>
 

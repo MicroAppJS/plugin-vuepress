@@ -48,12 +48,19 @@ export default {
 
 
 <style lang="stylus">
+$navbar-vertical-padding = 0.7rem;
+$navbar-horizontal-padding = 1.5rem;
+
 .navbar {
     box-shadow: $boxShadow;
+    padding: 0;
 
     .navbar-inner {
         width: 100%;
         margin: 0 auto;
+        padding: $navbar-vertical-padding $navbar-horizontal-padding;
+        position: relative;
+        box-sizing: border-box;
     }
 
     .navbar-crumb {

@@ -979,10 +979,10 @@
     dotenv "^8.2.0"
     dotenv-expand "^5.1.0"
 
-"@micro-app/plugin-deploy@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-deploy/-/plugin-deploy-0.0.1.tgz#9e32b2a3ad657fa1899952519cf92f70e7db95a1"
-  integrity sha512-2orZmtnw2ku+wyfoV2jk6rHr+zEzhS6BseK7LPMoFvHCR2Rl4jiBGAYSzEs0ZfIwPPtwXfRTZErvGrODIrN9mg==
+"@micro-app/plugin-deploy@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-deploy/-/plugin-deploy-0.0.3.tgz#267f898647a63730271c5fbabd106a23d25498f6"
+  integrity sha512-s2nNZgyIaXeRsjDH3y3DNSW8vYHllqCFEddCeOEBRcOl/iZDDue2aaoIVnA7seSuVuCjqZOOvvnngH/GiNsMHg==
 
 "@micro-app/shared-utils@^0.1.11":
   version "0.1.11"
@@ -9061,6 +9061,11 @@ relateurl@0.2.x:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
+
+remove-markdown@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/remove-markdown/-/remove-markdown-0.3.0.tgz#5e4b667493a93579728f3d52ecc1db9ca505dc98"
+  integrity sha1-XktmdJOpNXlyjz1S7MHbnKUF3Jg=
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"

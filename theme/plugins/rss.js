@@ -8,8 +8,7 @@ module.exports = (options, ctx) => {
 
         generated() {
             const { pages, outDir, themeConfig, siteConfig } = ctx;
-            const blogConfig = themeConfig.blogConfig || {};
-            const siteUrl = options.siteUrl || blogConfig.siteUrl || themeConfig.siteUrl || siteConfig.siteUrl;
+            const siteUrl = options.siteUrl || themeConfig.siteUrl || siteConfig.siteUrl;
             if (!siteUrl) {
                 logger.warn('[rss]', '"siteUrl" must be required!');
             }

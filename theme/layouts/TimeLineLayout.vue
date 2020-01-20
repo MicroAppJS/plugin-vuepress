@@ -67,7 +67,7 @@ export default {
 .root {
     margin: 0px auto;
     display: block;
-    max-width: 1126px;
+    width: 100%;
 }
 
 .desc {
@@ -150,6 +150,7 @@ export default {
             color: rgba($textColor, 0.85);
             font-size: 12px;
             transition: all 0.3s;
+            flex: 0 0 40px;
 
             &:before {
                 content: ' ';

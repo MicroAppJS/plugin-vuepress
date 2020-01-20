@@ -5,7 +5,6 @@
                 v-if="features && features.length"
                 :class="$style.features"
                 simple
-                :line="!$slots.mask"
             >
                 <div
                     :class="$style.feature"

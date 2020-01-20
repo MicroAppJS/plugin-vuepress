@@ -11,7 +11,8 @@ module.exports = function(api, argv, opts) {
     const { _, fs, chalk, prompt, execa } = require('@micro-app/shared-utils');
 
     const selfVuepressConfig = api.selfVuepressConfig || {};
-    const deployOpts = selfVuepressConfig.deploy || false;
+    const commandOpts = selfVuepressConfig.command || {};
+    const deployOpts = commandOpts.deploy || false;
     if (!_.isPlainObject(deployOpts)) {
         logger.throw('[VP > Deploy > Github]', '必须在 micro-app.vuepress.config.js 中声明 deploy: {} !');
     }

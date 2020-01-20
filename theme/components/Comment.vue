@@ -27,7 +27,6 @@ export default {
 
 <style lang="stylus" module>
 .root {
-    max-width: 820px;
-    margin: 60px auto 30px;
+    position: relative;
 }
 </style>

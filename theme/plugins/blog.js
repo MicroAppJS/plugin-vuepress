@@ -97,11 +97,11 @@ function getBlogPluginOptions(ctx) {
     if (blogConfig.sitemap) {
         if (blogConfig.sitemap === true) {
             blogConfig.sitemap = {
-                hostname: blogConfig.siteUrl || themeConfig.siteUrl || siteConfig.siteUrl,
+                hostname: themeConfig.siteUrl || siteConfig.siteUrl,
             };
         } else {
-            if (!blogConfig.sitemap.hostname) {
-                blogConfig.sitemap.hostname = blogConfig.siteUrl || themeConfig.siteUrl || siteConfig.siteUrl;
+            if (typeof blogConfig.sitemap.hostname === 'string') {
+                blogConfig.sitemap.hostname = blogConfig.sitemap.hostname || themeConfig.siteUrl || siteConfig.siteUrl;
             }
         }
         const sitemap = _.cloneDeep(blogConfig.sitemap);

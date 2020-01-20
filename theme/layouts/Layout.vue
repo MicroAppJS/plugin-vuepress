@@ -20,11 +20,12 @@
                 </Sidebar>
             </div>
 
-            <TransitionFadeSlide direction="x">
-                <slot>
-                    <component :is="HomeMode" v-if="$page.frontmatter.home" />
+            <component :is="HomeMode" v-if="$page.frontmatter.home" />
+
+            <slot>
+                <TransitionFadeSlide direction="x">
                     <div
-                        v-else
+                        v-if="!$page.frontmatter.home"
                         :class="$style.content"
                         class="main-content"
                         :custom="!!$slots.default"
@@ -34,8 +35,8 @@
                             <slot name="page-bottom" slot="bottom" />
                         </Page>
                     </div>
-                </slot>
-            </TransitionFadeSlide>
+                </TransitionFadeSlide>
+            </slot>
         </div>
 
         <Footer v-if="$page.frontmatter.footer" />

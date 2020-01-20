@@ -34,7 +34,7 @@ export default {
 .wrapper {
     position: relative;
     display: block;
-    max-width: 1126px;
     margin: 0px auto;
+    width: 100%;
 }
 </style>

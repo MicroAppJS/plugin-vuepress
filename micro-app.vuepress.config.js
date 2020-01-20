@@ -1,9 +1,12 @@
 'use strict';
 
 module.exports = {
+    // shortLinks: true,
     // type: 'blog',
     // logo: '/logo.png',
     // smoothScroll: true,
+    author: 'Zyao89',
+    // siteUrl: '',
     sourceDir: 'docs',
     locales: {
         '/zh/': {
@@ -67,11 +70,19 @@ module.exports = {
         },
     ],
 
+    rss: true,
+
     GAID: process.env.GAID || false,
 
-    deploy: {
-        repo: 'git@github.com:MicroAppJS/plugin-vuepress.git',
-        branch: 'gh-pages',
+    command: {
+        deploy: {
+            repo: 'git@github.com:MicroAppJS/plugin-vuepress.git',
+            branch: 'gh-pages',
+        },
+        create: {
+            categories: [ 'a', 'b' ],
+            tags: [],
+        },
     },
 };
 

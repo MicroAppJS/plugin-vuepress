@@ -7,8 +7,13 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
     const { fs, prompt, chalk } = require('@micro-app/shared-utils');
     const moment = require('moment');
 
+    const selfVuepressConfig = api.selfVuepressConfig || {};
+    const commandOpts = selfVuepressConfig.command || {};
+    const createCommand = commandOpts.create || {};
+
     let chain = Promise.resolve();
 
+    const CUSTOM_KEY = '__CUSTOM__';
     const info = {};
 
     // title
@@ -27,14 +32,44 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
 
     // categories
     chain = chain.then(() => {
-        return prompt.input('Enter Categories:').then(answer => {
-            const categories = answer.trim();
+        // 提供可选项，没有则自定义。
+        const categoriesOpts = [].concat(createCommand.categories || []);
+        let _chain = Promise.resolve(CUSTOM_KEY);
+        if (categoriesOpts.length) {
+            _chain = _chain.then(() => prompt.select('Select Categories:', {
+                choices: [
+                    ...categoriesOpts.map(item => ({ name: item, value: item })),
+                    { name: '>>> Custom >>>', value: CUSTOM_KEY },
+                ],
+            }));
+        }
+        _chain = _chain.then(key => {
+            if (key === CUSTOM_KEY) {
+                return prompt.input('Enter Categories:').then(answer => {
+                    const categories = answer.trim();
+                    info.categories = `[${categories}]`;
+                });
+            }
+            const categories = key.trim();
             info.categories = `[${categories}]`;
         });
+        return _chain;
     });
 
     // tags
     chain = chain.then(() => {
+        // 提供可选项，没有则自定义。
+        const tagsOpts = [].concat(createCommand.tags || []);
+        let _chain = Promise.resolve(CUSTOM_KEY);
+        if (tagsOpts.length) {
+            _chain = _chain.then(() => prompt.select('Select Tags:', {
+                choices: [
+                    ...tagsOpts.map(item => ({ name: item, value: item })),
+                    { name: '>>> Custom >>>', value: CUSTOM_KEY },
+                ],
+            }));
+        }
+        // TODO 选择 tags
         return prompt.input('Enter Tags:').then(answer => {
             const tags = answer.trim();
             info.tags = `[${tags}]`;
@@ -67,6 +102,16 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
         logger.logo([ '', '' ].concat(texts, '').join('\n'));
     });
 
+    // confirm
+    chain = chain.then(() => {
+        return prompt.confirm('Are you ok?').then(answer => {
+            if (answer) {
+                return Promise.resolve();
+            }
+            return Promise.reject('Cancel !!!');
+        });
+    });
+
     // 1. 创建目录
     chain = chain.then(() => {
         const dirs = [ BASE_ROOT ];
@@ -94,7 +139,7 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
         const README_DIR = path.resolve(mdDirname, 'README.md');
         const frontMatter = createFrontMatter(info);
         fs.writeFileSync(README_DIR, [ '---' ].concat(frontMatter, '---', '', '<!--more-->', '').join('\n'));
-        logger.logo([ '', '', `     ${chalk.grey('Create Success')}: ${chalk.green.underline(mdDirname)}`, '' ].join('\n'));
+        logger.logo([ '', '', `     ${chalk.green('Create Success')}: ${chalk.grey.underline(mdDirname)}`, '' ].join('\n'));
     });
 
     return chain;

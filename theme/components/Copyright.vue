@@ -44,11 +44,15 @@ export default {
             return this.$frontmatter.author || this.$i18nText('author') || this.$site.title;
         },
         siteUrl() {
-            return this.$blogConfig.siteUrl || this.$themeConfig.siteUrl || this.$site.siteUrl;
+            if (typeof window === 'object' && window && window.location) {
+                return window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+            }
+            return this.$themeConfig.siteUrl || this.$site.siteUrl;
         },
         relativePath() {
             if (!this.siteUrl) return false;
-            return `${this.siteUrl}${decodeURIComponent(this.info.path)}`;
+            const path = this.info.shortLink || this.info.path;
+            return `${this.siteUrl}${decodeURIComponent(path)}`;
         },
     },
 };
@@ -62,7 +66,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    max-width: 740px;
     margin: 0 auto;
     padding-bottom: 0.2rem;
     font-size: 10px;

@@ -8,7 +8,13 @@
                     <NavLink :item="post.path">{{ post.title }}</NavLink>
                 </h2>
                 <article :key="`summary-${index}`" :class="$style.summary">
-                    {{ post.frontmatter.summary || '' }}
+                    <template v-if="post.frontmatter.summary">
+                        <span>{{ post.frontmatter.summary || '' }}</span>
+                    </template>
+                    <!-- $page.excerpt -->
+                    <template v-else-if="post.excerpt">
+                        <div class="abstract" v-html="post.excerpt"></div>
+                    </template>
                     <!-- <Content :post-key="post.key" slot-key="summary" /> -->
                 </article>
                 <PageInfo :key="`info-${index}`" :class="$style.info" :info="post" hideTitle />
@@ -86,7 +92,6 @@ export default {
 <style lang="stylus" module>
 .posts {
     position: relative;
-    margin: 0 10px;
 
     .post {
         position: relative;

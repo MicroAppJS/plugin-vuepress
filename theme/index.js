@@ -100,7 +100,7 @@ module.exports = (options, ctx) => {
 
         // Blog https://github.com/meteorlxy/vuepress-theme-meteorlxy/blob/master/lib/plugins/blog/index.js
         extendPageData($page) {
-            // const strippedContent = pageCtx._strippedContent;
+            // const strippedContent = $page._strippedContent;
             // if (!strippedContent) {
             //     return;
             // }

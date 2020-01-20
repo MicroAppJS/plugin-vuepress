@@ -35,6 +35,7 @@ export default {
 </script>
 <style lang="stylus" module>
 .root {
+    margin-top: $navbarHeight;
     position: relative;
     height: 150px;
     background-color: rgba(#888, 0.05);
