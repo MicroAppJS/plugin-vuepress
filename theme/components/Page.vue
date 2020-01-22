@@ -16,7 +16,7 @@
 
         <slot name="bottom" />
 
-        <Comment />
+        <Comment class="theme-default-content" />
     </main>
 </template>
 
@@ -54,9 +54,6 @@ export default {
 <style lang="stylus" module>
 .root {
     padding-top: $navbarHeight;
-}
-
-.content[class][role=content] {
-    padding-top: 0;
+    max-width: $contentWidth;
 }
 </style>

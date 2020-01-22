@@ -8,7 +8,9 @@
                     <h3 :class="$style.year">{{ title }}</h3>
                 </li>
                 <li v-for="(item, i) in $postsForTimeline" :key="i" :class="$style.item">
-                    <h3 :class="$style.year">{{ item.year }}</h3>
+                    <h3 :class="$style.year" :id="item.year">
+                        <a :href="`#${item.year}`">{{ item.year }}</a>
+                    </h3>
                     <ul :class="$style.yearWrapper">
                         <TransitionFadeSlide
                             :delay="index * 0.25"
@@ -67,7 +69,7 @@ export default {
 .root {
     margin: 0px auto;
     display: block;
-    max-width: 1126px;
+    width: 100%;
 }
 
 .desc {
@@ -93,9 +95,10 @@ export default {
     position: relative;
     box-sizing: border-box;
     max-width: 740px;
-    margin: 4rem auto;
+    margin: 2.2rem auto 4rem;
     list-style: none;
     padding: 0 0 0 1.2rem;
+    margin-top: -0.9rem;
 
     &:after {
         content: ' ';
@@ -113,15 +116,17 @@ export default {
     position: relative;
     color: $textColor;
     font-size: 26px;
-    margin: 80px 0 0;
     font-weight: 700;
+    padding-top: 4rem;
+    margin-bottom: 0;
+    margin-top: 0;
 
     &:before {
         content: ' ';
         position: absolute;
         z-index: 1;
         left: -20px;
-        top: 50%;
+        top: 80%;
         margin-left: -4px;
         margin-top: -4px;
         width: 8px;
@@ -150,6 +155,7 @@ export default {
             color: rgba($textColor, 0.85);
             font-size: 12px;
             transition: all 0.3s;
+            flex: 0 0 40px;
 
             &:before {
                 content: ' ';

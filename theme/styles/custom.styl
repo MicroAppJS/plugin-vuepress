@@ -5,7 +5,7 @@
     display: flex;
     align-items: stretch;
 
-.sidebar
+.aside
     width: 'calc((100% - %s)/2 + %s)' % ($maxWidth $sidebarWidth);
     min-width: $sidebarWidth;
     padding-left: 'calc((100% - %s)/2)' % $maxWidth;
@@ -18,3 +18,8 @@
 .theme-container.no-sidebar
     .main-wrapper
         flex-direction: column;
+    .aside
+        display: none;
+
+.contains-task-list
+    list-style: none;

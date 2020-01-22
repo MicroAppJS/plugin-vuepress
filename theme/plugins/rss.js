@@ -3,13 +3,16 @@ module.exports = (options, ctx) => {
     const { fs, _, logger } = require('@micro-app/shared-utils');
     const path = require('path');
     const RSS = require('rss');
+
+    if (!_.isPlainObject(options)) {
+        options = {};
+    }
     return {
         name: 'rss',
 
         generated() {
             const { pages, outDir, themeConfig, siteConfig } = ctx;
-            const blogConfig = themeConfig.blogConfig || {};
-            const siteUrl = options.siteUrl || blogConfig.siteUrl || themeConfig.siteUrl || siteConfig.siteUrl;
+            const siteUrl = options.siteUrl || themeConfig.siteUrl || siteConfig.siteUrl;
             if (!siteUrl) {
                 logger.warn('[rss]', '"siteUrl" must be required!');
             }

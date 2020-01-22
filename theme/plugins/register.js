@@ -73,18 +73,36 @@ function registerPlugins(ctx) {
         }]);
     }
 
+    // baidu auto push
+    const baiduObj = Object.assign({
+        autoPush: false,
+        hmtID: false,
+    }, themeConfig.baidu || {});
+    if (baiduObj.autoPush) {
+        plugins.push([ require('./baiduAutoPush'), true ]);
+    }
+    if (baiduObj.hmtID === 'string') {
+        plugins.push([ require('./baiduHmt'), {
+            hmtID: baiduObj.hmtID,
+        }]);
+    }
+
     plugins.push('@vuepress/medium-zoom');
     plugins.push('@vuepress/back-to-top');
     // 流程图
     plugins.push('flowchart');
 
-    const shouldUseLastUpdated = (
-        themeConfig.lastUpdated
-        || Object.keys(siteConfig.locales && themeConfig.locales || {}).some(base => themeConfig.locales[base].lastUpdated)
-    );
-    if (shouldUseLastUpdated) {
-        plugins.push([ require('./fileInfos'), true ]);
+    // 文件信息
+    plugins.push([ require('./fileInfos'), true ]);
+
+    // 短链接
+    const shortLinks = themeConfig.shortLinks;
+    if (shortLinks) {
+        plugins.push([ require('./shortLinks'), true ]);
     }
+
+    // seo
+    plugins.push([ require('./seo'), true ]);
 
     return plugins;
 }

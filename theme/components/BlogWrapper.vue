@@ -96,7 +96,8 @@ export default {
     display: flex;
     align-items: flex-start;
     margin: 20px auto 0;
-    max-width: 1126px;
+    max-width: $maxWidth;
+    padding: 0 20px;
 
     .blogList {
         flex: auto;
@@ -107,7 +108,7 @@ export default {
         position: sticky;
         top: 70px;
         transition: all 0.3s;
-        margin-left: 15px;
+        margin-left: 20px;
         margin-bottom: 20px;
         flex: 0 0 300px;
         height: auto;

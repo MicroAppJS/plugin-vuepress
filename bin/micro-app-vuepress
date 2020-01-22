@@ -7,7 +7,7 @@ const argv = yParser(process.argv.slice(2));
 const path = require('path');
 
 const { tryRequire, logger } = require('@micro-app/shared-utils');
-let MicroAppCLI = tryRequire('@micro-app/cli');
+const MicroAppCLI = tryRequire('@micro-app/cli');
 if (!MicroAppCLI) {
     logger.throw("Cannot find module '@micro-app/cli'!");
 }

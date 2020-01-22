@@ -1,6 +1,6 @@
 {
     "name": "@micro-app/plugin-vuepress",
-    "version": "0.0.16",
+    "version": "0.0.17-alpha.2",
     "description": "[Plugin] adapter vuepress plugin.",
     "main": "src/index.js",
     "bin": {
@@ -13,7 +13,8 @@
         "build": "micro-app vuepress build --base /plugin-vuepress/",
         "create": "micro-app vuepress create --type post --base __test --classify categories",
         "deploy": "micro-app deploy",
-        "vp:deploy": "micro-app vuepress deploy --base /plugin-vuepress/"
+        "vp:deploy": "micro-app vuepress deploy --base /plugin-vuepress/",
+        "publish:next": "npm publish --tag next"
     },
     "files": [
         "bin",
@@ -46,7 +47,7 @@
         "@micro-app/cli": ">=0.3.0"
     },
     "devDependencies": {
-        "@micro-app/plugin-deploy": "^0.0.1",
+        "@micro-app/plugin-deploy": "^0.0.3",
         "@types/jest": "^24.0.25",
         "babel-eslint": "^10.0.3",
         "eslint": "^5.16.0",
@@ -54,8 +55,8 @@
         "jest": "^24.9.0"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.3.0-alpha.2",
-        "@micro-app/shared-utils": "^0.1.13",
+        "@micro-app/cli": "^0.3.0-alpha.5",
+        "@micro-app/shared-utils": "0.1.14-alpha.1",
         "@vssue/api-github-v4": "^1.1.2",
         "@vssue/vuepress-plugin-vssue": "^1.3.0",
         "@vuepress/plugin-back-to-top": "^1.2.0",
@@ -65,10 +66,13 @@
         "@vuepress/plugin-pwa": "^1.2.0",
         "clipboard": "^2.0.4",
         "markdown-it-footnote": "^3.0.2",
+        "markdown-it-imsize": "^2.0.1",
         "markdown-it-mark": "^3.0.0",
         "markdown-it-sub": "^1.0.0",
         "markdown-it-sup": "^1.0.0",
+        "markdown-it-task-lists": "^2.1.1",
         "moment": "^2.24.0",
+        "remove-markdown": "^0.3.0",
         "rss": "^1.2.2",
         "svg-sprite-loader": "^4.1.6",
         "svgo": "^1.3.2",

@@ -92,6 +92,8 @@ module.exports = (options, ctx) => {
             config.plugin('sub').use(require('markdown-it-sub'));
             config.plugin('mark').use(require('markdown-it-mark'));
             config.plugin('footnote').use(require('markdown-it-footnote'));
+            config.plugin('imsize').use(require('markdown-it-imsize'));
+            config.plugin('task-lists').use(require('markdown-it-task-lists'), [{ label: true, labelAfter: true }]);
         },
         plugins: [
             ...require('./plugins/register')(ctx),
@@ -100,7 +102,7 @@ module.exports = (options, ctx) => {
 
         // Blog https://github.com/meteorlxy/vuepress-theme-meteorlxy/blob/master/lib/plugins/blog/index.js
         extendPageData($page) {
-            // const strippedContent = pageCtx._strippedContent;
+            // const strippedContent = $page._strippedContent;
             // if (!strippedContent) {
             //     return;
             // }
