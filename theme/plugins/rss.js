@@ -3,6 +3,10 @@ module.exports = (options, ctx) => {
     const { fs, _, logger } = require('@micro-app/shared-utils');
     const path = require('path');
     const RSS = require('rss');
+
+    if (!_.isPlainObject(options)) {
+        options = {};
+    }
     return {
         name: 'rss',
 

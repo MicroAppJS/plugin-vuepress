@@ -1,11 +1,7 @@
 <template>
     <main :class="$style.home" aria-labelledby="main-title">
         <template v-if="featuresNotImage">
-            <div
-                v-if="features && features.length"
-                :class="$style.features"
-                simple
-            >
+            <div v-if="features && features.length" :class="$style.features" simple>
                 <div
                     :class="$style.feature"
                     v-for="(feature, index) in features"
@@ -33,7 +29,7 @@
             </div>
         </template>
 
-        <Content :class="[ 'theme-default-content', 'custom', $style.custom ]" />
+        <Content :class="[ 'theme-default-content', $style.custom ]" />
 
         <slot></slot>
     </main>
@@ -147,9 +143,7 @@ export default {
     }
 
     .custom[class] {
-        max-width: 960px;
-        margin: 0px auto;
-        // padding: 0 1.2rem 2rem;
+        padding: 0 1.2rem 2rem;
     }
 }
 

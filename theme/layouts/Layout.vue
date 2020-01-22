@@ -13,7 +13,7 @@
 
         <div :class="$style.wrapper" class="main-wrapper">
             <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-            <div class="aside">
+            <div class="aside" :is-home="$page.frontmatter.home">
                 <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
                     <slot name="sidebar-top" slot="top" />
                     <slot name="sidebar-bottom" slot="bottom" />

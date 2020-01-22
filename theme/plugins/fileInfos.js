@@ -11,8 +11,8 @@ module.exports = (options = {}, ctx) => ({
         const lang = siteConfig.lang || themeConfig.lang || 'en-US';
         const $lang = $page.frontmatter.lang || $page._computed.$localeConfig.lang || lang;
         const lastUpdatedTimestamp = getGitLastUpdatedTimeStamp($page._filePath);
-        $page.lastUpdatedTimestamp = lastUpdatedTimestamp;
-        $page.lastUpdatedFormat = defaultTransformer(lastUpdatedTimestamp, $lang);
+        $page.lastUpdatedTimestamp = lastUpdatedTimestamp || +new Date();
+        $page.lastUpdatedFormat = defaultTransformer($page.lastUpdatedTimestamp, $lang);
         const createTimestamp = getCreateTimestamp($page._filePath);
         if (createTimestamp) {
             $page.birthTimestamp = createTimestamp;

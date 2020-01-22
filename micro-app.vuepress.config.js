@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    // shortLinks: true,
+    shortLinks: true,
     // type: 'blog',
     // logo: '/logo.png',
     // smoothScroll: true,
@@ -79,9 +79,9 @@ module.exports = {
             repo: 'git@github.com:MicroAppJS/plugin-vuepress.git',
             branch: 'gh-pages',
         },
-        create: {
+        create: { // 创建时，可选项
             categories: [ 'a', 'b' ],
-            tags: [],
+            tags: [ 'tag1', 'tag2' ],
         },
     },
 };

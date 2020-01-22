@@ -12,6 +12,8 @@ export default function({ router, siteData }) {
             const shortLink = page.shortLink;
             return { path: shortLink, redirect: page.path };
         });
+        router.options.routes = router.options.routes || [];
+        router.options.routes.unshift(...newRoutes);
         router.addRoutes(newRoutes);
     }
 }

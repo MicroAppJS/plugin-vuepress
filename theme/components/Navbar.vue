@@ -1,9 +1,8 @@
 <template>
     <header class="navbar">
         <div class="navbar-inner">
-            <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
-
             <div class="navbar-crumb">
+                <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
                 <router-link :to="$localePath" class="home-link">
                     <img
                         class="logo"
@@ -97,6 +96,12 @@ $navbar-horizontal-padding = 1.5rem;
         a:hover, a.router-link-active {
             color: $accentColor;
         }
+    }
+}
+
+@media (max-width: $MQMobile) {
+    .home-link {
+        margin-left: 32px;
     }
 }
 </style>

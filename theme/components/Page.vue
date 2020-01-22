@@ -56,8 +56,4 @@ export default {
     padding-top: $navbarHeight;
     max-width: $contentWidth;
 }
-
-.content[class][role=content] {
-    padding-top: 0;
-}
 </style>
