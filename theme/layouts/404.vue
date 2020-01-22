@@ -1,6 +1,29 @@
+<template>
+    <div class="theme-container">
+        <div class="theme-default-content">
+            <h1 title="404">
+                <SvgIcon name="404-not-found" size="200"></SvgIcon>
+            </h1>
+
+            <blockquote>{{ getMsg() }}</blockquote>
+
+            <RouterLink to="/">Take me home.</RouterLink>
+        </div>
+    </div>
+</template>
+
 <script>
-import ParentLayout from '@default-theme/layouts/404.vue';
+const msgs = [
+    'There\'s nothing here.',
+    'How did we get here?',
+    'That\'s a Four-Oh-Four.',
+    'Looks like we\'ve got some broken links.',
+];
 export default {
-    extends: ParentLayout,
+    methods: {
+        getMsg() {
+            return msgs[Math.floor(Math.random() * msgs.length)];
+        },
+    },
 };
 </script>
