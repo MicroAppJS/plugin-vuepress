@@ -21,10 +21,10 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
         return prompt.input('Enter Title:').then(answer => {
             const title = answer.trim();
             if (!title) {
-                throw `"${title}", title illegal!`;
+                throw `title "${title}" illegal!`;
             }
             if (fs.existsSync(path.join(BASE_ROOT, title))) {
-                throw `"${title}", title illegal, already exists!`;
+                throw `title "${title}" illegal, already exists!`;
             }
             info.title = title;
         });
@@ -60,20 +60,25 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
     chain = chain.then(() => {
         // 提供可选项，没有则自定义。
         const tagsOpts = [].concat(createCommand.tags || []);
-        let _chain = Promise.resolve(CUSTOM_KEY);
+        let _chain = Promise.resolve([]);
         if (tagsOpts.length) {
-            _chain = _chain.then(() => prompt.select('Select Tags:', {
+            _chain = _chain.then(() => prompt.check('Select Tags:', {
                 choices: [
                     ...tagsOpts.map(item => ({ name: item, value: item })),
-                    { name: '>>> Custom >>>', value: CUSTOM_KEY },
                 ],
             }));
         }
-        // TODO 选择 tags
-        return prompt.input('Enter Tags:').then(answer => {
-            const tags = answer.trim();
+        _chain = _chain.then(key => {
+            if (key && key.length <= 0) {
+                return prompt.input('Enter Tags:').then(answer => {
+                    const tags = answer.trim();
+                    info.tags = `[${tags}]`;
+                });
+            }
+            const tags = key.join(',');
             info.tags = `[${tags}]`;
         });
+        return _chain;
     });
 
     // author
