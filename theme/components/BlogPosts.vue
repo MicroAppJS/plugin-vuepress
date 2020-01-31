@@ -2,24 +2,30 @@
     <div :class="$style.posts" ref="postsRef">
         <slot name="top"></slot>
 
-        <TransitionFadeSlide direction="x" group>
-            <div v-for="(post, index) in currentPosts" :key="post.key" :class="$style.post">
-                <h2 :key="`title-${index}`" :class="$style.title">
-                    <NavLink :item="post.path">{{ post.title }}</NavLink>
-                </h2>
-                <article :key="`summary-${index}`" :class="$style.summary">
-                    <template v-if="post.frontmatter.summary">
-                        <span>{{ post.frontmatter.summary || '' }}</span>
-                    </template>
-                    <!-- $page.excerpt -->
-                    <template v-else-if="post.excerpt">
-                        <div class="abstract" v-html="post.excerpt"></div>
-                    </template>
-                    <!-- <Content :post-key="post.key" slot-key="summary" /> -->
-                </article>
-                <PageInfo :key="`info-${index}`" :class="$style.info" :info="post" hideTitle />
-            </div>
-        </TransitionFadeSlide>
+        <div v-if="currentPosts && currentPosts.length === 0" :class="[$style.post, $style.empty]">
+            <span>暂无数据</span>
+        </div>
+
+        <template v-else>
+            <TransitionFadeSlide direction="x" group>
+                <div v-for="(post, index) in currentPosts" :key="post.key" :class="$style.post">
+                    <h2 :key="`title-${index}`" :class="$style.title">
+                        <NavLink :item="post.path">{{ post.title }}</NavLink>
+                    </h2>
+                    <article :key="`summary-${index}`" :class="$style.summary">
+                        <template v-if="post.frontmatter.summary">
+                            <span>{{ post.frontmatter.summary || '' }}</span>
+                        </template>
+                        <!-- $page.excerpt -->
+                        <template v-else-if="post.excerpt">
+                            <div class="abstract" v-html="post.excerpt"></div>
+                        </template>
+                        <!-- <Content :post-key="post.key" slot-key="summary" /> -->
+                    </article>
+                    <PageInfo :key="`info-${index}`" :class="$style.info" :info="post" hideTitle />
+                </div>
+            </TransitionFadeSlide>
+        </template>
 
         <!-- 分页 -->
         <div :class="$style.pagation">
@@ -61,6 +67,14 @@ export default {
             currentPage: 1,
         };
     },
+    watch: {
+        // url 变化时， currentPage 值为 1
+        '$route.path': function(nV, oV) {
+            if (nV !== oV) {
+                this.currentPage = 1;
+            }
+        },
+    },
     computed: {
         limit() {
             return this.$blogConfig.pageSize || 10;
@@ -71,6 +85,13 @@ export default {
             const end = start + limit;
             const posts = [].concat(this.posts);
             return posts.slice(start, end);
+        },
+        _pagination() {
+            const regs = /\/page\/(\w?)\/?/i.exec(this.$route.path);
+            if (regs) {
+                return regs[1] && parseInt(regs[1]);
+            }
+            return 1;
         },
     },
     methods: {
@@ -85,6 +106,9 @@ export default {
             }
             window.scrollTo && window.scrollTo({ top, behavior: 'smooth' });
         },
+    },
+    created() {
+        this.currentPage = this._pagination;
     },
 };
 </script>
@@ -129,6 +153,12 @@ export default {
     .pagation {
         position: relative;
         text-align: center;
+    }
+
+    .empty {
+        text-align: center;
+        opacity: 0.75;
+        padding: 3rem;
     }
 }
 </style>

@@ -2,6 +2,14 @@
 
 $mobileSidebarWidth = $sidebarWidth * 0.82
 
+@media (min-width: ($MQMobile + 1px)) {
+    .theme-container.no-sidebar {
+        .aside {
+            display: none;
+        }
+    }
+}
+
 // narrow desktop / iPad
 @media (max-width: $MQNarrow)
   .aside
@@ -18,10 +26,17 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
 
 // wide mobile
 @media (max-width: $MQMobile)
-  .aside
-    position: fixed;
-    width: 0;
-    min-width: 0;
+    .aside {
+        position: fixed;
+        width: 0;
+        min-width: 0;
+    }
+    .theme-container {
+        .aside[class] { // fixed mobile aside
+            display: block;
+        }
+    }
+
   .sidebar
     top 0
     padding-top $navbarHeight
@@ -50,11 +65,3 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
       margin 0.85rem auto
       border-radius 0
 
-
-@media (min-width: ($MQMobile + 1px)) {
-    .theme-container.no-sidebar {
-        .aside {
-            display: none;
-        }
-    }
-}
