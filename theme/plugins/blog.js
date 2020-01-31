@@ -57,6 +57,7 @@ function getBlogPluginOptions(ctx) {
     const siteConfig = ctx.siteConfig || {};
     const themeConfig = ctx.themeConfig;
     const blogConfig = themeConfig.blogConfig;
+    const lengthPerPage = blogConfig.pageSize;
     const options = {
         permalink: '/:regular',
         frontmatters: [
@@ -66,6 +67,10 @@ function getBlogPluginOptions(ctx) {
                 path: blogConfig.categoriesPath,
                 layout: 'CategoriesLayout',
                 scopeLayout: 'CategoriesLayout',
+                pagination: {
+                    lengthPerPage,
+                    layout: 'CategoriesLayout',
+                },
             },
             {
                 id: 'tags',
@@ -73,6 +78,10 @@ function getBlogPluginOptions(ctx) {
                 path: blogConfig.tagsPath,
                 layout: 'TagsLayout',
                 scopeLayout: 'TagsLayout',
+                pagination: {
+                    lengthPerPage,
+                    layout: 'TagsLayout',
+                },
             },
             {
                 id: 'timeline',
@@ -80,6 +89,10 @@ function getBlogPluginOptions(ctx) {
                 path: blogConfig.timelinePath,
                 layout: 'TimeLineLayout',
                 scopeLayout: 'TimeLineLayout',
+                pagination: {
+                    lengthPerPage,
+                    layout: 'TimeLineLayout',
+                },
             },
         ],
     };
