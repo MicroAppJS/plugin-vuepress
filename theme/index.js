@@ -82,10 +82,10 @@ module.exports = (options, ctx) => {
         chainMarkdown(config) {
             config
                 .plugin('custom-style')
-                .use(require('./plugins/mdCustomStyle'));
+                .use(require('./plugins/markdown/mdCustomStyle'));
             config
                 .plugin('code-result')
-                .use(require('./plugins/mdCodeResult'));
+                .use(require('./plugins/markdown/mdCodeResult'));
 
             // plugin
             config.plugin('sup').use(require('markdown-it-sup'));

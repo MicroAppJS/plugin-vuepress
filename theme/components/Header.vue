@@ -20,8 +20,13 @@
                 <h1
                     v-if="frontmatter.heroText !== null"
                     :class="[ heroImage ? '' : $style.notImg ]"
+                    :has-banner="!!frontmatter.banner"
                     id="main-title"
-                >{{ heroText }}</h1>
+                >
+                    <span>{{ heroText }}</span>
+                </h1>
+
+                <hr />
 
                 <p v-if="frontmatter.tagline !== null" :class="$style.description">{{ tagline }}</p>
 
@@ -161,9 +166,30 @@ export default {
     h1 {
         font-size: 2rem;
 
+        &>span {
+            padding: 0.1rem 0.4rem 0.1rem 0.5rem;
+            letter-spacing: 0.1rem;
+        }
+
+        &[has-banner]>span {
+            background: $accentColor;
+            color: #fff;
+        }
+
         &.notImg {
             margin-top: 8rem;
         }
+    }
+
+    hr {
+        height: 1px;
+        width: 4rem;
+        text-align: center;
+        position: relative;
+        background: $accentColor;
+        opacity: 0.6;
+        margin: 0 auto;
+        border: 0;
     }
 
     h1, .description, .action, .badges {
@@ -212,7 +238,7 @@ export default {
     &.hasMask {
         z-index: 1;
         min-height: 350px;
-        padding-bottom: 50px;
+        // padding-bottom: 50px;
     }
 }
 

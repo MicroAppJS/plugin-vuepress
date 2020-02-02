@@ -57,7 +57,8 @@ export default {
 
 <style lang="stylus" module>
 .home {
-    padding: $navbarHeight 0 0;
+    // padding: $navbarHeight 0 0;
+    padding: 0;
     margin: 0px auto;
     display: block;
     width: 100%;
@@ -144,6 +145,7 @@ export default {
 
     .custom[class] {
         padding: 0 1.2rem 2rem;
+        word-break: break-all;
     }
 }
 
