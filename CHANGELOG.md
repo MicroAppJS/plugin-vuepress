@@ -1,3 +1,10 @@
+## [0.1.1](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.0...v0.1.1) (2020-02-09)
+
+
+### Bug Fixes
+
+* 修复 rss bug ([0650187](https://github.com/MicroAppJS/plugin-vuepress/commit/06501874ad6251f97312f6baea0532aef076e42f))
+
 # 0.1.0 (2020-02-09)
 
 
