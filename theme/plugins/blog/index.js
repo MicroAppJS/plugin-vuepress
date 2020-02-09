@@ -15,7 +15,7 @@ exports.registerPlugins = function(ctx) {
     plugins.push([ '@vuepress/blog', getBlogPluginOptions(ctx) ]);
     // rss
     if (blogConfig.rss) {
-        plugins.push([ require('./rss'), blogConfig.rss ]);
+        plugins.push([ require('../rss'), blogConfig.rss ]);
     }
 
     // TODO more blog plugins...
