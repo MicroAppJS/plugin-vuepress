@@ -67,9 +67,12 @@ export default {
 </script>
 <style lang="stylus" module>
 .root {
+    position: relative;
+    box-sizing: border-box;
     margin: 0px auto;
     display: block;
     width: 100%;
+    padding: 0 1.4rem;
 }
 
 .desc {
@@ -94,7 +97,7 @@ export default {
 .wrapper {
     position: relative;
     box-sizing: border-box;
-    max-width: 740px;
+    max-width: $maxWidth - 200px;
     margin: 2.2rem auto 4rem;
     list-style: none;
     padding: 0 0 0 1.2rem;
@@ -196,12 +199,6 @@ export default {
                 color: $accentColor;
             }
         }
-    }
-}
-
-@media (max-width: $MQMobile) {
-    .wrapper {
-        margin: 0 1.2rem;
     }
 }
 </style>

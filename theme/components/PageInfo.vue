@@ -6,7 +6,12 @@
     >
         <h1 v-if="!hideTitle" :class="$style.title">
             {{ title }}
-            <Badge v-if="frontmatter.type" style="margin-left: 5px;" :text="frontmatter.type"></Badge>
+            <Badge
+                v-if="frontmatter.type"
+                style="margin-left: 5px;"
+                :text="frontmatter.type"
+                type="yellow"
+            ></Badge>
         </h1>
         <div :class="$style.rows">
             <span v-if="frontmatter.categories" :class="$style.categories">

@@ -11,6 +11,12 @@
                 <div v-for="(post, index) in currentPosts" :key="post.key" :class="$style.post">
                     <h2 :key="`title-${index}`" :class="$style.title">
                         <NavLink :item="post.path">{{ post.title }}</NavLink>
+                        <Badge
+                            v-if="post.frontmatter.type"
+                            style="margin-left: 5px;"
+                            :text="post.frontmatter.type"
+                            type="yellow"
+                        ></Badge>
                     </h2>
                     <article :key="`summary-${index}`" :class="$style.summary">
                         <template v-if="post.frontmatter.summary">

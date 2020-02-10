@@ -6,7 +6,7 @@ const config = {};
 if (!process.env.MICRO_APP_VUEPRESS_DIRECT_RUNNING) {
     config.plugins = [
         __dirname,
-        '@micro-app/plugin-deploy',
+        '@micro-app/plugin-deploy', // test
     ];
 }
 

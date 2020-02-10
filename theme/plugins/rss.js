@@ -42,6 +42,21 @@ module.exports = (options, ctx) => {
                     const frontmatter = page.frontmatter || {};
                     const categories = Array.isArray(frontmatter.categories) ? frontmatter.categories : _.isString(frontmatter.categories) && [ frontmatter.categories ];
                     const tags = Array.isArray(frontmatter.tags) ? frontmatter.tags : _.isString(frontmatter.tags) && [ frontmatter.tags ];
+                    let summary = frontmatter.summary || frontmatter.description || '';
+                    if (!summary) {
+                        const removeMd = require('remove-markdown');
+                        const strippedContent = page._strippedContent;
+                        if (strippedContent) {
+                            summary = removeMd(
+                                strippedContent
+                                    .trim()
+                                    .replace(/^#+\s+(.*)/igm, '')
+                                    .replace(/:::/igm, '')
+                                    .replace(/\s+/igm, ' ')
+                                    .trim()
+                            ).slice(0, 200) + '...';
+                        }
+                    }
                     return {
                         title: page.title,
                         description: page.excerpt,
@@ -50,14 +65,35 @@ module.exports = (options, ctx) => {
                         categories: [].concat(categories, tags),
                         author: frontmatter.author || author,
                         date: page.date,
+                        custom_elements: [
+                            {
+                                summary: {
+                                    _attr: {
+                                        type: 'html',
+                                        'xml:base': siteUrl,
+                                    },
+                                    _cdata: summary,
+                                },
+                            },
+                            // {
+                            //     content: {
+                            //         _attr: {
+                            //             type: 'html',
+                            //             'xml:base': siteUrl,
+                            //         },
+                            //         _cdata: page._strippedContent || '',
+                            //     },
+                            // },
+                        ],
                     };
                 })
                 .slice(0, count)
                 .forEach(page => feed.item(page));
 
-            fs.writeFile(
+            const rssXML = feed.xml();
+            fs.writeFileSync(
                 path.resolve(outDir, 'rss.xml'),
-                feed.xml()
+                rssXML
             );
             logger.info('RSS has been generated!');
         },

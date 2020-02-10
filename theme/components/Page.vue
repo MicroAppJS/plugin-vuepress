@@ -56,4 +56,8 @@ export default {
     padding-top: $navbarHeight;
     max-width: $contentWidth;
 }
+
+.content {
+    word-break: break-all;
+}
 </style>

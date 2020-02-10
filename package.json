@@ -1,6 +1,6 @@
 {
     "name": "@micro-app/plugin-vuepress",
-    "version": "0.0.17-alpha.4",
+    "version": "0.1.1",
     "description": "[Plugin] adapter vuepress plugin.",
     "main": "src/index.js",
     "bin": {
@@ -14,7 +14,9 @@
         "create": "micro-app vuepress create --type post --base __test --classify categories",
         "deploy": "micro-app deploy",
         "vp:deploy": "micro-app vuepress deploy --base /plugin-vuepress/",
-        "publish:next": "npm publish --tag next"
+        "release": "micro-app release",
+        "release:alpha": "npm run release -- --preRelease=alpha",
+        "release:next": "npm run release -- --preRelease=next"
     },
     "files": [
         "bin",
@@ -44,10 +46,10 @@
     },
     "license": "MIT",
     "peerDependencies": {
-        "@micro-app/cli": ">=0.3.0"
+        "@micro-app/cli": ">=0.3.1"
     },
     "devDependencies": {
-        "@micro-app/plugin-deploy": "^0.0.3",
+        "@micro-app/plugin-deploy": "^0.0.4",
         "@types/jest": "^24.0.25",
         "babel-eslint": "^10.0.3",
         "eslint": "^5.16.0",
@@ -55,8 +57,7 @@
         "jest": "^24.9.0"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.3.0-alpha.6",
-        "@micro-app/shared-utils": "0.1.14-alpha.1",
+        "@micro-app/cli": "^0.3.1",
         "@vssue/api-github-v4": "^1.4.0",
         "@vssue/vuepress-plugin-vssue": "^1.4.2",
         "@vuepress/plugin-back-to-top": "^1.3.0",

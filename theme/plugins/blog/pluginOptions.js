@@ -1,59 +1,6 @@
-
 const { _ } = require('@micro-app/shared-utils');
-const moment = require('moment');
-const ensureBothSlash = str => str.replace(/^\/?(.*)\/?$/, '/$1/');
 
-// 初始化默认值
-exports.initBlogConfig = function(ctx) {
-    const themeConfig = ctx.themeConfig;
-    const blogConfig = themeConfig.blogConfig = themeConfig.blogConfig || {};
-    blogConfig.categoriesPath = blogConfig.categoriesPath || '/categories/';
-    blogConfig.tagsPath = blogConfig.tagsPath || '/tags/';
-    blogConfig.timelinePath = blogConfig.timelinePath || '/timeline/';
-    blogConfig.timelineTitle = blogConfig.timelineTitle || 'Tomorrow will be better!';
-    blogConfig.pageSize = parseInt(blogConfig.pageSize) || 10;
-    blogConfig.postsDir = blogConfig.postsDir || 'posts';
-    blogConfig.permalink = blogConfig.permalink || '/posts/:year/:month/:day/:slug.html';
-    blogConfig.rss = blogConfig.rss || false;
-    blogConfig.copyright = _.isUndefined(blogConfig.copyright) ? true : blogConfig.copyright !== false ? blogConfig.copyright : false;
-    return blogConfig;
-};
-
-// blog plugin
-exports.registerPlugins = function(ctx) {
-    const themeConfig = ctx.themeConfig;
-    const blogConfig = themeConfig.blogConfig;
-
-    const plugins = [];
-
-    plugins.push([ '@vuepress/blog', getBlogPluginOptions(ctx) ]);
-    // rss
-    if (blogConfig.rss) {
-        plugins.push([ require('./rss'), blogConfig.rss ]);
-    }
-
-    // TODO more blog plugins...
-
-    return plugins;
-};
-
-exports.extendPageData = function($page, ctx) {
-    const siteConfig = ctx.siteConfig || {};
-    const themeConfig = ctx.themeConfig;
-    const lang = siteConfig.lang || themeConfig.lang || 'en-US';
-    const blogConfig = themeConfig.blogConfig;
-    if ($page.path.startsWith(ensureBothSlash(blogConfig.postsDir))) {
-        $page.frontmatter.permalink = $page.frontmatter.permalink || blogConfig.permalink;
-        if ($page.frontmatter.date) {
-            const $lang = $page.frontmatter.lang || $page._computed.$localeConfig.lang || lang;
-            $page.frontmatter.dateFormat = moment($page.frontmatter.date)
-                .utc().locale($lang)
-                .format('llll');
-        }
-    }
-};
-
-function getBlogPluginOptions(ctx) {
+module.exports = function getBlogPluginOptions(ctx) {
     const siteConfig = ctx.siteConfig || {};
     const themeConfig = ctx.themeConfig;
     const blogConfig = themeConfig.blogConfig;
@@ -121,4 +68,4 @@ function getBlogPluginOptions(ctx) {
         options.sitemap = sitemap;
     }
     return options;
-}
+};
