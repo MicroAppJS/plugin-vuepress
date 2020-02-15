@@ -12,17 +12,20 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
 
 // narrow desktop / iPad
 @media (max-width: $MQNarrow)
-  .aside
-    width: 'calc((100% - %s)/2 + %s)' % ($maxWidth $mobileSidebarWidth);
-    min-width: $mobileSidebarWidth;
-  .sidebar
-    font-size 15px
-    width $mobileSidebarWidth
-  .main-content
-    width: 'calc(100% - %s)' % $mobileSidebarWidth;
-  .page {
-    padding-left: 1rem;
-}
+    .aside {
+        width: 'calc((100% - %s)/2 + %s)' % ($maxWidth $mobileSidebarWidth);
+        min-width: $mobileSidebarWidth;
+    }
+    .sidebar {
+        font-size 15px
+        width $mobileSidebarWidth
+    }
+    .main-content {
+        width: 'calc(100% - %s)' % $mobileSidebarWidth;
+    }
+    .page {
+        padding-left: 1rem;
+    }
 
 // wide mobile
 @media (max-width: $MQMobile)
@@ -36,32 +39,34 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
             display: block;
         }
     }
+    .sidebar {
+        top 0
+        padding-top $navbarHeight
+        transform translateX(-100%)
+        transition transform .2s ease
+    }
+    .page {
+        padding-left 0
+    }
 
-  .sidebar
-    top 0
-    padding-top $navbarHeight
-    transform translateX(-100%)
-    transition transform .2s ease
-  .page
-    padding-left 0
-  .theme-container
-    &.sidebar-open
-      .sidebar
-        transform translateX(0)
-    &.no-navbar
-      .sidebar
-        padding-top: 0
+    .theme-container
+        &.sidebar-open
+            .sidebar
+                transform translateX(0)
+        &.no-navbar
+            .sidebar
+                padding-top: 0
 
-  .main-content
-    width: 100%;
+    .main-content
+        width: 100%;
 
 
 // narrow mobile
 @media (max-width: $MQMobileNarrow)
-  h1
-    font-size 1.9rem
-  {$contentClass}
-    div[class*="language-"]
-      margin 0.85rem auto
-      border-radius 0
+    h1
+        font-size 1.9rem
+    {$contentClass}
+        div[class*="language-"]
+            margin 0.85rem auto
+            border-radius 0
 
