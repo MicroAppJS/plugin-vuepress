@@ -76,10 +76,10 @@ module.exports = (options, ctx) => {
                     ],
                 });
 
-            // static file
+            // txt file
             config.module
-                .rule('static-file')
-                .test(/\.(file)(\..*)?$/)
+                .rule('txt-file')
+                .test(/\.(txt)(\?.*)?$/)
                 .use('file-loader')
                 .loader('file-loader')
                 .options({
