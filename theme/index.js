@@ -75,6 +75,16 @@ module.exports = (options, ctx) => {
                         },
                     ],
                 });
+
+            // static file
+            config.module
+                .rule('static-file')
+                .test(/\.(file)(\..*)?$/)
+                .use('file-loader')
+                .loader('file-loader')
+                .options({
+                    name: 'assets/file/[name].[hash:8].[ext]',
+                });
         },
         extendMarkdown: md => {
             md.set({ breaks: true });
