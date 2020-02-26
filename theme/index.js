@@ -83,7 +83,7 @@ module.exports = (options, ctx) => {
                 .use('file-loader')
                 .loader('file-loader')
                 .options({
-                    name: 'assets/file/[name].[hash:8].[ext]',
+                    name: 'assets/file/[name].[contenthash:8].[ext]',
                 });
         },
         extendMarkdown: md => {
