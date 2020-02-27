@@ -81,7 +81,7 @@ function registerPlugins(ctx) {
     if (baiduObj.autoPush) {
         plugins.push([ require('./baiduAutoPush'), true ]);
     }
-    if (baiduObj.hmtID === 'string') {
+    if (typeof baiduObj.hmtID === 'string') {
         plugins.push([ require('./baiduHmt'), {
             hmtID: baiduObj.hmtID,
         }]);

@@ -36,6 +36,7 @@ export default {
     props: {
         item: {
             required: true,
+            type: [ String, Object ],
         },
         line: Boolean,
         hideOutboundIcon: Boolean,
