@@ -1,3 +1,11 @@
+## [0.1.6](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.5...v0.1.6) (2020-02-27)
+
+
+### Bug Fixes
+
+* 修复 blog 的配置结构 ([aa6b39e](https://github.com/MicroAppJS/plugin-vuepress/commit/aa6b39e0cbdbaac40b0ebe4c51992414995cd389))
+* 修复 hmt 配置，增加全局 Link 组件 ([2d619dc](https://github.com/MicroAppJS/plugin-vuepress/commit/2d619dc75c4b83598ce9e6a27ff8cfb9111d5c3c))
+
 ## [0.1.5](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.4...v0.1.5) (2020-02-26)
 
 ## 0.1.4 (2020-02-24)
