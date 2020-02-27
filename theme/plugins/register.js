@@ -42,6 +42,11 @@ function registerPlugins(ctx) {
     const siteConfig = ctx.siteConfig || {};
     const isLocales = !!siteConfig.locales || !!themeConfig.locales || false;
 
+    const type = siteConfig.type || themeConfig.type || 'doc';
+    if (type === 'blog') {
+        plugins.push([ require('./blog'), true ]);
+    }
+
     // pwa
     if (themeConfig.pwa) {
         plugins.push([

@@ -6,18 +6,12 @@ module.exports = (options, ctx) => {
     const defaultTheme = require('@vuepress/theme-default');
     const defaultThemeConfig = defaultTheme(options, ctx);
 
-    const siteConfig = ctx.siteConfig || {};
     const themeConfig = ctx.themeConfig = ctx.themeConfig || {};
-    const type = siteConfig.type || themeConfig.type || 'doc';
 
     const vuepressDir = ctx.vuepressDir;
     const iconsDir = path.resolve(vuepressDir, 'public', 'icons');
     const iconsLibDir = path.resolve(__dirname, 'icons');
     const svgIconsDir = themeConfig.svgIconsDir && path.resolve(vuepressDir, themeConfig.svgIconsDir) || iconsLibDir;
-
-    // blog config
-    const blogPlugin = require('./plugins/blog');
-    themeConfig.blogConfig = blogPlugin.initBlogConfig(ctx);
 
     const finalConfig = {
         define: {
@@ -107,7 +101,6 @@ module.exports = (options, ctx) => {
         },
         plugins: [
             ...require('./plugins/register')(ctx),
-            ...(type === 'blog' ? blogPlugin.registerPlugins(ctx) : []),
         ],
 
         // Blog https://github.com/meteorlxy/vuepress-theme-meteorlxy/blob/master/lib/plugins/blog/index.js
@@ -116,9 +109,6 @@ module.exports = (options, ctx) => {
             // if (!strippedContent) {
             //     return;
             // }
-            if (type === 'blog') {
-                blogPlugin.extendPageData($page, ctx);
-            }
         },
     };
 
