@@ -15,7 +15,10 @@
             <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
             <div class="aside" :is-home="$page.frontmatter.home">
                 <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
-                    <slot name="sidebar-top" slot="top" />
+                    <template slot="top">
+                        <Topics v-if="$type === 'blog'" />
+                        <slot name="sidebar-top"></slot>
+                    </template>
                     <slot name="sidebar-bottom" slot="bottom" />
                 </Sidebar>
             </div>
@@ -49,9 +52,10 @@ import Header from '@theme/components/Header.vue';
 import Footer from '@theme/components/Footer.vue';
 import HomeBlog from '@theme/components/HomeBlog.vue';
 import TransitionFadeSlide from '@theme/components/TransitionFadeSlide.vue';
+import Topics from '@theme/components/Topics.vue';
 export default {
     extends: ParentLayout,
-    components: { Header, Footer, HomeBlog, TransitionFadeSlide },
+    components: { Header, Footer, HomeBlog, TransitionFadeSlide, Topics },
     props: {
         showHeader: Boolean,
         hideSidebar: Boolean,

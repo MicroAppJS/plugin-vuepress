@@ -30,8 +30,6 @@ module.exports = (optins = {}, ctx) => {
     // blog config
     themeConfig.blogConfig = initBlogConfig(ctx);
 
-    console.warn(ctx.addPage);
-
     return {
         name: 'blog',
 

@@ -70,7 +70,7 @@ export default {
         transition: all 0.3s;
         border-radius: $borderRadius;
         box-shadow: $boxShadow;
-        background-color: $backgroundColor;
+        // background-color: $backgroundColor;
 
         &:hover {
             transform: translateY(-0.1rem);
