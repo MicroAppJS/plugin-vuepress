@@ -1,3 +1,10 @@
+## [0.1.8](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.7...v0.1.8) (2020-03-01)
+
+
+### Bug Fixes
+
+* 修复UI ([c574621](https://github.com/MicroAppJS/plugin-vuepress/commit/c57462118f30149704ec298c1af10b915373bebc))
+
 ## [0.1.7](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.6...v0.1.7) (2020-03-01)
 
 
