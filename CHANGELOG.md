@@ -1,3 +1,17 @@
+## [0.1.7](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.6...v0.1.7) (2020-03-01)
+
+
+### Bug Fixes
+
+* 修复 code 展示样式 ([7bbefe6](https://github.com/MicroAppJS/plugin-vuepress/commit/7bbefe610c86b9bf62621b4134c35d1cc38d4726))
+* 修复 more 分割标识 ([e199506](https://github.com/MicroAppJS/plugin-vuepress/commit/e19950662b9bc75e248a4c43374b3f70fc12d50b))
+
+
+### Features
+
+* add topic list ([fd6b149](https://github.com/MicroAppJS/plugin-vuepress/commit/fd6b1491f1432d1d13039ca4a7be0c0e50cbaac6))
+* 增加优化 blog 首页 UI 逻辑 ([48f0bcb](https://github.com/MicroAppJS/plugin-vuepress/commit/48f0bcbe74fa02ba15df61a934d24256986f48b6))
+
 
 
 ## [0.1.6](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.5...v0.1.6) (2020-02-27)
