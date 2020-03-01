@@ -64,10 +64,3 @@ export default {
         },
     },
 };
-
-function getMetaDescription(meta) {
-    if (meta) {
-        const descriptionMeta = meta.filter(item => item.name === 'description')[0];
-        if (descriptionMeta) return descriptionMeta.content;
-    }
-}
