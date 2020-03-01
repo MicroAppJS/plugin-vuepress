@@ -74,6 +74,8 @@ export default {
 }
 
 .left {
+    text-align: center;
+
     &[simple] {
         display: inline-block;
         width: 46%;

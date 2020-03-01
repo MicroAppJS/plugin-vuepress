@@ -15,7 +15,11 @@
             </template>
             <!-- $page.excerpt -->
             <template v-else-if="post.excerpt">
-                <div class="abstract" v-html="post.excerpt"></div>
+                <div
+                    :class="$style.abstract"
+                    class="theme-default-content abstract"
+                    v-html="post.excerpt"
+                ></div>
             </template>
             <!-- <Content :post-key="post.key" slot-key="summary" /> -->
         </article>
@@ -86,6 +90,11 @@ export default {
             white-space: nowrap;
             font-size: 1.2rem;
         }
+    }
+
+    .abstract {
+        padding: 0 0 1rem;
+        max-width: none;
     }
 }
 </style>
