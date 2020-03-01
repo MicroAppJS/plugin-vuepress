@@ -149,6 +149,7 @@ export default {
             flex-direction: row-reverse;
             align-items: center;
             display: flex;
+            padding-top: 6rem;
         }
 
         .headerItem {
