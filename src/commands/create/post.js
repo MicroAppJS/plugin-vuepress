@@ -143,7 +143,7 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
     chain = chain.then(mdDirname => {
         const README_DIR = path.resolve(mdDirname, 'README.md');
         const frontMatter = createFrontMatter(info);
-        fs.writeFileSync(README_DIR, [ '---' ].concat(frontMatter, '---', '', '<!--more-->', '').join('\n'));
+        fs.writeFileSync(README_DIR, [ '---' ].concat(frontMatter, '---', '', '<!-- more -->', '').join('\n'));
         logger.logo([ '', '', `     ${chalk.green('Create Success')}: ${chalk.grey.underline(mdDirname)}`, '' ].join('\n'));
     });
 
