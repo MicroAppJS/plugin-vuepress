@@ -1,3 +1,10 @@
+## [0.1.9](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.8...v0.1.9) (2020-03-01)
+
+
+### Bug Fixes
+
+* 修复部分显示bug ([c3f2f21](https://github.com/MicroAppJS/plugin-vuepress/commit/c3f2f210fd21881c9ce2333d00da5f544a03328b))
+
 ## [0.1.8](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.7...v0.1.8) (2020-03-01)
 
 
