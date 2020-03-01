@@ -1,15 +1,27 @@
 <template>
     <div :class="$style.root">
-        <img :class="$style.avatar" :src="$withBase(avatar)" />
-        <h3 :class="$style.name" v-if="author">{{ author }}</h3>
-        <div :class="$style.num">
-            <div>
-                <h3>{{$posts.length}}</h3>
-                <h6>文章</h6>
+        <div :class="$style.left" :simple="simple">
+            <img :class="$style.avatar" :src="$withBase(avatar)" />
+            <h3 :class="$style.name" v-if="author">{{ author }}</h3>
+        </div>
+        <div :class="$style.warpper" :simple="simple">
+            <div v-if="simple" :class="$style.description">
+                <div v-if="description">{{ description }}</div>
+                <Content slot-key="aboutme"></Content>
             </div>
-            <div>
-                <h3>{{$tags.length}}</h3>
-                <h6>标签</h6>
+            <div :class="$style.num" :simple="simple">
+                <div>
+                    <h3>{{$posts.length}}</h3>
+                    <h6>文章</h6>
+                </div>
+                <div v-if="simple">
+                    <h3>{{$categories.length}}</h3>
+                    <h6>分类</h6>
+                </div>
+                <div>
+                    <h3>{{$tags.length}}</h3>
+                    <h6>标签</h6>
+                </div>
             </div>
         </div>
     </div>
@@ -18,6 +30,9 @@
 <script>
 export default {
     name: 'PersonalInfo',
+    props: {
+        simple: Boolean,
+    },
     computed: {
         avatar() {
             return this.$frontmatter.avatar || this.$i18nText('avatar') || require('@theme/assets/avatar.svg');
@@ -25,6 +40,12 @@ export default {
         author() {
             return this.$frontmatter.author || this.$i18nText('author') || this.$site.title;
         },
+        description() {
+            return this.$i18nText('description') || this.$site.description;
+        },
+    },
+    mounted() {
+        console.warn(this);
     },
 };
 </script>
@@ -32,6 +53,7 @@ export default {
 <style lang="stylus" module>
 .root {
     position: relative;
+    box-sizing: border-box;
 }
 
 .avatar {
@@ -40,6 +62,7 @@ export default {
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
+    box-sizing: border-box;
 
     &:hover {
         transform: rotate(666turn);
@@ -50,8 +73,27 @@ export default {
     }
 }
 
-.name {
+.left {
+    &[simple] {
+        display: inline-block;
+        width: 46%;
+    }
+}
+
+.warpper {
+    position: relative;
+    box-sizing: border-box;
     text-align: center;
+
+    &[simple] {
+        display: inline-block;
+        width: 52%;
+        vertical-align: top;
+        padding: 2rem 0;
+    }
+}
+
+.name {
     color: $textColor;
 }
 
@@ -60,12 +102,18 @@ export default {
     margin: 0 auto 1rem;
     width: 80%;
 
+    &[simple] {
+        margin: 0;
+        width: 100%;
+    }
+
     > div {
         text-align: center;
         flex: auto;
+        border-right: 1px solid $borderColor;
 
-        &:first-child {
-            border-right: 1px solid $borderColor;
+        &:last-child {
+            border-right: none;
         }
 
         h3 {
@@ -80,5 +128,12 @@ export default {
             margin: 0;
         }
     }
+}
+
+.description {
+    position: relative;
+    box-sizing: border-box;
+    padding: 1rem;
+    min-height: 8rem;
 }
 </style>
