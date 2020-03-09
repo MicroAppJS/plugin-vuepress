@@ -41,6 +41,14 @@ module.exports = (optins = {}, ctx) => {
 
         // Blog https://github.com/meteorlxy/vuepress-theme-meteorlxy/blob/master/lib/plugins/blog/index.js
         extendPageData($page) {
+            const frontmatter = $page.frontmatter;
+            if (frontmatter && frontmatter.private === true) {
+                // TODO 私有内容
+                // const strippedContent = $page._strippedContent;
+                // if (strippedContent) {
+                // console.warn($page);
+                // }
+            }
             return extendPageData($page, ctx);
         },
     };

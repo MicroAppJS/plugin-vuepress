@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { filterPosts } from '@theme/helpers/postData.js';
 import { getOneColor } from '@theme/helpers';
 export default {
     props: {
@@ -34,7 +35,10 @@ export default {
             const pages = this.$posts || [];
             return [
                 // { name: 'ALL', path: categoriesPath, pages },
-                ...this.list,
+                ...this.list.filter(item => {
+                    const pages = filterPosts(item.pages || []);
+                    return pages.length > 0;
+                }),
             ];
         },
         currentCategory() {

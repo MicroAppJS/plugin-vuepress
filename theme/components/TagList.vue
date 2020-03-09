@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { filterPosts } from '@theme/helpers/postData.js';
 import { getOneColor } from '@theme/helpers';
 export default {
     props: {
@@ -25,7 +26,10 @@ export default {
             }
             return [
                 { name: 'ALL', path: tagsPath },
-                ...this.list,
+                ...this.list.filter(item => {
+                    const pages = filterPosts(item.pages || []);
+                    return pages.length > 0;
+                }),
             ];
         },
         currentTag() {

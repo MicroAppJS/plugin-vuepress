@@ -92,6 +92,10 @@ export default {
         width: 52%;
         vertical-align: top;
         padding: 2rem 0;
+
+        @media (max-width: $MQNarrow) {
+            width: 100%;
+        }
     }
 }
 

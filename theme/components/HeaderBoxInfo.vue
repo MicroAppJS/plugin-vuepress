@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { filterPosts } from '@theme/helpers/postData.js';
 import TransitionFadeSlide from '@theme/components/TransitionFadeSlide.vue';
 export default {
     name: 'HeaderBoxInfo',
@@ -26,8 +27,9 @@ export default {
                     count: this.$posts ? this.$posts.length : 0,
                 };
             }
+            const _pages = filterPosts($current.pages);
             return Object.assign({
-                count: $current.pages.length,
+                count: _pages.length,
             }, $current);
         },
     },

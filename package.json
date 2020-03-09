@@ -46,7 +46,7 @@
     },
     "license": "MIT",
     "peerDependencies": {
-        "@micro-app/cli": ">=0.3.1"
+        "@micro-app/cli": ">=0.3.2"
     },
     "devDependencies": {
         "@micro-app/plugin-deploy": "^0.0.4",
@@ -57,7 +57,7 @@
         "jest": "^24.9.0"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.3.1",
+        "@micro-app/cli": "^0.3.2",
         "@vssue/api-github-v4": "^1.4.0",
         "@vssue/vuepress-plugin-vssue": "^1.4.2",
         "@vuepress/plugin-back-to-top": "^1.3.0",
