@@ -190,7 +190,12 @@ function getAddMeta(meta) {
     return (name, content, attribute = null, attrs = {}) => {
         if (!content) return;
         if (!attribute) attribute = [ 'article:', 'og:' ].some(type => name.startsWith(type)) ? 'property' : 'name';
-        meta.push({ ...attrs, [attribute]: name, content, 'data-auto-meta': true });
+        if (meta.some(item => item[attribute] === name)) { // 重复 update
+            const info = meta.find(item => item[attribute] === name);
+            Object.assign(info, { ...attrs, [attribute]: name, content, 'data-auto-meta': true, 'data-update-meta': true });
+        } else {
+            meta.push({ ...attrs, [attribute]: name, content, 'data-auto-meta': true });
+        }
     };
 }
 
