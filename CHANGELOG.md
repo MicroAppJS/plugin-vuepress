@@ -1,3 +1,10 @@
+## [0.1.10](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.9...v0.1.10) (2020-03-12)
+
+
+### Bug Fixes
+
+* 修复tag和category过滤私有文章 ([ebfecdb](https://github.com/MicroAppJS/plugin-vuepress/commit/ebfecdb591c6cfba66bd7c71f68f4ec4704e7288))
+
 ## [0.1.9](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.8...v0.1.9) (2020-03-01)
 
 
