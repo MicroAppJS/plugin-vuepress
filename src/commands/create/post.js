@@ -3,13 +3,13 @@
 module.exports = function(api, argv, opts, BASE_ROOT) {
     const logger = api.logger;
 
-    const path = require('path');
-    const { fs, prompt, chalk } = require('@micro-app/shared-utils');
+    const { fs, prompt, chalk, path, _ } = require('@micro-app/shared-utils');
     const moment = require('moment');
 
     const selfVuepressConfig = api.selfVuepressConfig || {};
     const commandOpts = selfVuepressConfig.command || {};
     const createCommand = commandOpts.create || {};
+    const cacheDir = path.resolve(api.tempDir, '.cache');
 
     let chain = Promise.resolve();
 
@@ -33,7 +33,13 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
     // categories
     chain = chain.then(() => {
         // 提供可选项，没有则自定义。
-        const categoriesOpts = [].concat(createCommand.categories || []);
+        // 从缓存获取
+        const categoriesCachePath = path.resolve(cacheDir, 'categories.json');
+        let categoriesCache = [];
+        if (fs.existsSync(categoriesCachePath)) {
+            categoriesCache = fs.readJSONSync(categoriesCachePath);
+        }
+        const categoriesOpts = _.uniq([].concat(createCommand.categories || []).concat(categoriesCache || []));
         let _chain = Promise.resolve(CUSTOM_KEY);
         if (categoriesOpts.length) {
             _chain = _chain.then(() => prompt.select('Select Categories:', {
@@ -59,7 +65,13 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
     // tags
     chain = chain.then(() => {
         // 提供可选项，没有则自定义。
-        const tagsOpts = [].concat(createCommand.tags || []);
+        // 从缓存获取
+        const tagsCachePath = path.resolve(cacheDir, 'tags.json');
+        let tagsCache = [];
+        if (fs.existsSync(tagsCachePath)) {
+            tagsCache = fs.readJSONSync(tagsCachePath);
+        }
+        const tagsOpts = _.uniq([].concat(createCommand.tags || []).concat(tagsCache || []));
         let _chain = Promise.resolve([]);
         if (tagsOpts.length) {
             _chain = _chain.then(() => prompt.check('Select Tags:', {

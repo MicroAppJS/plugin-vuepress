@@ -1,7 +1,6 @@
 // rss
 module.exports = (options, ctx) => {
-    const { fs, _, logger } = require('@micro-app/shared-utils');
-    const path = require('path');
+    const { fs, _, logger, path } = require('@micro-app/shared-utils');
     const RSS = require('rss');
 
     if (!_.isPlainObject(options)) {

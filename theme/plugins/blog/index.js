@@ -21,6 +21,7 @@ const registerPlugins = function(ctx) {
     }
 
     // TODO more blog plugins...
+    plugins.push([ require('./createCache'), true ]);
 
     return plugins;
 };

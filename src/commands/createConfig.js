@@ -10,11 +10,16 @@ module.exports = function createConfig(api, args, opts) {
 
     const loadConfig = require('@vuepress/core/lib/node/loadConfig');
 
+    // const vuepressDir = api.resolveWorkspace('.vuepress'); // 不能使用，vuepress内部代码太乱
     const vuepressDir = path.resolve(root, vuepressConfig.sourceDir, '.vuepress');
     const siteConfig = loadConfig(vuepressDir) || {};
 
     const customConfig = require('../config');
     const config = smartMerge({}, customConfig, siteConfig, vuepressConfig, opts, _.pick(args, [ 'base' ]));
+    config.root = root;
+    // reset vuepressDir
+    config.vuepressDir = vuepressDir;
+    config.cacheDir = path.resolve(api.tempDir, '.cache');
     // reset dest
     config.dest = path.resolve(vuepressConfig.sourceDir, config.dest);
 

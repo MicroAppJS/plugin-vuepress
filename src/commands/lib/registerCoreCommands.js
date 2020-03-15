@@ -5,7 +5,7 @@
  */
 
 const envinfo = require('envinfo');
-const { dev, build, eject } = require('@vuepress/core');
+const { dev, build, eject } = require('./core');
 const { chalk, path, logger, env } = require('@vuepress/shared-utils');
 const { wrapCommand } = require('./util');
 
