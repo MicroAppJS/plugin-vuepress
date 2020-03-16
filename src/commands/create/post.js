@@ -47,6 +47,7 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
                     ...categoriesOpts.map(item => ({ name: item, value: item })),
                     { name: '>>> Custom >>>', value: CUSTOM_KEY },
                 ],
+                pageSize: 10,
             }));
         }
         _chain = _chain.then(key => {
@@ -71,23 +72,28 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
         if (fs.existsSync(tagsCachePath)) {
             tagsCache = fs.readJSONSync(tagsCachePath);
         }
-        const tagsOpts = _.uniq([].concat(createCommand.tags || []).concat(tagsCache || []));
+        const tagsOpts = _.uniq([ CUSTOM_KEY ].concat(createCommand.tags || []).concat(tagsCache || []));
         let _chain = Promise.resolve([]);
-        if (tagsOpts.length) {
+        if (tagsOpts.length > 1) {
             _chain = _chain.then(() => prompt.check('Select Tags:', {
                 choices: [
                     ...tagsOpts.map(item => ({ name: item, value: item })),
                 ],
+                pageSize: 10,
             }));
         }
-        _chain = _chain.then(key => {
-            if (key && key.length <= 0) {
+        _chain = _chain.then(keys => {
+            if (keys && (keys.length <= 0 || keys.includes(CUSTOM_KEY))) {
                 return prompt.input('Enter Tags:').then(answer => {
-                    const tags = answer.trim();
+                    let tags = answer.trim();
+                    if (tags) {
+                        const _tags = tags.split(',');
+                        tags = _.uniq(keys.concat(_tags).filter(k => k !== CUSTOM_KEY)).join(',');
+                    }
                     info.tags = `[${tags}]`;
                 });
             }
-            const tags = key.join(',');
+            const tags = keys.join(',');
             info.tags = `[${tags}]`;
         });
         return _chain;
