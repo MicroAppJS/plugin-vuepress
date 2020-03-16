@@ -1,3 +1,10 @@
+## [0.1.12](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.11...v0.1.12) (2020-03-16)
+
+
+### Bug Fixes
+
+* fix custom tags of create post ([fe353aa](https://github.com/MicroAppJS/plugin-vuepress/commit/fe353aaaf3b8a4b01447fca6042ea03dac1d6308))
+
 ## [0.1.11](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.10...v0.1.11) (2020-03-16)
 
 
