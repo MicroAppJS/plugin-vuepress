@@ -1,3 +1,15 @@
+## [0.1.11](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.10...v0.1.11) (2020-03-16)
+
+
+### Bug Fixes
+
+* fix root path ([d6b5b80](https://github.com/MicroAppJS/plugin-vuepress/commit/d6b5b80cf3153c213897355fe22bef6a5e401634))
+
+
+### Features
+
+* add cache ([fe988ab](https://github.com/MicroAppJS/plugin-vuepress/commit/fe988ab331c338424fa71dd3d1ad917b4727faa2))
+
 ## [0.1.10](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.9...v0.1.10) (2020-03-12)
 
 
