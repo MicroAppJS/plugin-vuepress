@@ -9,9 +9,7 @@ function changeVuepressDir(app, options) {
 }
 
 async function dev(options) {
-    if (process.env.NODE_ENV === undefined) {
-        process.env.NODE_ENV = 'development';
-    }
+    process.env.NODE_ENV = 'development'; // 强制
     const app = createApp(options);
     // change vuepressDir
     changeVuepressDir(app, options);
@@ -20,9 +18,7 @@ async function dev(options) {
 }
 
 async function build(options) {
-    if (process.env.NODE_ENV === undefined) {
-        process.env.NODE_ENV = 'production';
-    }
+    process.env.NODE_ENV = 'production'; // 强制
     const app = createApp(options);
     // change vuepressDir
     changeVuepressDir(app, options);

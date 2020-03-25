@@ -4,8 +4,10 @@ const path = require('path');
 
 module.exports = {
     serviceWorker: true,
-    // TODO custom theme
+    // custom theme
     theme: path.resolve(__dirname, '../../theme/index.js'),
+    // custom ssr template
+    ssrTemplate: path.resolve(__dirname, '../template/index.ssr.html'),
     // themeConfig: {
     //     // logo: '/logo.png',
     //     lastUpdated: '上次编辑时间',

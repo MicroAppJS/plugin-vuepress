@@ -163,7 +163,10 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
         const README_DIR = path.resolve(mdDirname, 'README.md');
         const frontMatter = createFrontMatter(info);
         fs.writeFileSync(README_DIR, [ '---' ].concat(frontMatter, '---', '', '<!-- more -->', '').join('\n'));
-        logger.logo([ '', '', `     ${chalk.green('Create Success')}: ${chalk.grey.underline(mdDirname)}`, '' ].join('\n'));
+        logger.logo([ '', '',
+            `     ${chalk.green('Create Success')}!`,
+            `     ${chalk.blue('Edit')}: ${chalk.grey.underline(README_DIR)}`,
+            '' ].join('\n'));
     });
 
     return chain;
