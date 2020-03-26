@@ -1063,20 +1063,20 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@micro-app/cli@^0.3.9":
-  version "0.3.9"
-  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.9.tgz#d8560a4b84f2596bdafdc3c4630177e400529731"
-  integrity sha512-1f/PwN+bNL41d+AsqUxrlbh1zHbVFu2SRn/FEIHCfWtOqLHa47XOWF56VK9kw+tA+AJOMEHT1W0COAh1mNAwHA==
+"@micro-app/cli@^0.3.10":
+  version "0.3.10"
+  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.10.tgz#2081d92f9e1f97d74729def5328ae67401b03493"
+  integrity sha512-pTUzHEs+oa0zw1CSEiaT0qCIf2DszZh3MqsPmYgbAKaZYP5SAU3+L4lasUKYBlHH82LZqBM5AWDfRkIQQA6Nrg==
   dependencies:
-    "@micro-app/core" "^0.3.18"
+    "@micro-app/core" "^0.3.19"
     "@zkochan/cmd-shim" "^4.3.0"
     read-cmd-shim "^2.0.0"
     update-notifier "^4.1.0"
 
-"@micro-app/core@^0.3.18":
-  version "0.3.18"
-  resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.18.tgz#9ca602e6c9da51ddfe333283de9c8f6642244206"
-  integrity sha512-/E/qSiJUOJ7+6gBvbphpepBfeBwZRwpTDOW3K61sbNCu05bdBZpwgUwkyEqi659aa1XZNRj6Eb23sLfU1WkVtA==
+"@micro-app/core@^0.3.19":
+  version "0.3.19"
+  resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.19.tgz#4a2b67a9b110a9cb9454ee641c14a526076963be"
+  integrity sha512-u6AUTtn2pGCCanRakEG2WdWfqThpR6OLekEfZiXGKnC/O3palCDCOXtBkkndiU5HxI/8/O1xhgF0sF+6xkuGDw==
   dependencies:
     "@micro-app/shared-utils" "^0.1.16"
     dotenv "^8.2.0"
@@ -1571,12 +1571,19 @@
     date-fns "^1.29.0"
     qs "^6.6.0"
 
-"@vssue/vuepress-plugin-vssue@^1.2.0", "@vssue/vuepress-plugin-vssue@^1.4.2":
+"@vssue/vuepress-plugin-vssue@^1.2.0":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@vssue/vuepress-plugin-vssue/-/vuepress-plugin-vssue-1.4.2.tgz#9cea4ec24ba0da2e1b0b516fb9f7d20e91c7ef45"
   integrity sha512-FO+w3B7q48y5uDUjkY7NJORkq4cREavKL6YXJ1ohEeeXL06Fv9Db0FUY1fwSraFSiA1l+zTarImf9vzqMl+HMw==
   dependencies:
     vssue "^1.4.2"
+
+"@vssue/vuepress-plugin-vssue@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@vssue/vuepress-plugin-vssue/-/vuepress-plugin-vssue-1.4.3.tgz#37bdb079b750e998591eb94b1e94374c0121c227"
+  integrity sha512-ZzfmGhz0Pn0T56j4DZf+HUC6xJ4opZ2CMT9TJFg9VeU83DuqunWHbji878Mtxz5beUn0rv3FXthjJ2KWHIGC6g==
+  dependencies:
+    vssue "^1.4.3"
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.0.0":
   version "1.0.0"
@@ -12303,6 +12310,17 @@ vssue@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/vssue/-/vssue-1.4.2.tgz#5968275c79a02f031a629548479edcdcc6232d84"
   integrity sha512-DiuKrUQVKbxylLkMsFPsFpGn5GRtl6+kQTJLDEahDlj+p9Wqoea3klMGHaXyMdHR84riyLQ/gcMfcyOO2DUAGA==
+  dependencies:
+    "@vssue/utils" "^1.4.0"
+    github-markdown-css "^3.0.1"
+    vue "^2.6.10"
+    vue-i18n "^8.11.2"
+    vue-property-decorator "^8.1.1"
+
+vssue@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/vssue/-/vssue-1.4.3.tgz#861203a95e6b60fe2af661a07d800c0d51965e13"
+  integrity sha512-xGnsLahqREumXgHnZ92MzNbIfwYqz8fZUQVGTe5/b2tCWsF5pFhO51fv4FVVDvVUwF6NsT3Kzy4HTVvJK2at4A==
   dependencies:
     "@vssue/utils" "^1.4.0"
     github-markdown-css "^3.0.1"
