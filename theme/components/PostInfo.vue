@@ -7,7 +7,7 @@
                 :text="post.frontmatter.type"
                 type="yellow"
             ></Badge>
-            <NavLink :item="post.path" line>{{ post.title }}</NavLink>
+            <NavLink :item="post.path" line :title="post.title">{{ post.title }}</NavLink>
         </h2>
         <article v-if="!simple" role="summary" :class="$style.summary">
             <template v-if="post.frontmatter.summary">
@@ -92,7 +92,7 @@ export default {
         }
     }
 
-    .abstract {
+    .abstract[class] {
         padding: 0 0 1rem;
         max-width: none;
     }

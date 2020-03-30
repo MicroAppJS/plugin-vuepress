@@ -14,7 +14,7 @@
         <div :class="$style.wrapper" class="main-wrapper">
             <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
             <div class="aside" :is-home="$page.frontmatter.home">
-                <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
+                <Sidebar :items="_sidebarItems" @toggle-sidebar="toggleSidebar">
                     <template slot="top">
                         <Topics v-if="$type === 'blog'" />
                         <slot name="sidebar-top"></slot>
@@ -78,6 +78,18 @@ export default {
                 && this.sidebarItems.length
                 && !this.hideSidebar
             );
+        },
+        _sidebarItems() {
+            if (this.$type === 'blog') {
+                const sidebarItems = this.sidebarItems;
+                if (sidebarItems && sidebarItems.length > 0) {
+                    const { title } = this.$page;
+                    if (sidebarItems[0] && sidebarItems[0].title === title) {
+                        sidebarItems[0].title = '文章目录';
+                    }
+                }
+            }
+            return this.sidebarItems;
         },
     },
 };
