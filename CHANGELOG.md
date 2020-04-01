@@ -1,3 +1,10 @@
+## [0.1.15](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.14...v0.1.15) (2020-04-01)
+
+
+### Bug Fixes
+
+* fixed build error ([6d7903b](https://github.com/MicroAppJS/plugin-vuepress/commit/6d7903b587ee2d4693121dfc585dc53745743a6b))
+
 ## [0.1.14](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.13...v0.1.14) (2020-03-31)
 
 
