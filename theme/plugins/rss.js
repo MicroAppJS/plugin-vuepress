@@ -58,7 +58,7 @@ module.exports = (options, ctx) => {
                     }
                     return {
                         title: page.title,
-                        description: page.excerpt,
+                        description: summary || page.excerpt,
                         url: `${siteUrl}${decodeURIComponent(page.path)}`,
                         guid: page.path,
                         categories: [].concat(categories, tags),

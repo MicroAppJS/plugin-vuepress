@@ -50,6 +50,9 @@ module.exports = (optins = {}, ctx) => {
                 // console.warn($page);
                 // }
             }
+            // if ($page.excerpt) { // 处理图片
+            //     console.warn($page.excerpt);
+            // }
             return extendPageData($page, ctx);
         },
     };
