@@ -16,15 +16,16 @@
 <script>
 import NavLink from '@theme/components/NavLink.vue';
 export default {
+    name: 'RedirectLayout',
     components: {
         NavLink,
     },
     computed: {
         redirectLink() {
-            return this.$frontmatter.redirectLink;
+            return this.$frontmatter.redirectLink || '/';
         },
     },
-    created() {
+    mounted() {
         this.$router.replace(this.redirectLink);
     },
 };

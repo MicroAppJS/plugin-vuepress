@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = (options = {}, ctx) => ({
     name: 'shortLinks',
 
@@ -23,7 +21,7 @@ module.exports = (options = {}, ctx) => ({
 
     async ready() {
         const { pages } = ctx;
-        const allShortLinkPages = pages.filter(page => page.shortLink).map(page => {
+        const allShortLinkPages = pages.filter(page => page.shortLink && page._permalink).map(page => {
             const id = `s-${page.key}`;
             const redirectLink = page._permalink;
             return {
