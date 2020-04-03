@@ -1,3 +1,10 @@
+## [0.1.16](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.15...v0.1.16) (2020-04-03)
+
+
+### Bug Fixes
+
+* fixed `shortLink` type `boolean` | `string` ([d4e480a](https://github.com/MicroAppJS/plugin-vuepress/commit/d4e480af17f8833d632a3d1ce77506c829f5b4ea))
+
 ## [0.1.15](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.14...v0.1.15) (2020-04-01)
 
 
