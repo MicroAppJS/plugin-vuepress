@@ -4,9 +4,12 @@ module.exports = (options = {}, ctx) => ({
     extendPageData($page) {
         const themeConfig = ctx.themeConfig || {};
 
-        let prefix = '';
+        let suffix = '.html';
         if (typeof themeConfig.shortLinks === 'string') {
-            prefix = themeConfig.shortLinks;
+            suffix = themeConfig.shortLinks;
+        }
+        if (suffix && !suffix.startsWith('.')) {
+            suffix = `.${suffix}`;
         }
 
         const key = $page.key;
@@ -14,7 +17,7 @@ module.exports = (options = {}, ctx) => ({
             const frontmatter = $page.frontmatter = $page.frontmatter || {};
             const shortLink = frontmatter.shortLink;
             if (shortLink !== false) {
-                $page.shortLink = frontmatter.shortLink = '/s' + (shortLink || `/${$page.key.replace(/^v\-/, prefix)}`);
+                $page.shortLink = frontmatter.shortLink = '/s' + (shortLink || `/${$page.key.replace(/^v\-/, '')}${suffix}`);
             }
         }
     },

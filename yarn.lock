@@ -1063,22 +1063,22 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@micro-app/cli@^0.3.11":
-  version "0.3.11"
-  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.11.tgz#b570284d25950fd3bf3cec9922a19b75a547def7"
-  integrity sha512-BOUBSBaSjNWbg6jd3SvjJ5W6mXQr9m4sZjGf33eLoh6GpVcf7XF2XGnwKyLVQwcVKj7oJ75aL/+9vrxkc/utNA==
+"@micro-app/cli@^0.3.15":
+  version "0.3.15"
+  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.15.tgz#3cbcb455675deda5bb8dbcae2f42e6c60d71d87b"
+  integrity sha512-RUvrH5e0KtWZAd2dlR3K5fWmovXLzM01wM9yEm347zwZceeBQgMlSv5GRBTCS5HNjVFsfpsfpVWEWk4E+B3NJA==
   dependencies:
-    "@micro-app/core" "^0.3.20"
+    "@micro-app/core" "^0.3.23"
     "@zkochan/cmd-shim" "^4.3.0"
     read-cmd-shim "^2.0.0"
     update-notifier "^4.1.0"
 
-"@micro-app/core@^0.3.20":
-  version "0.3.21"
-  resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.21.tgz#43315fa1713580d7500900f5ef90e183b9455b56"
-  integrity sha512-k7KOtQ6pxJbRAaMW8xF3jmuJxOQXjHXLCHtLNayU3ma1SNxOTGBbGbF7VyOBoo7V1sGlC40UjMaMJiqfvdE5lw==
+"@micro-app/core@^0.3.23":
+  version "0.3.23"
+  resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.23.tgz#7e8d425021875ee27d1a2e30170502ff022c70dc"
+  integrity sha512-BBLN2dOCCOJDsmCoCzx73C6M2eHB0K3JeEIFmbQSoY/E8EoTRfWNW+IAmFMm8WgSXOtMsb/4V678lBoLq7fLKA==
   dependencies:
-    "@micro-app/shared-utils" "^0.1.16"
+    "@micro-app/shared-utils" "^0.1.17"
     dotenv "^8.2.0"
     dotenv-expand "^5.1.0"
 
@@ -1090,10 +1090,10 @@
     "@release-it/conventional-changelog" "^1.1.0"
     release-it "^13.1.1"
 
-"@micro-app/shared-utils@^0.1.16":
-  version "0.1.16"
-  resolved "https://registry.yarnpkg.com/@micro-app/shared-utils/-/shared-utils-0.1.16.tgz#4952238c8caf17156548e33a43990ef42368e363"
-  integrity sha512-n4/E5gRFAijnMa33slUBF+REKVoPZ3SczY3xim3cRT0xI0vqG1uhyLZjEAwUq9mStGORgcllYN4ygUuJx0ki0Q==
+"@micro-app/shared-utils@^0.1.17":
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/@micro-app/shared-utils/-/shared-utils-0.1.17.tgz#e99b9aa4385cf4eefe5f96f0f553162ab9342743"
+  integrity sha512-XI1uFnvjPaFZvLLMoARZeUqUya2i2z4aJ1oT23bahQL+5dHgXj2p1o/1agJ7G0K1KStasLRjPXNuHEpBpK1Weg==
   dependencies:
     ajv "^6.10.2"
     ajv-keywords "^3.4.1"
