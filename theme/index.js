@@ -98,6 +98,14 @@ module.exports = (options, ctx) => {
             config.plugin('footnote').use(require('markdown-it-footnote'));
             config.plugin('imsize').use(require('markdown-it-imsize'));
             config.plugin('task-lists').use(require('markdown-it-task-lists'), [{ label: true, labelAfter: true }]);
+
+            // const { PLUGINS } = require('@vuepress/markdown/lib/constant.js');
+            // config.plugin(PLUGINS.ANCHOR).tap(options => {
+            //     return options.map(opt => {
+            //         // opt.permalinkSymbol = '#$';
+            //         return opt;
+            //     });
+            // });
         },
         plugins: [
             ...require('./plugins/register')(ctx),
