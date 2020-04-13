@@ -1,3 +1,15 @@
+## [0.1.18](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.17...v0.1.18) (2020-04-13)
+
+
+### Bug Fixes
+
+* fixed ui ([ed786d5](https://github.com/MicroAppJS/plugin-vuepress/commit/ed786d531d15190eb81bd0163b13f5efbaf2b434))
+
+
+### Features
+
+* add global color `whiteColor` ([5deb968](https://github.com/MicroAppJS/plugin-vuepress/commit/5deb968f3131a8d2f3b2d5cc05f031d4ac25a2d2))
+
 ## [0.1.17](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.16...v0.1.17) (2020-04-13)
 
 
