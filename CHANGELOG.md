@@ -1,3 +1,10 @@
+## [0.1.17](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.16...v0.1.17) (2020-04-13)
+
+
+### Features
+
+* update ui & seo ([11415e2](https://github.com/MicroAppJS/plugin-vuepress/commit/11415e26a4dcb5ff10922ef39345a68929e371ac))
+
 ## [0.1.16](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.15...v0.1.16) (2020-04-03)
 
 
