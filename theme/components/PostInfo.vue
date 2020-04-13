@@ -14,12 +14,15 @@
                 <span>{{ post.frontmatter.summary || '' }}</span>
             </template>
             <!-- $page.excerpt -->
+            <template v-else-if="post.excerptTempFilePath">
+                <div :class="$style.abstract" class="theme-default-content abstract">
+                    <span v-html="require(excerptTempFilePath)"></span>
+                </div>
+            </template>
             <template v-else-if="post.excerpt">
-                <div
-                    :class="$style.abstract"
-                    class="theme-default-content abstract"
-                    v-html="post.excerpt"
-                ></div>
+                <div :class="$style.abstract" class="theme-default-content abstract">
+                    <span v-html="post.excerpt"></span>
+                </div>
             </template>
             <!-- <Content :post-key="post.key" slot-key="summary" /> -->
         </article>

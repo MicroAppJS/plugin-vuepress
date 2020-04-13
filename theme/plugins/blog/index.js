@@ -41,7 +41,7 @@ module.exports = (optins = {}, ctx) => {
         ],
 
         // Blog https://github.com/meteorlxy/vuepress-theme-meteorlxy/blob/master/lib/plugins/blog/index.js
-        extendPageData($page) {
+        async extendPageData($page) {
             const frontmatter = $page.frontmatter;
             if (frontmatter && frontmatter.private === true) {
                 // TODO 私有内容
@@ -50,9 +50,11 @@ module.exports = (optins = {}, ctx) => {
                 // console.warn($page);
                 // }
             }
-            // if ($page.excerpt) { // 处理图片
-            //     console.warn($page.excerpt);
-            // }
+            if ($page.excerpt) { // excerpt 处理（图片等）
+                const { parseFrontmatter } = require('@vuepress/shared-utils');
+                const { excerpt } = parseFrontmatter($page._content);
+                $page.excerptTempFilePath = await $page._context.writeTemp(`temp-excerpts/${$page.key}.md`, excerpt);
+            }
             return extendPageData($page, ctx);
         },
     };

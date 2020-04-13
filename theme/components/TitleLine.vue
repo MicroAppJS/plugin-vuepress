@@ -14,7 +14,7 @@ export default {
 .root {
     position: relative;
     overflow: hidden;
-    height: 1px;
+    height: 2px;
     width: 24rem;
     box-sizing: border-box;
     margin: auto;
@@ -30,7 +30,7 @@ export default {
     border: 0;
     background: linear-gradient(90deg, rgba(24, 144, 255, 0) 0, $accentColor);
     transform: translateX(-100%);
-    animation: pageLine 3s ease-in-out 1.5s infinite;
+    animation: pageLine 3s ease-in-out 0.5s infinite;
 }
 
 @keyframes pageLine {
