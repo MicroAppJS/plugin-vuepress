@@ -1,3 +1,4 @@
+const { POWERBY_NAME, RSS_FILENAME } = require('../config');
 const moment = require('moment');
 
 const defaultOptions = {
@@ -98,7 +99,7 @@ const defaultOptions = {
         if (blogConfig.rss) {
             add('alternate', 'rss', 'link', {
                 rel: 'alternate', title: $page.localeConfig.title || $site.title,
-                href: siteUrl + '/rss.xml',
+                href: `${siteUrl}/${RSS_FILENAME}`,
             });
         }
 
@@ -141,9 +142,10 @@ const defaultOptions = {
         add('keywords', ctx.keywords);
 
         // description
-        if (!$page.frontmatter.home) {
-            add('description', ctx.description);
-        }
+        add('description', ctx.description);
+
+        // powerby
+        add('powerby', POWERBY_NAME);
     },
 };
 

@@ -71,7 +71,7 @@ export default {
 
     .title {
         position: relative;
-        font-size: 1.28rem;
+        font-size: 1.2rem;
         line-height: 36px;
         border: none;
         display: inline-block;
@@ -83,7 +83,7 @@ export default {
         position: absolute;
         right: 20px;
         top: 10px;
-        color: $backgroundColor;
+        color: $textColor;
         font-weight: bold;
     }
 }

@@ -1,4 +1,6 @@
 // rss
+const { RSS_FILENAME } = require('./config');
+
 module.exports = (options, ctx) => {
     const { fs, _, logger, path } = require('@micro-app/shared-utils');
     const RSS = require('rss');
@@ -22,7 +24,7 @@ module.exports = (options, ctx) => {
             const feed = new RSS({
                 title: siteConfig.title,
                 description: siteConfig.description,
-                feed_url: `${siteUrl}/rss.xml`,
+                feed_url: `${siteUrl}/${RSS_FILENAME}`,
                 site_url: siteUrl,
                 copyright: copyright || author,
                 language: 'en',

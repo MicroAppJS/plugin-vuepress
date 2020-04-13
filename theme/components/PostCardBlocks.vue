@@ -139,7 +139,7 @@ export default {
         margin: auto;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-between;
 
         // column-count: 3;
         .cardItem {

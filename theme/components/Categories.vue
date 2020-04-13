@@ -74,8 +74,8 @@ export default {
         transition: all 0.3s;
         border-radius: $borderRadius;
         box-shadow: $boxShadow;
-        // background-color: $backgroundColor;
 
+        // background-color: $backgroundColor;
         &:hover {
             transform: translateY(-0.1rem);
         }
@@ -103,20 +103,30 @@ export default {
             vertical-align: middle;
             display: inline-block;
             margin: 0.3rem;
-            background-color: darken($accentColor, 60%);
+            background: $backgroundColor;
+            color: $textColor;
+            border: solid 1px $borderColor;
             font-size: 13px;
 
             a {
                 padding: 0.3rem 0.6rem;
             }
 
-            .name {
-                color: #fff;
+            &:hover {
+                background: $accentColor;
+
+                a {
+                    color: #fff;
+                }
             }
         }
 
         &[simple].active {
             background-color: $accentColor;
+
+            a {
+                color: #fff;
+            }
         }
     }
 }

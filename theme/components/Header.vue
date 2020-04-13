@@ -11,6 +11,7 @@
         <div :class="[ $style.headerWrapper, heroImage ? $style.hasHeroImage : '' ]">
             <div v-if="heroImage" :class="$style.headerItem">
                 <img
+                    :key="heroImage"
                     :class="$style.logo"
                     :src="$withBase(heroImage)"
                     :alt="frontmatter.heroAlt || 'hero'"
@@ -26,7 +27,7 @@
                     <span>{{ heroText }}</span>
                 </h1>
 
-                <hr />
+                <TitleLine />
 
                 <p v-if="frontmatter.tagline !== null" :class="$style.description">{{ tagline }}</p>
 
@@ -63,9 +64,10 @@
 
 <script>
 import NavLink from '@theme/components/NavLink.vue';
+import TitleLine from '@theme/components/TitleLine.vue';
 export default {
     name: 'Home',
-    components: { NavLink },
+    components: { NavLink, TitleLine },
     computed: {
         hasMask() {
             return this.$slots.mask || this.frontmatter.banner;
@@ -150,6 +152,14 @@ export default {
             align-items: center;
             display: flex;
             padding-top: 6rem;
+
+            &>span {
+                padding: 0;
+            }
+
+            hr {
+                margin-left: 10px;
+            }
         }
 
         .headerItem {
@@ -168,11 +178,11 @@ export default {
         font-size: 2rem;
 
         &>span {
-            padding: 0.1rem 0.4rem 0.1rem 0.5rem;
             letter-spacing: 0.1rem;
         }
 
         &[has-banner]>span {
+            padding: 0.1rem 0.4rem 0.1rem 0.5rem;
             background: $accentColor;
             color: #fff;
         }

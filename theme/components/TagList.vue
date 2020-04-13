@@ -44,7 +44,7 @@ export default {
             if (this.simple) {
                 return {};
             }
-            return { backgroundColor: getOneColor(index) };
+            return { };
         },
     },
 };
@@ -61,8 +61,9 @@ export default {
         display: inline-block;
         cursor: pointer;
         border-radius: $borderRadius;
-        background: #fff;
-        color: #fff;
+        background: $backgroundColor;
+        color: $textColor;
+        border: solid 1px $borderColor;
         line-height: 13px;
         font-size: 13px;
         box-shadow: $boxShadow;
@@ -70,15 +71,18 @@ export default {
 
         &:hover {
             transform: translateY(-0.1rem);
+            background: $accentColor;
+            color: #fff;
         }
 
         &[simple] {
-            background: darken($accentColor, 60%) !important;
         }
 
         &[simple].active {
             background: $accentColor !important;
+            color: #fff;
         }
     }
 }
 </style>
+

@@ -6,8 +6,6 @@ module.exports = {
     serviceWorker: true,
     // custom theme
     theme: path.resolve(__dirname, '../../theme/index.js'),
-    // custom ssr template
-    ssrTemplate: path.resolve(__dirname, '../template/index.ssr.html'),
     // themeConfig: {
     //     // logo: '/logo.png',
     //     lastUpdated: '上次编辑时间',
