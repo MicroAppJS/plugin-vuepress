@@ -1,3 +1,10 @@
+## [0.1.19](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.18...v0.1.19) (2020-04-13)
+
+
+### Features
+
+* enhance excerpt ([57e0b6f](https://github.com/MicroAppJS/plugin-vuepress/commit/57e0b6fcce7f742cd12fcc152bd9768549ce0ef9))
+
 ## [0.1.18](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.17...v0.1.18) (2020-04-13)
 
 
