@@ -97,7 +97,7 @@ export default {
 <style lang="stylus" module>
 .root {
     position: relative;
-    color: #fff;
+    color: $whiteColor;
 }
 
 .head {

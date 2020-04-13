@@ -72,7 +72,7 @@ export default {
         &:hover {
             transform: translateY(-0.1rem);
             background: $accentColor;
-            color: #fff;
+            color: $whiteColor;
         }
 
         &[simple] {
@@ -80,7 +80,7 @@ export default {
 
         &[simple].active {
             background: $accentColor !important;
-            color: #fff;
+            color: $whiteColor;
         }
     }
 }

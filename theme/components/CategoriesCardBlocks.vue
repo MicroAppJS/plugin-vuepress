@@ -83,7 +83,7 @@ export default {
         position: absolute;
         right: 20px;
         top: 10px;
-        color: $textColor;
+        color: $whiteColor;
         font-weight: bold;
     }
 }

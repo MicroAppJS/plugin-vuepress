@@ -189,7 +189,7 @@ export default {
     }
 
     &:hover, &[active] {
-        color: #fff;
+        color: $whiteColor;
 
         &:after {
             width: 100%;

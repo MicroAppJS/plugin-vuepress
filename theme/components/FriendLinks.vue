@@ -124,7 +124,7 @@ export default {
             height: 1.2rem;
             border-radius: $borderRadius;
             font-size: 0.1rem;
-            color: #ffffff;
+            color: $whiteColor;
             text-align: center;
             line-height: 1.2rem;
             cursor: pointer;

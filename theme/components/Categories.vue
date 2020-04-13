@@ -95,7 +95,7 @@ export default {
             border-radius: $borderRadius;
             background-color: #eee;
             font-size: 0.6rem;
-            color: #fff;
+            color: $whiteColor;
             margin-left: 6px;
         }
 
@@ -116,7 +116,7 @@ export default {
                 background: $accentColor;
 
                 a {
-                    color: #fff;
+                    color: $whiteColor;
                 }
             }
         }
@@ -125,7 +125,7 @@ export default {
             background-color: $accentColor;
 
             a {
-                color: #fff;
+                color: $whiteColor;
             }
         }
     }

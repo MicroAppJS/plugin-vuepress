@@ -184,7 +184,7 @@ export default {
         &[has-banner]>span {
             padding: 0.1rem 0.4rem 0.1rem 0.5rem;
             background: $accentColor;
-            color: #fff;
+            color: $whiteColor;
         }
 
         &.notImg {
@@ -222,7 +222,7 @@ export default {
     .actionButton {
         display: inline-block;
         font-size: 1.2rem;
-        color: #fff;
+        color: $whiteColor;
         background-color: $accentColor;
         padding: 0.6rem 1.2rem;
         border-radius: $borderRadius;
@@ -238,7 +238,7 @@ export default {
         &:not(:first-child) {
             color: $accentColor;
             border: 1px solid darken($accentColor, 10%);
-            background-color: #fff;
+            background-color: $whiteColor;
         }
 
         &:last-child {

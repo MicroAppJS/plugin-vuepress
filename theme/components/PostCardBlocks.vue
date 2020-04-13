@@ -107,7 +107,7 @@ export default {
         border: none;
 
         &>span:first-child {
-            color: #fff;
+            color: $whiteColor;
             background: $accentColor;
             padding: 0 0.3rem 0 0.6rem;
             margin-right: 0.3rem;
