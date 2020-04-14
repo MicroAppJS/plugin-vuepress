@@ -14,9 +14,13 @@
                 <span>{{ post.frontmatter.summary || '' }}</span>
             </template>
             <!-- $page.excerpt -->
-            <template v-else-if="post.excerptTempFilePath">
-                <div :class="$style.abstract" class="theme-default-content abstract">
-                    <span v-html="require(excerptTempFilePath)"></span>
+            <template v-else-if="post.excerptKey">
+                <div
+                    :class="$style.abstract"
+                    class="theme-default-content abstract"
+                    :key="post.excerptKey"
+                >
+                    <CustomContent :page-key="post.excerptKey"></CustomContent>
                 </div>
             </template>
             <template v-else-if="post.excerpt">
@@ -33,11 +37,13 @@
 <script>
 import NavLink from '@theme/components/NavLink.vue';
 import PageInfo from '@theme/components/PageInfo.vue';
+import CustomContent from '@theme/components/CustomContent.js';
 export default {
     name: 'PostInfo',
     components: {
         NavLink,
         PageInfo,
+        CustomContent,
     },
     props: {
         post: {

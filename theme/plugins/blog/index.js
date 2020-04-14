@@ -31,6 +31,8 @@ module.exports = (optins = {}, ctx) => {
     // blog config
     themeConfig.blogConfig = initBlogConfig(ctx);
 
+    const { pages } = ctx;
+
     return {
         name: 'blog',
 
@@ -51,11 +53,30 @@ module.exports = (optins = {}, ctx) => {
                 // }
             }
             if ($page.excerpt) { // excerpt 处理（图片等）
-                const { parseFrontmatter } = require('@vuepress/shared-utils');
-                const { excerpt } = parseFrontmatter($page._content);
-                $page.excerptTempFilePath = await $page._context.writeTemp(`temp-excerpts/${$page.key}.md`, excerpt);
+                $page.excerptKey = `${$page.key}-excerpt`;
             }
             return extendPageData($page, ctx);
+        },
+
+        async clientDynamicModules() {
+            const code = `export default {\n${(await Promise.all(pages
+                .filter(({ excerptKey }) => !!excerptKey)
+                .map(async ({ excerptKey, _filePath, _content }) => {
+                    const dir = path.dirname(_filePath);
+                    const { parseFrontmatter } = require('@vuepress/shared-utils');
+                    const { excerpt } = parseFrontmatter(_content);
+                    const tempPath = path.join(ctx.tempPath, 'temp-excerpts');
+                    const newExcerpt = excerpt.replace(/\[.*\]\(\..+\)/igm, function(word) { // 修复所有相对路径
+                        const p = word.replace(/\[.*\]\(/, '').replace(/\)$/, '');
+                        const op = path.resolve(dir, p);
+                        const a = word.replace(p, path.relative(tempPath, op));
+                        return a;
+                    });
+                    const excerptTempFilePath = await ctx.writeTemp(`temp-excerpts/${excerptKey}.md`, newExcerpt);
+                    return `  ${JSON.stringify(excerptKey)}: () => import(${JSON.stringify(excerptTempFilePath)})`;
+                })))
+                .join(',\n')} \n}`;
+            return { name: 'page-excerpts-components.js', content: code, dirname: 'internal' };
         },
     };
 };

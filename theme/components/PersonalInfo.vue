@@ -45,7 +45,7 @@ export default {
         },
     },
     mounted() {
-        console.warn(this);
+        // console.warn(this);
     },
 };
 </script>
