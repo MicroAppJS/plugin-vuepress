@@ -20,7 +20,7 @@
                     class="theme-default-content abstract"
                     :key="post.excerptKey"
                 >
-                    <CustomContent :page-key="post.excerptKey"></CustomContent>
+                    <ExcerptContent :page-key="post.excerptKey"></ExcerptContent>
                 </div>
             </template>
             <template v-else-if="post.excerpt">
@@ -37,13 +37,11 @@
 <script>
 import NavLink from '@theme/components/NavLink.vue';
 import PageInfo from '@theme/components/PageInfo.vue';
-import CustomContent from '@theme/components/CustomContent.js';
 export default {
     name: 'PostInfo',
     components: {
         NavLink,
         PageInfo,
-        CustomContent,
     },
     props: {
         post: {

@@ -45,6 +45,7 @@ function registerPlugins(ctx) {
     const type = siteConfig.type || themeConfig.type || 'doc';
     if (type === 'blog') {
         plugins.push([ require('./blog'), true ]);
+        plugins.push([ require('./excerpt'), true ]);
     }
 
     // pwa
