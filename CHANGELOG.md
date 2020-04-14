@@ -1,3 +1,10 @@
+## [0.1.20](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.19...v0.1.20) (2020-04-14)
+
+
+### Bug Fixes
+
+* fixed excerpt ([bad6936](https://github.com/MicroAppJS/plugin-vuepress/commit/bad693685e408a1cf6e541f0b7576fd098d6322a))
+
 ## [0.1.19](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.18...v0.1.19) (2020-04-13)
 
 
