@@ -1,4 +1,4 @@
-const path = require('path');
+const { fs, path, hash } = require('@micro-app/shared-utils');
 
 // 初始化默认值
 const initBlogConfig = require('./init');
@@ -58,6 +58,7 @@ module.exports = (optins = {}, ctx) => {
             return extendPageData($page, ctx);
         },
 
+        // 主要处理 excerptKey 的 md 渲染
         async clientDynamicModules() {
             const code = `export default {\n${(await Promise.all(pages
                 .filter(({ excerptKey }) => !!excerptKey)
@@ -65,13 +66,28 @@ module.exports = (optins = {}, ctx) => {
                     const dir = path.dirname(_filePath);
                     const { parseFrontmatter } = require('@vuepress/shared-utils');
                     const { excerpt } = parseFrontmatter(_content);
-                    const tempPath = path.join(ctx.tempPath, 'temp-excerpts');
+                    const collectMap = {};
                     const newExcerpt = excerpt.replace(/\[.*\]\(\..+\)/igm, function(word) { // 修复所有相对路径
-                        const p = word.replace(/\[.*\]\(/, '').replace(/\)$/, '');
+                        const p = word.replace(/\[.*\]\(/, '').replace(/\)$/, '')
+                            .replace(/[\"|\'].+[\"|\']/, '')
+                            .trim();
                         const op = path.resolve(dir, p);
-                        const a = word.replace(p, path.relative(tempPath, op));
-                        return a;
+                        if (fs.existsSync(op)) { // 存在收集
+                            const name = hash(op);
+                            const ext = path.extname(op);
+                            collectMap[`${name}${ext}`] = op;
+                            return word.replace(p, `./${excerptKey}/${name}${ext}`); // 替换
+                        }
+                        return word;
                     });
+                    const arrs = Object.keys(collectMap);
+                    const tempPath = path.join(ctx.tempPath, 'temp-excerpts', excerptKey);
+                    if (arrs.length) { // 迁移
+                        fs.ensureDirSync(tempPath);
+                        arrs.forEach(key => {
+                            fs.copySync(collectMap[key], path.join(tempPath, key));
+                        });
+                    }
                     const excerptTempFilePath = await ctx.writeTemp(`temp-excerpts/${excerptKey}.md`, newExcerpt);
                     return `  ${JSON.stringify(excerptKey)}: () => import(${JSON.stringify(excerptTempFilePath)})`;
                 })))
