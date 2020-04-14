@@ -1,3 +1,10 @@
+## [0.1.21](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.20...v0.1.21) (2020-04-14)
+
+
+### Bug Fixes
+
+* 修复中文路径问题 ([f95cf0c](https://github.com/MicroAppJS/plugin-vuepress/commit/f95cf0caa3a39eb90b6e2a8e724923038a11111b))
+
 ## [0.1.20](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.19...v0.1.20) (2020-04-14)
 
 
