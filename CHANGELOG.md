@@ -1,3 +1,11 @@
+## [0.1.22](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.21...v0.1.22) (2020-04-15)
+
+
+### Features
+
+* add animation ([a6cd64a](https://github.com/MicroAppJS/plugin-vuepress/commit/a6cd64a7249f60fc272f60cca7828854ecff4057))
+* enhance excerpt plugin ([ccbd5bf](https://github.com/MicroAppJS/plugin-vuepress/commit/ccbd5bf23a31eeb7019227d3caad3d919d1a6946))
+
 ## [0.1.21](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.20...v0.1.21) (2020-04-14)
 
 
