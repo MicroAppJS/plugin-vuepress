@@ -1,3 +1,10 @@
+## [0.1.23](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.22...v0.1.23) (2020-04-15)
+
+
+### Bug Fixes
+
+* support ssr ([a332d0f](https://github.com/MicroAppJS/plugin-vuepress/commit/a332d0fd748f6b391f29ec79501738a36c3d3fca))
+
 ## [0.1.22](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.21...v0.1.22) (2020-04-15)
 
 
