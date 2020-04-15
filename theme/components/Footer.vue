@@ -1,14 +1,14 @@
 <template>
     <footer :class="$style.footer">
-        <span v-if="footer.powerby">
+        <span v-if="footer.powerby" :class="$style.item">
             <SvgIcon :class="$style.icon" name="zap"></SvgIcon>
             <NavLink :item="POWERBY_LINK" hideOutboundIcon>{{ POWERBY_NAME }}</NavLink>
         </span>
-        <span v-if="beian">
+        <span v-if="beian" :class="$style.item">
             <SvgIcon :class="$style.icon" name="beian"></SvgIcon>
             <NavLink :item="beian" hideOutboundIcon></NavLink>
         </span>
-        <span v-if="copyright">
+        <span v-if="copyright" :class="$style.item">
             <SvgIcon :class="$style.icon" name="copyright"></SvgIcon>
             <a>{{ copyright }}</a>
         </span>
@@ -54,6 +54,9 @@ export default {
             return false;
         },
     },
+    mounted() {
+        this.$scroll.reveal(`.${this.$style.item}`, { delay: 300, interval: 100 });
+    },
 };
 </script>
 
@@ -76,6 +79,10 @@ export default {
     .icon {
         color: #888;
     }
+}
+
+.item {
+    position: relative;
 }
 
 @media (max-width: $MQMobile) {

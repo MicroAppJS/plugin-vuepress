@@ -63,6 +63,10 @@ export default {
             return [].concat(this.posts || this.$posts).slice(0, this.max);
         },
     },
+    mounted() {
+        this.$scroll.reveal(`.${this.$style.container}`);
+        this.$scroll.reveal(`.${this.$style.cardItem}`, { delay: 100, origin: 'top', distance: '100px', interval: 100 });
+    },
 };
 </script>
 

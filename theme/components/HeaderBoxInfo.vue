@@ -33,6 +33,10 @@ export default {
             }, $current);
         },
     },
+    mounted() {
+        this.$scroll.reveal(`.${this.$style.title}`, { origin: 'left', distance: '100px', interval: 100 });
+        this.$scroll.reveal(`.${this.$style.meta}`, { origin: 'right', distance: '100px', interval: 100 });
+    },
 };
 </script>
 <style lang="stylus" module>

@@ -28,7 +28,9 @@ export default {
             default() { return []; },
         },
     },
-
+    mounted() {
+        this.$scroll.reveal(`.${this.$style.root}`, { delay: 100, origin: 'top', distance: '100px', interval: 100 });
+    },
 };
 </script>
 

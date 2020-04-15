@@ -16,7 +16,7 @@
         <template v-else>
             <div v-if="features && features.length" :class="$style.features">
                 <section v-for="(feature, index) in features" :key="index" :class="$style.feature">
-                    <div :class="[ $style.wrapper, index % 2 === 1 ? $style.even : '' ]">
+                    <div :class="[ $style.wrapper, index % 2 === 1 ? $style.even : $style.odd ]">
                         <div v-if="feature.image" :class="$style.wrapperImg">
                             <img :src="$withBase(feature.image)" alt />
                         </div>
@@ -51,6 +51,13 @@ export default {
         featuresNotImage() {
             return !this.features.some(item => !!item.image);
         },
+    },
+    mounted() {
+        this.$scroll.reveal(`.${this.$style.features}`);
+        this.$scroll.reveal(`.${this.$style.odd}>.${this.$style.wrapperImg}`, { delay: 300, origin: 'left', distance: '100px', interval: 200 });
+        this.$scroll.reveal(`.${this.$style.even}>.${this.$style.wrapperImg}`, { delay: 300, origin: 'right', distance: '100px', interval: 200 });
+        this.$scroll.reveal(`.${this.$style.odd}>.${this.$style.wrapperText}`, { delay: 600, origin: 'right', distance: '100px', interval: 200 });
+        this.$scroll.reveal(`.${this.$style.even}>.${this.$style.wrapperText}`, { delay: 600, origin: 'left', distance: '100px', interval: 200 });
     },
 };
 </script>
@@ -110,7 +117,12 @@ export default {
             min-height: 25rem;
 
             &.even {
+                position: relative;
                 flex-direction: row-reverse;
+            }
+
+            &.odd {
+                position: relative;
             }
         }
 

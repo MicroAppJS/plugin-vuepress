@@ -20,7 +20,7 @@
             <div>
                 <h1
                     v-if="frontmatter.heroText !== null"
-                    :class="[ heroImage ? '' : $style.notImg ]"
+                    :class="[ $style.title, heroImage ? '' : $style.notImg ]"
                     :has-banner="!!frontmatter.banner"
                     id="main-title"
                 >
@@ -35,7 +35,11 @@
                     v-if="frontmatter.badges && Array.isArray(frontmatter.badges)"
                     :class="$style.badges"
                 >
-                    <span v-for="(item, index) in frontmatter.badges" :key="index">
+                    <span
+                        v-for="(item, index) in frontmatter.badges"
+                        :key="index"
+                        :class="$style.badgesItem"
+                    >
                         <iframe
                             v-if="!/^https?/.test(item)"
                             :src="`https://ghbtns.com/github-btn.html?${item}`"
@@ -130,6 +134,11 @@ export default {
             return style;
         },
     },
+    mounted() {
+        this.$scroll.reveal(`.${this.$style.title}`, { origin: 'top', distance: '100px' });
+        this.$scroll.reveal(`.${this.$style.description}`, { origin: 'bottom', distance: '100px' });
+        this.$scroll.reveal(`.${this.$style.badgesItem}`, { delay: 300, interval: 200 });
+    },
 };
 </script>
 
@@ -144,6 +153,10 @@ export default {
         max-width: 1240px;
         width: 90%;
         margin: 0 auto;
+
+        .title {
+            position: relative;
+        }
 
         &.hasHeroImage {
             text-align: left;
@@ -210,6 +223,10 @@ export default {
 
     .badges {
         margin: auto;
+    }
+
+    .badgesItem {
+        position: relative;
     }
 
     .description {

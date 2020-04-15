@@ -9,10 +9,18 @@ export default {
 <style lang="stylus">
 a.sidebar-link {
     border-left: none;
-    border-right: 0.25rem solid transparent;
+    border-right: 0rem solid transparent;
+    transition: all 0.3s;
+    border-top-left-radius: $borderRadius;
+    border-bottom-left-radius: $borderRadius;
+
+    &:hover {
+        background: lighten($accentColor, 90%);
+    }
 
     &.active {
         border-right-color: $accentColor;
+        border-right-width: 0.25rem;
     }
 
     .sidebar-sub-headers & {

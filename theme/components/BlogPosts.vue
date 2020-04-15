@@ -12,6 +12,7 @@
                     v-for="(post, index) in currentPosts"
                     :key="`${post.key}_${index}`"
                     :post="post"
+                    :class="$style.postItem"
                 ></PostInfo>
             </TransitionFadeSlide>
         </template>
@@ -103,6 +104,10 @@ export default {
 <style lang="stylus" module>
 .posts {
     position: relative;
+
+    .postItem {
+        position: relative;
+    }
 
     .pagation {
         position: relative;

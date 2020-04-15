@@ -1,6 +1,11 @@
 <template>
     <div :class="$style.root">
-        <router-link v-for="(item, index) in tags" :key="index" :to="item.path">
+        <router-link
+            v-for="(item, index) in tags"
+            :key="index"
+            :to="item.path"
+            :class="$style.item"
+        >
             <span
                 :simple="simple"
                 :class="{ [$style.active]: item.name == currentTag}"
@@ -12,7 +17,6 @@
 
 <script>
 import { filterPosts } from '@theme/helpers/postData.js';
-import { getOneColor } from '@theme/helpers';
 export default {
     props: {
         simple: Boolean,
@@ -46,6 +50,9 @@ export default {
             }
             return { };
         },
+    },
+    mounted() {
+        this.$scroll.reveal(`.${this.$style.item}`, { interval: 100 });
     },
 };
 </script>
@@ -83,6 +90,10 @@ export default {
             color: $whiteColor;
         }
     }
+}
+
+.item {
+    position: relative;
 }
 </style>
 
