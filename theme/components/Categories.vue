@@ -56,9 +56,6 @@ export default {
             return { backgroundColor: getOneColor(index) };
         },
     },
-    mounted() {
-        this.$scroll.reveal(`.${this.$style.item}`, { interval: 100 });
-    },
 };
 </script>
 

@@ -64,9 +64,9 @@ export default {
         },
     },
     mounted() {
-        this.$scroll.reveal(`.${this.$style.year}`);
+        this.$scroll.reveal(`.${this.$style.desc}`);
         this.$scroll.reveal(`.${this.$style.date}`, { interval: 100 });
-        this.$scroll.reveal(`.${this.$style.title}`, { delay: 200, origin: 'right', distance: '100px', interval: 100 });
+        this.$scroll.reveal(`.${this.$style.title}`, { delay: 100, origin: 'right', distance: '100px', interval: 200 });
     },
 };
 </script>

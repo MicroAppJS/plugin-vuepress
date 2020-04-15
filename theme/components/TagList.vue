@@ -51,9 +51,6 @@ export default {
             return { };
         },
     },
-    mounted() {
-        this.$scroll.reveal(`.${this.$style.item}`, { interval: 100 });
-    },
 };
 </script>
 

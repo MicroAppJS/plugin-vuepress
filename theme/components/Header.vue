@@ -135,6 +135,7 @@ export default {
         },
     },
     mounted() {
+        this.$scroll.reveal(`.${this.$style.headerItem}`, { delay: 100 });
         this.$scroll.reveal(`.${this.$style.title}`, { origin: 'top', distance: '100px' });
         this.$scroll.reveal(`.${this.$style.description}`, { origin: 'bottom', distance: '100px' });
         this.$scroll.reveal(`.${this.$style.badgesItem}`, { delay: 300, interval: 200 });
