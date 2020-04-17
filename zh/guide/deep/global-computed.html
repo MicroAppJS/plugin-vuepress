@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>全局计算属性 | Plugin - VuePress</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    <link rel="icon" href="/plugin-vuepress/icons/favicon.png">
+    <link rel="manifest" href="/plugin-vuepress/manifest.json">
+    <link rel="apple-touch-icon" href="/plugin-vuepress/icons/favicon@0,5x.png">
+    <link rel="mask-icon" href="/plugin-vuepress/icons/favicon.svg" color="#EDB65B">
+    <meta name="description" content="在 VuePress 中，内置了一些核心的计算属性，以供自定义主题使用。 这是你现在看到的这个网站的 $site 的值：  json { "title": "VuePress", "description": "Vue 驱动的静态网站生成器", "base": "/", "pages":  { "lastUpdated": 1524027677000, "path": "/", "title": ">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" data-auto-meta="true">
+    <meta rel="alternative" hreflang="zh-CN" href="/zh/" link="alternative" content="zh-CN" data-auto-meta="true">
+    <meta property="article:published_time" content="2020-04-17T21:12:35.852Z" data-auto-meta="true">
+    <meta property="article:modified_time" content="2020-04-17T21:12:19.000Z" data-auto-meta="true">
+    <meta property="og:site_name" content="Plugin - VuePress" data-auto-meta="true">
+    <meta property="og:title" content="全局计算属性" data-auto-meta="true">
+    <meta property="og:description" content="在 VuePress 中，内置了一些核心的计算属性，以供自定义主题使用。 这是你现在看到的这个网站的 $site 的值：  json { "title": "VuePress", "description": "Vue 驱动的静态网站生成器", "base": "/", "pages":  { "lastUpdated": 1524027677000, "path": "/", "title": " data-auto-meta="true">
+    <meta property="og:type" content="website" data-auto-meta="true">
+    <meta property="og:url" content="/zh/guide/deep/global-computed.html" data-auto-meta="true">
+    <meta name="twitter:title" content="全局计算属性" data-auto-meta="true">
+    <meta name="twitter:description" content="在 VuePress 中，内置了一些核心的计算属性，以供自定义主题使用。 这是你现在看到的这个网站的 $site 的值：  json { "title": "VuePress", "description": "Vue 驱动的静态网站生成器", "base": "/", "pages":  { "lastUpdated": 1524027677000, "path": "/", "title": " data-auto-meta="true">
+    <meta name="twitter:url" content="/zh/guide/deep/global-computed.html" data-auto-meta="true">
+    <meta name="twitter:card" content="summary_large_image" data-auto-meta="true">
+    <meta name="twitter:label1" content="Written by" data-auto-meta="true">
+    <meta name="twitter:data2" content="Zyao89" data-auto-meta="true">
+    <meta name="powerby" content="Micro-App" data-auto-meta="true">
+    <meta name="theme-color" content="#EDB65B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="preload" href="/plugin-vuepress/assets/css/0.styles.79664c9f.css" as="style"><link rel="preload" href="/plugin-vuepress/assets/js/app.472e4c3f.js" as="script"><link rel="preload" href="/plugin-vuepress/assets/js/2.0bf59f5e.js" as="script"><link rel="preload" href="/plugin-vuepress/assets/js/1.915d9d12.js" as="script"><link rel="preload" href="/plugin-vuepress/assets/js/9.3c8853ae.js" as="script"><link rel="preload" href="/plugin-vuepress/assets/js/39.9831c39a.js" as="script"><link rel="preload" href="/plugin-vuepress/assets/js/15.cd126eaf.js" as="script"><link rel="preload" href="/plugin-vuepress/assets/js/13.52c5c151.js" as="script"><link rel="prefetch" href="/plugin-vuepress/assets/js/10.f16850e1.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/11.ed5b47af.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/12.370780fe.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/14.a91cbd10.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/16.5009586c.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/17.73440732.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/18.ad4ad5c9.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/19.85234e46.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/20.97903f34.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/21.121e0a17.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/22.40951907.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/23.9bcfc8a4.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/24.a7f3e25a.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/25.f96eddcb.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/26.0aa7d6b2.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/27.f9c8a464.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/28.389ea01c.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/29.e43c1c8d.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/30.434e9562.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/31.34cd8561.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/32.1d209446.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/33.f332adb4.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/34.1dc791f4.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/35.74a85d19.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/36.17cc1767.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/37.cd833b66.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/38.a8e033ec.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/40.3c22d7c3.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/41.660b93f0.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/42.ff0129f3.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/43.05510948.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/44.cfca2216.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/45.0e9c815b.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/46.dc396b23.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/47.8fbc859b.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/8.d93058b1.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/icon-svg.fcfb672f.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/vendors~flowchart.2c1eae5c.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/vendors~icon-svg.b8b67e16.js"><link rel="prefetch" href="/plugin-vuepress/assets/js/vuejs-paginate.10aefe92.js">
+    <link rel="stylesheet" href="/plugin-vuepress/assets/css/0.styles.79664c9f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="navbar-inner"><div class="navbar-crumb"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/plugin-vuepress/zh/" class="home-link router-link-active"><!----> <span class="site-name">Plugin - VuePress</span></a></div> <div class="navbar-action"><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/plugin-vuepress/zh/guide/" class="nav-link router-link-active link_1Qo6IQdS"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1-b3raze"><use xlink:href=""></use></svg> 指南</a></div><div class="nav-item"><a href="/plugin-vuepress/zh/config/" class="nav-link link_1Qo6IQdS"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1-b3raze"><use xlink:href=""></use></svg> 文档</a></div> <a href="https://github.com/MicroAppJS/plugin-vuepress" target="_blank" rel="noopener noreferrer" class="repo-link"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1-b3raze"><use xlink:href=""></use></svg>
+        GitHub
+        <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1-b3raze outbound_1mVxKso5"><use xlink:href=""></use></svg></a></nav></div></div></div></header> <!----> <div class="main-wrapper wrapper_4IIHIFZ3"><div class="sidebar-mask"></div> <div class="aside"><aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/plugin-vuepress/zh/guide/" class="nav-link router-link-active link_1Qo6IQdS"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1-b3raze"><use xlink:href=""></use></svg> 指南</a></div><div class="nav-item"><a href="/plugin-vuepress/zh/config/" class="nav-link link_1Qo6IQdS"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1-b3raze"><use xlink:href=""></use></svg> 文档</a></div> <a href="https://github.com/MicroAppJS/plugin-vuepress" target="_blank" rel="noopener noreferrer" class="repo-link"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1-b3raze"><use xlink:href=""></use></svg>
+        GitHub
+        <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1-b3raze outbound_1mVxKso5"><use xlink:href=""></use></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>基础</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/plugin-vuepress/zh/guide/" class="sidebar-link">介绍</a></li><li><a href="/plugin-vuepress/zh/guide/getting-started.html" class="sidebar-link">快速上手</a></li><li><a href="/plugin-vuepress/zh/guide/assets.html" class="sidebar-link">静态资源</a></li><li><a href="/plugin-vuepress/zh/guide/basic-config.html" class="sidebar-link">配置</a></li><li><a href="/plugin-vuepress/zh/guide/i18n.html" class="sidebar-link">多语言</a></li><li><a href="/plugin-vuepress/zh/guide/theme-config.html" class="sidebar-link">主题配置</a></li><li><a href="/plugin-vuepress/zh/guide/deploy.html" class="sidebar-link">部署</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>深入</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/plugin-vuepress/zh/guide/deep/frontmatter.html" class="sidebar-link">Front Matter</a></li><li><a href="/plugin-vuepress/zh/guide/deep/permalinks.html" class="sidebar-link">永久链接</a></li><li><a href="/plugin-vuepress/zh/guide/deep/markdown-slot.html" class="sidebar-link">Markdown 插槽</a></li><li><a href="/plugin-vuepress/zh/guide/deep/global-computed.html" class="active sidebar-link">全局计算属性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/plugin-vuepress/zh/guide/deep/global-computed.html#site" class="sidebar-link">$site</a></li><li class="sidebar-sub-header"><a href="/plugin-vuepress/zh/guide/deep/global-computed.html#page" class="sidebar-link">$page</a></li><li class="sidebar-sub-header"><a href="/plugin-vuepress/zh/guide/deep/global-computed.html#frontmatter" class="sidebar-link">$frontmatter</a></li><li class="sidebar-sub-header"><a href="/plugin-vuepress/zh/guide/deep/global-computed.html#title" class="sidebar-link">$title</a></li><li class="sidebar-sub-header"><a href="/plugin-vuepress/zh/guide/deep/global-computed.html#description" class="sidebar-link">$description</a></li><li class="sidebar-sub-header"><a href="/plugin-vuepress/zh/guide/deep/global-computed.html#themeconfig" class="sidebar-link">$themeConfig</a></li><li class="sidebar-sub-header"><a href="/plugin-vuepress/zh/guide/deep/global-computed.html#type" class="sidebar-link">$type</a></li><li class="sidebar-sub-header"><a href="/plugin-vuepress/zh/guide/deep/global-computed.html#posts" class="sidebar-link">$posts</a></li><li class="sidebar-sub-header"><a href="/plugin-vuepress/zh/guide/deep/global-computed.html#postsfortags" class="sidebar-link">$postsForTags</a></li><li class="sidebar-sub-header"><a href="/plugin-vuepress/zh/guide/deep/global-computed.html#postsforcategories" class="sidebar-link">$postsForCategories</a></li><li class="sidebar-sub-header"><a href="/plugin-vuepress/zh/guide/deep/global-computed.html#blogconfig" class="sidebar-link">$blogConfig</a></li></ul></li></ul></section></li></ul> </aside></div> <!----> <div class="main-content content_2b1RNXsQ"><main class="page root_thrbhLwq"> <!----> <div role="content" class="theme-default-content content__default content_3zwEJ9o_"><h1 id="全局计算属性"><a href="#全局计算属性" class="header-anchor">#</a> 全局计算属性</h1> <p>在 VuePress 中，内置了一些核心的<a href="https://cn.vuejs.org/v2/guide/computed.html#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7" target="_blank" rel="noopener noreferrer">计算属性<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1-b3raze outbound_1mVxKso5"><use xlink:href=""></use></svg></a>，以供自定义主题使用。</p> <h2 id="site"><a href="#site" class="header-anchor">#</a> $site</h2> <p>这是你现在看到的这个网站的 <code>$site</code> 的值：</p> <div class="language-json extra-class"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;VuePress&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Vue 驱动的静态网站生成器&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;base&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;pages&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;lastUpdated&quot;</span><span class="token operator">:</span> <span class="token number">1524027677000</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;VuePress&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;frontmatter&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    ...
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="root_2MosK_Bi"><div class="head_3uAtCO9U"><div class="tools_feDnIGMW"><!----> <span data-clipboard-text="{
+  &quot;title&quot;: &quot;VuePress&quot;,
+  &quot;description&quot;: &quot;Vue 驱动的静态网站生成器&quot;,
+  &quot;base&quot;: &quot;/&quot;,
+  &quot;pages&quot;: [
+    {
+      &quot;lastUpdated&quot;: 1524027677000,
+      &quot;path&quot;: &quot;/&quot;,
+      &quot;title&quot;: &quot;VuePress&quot;,
+      &quot;frontmatter&quot;: {}
+    },
+    ...
+  ]
+}" class="icon_1warjIFa"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1-b3raze"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h2 id="page"><a href="#page" class="header-anchor">#</a> $page</h2> <p>这是你现在看到的这个页面的 <code>$page</code> 的值：</p> <div class="language-json extra-class"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Global Computed&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;frontmatter&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;sidebar&quot;</span><span class="token operator">:</span> <span class="token string">&quot;auto&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;regularPath&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/zh/miscellaneous/global-computed.html&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;key&quot;</span><span class="token operator">:</span> <span class="token string">&quot;v-bc9a3e3f9692d&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/zh/miscellaneous/global-computed.html&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;headers&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;level&quot;</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;$site&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;slug&quot;</span><span class="token operator">:</span> <span class="token string">&quot;site&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;level&quot;</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;$page&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;slug&quot;</span><span class="token operator">:</span> <span class="token string">&quot;page&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    ...
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="root_2MosK_Bi"><div class="head_3uAtCO9U"><div class="tools_feDnIGMW"><!----> <span data-clipboard-text="{
+  &quot;title&quot;: &quot;Global Computed&quot;,
+  &quot;frontmatter&quot;: {
+    &quot;sidebar&quot;: &quot;auto&quot;
+  },
+  &quot;regularPath&quot;: &quot;/zh/miscellaneous/global-computed.html&quot;,
+  &quot;key&quot;: &quot;v-bc9a3e3f9692d&quot;,
+  &quot;path&quot;: &quot;/zh/miscellaneous/global-computed.html&quot;,
+  &quot;headers&quot;: [
+    {
+      &quot;level&quot;: 2,
+      &quot;title&quot;: &quot;$site&quot;,
+      &quot;slug&quot;: &quot;site&quot;
+    },
+    {
+      &quot;level&quot;: 2,
+      &quot;title&quot;: &quot;$page&quot;,
+      &quot;slug&quot;: &quot;page&quot;
+    },
+    ...
+  ]
+}" class="icon_1warjIFa"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1-b3raze"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h2 id="frontmatter"><a href="#frontmatter" class="header-anchor">#</a> $frontmatter</h2> <p><a href="#page">$page</a>.frontmatter 的引用。</p> <h2 id="title"><a href="#title" class="header-anchor">#</a> $title</h2> <p>用于当前页面的 <code>&lt;title&gt;</code> 标签的值。</p> <h2 id="description"><a href="#description" class="header-anchor">#</a> $description</h2> <p>用于当前页面的 <code>&lt;meta name=&quot;description&quot; content=&quot;...&quot;&gt;</code> 的 <code>content</code> 值。</p> <h2 id="themeconfig"><a href="#themeconfig" class="header-anchor">#</a> $themeConfig</h2> <p>即 <code>siteConfig.themeConfig</code>。</p> <h2 id="type"><a href="#type" class="header-anchor">#</a> $type</h2> <p>这是现在网站的类型。（如：<code>doc</code>, <code>blog</code>）</p> <h2 id="posts"><a href="#posts" class="header-anchor">#</a> $posts</h2> <p>所有文章列表。</p> <h2 id="postsfortags"><a href="#postsfortags" class="header-anchor">#</a> $postsForTags</h2> <p>所有标签文章列表。</p> <h2 id="postsforcategories"><a href="#postsforcategories" class="header-anchor">#</a> $postsForCategories</h2> <p>所有分类文章列表。</p> <h2 id="blogconfig"><a href="#blogconfig" class="header-anchor">#</a> $blogConfig</h2> <p>博客配置，即 <code>themeConfig.blogConfig</code>。</p></div> <!----> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/MicroAppJS/plugin-vuepress/edit/master/docs/zh/guide/deep/global-computed.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1-b3raze outbound_1mVxKso5"><use xlink:href=""></use></svg></div> <div class="last-updated"><span class="prefix">上次编辑时间:</span> <span class="time">2020年4月17日星期五 21:12</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/plugin-vuepress/zh/guide/deep/markdown-slot.html" class="prev">
+        Markdown 插槽
+      </a></span> <!----></p></div>  <!----></main></div></div> <!----></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/plugin-vuepress/assets/js/app.472e4c3f.js" defer></script><script src="/plugin-vuepress/assets/js/2.0bf59f5e.js" defer></script><script src="/plugin-vuepress/assets/js/1.915d9d12.js" defer></script><script src="/plugin-vuepress/assets/js/9.3c8853ae.js" defer></script><script src="/plugin-vuepress/assets/js/39.9831c39a.js" defer></script><script src="/plugin-vuepress/assets/js/15.cd126eaf.js" defer></script><script src="/plugin-vuepress/assets/js/13.52c5c151.js" defer></script>
+  </body>
+</html>
