@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
     serviceWorker: true,
-    // TODO custom theme
+    // custom theme
     theme: path.resolve(__dirname, '../../theme/index.js'),
     // themeConfig: {
     //     // logo: '/logo.png',

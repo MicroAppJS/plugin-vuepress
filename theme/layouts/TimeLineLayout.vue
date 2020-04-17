@@ -63,6 +63,11 @@ export default {
             return this.$blogConfig.timelineTitle;
         },
     },
+    mounted() {
+        this.$scroll.reveal(`.${this.$style.desc}`);
+        this.$scroll.reveal(`.${this.$style.date}`, { interval: 100 });
+        this.$scroll.reveal(`.${this.$style.title}`, { delay: 100, origin: 'right', distance: '100px', interval: 200 });
+    },
 };
 </script>
 <style lang="stylus" module>
@@ -143,6 +148,10 @@ export default {
 .yearWrapper {
     list-style: none;
     padding: 0;
+
+    .subItem {
+        position: relative;
+    }
 
     .subItemWrapper {
         position: relative;

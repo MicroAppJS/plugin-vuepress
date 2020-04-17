@@ -1,6 +1,11 @@
 <template>
     <div :class="$style.root">
-        <router-link v-for="(item, index) in tags" :key="index" :to="item.path">
+        <router-link
+            v-for="(item, index) in tags"
+            :key="index"
+            :to="item.path"
+            :class="$style.item"
+        >
             <span
                 :simple="simple"
                 :class="{ [$style.active]: item.name == currentTag}"
@@ -11,7 +16,7 @@
 </template>
 
 <script>
-import { getOneColor } from '@theme/helpers';
+import { filterPosts } from '@theme/helpers/postData.js';
 export default {
     props: {
         simple: Boolean,
@@ -25,7 +30,10 @@ export default {
             }
             return [
                 { name: 'ALL', path: tagsPath },
-                ...this.list,
+                ...this.list.filter(item => {
+                    const pages = filterPosts(item.pages || []);
+                    return pages.length > 0;
+                }),
             ];
         },
         currentTag() {
@@ -40,7 +48,7 @@ export default {
             if (this.simple) {
                 return {};
             }
-            return { backgroundColor: getOneColor(index) };
+            return { };
         },
     },
 };
@@ -57,8 +65,9 @@ export default {
         display: inline-block;
         cursor: pointer;
         border-radius: $borderRadius;
-        background: #fff;
-        color: #fff;
+        background: $backgroundColor;
+        color: $textColor;
+        border: solid 1px $borderColor;
         line-height: 13px;
         font-size: 13px;
         box-shadow: $boxShadow;
@@ -66,15 +75,22 @@ export default {
 
         &:hover {
             transform: translateY(-0.1rem);
+            background: $accentColor;
+            color: $whiteColor;
         }
 
         &[simple] {
-            background: darken($accentColor, 60%) !important;
         }
 
         &[simple].active {
             background: $accentColor !important;
+            color: $whiteColor;
         }
     }
 }
+
+.item {
+    position: relative;
+}
 </style>
+

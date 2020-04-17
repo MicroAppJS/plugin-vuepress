@@ -13,7 +13,7 @@ export default {
 
         a.sidebar-link.active {
             // font-weight: 600;
-            // color: #fff;
+            // color: $whiteColor;
             // background-color: alpha($accentColor, 0.95);
             // box-sizing: border-box;
             // border-radius: $borderRadius;

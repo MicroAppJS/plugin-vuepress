@@ -38,6 +38,7 @@ module.exports = (api, argv, opts) => {
                     return vuepressConfig[name];
                 },
             }),
+            vuepressDir: vuepressConfig.vuepressDir,
         };
 
         return OPTIONS;

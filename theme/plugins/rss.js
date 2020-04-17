@@ -1,7 +1,8 @@
 // rss
+const { RSS_FILENAME } = require('./config');
+
 module.exports = (options, ctx) => {
-    const { fs, _, logger } = require('@micro-app/shared-utils');
-    const path = require('path');
+    const { fs, _, logger, path } = require('@micro-app/shared-utils');
     const RSS = require('rss');
 
     if (!_.isPlainObject(options)) {
@@ -23,7 +24,7 @@ module.exports = (options, ctx) => {
             const feed = new RSS({
                 title: siteConfig.title,
                 description: siteConfig.description,
-                feed_url: `${siteUrl}/rss.xml`,
+                feed_url: `${siteUrl}/${RSS_FILENAME}`,
                 site_url: siteUrl,
                 copyright: copyright || author,
                 language: 'en',
@@ -59,7 +60,7 @@ module.exports = (options, ctx) => {
                     }
                     return {
                         title: page.title,
-                        description: page.excerpt,
+                        description: summary || page.excerpt,
                         url: `${siteUrl}${decodeURIComponent(page.path)}`,
                         guid: page.path,
                         categories: [].concat(categories, tags),

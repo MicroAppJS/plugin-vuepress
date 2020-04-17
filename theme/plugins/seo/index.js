@@ -1,3 +1,4 @@
+const { POWERBY_NAME, RSS_FILENAME } = require('../config');
 const moment = require('moment');
 
 const defaultOptions = {
@@ -98,7 +99,7 @@ const defaultOptions = {
         if (blogConfig.rss) {
             add('alternate', 'rss', 'link', {
                 rel: 'alternate', title: $page.localeConfig.title || $site.title,
-                href: siteUrl + '/rss.xml',
+                href: `${siteUrl}/${RSS_FILENAME}`,
             });
         }
 
@@ -141,9 +142,10 @@ const defaultOptions = {
         add('keywords', ctx.keywords);
 
         // description
-        if (!$page.frontmatter.home) {
-            add('description', ctx.description);
-        }
+        add('description', ctx.description);
+
+        // powerby
+        add('powerby', POWERBY_NAME);
     },
 };
 
@@ -190,7 +192,12 @@ function getAddMeta(meta) {
     return (name, content, attribute = null, attrs = {}) => {
         if (!content) return;
         if (!attribute) attribute = [ 'article:', 'og:' ].some(type => name.startsWith(type)) ? 'property' : 'name';
-        meta.push({ ...attrs, [attribute]: name, content, 'data-auto-meta': true });
+        if (meta.some(item => item[attribute] === name)) { // 重复 update
+            const info = meta.find(item => item[attribute] === name);
+            Object.assign(info, { ...attrs, [attribute]: name, content, 'data-auto-meta': true, 'data-update-meta': true });
+        } else {
+            meta.push({ ...attrs, [attribute]: name, content, 'data-auto-meta': true });
+        }
     };
 }
 

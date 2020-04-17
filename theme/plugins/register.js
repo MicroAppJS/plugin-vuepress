@@ -42,6 +42,12 @@ function registerPlugins(ctx) {
     const siteConfig = ctx.siteConfig || {};
     const isLocales = !!siteConfig.locales || !!themeConfig.locales || false;
 
+    const type = siteConfig.type || themeConfig.type || 'doc';
+    if (type === 'blog') {
+        plugins.push([ require('./blog'), true ]);
+        plugins.push([ require('./excerpt'), true ]);
+    }
+
     // pwa
     if (themeConfig.pwa) {
         plugins.push([
@@ -81,7 +87,7 @@ function registerPlugins(ctx) {
     if (baiduObj.autoPush) {
         plugins.push([ require('./baiduAutoPush'), true ]);
     }
-    if (baiduObj.hmtID === 'string') {
+    if (typeof baiduObj.hmtID === 'string') {
         plugins.push([ require('./baiduHmt'), {
             hmtID: baiduObj.hmtID,
         }]);

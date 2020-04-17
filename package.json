@@ -1,6 +1,6 @@
 {
     "name": "@micro-app/plugin-vuepress",
-    "version": "0.1.1",
+    "version": "0.1.23",
     "description": "[Plugin] adapter vuepress plugin.",
     "main": "src/index.js",
     "bin": {
@@ -16,7 +16,9 @@
         "vp:deploy": "micro-app vuepress deploy --base /plugin-vuepress/",
         "release": "micro-app release",
         "release:alpha": "npm run release -- --preRelease=alpha",
-        "release:next": "npm run release -- --preRelease=next"
+        "release:next": "npm run release -- --preRelease=next",
+        "release:minor": "npm run release minor",
+        "release:patch": "npm run release patch"
     },
     "files": [
         "bin",
@@ -45,27 +47,22 @@
         "email": "zyao89@gmail.com"
     },
     "license": "MIT",
-    "peerDependencies": {
-        "@micro-app/cli": ">=0.3.1"
-    },
     "devDependencies": {
-        "@micro-app/plugin-deploy": "^0.0.4",
-        "@types/jest": "^24.0.25",
-        "babel-eslint": "^10.0.3",
-        "eslint": "^5.16.0",
-        "eslint-config-2o3t": "^1.1.17",
+        "@micro-app/plugin-deploy": "^0.0.7",
+        "@types/jest": "^24.9.1",
+        "eslint-config-2o3t": "^2.0.1",
         "jest": "^24.9.0"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.3.1",
+        "@micro-app/cli": "^0.3.15",
         "@vssue/api-github-v4": "^1.4.0",
-        "@vssue/vuepress-plugin-vssue": "^1.4.2",
-        "@vuepress/plugin-back-to-top": "^1.3.0",
+        "@vssue/vuepress-plugin-vssue": "^1.4.3",
+        "@vuepress/plugin-back-to-top": "^1.4.1",
         "@vuepress/plugin-blog": "^1.9.2",
-        "@vuepress/plugin-google-analytics": "^1.3.0",
-        "@vuepress/plugin-medium-zoom": "^1.3.0",
-        "@vuepress/plugin-pwa": "^1.3.0",
-        "clipboard": "^2.0.4",
+        "@vuepress/plugin-google-analytics": "^1.4.1",
+        "@vuepress/plugin-medium-zoom": "^1.4.1",
+        "@vuepress/plugin-pwa": "^1.4.1",
+        "clipboard": "^2.0.6",
         "markdown-it-footnote": "^3.0.2",
         "markdown-it-imsize": "^2.0.1",
         "markdown-it-mark": "^3.0.0",
@@ -75,11 +72,12 @@
         "moment": "^2.24.0",
         "remove-markdown": "^0.3.0",
         "rss": "^1.2.2",
-        "svg-sprite-loader": "^4.2.1",
+        "scrollreveal": "^4.0.6",
+        "svg-sprite-loader": "^4.2.5",
         "svgo": "^1.3.2",
         "svgo-loader": "^2.2.1",
-        "vuepress": "^1.3.0",
+        "vuepress": "^1.4.1",
         "vuepress-plugin-flowchart": "^1.4.3",
-        "vuepress-plugin-redirect": "^1.2.2"
+        "vuepress-plugin-redirect": "^1.2.3"
     }
 }

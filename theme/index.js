@@ -6,18 +6,12 @@ module.exports = (options, ctx) => {
     const defaultTheme = require('@vuepress/theme-default');
     const defaultThemeConfig = defaultTheme(options, ctx);
 
-    const siteConfig = ctx.siteConfig || {};
     const themeConfig = ctx.themeConfig = ctx.themeConfig || {};
-    const type = siteConfig.type || themeConfig.type || 'doc';
 
     const vuepressDir = ctx.vuepressDir;
     const iconsDir = path.resolve(vuepressDir, 'public', 'icons');
     const iconsLibDir = path.resolve(__dirname, 'icons');
     const svgIconsDir = themeConfig.svgIconsDir && path.resolve(vuepressDir, themeConfig.svgIconsDir) || iconsLibDir;
-
-    // blog config
-    const blogPlugin = require('./plugins/blog');
-    themeConfig.blogConfig = blogPlugin.initBlogConfig(ctx);
 
     const finalConfig = {
         define: {
@@ -75,6 +69,16 @@ module.exports = (options, ctx) => {
                         },
                     ],
                 });
+
+            // txt file
+            config.module
+                .rule('txt-file')
+                .test(/\.(txt)(\?.*)?$/)
+                .use('file-loader')
+                .loader('file-loader')
+                .options({
+                    name: 'assets/file/[path][name].[ext]',
+                });
         },
         extendMarkdown: md => {
             md.set({ breaks: true });
@@ -94,10 +98,17 @@ module.exports = (options, ctx) => {
             config.plugin('footnote').use(require('markdown-it-footnote'));
             config.plugin('imsize').use(require('markdown-it-imsize'));
             config.plugin('task-lists').use(require('markdown-it-task-lists'), [{ label: true, labelAfter: true }]);
+
+            // const { PLUGINS } = require('@vuepress/markdown/lib/constant.js');
+            // config.plugin(PLUGINS.ANCHOR).tap(options => {
+            //     return options.map(opt => {
+            //         // opt.permalinkSymbol = '#$';
+            //         return opt;
+            //     });
+            // });
         },
         plugins: [
             ...require('./plugins/register')(ctx),
-            ...(type === 'blog' ? blogPlugin.registerPlugins(ctx) : []),
         ],
 
         // Blog https://github.com/meteorlxy/vuepress-theme-meteorlxy/blob/master/lib/plugins/blog/index.js
@@ -106,9 +117,6 @@ module.exports = (options, ctx) => {
             // if (!strippedContent) {
             //     return;
             // }
-            if (type === 'blog') {
-                blogPlugin.extendPageData($page, ctx);
-            }
         },
     };
 

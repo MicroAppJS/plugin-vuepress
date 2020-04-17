@@ -7,13 +7,8 @@ const yParser = require('yargs-parser');
 const argv = yParser(process.argv.slice(2));
 const path = require('path');
 
-const { tryRequire, logger } = require('@micro-app/shared-utils');
-const MicroAppCLI = tryRequire('@micro-app/cli');
-if (!MicroAppCLI) {
-    logger.throw("Cannot find module '@micro-app/cli'!");
-}
-
-const { service } = MicroAppCLI;
+const { createService } = require('@micro-app/cli');
+const service = createService(argv);
 
 [ 'extends', 'commands' ].forEach(name => {
     service.registerPlugin({

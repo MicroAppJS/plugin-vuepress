@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { filterPosts } from '@theme/helpers/postData.js';
 import { getOneColor } from '@theme/helpers';
 export default {
     props: {
@@ -34,7 +35,10 @@ export default {
             const pages = this.$posts || [];
             return [
                 // { name: 'ALL', path: categoriesPath, pages },
-                ...this.list,
+                ...this.list.filter(item => {
+                    const pages = filterPosts(item.pages || []);
+                    return pages.length > 0;
+                }),
             ];
         },
         currentCategory() {
@@ -70,8 +74,8 @@ export default {
         transition: all 0.3s;
         border-radius: $borderRadius;
         box-shadow: $boxShadow;
-        background-color: $backgroundColor;
 
+        // background-color: $backgroundColor;
         &:hover {
             transform: translateY(-0.1rem);
         }
@@ -91,7 +95,7 @@ export default {
             border-radius: $borderRadius;
             background-color: #eee;
             font-size: 0.6rem;
-            color: #fff;
+            color: $whiteColor;
             margin-left: 6px;
         }
 
@@ -99,20 +103,30 @@ export default {
             vertical-align: middle;
             display: inline-block;
             margin: 0.3rem;
-            background-color: darken($accentColor, 60%);
+            background: $backgroundColor;
+            color: $textColor;
+            border: solid 1px $borderColor;
             font-size: 13px;
 
             a {
                 padding: 0.3rem 0.6rem;
             }
 
-            .name {
-                color: #fff;
+            &:hover {
+                background: $accentColor;
+
+                a {
+                    color: $whiteColor;
+                }
             }
         }
 
         &[simple].active {
             background-color: $accentColor;
+
+            a {
+                color: $whiteColor;
+            }
         }
     }
 }
