@@ -10,7 +10,7 @@
                 v-if="frontmatter.type"
                 style="margin-left: 5px;"
                 :text="frontmatter.type"
-                type="yellow"
+                :type="frontmatter.typeColor"
             ></Badge>
         </h1>
         <div :class="$style.rows">

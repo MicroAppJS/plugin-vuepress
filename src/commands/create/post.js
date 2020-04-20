@@ -108,6 +108,38 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
         });
     });
 
+    // type
+    chain = chain.then(() => {
+        return prompt.input('Enter Type:').then(answer => {
+            const type = answer.trim();
+            info.type = type || false;
+        });
+    });
+
+    // typeColor
+    chain = chain.then(() => {
+        let _chain = Promise.resolve([]);
+        if (info.type) {
+            const typeColorOpts = [
+                { name: 'Easy (green)', value: 'easy' },
+                { name: 'Medium (yellow)', value: 'medium' },
+                { name: 'Hard (red)', value: 'hard' },
+            ];
+            if (typeColorOpts.length) {
+                _chain = _chain.then(() => prompt.select('Select TypeColor:', {
+                    choices: [
+                        ...typeColorOpts,
+                    ],
+                    pageSize: 10,
+                })).then(answer => {
+                    const typeColor = answer.trim();
+                    info.typeColor = typeColor || false;
+                });
+            }
+        }
+        return _chain;
+    });
+
     // private
     chain = chain.then(() => {
         return prompt.confirm('Is Private?').then(answer => {

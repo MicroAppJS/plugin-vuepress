@@ -64,9 +64,9 @@ export default {
         },
     },
     mounted() {
-        this.$scroll.reveal(`.${this.$style.desc}`);
-        this.$scroll.reveal(`.${this.$style.date}`, { interval: 100 });
-        this.$scroll.reveal(`.${this.$style.title}`, { delay: 100, origin: 'right', distance: '100px', interval: 200 });
+        this.$scrollReveal(`.${this.$style.desc}`);
+        this.$scrollReveal(`.${this.$style.date}`, { reset: false, interval: 100 });
+        this.$scrollReveal(`.${this.$style.title}`, { reset: false, delay: 100, origin: 'right', distance: '100px', interval: 200 });
     },
 };
 </script>

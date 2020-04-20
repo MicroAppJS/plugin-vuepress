@@ -54,7 +54,7 @@
         "jest": "^24.9.0"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.3.15",
+        "@micro-app/cli": "^0.3.16",
         "@vssue/api-github-v4": "^1.4.0",
         "@vssue/vuepress-plugin-vssue": "^1.4.3",
         "@vuepress/plugin-back-to-top": "^1.4.1",

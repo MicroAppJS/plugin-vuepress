@@ -34,8 +34,8 @@ export default {
         },
     },
     mounted() {
-        this.$scroll.reveal(`.${this.$style.title}`, { origin: 'left', distance: '100px', interval: 100 });
-        this.$scroll.reveal(`.${this.$style.meta}`, { origin: 'right', distance: '100px', interval: 100 });
+        this.$scrollReveal(`.${this.$style.title}`, { origin: 'left', distance: '100px', interval: 100 });
+        this.$scrollReveal(`.${this.$style.meta}`, { origin: 'right', distance: '100px', interval: 100 });
     },
 };
 </script>

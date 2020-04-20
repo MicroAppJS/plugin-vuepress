@@ -53,11 +53,11 @@ export default {
         },
     },
     mounted() {
-        this.$scroll.reveal(`.${this.$style.features}`);
-        this.$scroll.reveal(`.${this.$style.odd}>.${this.$style.wrapperImg}`, { delay: 300, origin: 'left', distance: '100px', interval: 200 });
-        this.$scroll.reveal(`.${this.$style.even}>.${this.$style.wrapperImg}`, { delay: 300, origin: 'right', distance: '100px', interval: 200 });
-        this.$scroll.reveal(`.${this.$style.odd}>.${this.$style.wrapperText}`, { delay: 600, origin: 'right', distance: '100px', interval: 200 });
-        this.$scroll.reveal(`.${this.$style.even}>.${this.$style.wrapperText}`, { delay: 600, origin: 'left', distance: '100px', interval: 200 });
+        this.$scrollReveal(`.${this.$style.features}`);
+        this.$scrollReveal(`.${this.$style.odd}>.${this.$style.wrapperImg}`, { delay: 100, origin: 'left', distance: '100px', interval: 200 });
+        this.$scrollReveal(`.${this.$style.even}>.${this.$style.wrapperImg}`, { delay: 100, origin: 'right', distance: '100px', interval: 200 });
+        this.$scrollReveal(`.${this.$style.odd}>.${this.$style.wrapperText}`, { delay: 100, origin: 'right', distance: '100px', interval: 200 });
+        this.$scrollReveal(`.${this.$style.even}>.${this.$style.wrapperText}`, { delay: 100, origin: 'left', distance: '100px', interval: 200 });
     },
 };
 </script>
@@ -94,6 +94,8 @@ export default {
         flex-grow: 1;
         flex-basis: 100%;
         max-width: 100%;
+        padding: 2rem;
+        box-sizing: border-box;
 
         &:nth-child(even) {
             background: rgba(27, 31, 35, 0.05);

@@ -27,11 +27,6 @@ footer: true
 :::
 
 ```bash
-# 安装，如果已经依赖了，请直接下一步
-yarn add -D @micro-app/cli # 或者：npm install -D @micro-app/cli
-```
-
-```bash
 # 安装 vuepress plugin
 yarn add -D @micro-app/plugin-vuepress # 或者：npm install -D @micro-app/plugin-vuepress
 

@@ -1,12 +1,6 @@
 <template>
     <div :class="$style.post" :simple="simple">
         <h2 role="title" :class="$style.title">
-            <Badge
-                v-if="post.frontmatter.type"
-                style="margin-right: 5px;"
-                :text="post.frontmatter.type"
-                type="yellow"
-            ></Badge>
             <NavLink :item="post.path" line :title="post.title">{{ post.title }}</NavLink>
         </h2>
         <article v-if="!simple" role="summary" :class="$style.summary">

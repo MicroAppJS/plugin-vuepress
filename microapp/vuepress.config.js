@@ -2,7 +2,7 @@
 
 module.exports = {
     shortLinks: true,
-    // type: 'blog',
+    type: 'blog',
     // logo: '/logo.png',
     // smoothScroll: true,
     author: 'Zyao89',
