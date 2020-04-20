@@ -121,9 +121,9 @@ module.exports = function(api, argv, opts, BASE_ROOT) {
         let _chain = Promise.resolve([]);
         if (info.type) {
             const typeColorOpts = [
-                { name: 'Easy (green)', value: 'easy' },
-                { name: 'Medium (yellow)', value: 'medium' },
-                { name: 'Hard (red)', value: 'hard' },
+                { name: 'green (Easy)', value: 'green' },
+                { name: 'yellow (Medium)', value: 'yellow' },
+                { name: 'red (Hard)', value: 'red' },
             ];
             if (typeColorOpts.length) {
                 _chain = _chain.then(() => prompt.select('Select TypeColor:', {
