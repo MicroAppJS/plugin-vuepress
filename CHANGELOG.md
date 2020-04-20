@@ -1,3 +1,10 @@
+## [0.1.24](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.23...v0.1.24) (2020-04-20)
+
+
+### Features
+
+* add type color ([116ac4d](https://github.com/MicroAppJS/plugin-vuepress/commit/116ac4dfcf234c2fd3e6b66371c637d9c9d2cbc0))
+
 ## [0.1.23](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.22...v0.1.23) (2020-04-15)
 
 
