@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.24...v0.2.0) (2020-04-29)
+
+
+### Bug Fixes
+
+* 修复配置 ([7b46b09](https://github.com/MicroAppJS/plugin-vuepress/commit/7b46b09ddc01825b070204e4d43d33b9e651d0f4))
+
 ## [0.1.24](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.23...v0.1.24) (2020-04-20)
 
 
