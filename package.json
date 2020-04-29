@@ -3,9 +3,6 @@
     "version": "0.1.24",
     "description": "[Plugin] adapter vuepress plugin.",
     "main": "src/index.js",
-    "bin": {
-        "micro-app-vuepress": "bin/micro-app-vuepress"
-    },
     "scripts": {
         "prepublishOnly": "npm run test",
         "test": "jest",
@@ -54,7 +51,7 @@
         "jest": "^24.9.0"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.3.16",
+        "@micro-app/cli": "^0.3.17",
         "@vssue/api-github-v4": "^1.4.0",
         "@vssue/vuepress-plugin-vssue": "^1.4.3",
         "@vuepress/plugin-back-to-top": "^1.4.1",
