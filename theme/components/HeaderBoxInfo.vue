@@ -48,6 +48,7 @@ export default {
     border-top: 1px solid $borderColor;
     border-bottom: 1px solid $borderColor;
     transition: all 0.3s;
+    overflow: hidden;
 
     .info {
         position: absolute;
