@@ -13,3 +13,5 @@
 - [x] ⭐️单独发布一个 `@micro-app/vuepress` (或者换个名字叫 docs 等) 的包作为独立脚手架（其中包含 @micro-app/cli 和 bin 文件夹）
 
 - [ ] 修改 docs 文档，提供 `@micro-app/vuepress` 跳转， 以后 docs 只做为测试内容
+
+- [ ] 增加 `init` 方法，快速初始化必要参数

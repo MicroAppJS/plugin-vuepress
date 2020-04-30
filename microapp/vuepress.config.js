@@ -83,6 +83,13 @@ module.exports = {
 
     GAID: process.env.GAID || false,
 
+
+    // blogConfig: {
+    //     rss: true,
+    //     sitemap: true,
+    //     robots: true,
+    // },
+
     command: {
         deploy: {
             repo: 'git@github.com:MicroAppJS/plugin-vuepress.git',

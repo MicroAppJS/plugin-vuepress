@@ -10,6 +10,10 @@ function registerPlugins(ctx) {
     themeConfig.redirect = themeConfig.redirect === undefined ? true : themeConfig.redirect;
     themeConfig.comment = _.isPlainObject(themeConfig.comment) ? themeConfig.comment : false;
 
+    if (!themeConfig.siteUrl) {
+        themeConfig.siteUrl = themeConfig.siteUrl || 'https://MicroAppJS.github.io/vuepress';
+    }
+
     const plugins = [
         '@vuepress/search',
         '@vuepress/plugin-nprogress',

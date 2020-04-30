@@ -1,4 +1,4 @@
-const { path } = require('@micro-app/shared-utils');
+const { path, _ } = require('@micro-app/shared-utils');
 
 // 初始化默认值
 const initBlogConfig = require('./init');
@@ -17,8 +17,14 @@ const registerPlugins = function(ctx) {
     plugins.push([ '@vuepress/blog', getBlogPluginOptions(ctx) ]);
     // rss
     if (blogConfig.rss) {
-        plugins.push([ require('../rss'), blogConfig.rss ]);
+        plugins.push([ require('./rss'), blogConfig.rss ]);
     }
+
+    // robots
+    if (blogConfig.robots) {
+        plugins.push([ require('./robots'), blogConfig.robots ]);
+    }
+
 
     // TODO more blog plugins...
     plugins.push([ require('./createCache'), true ]);
