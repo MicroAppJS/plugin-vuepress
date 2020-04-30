@@ -2,10 +2,7 @@
 
 module.exports = function vuepressCommand(api, opts) {
 
-    api.assertVersion('>=0.3.0');
-
-    const registerMethods = require('./methods');
-    registerMethods(api);
+    api.assertVersion('>=0.3.17');
 
     const { chalk } = require('@micro-app/shared-utils');
 
@@ -75,6 +72,8 @@ Examples:
         return runCommand(api, args, opts);
     });
 };
+
+module.exports.registerMethod = require('./methods');
 
 module.exports.configuration = {
     description: 'vuepress 终端命令合集.',

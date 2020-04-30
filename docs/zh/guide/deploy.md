@@ -35,7 +35,7 @@ module.exports = {
 执行以下命令：
 
 ```sh
-npm run docs:deploy
+npx micro-app vuepress deploy
 ```
 
 ## 其它方式

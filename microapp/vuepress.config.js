@@ -29,8 +29,8 @@ module.exports = {
             editLinkText: '在 GitHub 上编辑此页',
             lastUpdated: '上次编辑时间',
             repoLabel: '查看源码',
-            sidebar: getSidebar('zh'),
-            nav: getNav('zh'),
+            // sidebar: getSidebar('zh'),
+            // nav: getNav('zh'),
         },
         // '/en/': {
         //     lang: 'en-US',
@@ -100,13 +100,13 @@ function getSidebar(lang = 'zh') {
         case 'zh':
         default:
             return {
-                [`/${lang}/guide/`]: getGuideSidebar('基础', '深入'),
+                [`/${lang}/guide/`]: getGuideSidebar('基础', '配置', '深入'),
                 [`/${lang}/config/`]: getConfigSidebar('进阶', '博客配置'),
             };
     }
 }
 
-function getGuideSidebar(groupA, groupB) {
+function getGuideSidebar(groupA, groupB, groupC) {
     return [
         {
             title: groupA,
@@ -116,7 +116,6 @@ function getGuideSidebar(groupA, groupB) {
                 'getting-started',
                 // 'directory-structure',
                 'assets',
-                'basic-config',
                 'i18n',
                 'theme-config',
                 'deploy',
@@ -124,6 +123,17 @@ function getGuideSidebar(groupA, groupB) {
         },
         {
             title: groupB,
+            collapsable: false,
+            children: [
+                'basic/config',
+                'basic/basic-config',
+                'basic/markdown',
+                'basic/pluggable',
+                'basic/other-config',
+            ],
+        },
+        {
+            title: groupC,
             collapsable: false,
             children: [
                 'deep/frontmatter',
