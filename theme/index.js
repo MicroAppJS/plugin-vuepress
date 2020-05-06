@@ -79,6 +79,16 @@ module.exports = (options, ctx) => {
                 .options({
                     name: 'assets/file/[path][name].[ext]',
                 });
+
+            // demo file
+            config.module
+                .rule('demo-file')
+                .test(/\/demo\/(.*)\.(\w+)(\?.*)?$/)
+                .use('file-loader')
+                .loader('file-loader')
+                .options({
+                    name: 'assets/file/[path][name].[ext]',
+                });
         },
         extendMarkdown: md => {
             md.set({ breaks: true });
