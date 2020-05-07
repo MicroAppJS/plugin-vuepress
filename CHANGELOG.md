@@ -1,3 +1,15 @@
+## [0.2.1](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.2.0...v0.2.1) (2020-05-07)
+
+
+### Bug Fixes
+
+* fixed bug ([a2e5ae5](https://github.com/MicroAppJS/plugin-vuepress/commit/a2e5ae5484959537a65a9dd4170dffd3cebff908))
+
+
+### Features
+
+* add `blogConfig.robots` option ([8045c72](https://github.com/MicroAppJS/plugin-vuepress/commit/8045c721018e292650003a15a9882aa4658fba88))
+
 # [0.2.0](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.24...v0.2.0) (2020-04-29)
 
 
