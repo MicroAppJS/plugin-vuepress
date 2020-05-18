@@ -1,3 +1,10 @@
+## [0.2.3](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.2.2...v0.2.3) (2020-05-18)
+
+
+### Bug Fixes
+
+* fixed watcher for blog ([c8ef3f3](https://github.com/MicroAppJS/plugin-vuepress/commit/c8ef3f3ba7b596ee7f893011ea3675fb07d5a547))
+
 ## [0.2.2](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.2.1...v0.2.2) (2020-05-18)
 
 
