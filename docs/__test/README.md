@@ -30,3 +30,7 @@ bcbbds
 sdsdsdsd
 sdf
 sdf
+
+<!-- $withDemoBase -->
+
+<a :href="$withDemoBase('/abc')" v-text="$withDemoBase('/abc')"></a>

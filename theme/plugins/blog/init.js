@@ -12,5 +12,8 @@ module.exports = function initBlogConfig(ctx) {
     blogConfig.permalink = blogConfig.permalink || '/posts/:year/:month/:day/:slug.html';
     blogConfig.rss = blogConfig.rss || false;
     blogConfig.copyright = _.isUndefined(blogConfig.copyright) ? true : blogConfig.copyright !== false ? blogConfig.copyright : false;
+    blogConfig.robots = blogConfig.robots || false;
+    blogConfig.sitemap = blogConfig.sitemap || false;
+    blogConfig.comment = blogConfig.comment || false;
     return blogConfig;
 };
