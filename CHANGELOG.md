@@ -1,3 +1,10 @@
+## [0.2.2](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.2.1...v0.2.2) (2020-05-18)
+
+
+### Features
+
+* add `$withDemoBase()` method for blog ([1884923](https://github.com/MicroAppJS/plugin-vuepress/commit/188492368d8a37b74d8c6f336cb9a6fe054e014a))
+
 ## [0.2.1](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.2.0...v0.2.1) (2020-05-07)
 
 
