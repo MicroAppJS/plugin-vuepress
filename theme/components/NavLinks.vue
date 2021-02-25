@@ -41,6 +41,12 @@ export default {
                         item.link = item.path;
                         item.text = item.name;
                         return item;
+                    }).sort((a, b) => {
+                        try {
+                            return a.text.localeCompare(b.text, 'zh-CN');
+                        } catch (error) {
+                            return a.text - b.text;
+                        }
                     });
                 }
                 return Object.assign(resolveNavLinkItem(link), {
