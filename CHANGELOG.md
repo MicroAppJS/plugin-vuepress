@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.2.3...v0.3.0) (2021-05-26)
+
+
+### Features
+
+* update theme ([1578454](https://github.com/MicroAppJS/plugin-vuepress/commit/1578454ecf11cb88ec8f9a055798185a012b3f25))
+
 ## [0.2.3](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.2.2...v0.2.3) (2020-05-18)
 
 
