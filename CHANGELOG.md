@@ -1,3 +1,10 @@
+## [0.3.1](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.0...v0.3.1) (2021-07-16)
+
+
+### Features
+
+* 增加 img 标签 alt 属性注入 ([7d97904](https://github.com/MicroAppJS/plugin-vuepress/commit/7d97904d3fdafe2b2a156463932f2ff497c6f392))
+
 # [0.3.0](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.2.3...v0.3.0) (2021-05-26)
 
 
