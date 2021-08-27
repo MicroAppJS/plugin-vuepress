@@ -1,3 +1,10 @@
+## [0.3.2](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.1...v0.3.2) (2021-08-27)
+
+
+### Features
+
+* update deps ([76e9177](https://github.com/MicroAppJS/plugin-vuepress/commit/76e9177f31c4a41cd051561611ba14916f1cea80))
+
 ## [0.3.1](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.0...v0.3.1) (2021-07-16)
 
 
