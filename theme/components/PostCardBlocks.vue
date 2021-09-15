@@ -65,7 +65,7 @@ export default {
     },
     mounted() {
         this.$scrollReveal(`.${this.$style.container}`);
-        this.$scrollReveal(`.${this.$style.cardItem}`, { delay: 100, origin: 'top', distance: '100px', interval: 100 });
+        this.$scrollReveal(`.${this.$style.cardItem}`, { delay: 66, origin: 'top', distance: '100px', interval: 100 });
     },
 };
 </script>

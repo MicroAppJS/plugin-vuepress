@@ -5,7 +5,7 @@
 可以在导航中添加入口，配置如下：
 
 ```javascript
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
      // 博客配置
     nav: [

@@ -9,12 +9,8 @@
 
 <script>
 import { filterPosts } from '@theme/helpers/postData.js';
-import TransitionFadeSlide from '@theme/components/TransitionFadeSlide.vue';
 export default {
     name: 'HeaderBoxInfo',
-    components: {
-        TransitionFadeSlide,
-    },
     props: {
         current: Object,
     },
@@ -34,8 +30,8 @@ export default {
         },
     },
     mounted() {
-        this.$scrollReveal(`.${this.$style.title}`, { origin: 'left', distance: '100px', interval: 100 });
-        this.$scrollReveal(`.${this.$style.meta}`, { origin: 'right', distance: '100px', interval: 100 });
+        this.$scrollReveal(`.${this.$style.title}`, { origin: 'left', distance: '100px', interval: 66 });
+        this.$scrollReveal(`.${this.$style.meta}`, { origin: 'right', distance: '100px', interval: 66 });
     },
 };
 </script>

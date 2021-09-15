@@ -7,7 +7,7 @@
 通过 `svgIconsDir` 指定自定义的图标目录。如果传入的是相对路径，则会基于 `.vuepress` 目录进行解析。
 
 ```js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     svgIconsDir: "icons"
 }

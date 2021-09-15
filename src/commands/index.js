@@ -6,6 +6,9 @@ module.exports = function vuepressCommand(api, opts) {
 
     const { chalk } = require('@micro-app/shared-utils');
 
+    // init command
+    require('./init')(api, opts);
+
     api.registerCommand('vuepress', {
         description: 'enhance vuepress cli.',
         usage: 'micro-app vuepress <command> [options]',
@@ -62,6 +65,13 @@ Examples:
         }
         if (!args._ || !args._.length) {
             return api.runCommand('help', { _: [ 'vuepress' ] });
+        }
+
+        if ([ 'init' ].includes(args._[0])) { // 初始化
+            return api.runCommand('init', { ...{
+                ...args,
+                _: args._.splice(1),
+            }, name: 'vuepress' });
         }
 
         // do something

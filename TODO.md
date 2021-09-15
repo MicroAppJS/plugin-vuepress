@@ -4,7 +4,7 @@
 
 - [ ] 增加分页url地址
 
-- [ ] ~~分离主题为单独的包 `vuepress-theme-microapp`~~
+- [x] ~~分离主题为单独的包 `vuepress-theme-microapp`~~ 此仓定义为主题包 + 插件
 
 - [x] 增加 create 的自定义
 

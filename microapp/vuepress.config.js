@@ -29,8 +29,8 @@ module.exports = {
             editLinkText: '在 GitHub 上编辑此页',
             lastUpdated: '上次编辑时间',
             repoLabel: '查看源码',
-            // sidebar: getSidebar('zh'),
-            // nav: getNav('zh'),
+            sidebar: getSidebar('/zh/'),
+            nav: getNav('/zh/'),
         },
         // '/en/': {
         //     lang: 'en-US',
@@ -70,14 +70,14 @@ module.exports = {
         copyright: true,
         // beian: 'abc',
     },
-    friendLinks: [
-        {
-            title: 'abc',
-            logo: '/logo.png',
-            link: 'http://www.baidu.com',
-            description: 'abcdsd',
-        },
-    ],
+    // friendLinks: [
+    //     {
+    //         title: 'abc',
+    //         logo: '/logo.png',
+    //         link: 'http://www.baidu.com',
+    //         description: 'abcdsd',
+    //     },
+    // ],
 
     rss: true,
 
@@ -95,25 +95,25 @@ module.exports = {
             repo: 'git@github.com:MicroAppJS/plugin-vuepress.git',
             branch: 'gh-pages',
         },
-        create: { // 创建时，可选项
+        create: { // 创建时，可选项 for blog
             categories: [ 'a', 'b' ],
             tags: [ 'tag1', 'tag2' ],
         },
     },
 };
 
-function getSidebar(lang = 'zh') {
+function getSidebar(lang = '/zh/') {
     switch (lang) {
-        case 'zh':
+        case '/zh/':
         default:
             return {
-                [`/${lang}/guide/`]: getGuideSidebar('基础', '配置', '深入'),
-                [`/${lang}/config/`]: getConfigSidebar('进阶', '博客配置'),
+                [`${lang}guide/`]: getGuideSidebar('基础', '配置', '深入'),
+                [`${lang}config/`]: getConfigSidebar('进阶', '博客配置'),
             };
     }
 }
 
-function getGuideSidebar(groupA, groupB, groupC) {
+function getGuideSidebar(groupA, groupB) {
     return [
         {
             title: groupA,
@@ -123,6 +123,7 @@ function getGuideSidebar(groupA, groupB, groupC) {
                 'getting-started',
                 // 'directory-structure',
                 'assets',
+                'basic-config',
                 'i18n',
                 'theme-config',
                 'deploy',
@@ -130,17 +131,6 @@ function getGuideSidebar(groupA, groupB, groupC) {
         },
         {
             title: groupB,
-            collapsable: false,
-            children: [
-                'basic/config',
-                'basic/basic-config',
-                'basic/markdown',
-                'basic/pluggable',
-                'basic/other-config',
-            ],
-        },
-        {
-            title: groupC,
             collapsable: false,
             children: [
                 'deep/frontmatter',
@@ -187,19 +177,19 @@ function getConfigSidebar(groupA, groupB) {
     ];
 }
 
-function getNav(lang) {
+function getNav(lang = '/zh/') {
     switch (lang) {
-        case 'zh':
+        case '/zh/':
         default:
             return [
                 {
                     text: '指南',
-                    link: '/zh/guide/',
+                    link: `${lang}guide/`,
                     icon: 'guide',
                 },
                 {
                     text: '文档',
-                    link: '/zh/config/',
+                    link: `${lang}config/`,
                     icon: 'doc',
                 },
                 // {

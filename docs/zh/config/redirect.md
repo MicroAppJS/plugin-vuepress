@@ -15,7 +15,7 @@ VuePress 内置了多语言系统，但你必须提供一个默认语言，否�
 使用方式如下：
 
 ```js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     redirect: false // default: true
 }

@@ -54,10 +54,10 @@ export default {
     },
     mounted() {
         this.$scrollReveal(`.${this.$style.features}`);
-        this.$scrollReveal(`.${this.$style.odd}>.${this.$style.wrapperImg}`, { delay: 100, origin: 'left', distance: '100px', interval: 200 });
-        this.$scrollReveal(`.${this.$style.even}>.${this.$style.wrapperImg}`, { delay: 100, origin: 'right', distance: '100px', interval: 200 });
-        this.$scrollReveal(`.${this.$style.odd}>.${this.$style.wrapperText}`, { delay: 100, origin: 'right', distance: '100px', interval: 200 });
-        this.$scrollReveal(`.${this.$style.even}>.${this.$style.wrapperText}`, { delay: 100, origin: 'left', distance: '100px', interval: 200 });
+        this.$scrollReveal(`.${this.$style.odd}>.${this.$style.wrapperImg}`, { delay: 66, origin: 'left', distance: '100px', interval: 100 });
+        this.$scrollReveal(`.${this.$style.even}>.${this.$style.wrapperImg}`, { delay: 66, origin: 'right', distance: '100px', interval: 100 });
+        this.$scrollReveal(`.${this.$style.odd}>.${this.$style.wrapperText}`, { delay: 66, origin: 'right', distance: '100px', interval: 100 });
+        this.$scrollReveal(`.${this.$style.even}>.${this.$style.wrapperText}`, { delay: 66, origin: 'left', distance: '100px', interval: 100 });
     },
 };
 </script>

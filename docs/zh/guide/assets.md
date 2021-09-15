@@ -17,7 +17,7 @@
 ![Image from dependency](~some-dependency/image.png)
 ```
 
-`@micro-app` 拥有自己的别名配置方式，可以在 `micro-app.config.js` 中如下配置：
+`@micro-app` 拥有自己的别名配置方式，可以在 `microapp/config/index.js` 中如下配置：
 
 ```js
 module.exports = {
@@ -33,7 +33,7 @@ module.exports = {
 使用时需要在别名前增加前缀，如：
 
 ```md
-<div>{{ require('@micro-app/plugin-vuepress/@config/constants') }}</div>
+<div>{{ require('@micro-app/vuepress/@config/constants') }}</div>
 ```
 
 ## 公共文件
@@ -43,7 +43,7 @@ module.exports = {
 ## 基础路径
 
 ::: tip
-所有 `.vuepress/config.js` 中的配置都可以在 `micro-app.vuepress.config.js` 中书写。
+所有 `.vuepress/config.js` 中的配置都可以在 `microapp/config/vuepress.js` 中书写。
 :::
 
 如果你的网站会被部署到一个**非根路径**，你将需要在 `.vuepress/config.js` 中设置 `base`，举例来说，如果你打算将你的网站部署到 `https://foo.github.io/bar/`，那么 `base` 的值就应该被设置为 `"/bar/"` (应当总是以斜杠开始，并以斜杠结束)。
@@ -51,9 +51,11 @@ module.exports = {
 有了基础路径（Base URL），如果你希望引用一张放在 `.vuepress/public` 中的图片，你需要使用这样路径：`/bar/image.png`，然而，一旦某一天你决定去修改 `base`，这样的路径引用将会显得异常脆弱。为了解决这个问题，VuePress 提供了内置的一个 helper `$withBase`（它被注入到了 Vue 的原型上），可以帮助你生成正确的路径：
 
 ``` vue
-<img :src="$withBase('/foo.png')" alt="foo">
+<img :src="$withBase('/logo.png')" alt="logo">
 ```
 
 值得一提的是，你不仅可以在你的 Vue 组件中使用上述的语法，在 Markdown 文件中亦是如此。
 
 最后补充一句，一个 `base` 路径一旦被设置，它将会自动地作为前缀插入到 `.vuepress/config.js` 中所有以 `/` 开始的资源路径中。
+
+> 还可以尝试使用 `$withDemoBase('/logo.png')`，看看是不是你想要的。

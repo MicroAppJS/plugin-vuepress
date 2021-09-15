@@ -2,7 +2,7 @@
 
 该主题几乎继承 `VuePress` 默认主题的一切功能，如果你发现某些功能本网站没有相关文档，或者想要了解默认主题的一些功能，请移步 [官方文档](https://v1.vuepress.vuejs.org/zh/theme/default-theme-config.html)。
 
-以下我们只提供 `micro-app.vuepress.config.js` 部分重要的配置。
+以下我们只提供 `microapp/config/vuepress.js` 部分重要的配置。
 
 ## 导航栏
 
@@ -13,7 +13,7 @@
 你可以通过 `logo` 增加导航栏 Logo ，Logo 可以被放置在[公共文件目录](./assets.md#公共文件)：
 
 ``` js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     logo: '/assets/img/logo.png',
 }
@@ -24,7 +24,7 @@ module.exports = {
 你可以通过 `nav` 增加一些导航栏链接:
 
 ``` js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     nav: [
         { text: 'Home', link: '/' },
@@ -37,7 +37,7 @@ module.exports = {
 外部链接 `<a>` 标签的特性将默认包含`target="_blank" rel="noopener noreferrer"`，你可以提供 `target` 与 `rel`，它们将被作为特性被增加到 `<a>` 标签上：
 
 ``` js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     nav: [
         { text: 'External', link: 'https://google.com', target:'_self', rel:'' },
@@ -106,7 +106,7 @@ navbar: false
 想要使 侧边栏（Sidebar）生效，需要配置 `sidebar`，基本的配置，需要一个包含了多个链接的数组：
 
 ``` js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     sidebar: [
         '/',
@@ -159,7 +159,7 @@ module.exports = {
 你可以通过使用**对象**来将侧边栏划分成多个组：
 
 ``` js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     sidebar: [
         {
@@ -209,7 +209,7 @@ module.exports = {
 接着，遵循以下的侧边栏配置：
 
 ``` js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     sidebar: {
         '/foo/': [
@@ -259,7 +259,7 @@ module.exports = {
 在 [多语言](i18n.md) 模式下, 你也可以将其应用到某一特定的语言下：
 
 ``` js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     locales: {
         '/zh/': {
@@ -350,7 +350,7 @@ module.exports = {
 你可以通过 `nextLinks` 和 `prevLinks` 来全局禁用它们：
 
 ``` js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     // 默认值是 true 。设置为 false 来禁用所有页面的 下一篇 链接
     nextLinks: false,
@@ -373,10 +373,10 @@ next: false
 当你提供了 `repo` 选项，将会自动在每个页面的导航栏生成生成一个 GitHub 链接，以及在页面的底部生成一个 `"Edit this page"` 链接。
 
 ``` js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
-    repo: 'MicroAppJS/plugin-vuepress',
+    repo: 'MicroAppJS/vuepress',
     // 自定义仓库链接文字。默认从 `repo` 中自动推断为
     // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
     repoLabel: '查看源码',
@@ -384,7 +384,7 @@ module.exports = {
     // 以下为可选的编辑链接选项
 
     // 假如你的文档仓库和项目本身不在一个仓库：
-    docsRepo: 'MicroAppJS/plugin-vuepress',
+    docsRepo: 'MicroAppJS/vuepress',
     // 假如文档不是放在仓库的根目录下：
     docsDir: 'docs',
     // 假如文档放在一个特定的分支下：
@@ -409,7 +409,7 @@ editLink: false
 你可以通过 `smoothScroll` 选项来启用页面滚动效果。
 
 ``` js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     smoothScroll: true
 }

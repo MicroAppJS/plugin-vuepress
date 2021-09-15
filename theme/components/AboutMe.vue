@@ -29,7 +29,7 @@ export default {
         },
     },
     mounted() {
-        this.$scrollReveal(`.${this.$style.root}`, { delay: 100, origin: 'top', distance: '100px', interval: 100 });
+        this.$scrollReveal(`.${this.$style.root}`, { delay: 66, origin: 'top', distance: '100px', interval: 66 });
     },
 };
 </script>

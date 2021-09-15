@@ -18,7 +18,7 @@ heroImage: /logo.png
 heroText: 首页标题
 tagline: 首页副标题
 badges:
-    - user=MicroAppJS&repo=plugin-vuepress&type=star&count=true
+    - user=MicroAppJS&repo=vuepress&type=star&count=true
     - https://img.shields.io/badge/download-12,292-orange.svg?style=social&logo=npm
 actionText: 快速上手 →
 actionLink: /zh/guide/
@@ -73,14 +73,14 @@ tagline: null
 - 类型: `string`
 - 默认值: `Hello`
 
-首页标题，如果没有配置则显示 `micro-app.vuepress.config.js` 中的 `title` 参数。
+首页标题，如果没有配置则显示 `microapp/config/vuepress.js` 中的 `title` 参数。
 
 ### tagline
 
 - 类型: `string`
 - 默认值: `Welcome to your VuePress site`
 
-首页副标题，如果没有配置则显示 `micro-app.vuepress.config.js` 中的 `description` 参数。
+首页副标题，如果没有配置则显示 `microapp/config/vuepress.js` 中的 `description` 参数。
 
 ### badges
 
@@ -90,7 +90,7 @@ tagline: null
 展示 `badges`, 显示在副标题下方。如下：
 
 <iframe
-    src="https://ghbtns.com/github-btn.html?user=MicroAppJS&repo=plugin-vuepress&type=star&count=true"
+    src="https://ghbtns.com/github-btn.html?user=MicroAppJS&repo=vuepress&type=star&count=true"
     frameborder="0"
     scrolling="0"
     width="auto"
@@ -101,13 +101,13 @@ tagline: null
 
 **配置参数:**
 
-- `user=MicroAppJS&repo=plugin-vuepress&type=star&count=true`
+- `user=MicroAppJS&repo=vuepress&type=star&count=true`
 - `https://img.shields.io/badge/download-12,292-orange.svg?style=social&logo=npm`
 
 ```yaml
 ---
 badges:
-    - user=MicroAppJS&repo=plugin-vuepress&type=star&count=true
+    - user=MicroAppJS&repo=vuepress&type=star&count=true
     - https://img.shields.io/badge/download-12,292-orange.svg?style=social&logo=npm
 ---
 ```

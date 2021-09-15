@@ -11,7 +11,7 @@
 参数配置结构如下：
 
 ```js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     footer: {
         powerby: true, // default: true

@@ -55,7 +55,7 @@ export default {
         },
     },
     mounted() {
-        this.$scrollReveal(`.${this.$style.item}`, { delay: 300, interval: 100 });
+        // this.$scrollReveal(`.${this.$style.item}`, { delay: 300, interval: 100 });
     },
 };
 </script>
