@@ -53,6 +53,11 @@ module.exports = function createConfig(api, args, opts) {
         require('../constants').FILENAMES.map(filename => path.resolve(api.root, filename))
     );
 
+    // blog
+    const blogConfig = config.themeConfig && config.themeConfig.blogConfig || {};
+    const postsDir = blogConfig.postsDir || 'posts';
+    config.extraWatchFiles.push(postsDir); // add watcher files
+
     api.logger.debug('vuepressConfig: ', JSON.stringify(config, false, 4));
     return config;
 };

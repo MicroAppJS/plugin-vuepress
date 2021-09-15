@@ -1,5 +1,5 @@
 // rss
-const { RSS_FILENAME } = require('./config');
+const { RSS_FILENAME } = require('../config');
 
 module.exports = (options, ctx) => {
     const { fs, _, logger, path } = require('@micro-app/shared-utils');

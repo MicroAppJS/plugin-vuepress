@@ -1,3 +1,64 @@
+## [0.3.2](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.1...v0.3.2) (2021-08-27)
+
+
+### Features
+
+* update deps ([76e9177](https://github.com/MicroAppJS/plugin-vuepress/commit/76e9177f31c4a41cd051561611ba14916f1cea80))
+
+## [0.3.1](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.0...v0.3.1) (2021-07-16)
+
+
+### Features
+
+* 增加 img 标签 alt 属性注入 ([7d97904](https://github.com/MicroAppJS/plugin-vuepress/commit/7d97904d3fdafe2b2a156463932f2ff497c6f392))
+
+# [0.3.0](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.2.3...v0.3.0) (2021-05-26)
+
+
+### Features
+
+* update theme ([1578454](https://github.com/MicroAppJS/plugin-vuepress/commit/1578454ecf11cb88ec8f9a055798185a012b3f25))
+
+## [0.2.3](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.2.2...v0.2.3) (2020-05-18)
+
+
+### Bug Fixes
+
+* fixed watcher for blog ([c8ef3f3](https://github.com/MicroAppJS/plugin-vuepress/commit/c8ef3f3ba7b596ee7f893011ea3675fb07d5a547))
+
+## [0.2.2](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.2.1...v0.2.2) (2020-05-18)
+
+
+### Features
+
+* add `$withDemoBase()` method for blog ([1884923](https://github.com/MicroAppJS/plugin-vuepress/commit/188492368d8a37b74d8c6f336cb9a6fe054e014a))
+
+## [0.2.1](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.2.0...v0.2.1) (2020-05-07)
+
+
+### Bug Fixes
+
+* fixed bug ([a2e5ae5](https://github.com/MicroAppJS/plugin-vuepress/commit/a2e5ae5484959537a65a9dd4170dffd3cebff908))
+
+
+### Features
+
+* add `blogConfig.robots` option ([8045c72](https://github.com/MicroAppJS/plugin-vuepress/commit/8045c721018e292650003a15a9882aa4658fba88))
+
+# [0.2.0](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.24...v0.2.0) (2020-04-29)
+
+
+### Bug Fixes
+
+* 修复配置 ([7b46b09](https://github.com/MicroAppJS/plugin-vuepress/commit/7b46b09ddc01825b070204e4d43d33b9e651d0f4))
+
+## [0.1.24](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.23...v0.1.24) (2020-04-20)
+
+
+### Features
+
+* add type color ([116ac4d](https://github.com/MicroAppJS/plugin-vuepress/commit/116ac4dfcf234c2fd3e6b66371c637d9c9d2cbc0))
+
 ## [0.1.23](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.1.22...v0.1.23) (2020-04-15)
 
 

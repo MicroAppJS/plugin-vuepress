@@ -40,7 +40,16 @@ export default {
                     link.items = this.$categories.list.map(item => {
                         item.link = item.path;
                         item.text = item.name;
+                        item.size = item.pages ? item.pages.length : 0;
                         return item;
+                    }).sort((a, b) => {
+                        try {
+                            return a.text.localeCompare(b.text, 'zh-CN');
+                        } catch (error) {
+                            return a.text - b.text;
+                        }
+                    }).sort((a, b) => {
+                        return b.size - a.size;
                     });
                 }
                 return Object.assign(resolveNavLinkItem(link), {

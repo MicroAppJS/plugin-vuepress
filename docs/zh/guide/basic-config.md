@@ -4,7 +4,7 @@
 
 如果没有任何配置，这个网站将会是非常局限的，用户也无法在你的网站上自由导航。
 
-为了更好地自定义你的网站，让我们首先在你的根目录下创建一个 `micro-app.vuepress.config.js` 文件，所有相关的配置都将会在这里，它应该导出一个 JavaScript 对象：
+为了更好地自定义你的网站，让我们首先在你的根目录下创建一个 `microapp/config/vuepress.js` 文件，所有相关的配置都将会在这里，它应该导出一个 JavaScript 对象：
 
 ```js
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
 
 ## 基础配置
 
-以下是 `micro-app.vuepress.config.js` 的部分配置，它最终会被解析成 `vuepress` 的配置，其中 `otherConfig` 是用于配置其它官方的配置。
+以下是 `microapp/config/vuepress.js` 的部分配置，它最终会被解析成 `vuepress` 的配置，其中 `otherConfig` 是用于配置其它官方的配置。
 
 ```js
 module.exports = {

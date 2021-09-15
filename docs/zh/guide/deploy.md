@@ -18,15 +18,15 @@
 
 我们提供了一个简单的部署方式，如下：
 
-配置 `micro-app.vuepress.config.js` 参数，如下：
+配置 `microapp/config/vuepress.js` 参数，如下：
 
 ```js
 module.exports = {
     base: '/', // 默认配置
     sourceDir: 'docs',
     deploy: {
-        repo: 'git@github.com:MicroAppJS/plugin-vuepress.git',
-        // repo: 'MicroAppJS/plugin-vuepress',
+        repo: 'git@github.com:MicroAppJS/vuepress.git',
+        // repo: 'MicroAppJS/vuepress',
         branch: 'gh-pages', // 不配置则默认为 gh-pages
     },
 };

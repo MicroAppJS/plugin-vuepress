@@ -5,7 +5,7 @@
 使用方式如下：
 
 ```js
-// micro-app.vuepress.config.js
+// microapp/config/vuepress.js
 module.exports = {
     author: 'Zyao89',
 }

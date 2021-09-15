@@ -9,11 +9,12 @@ module.exports = function extendPageData($page, ctx) {
     const blogConfig = themeConfig.blogConfig;
     if ($page.path.startsWith(ensureBothSlash(blogConfig.postsDir))) {
         $page.frontmatter.permalink = $page.frontmatter.permalink || blogConfig.permalink;
-        if ($page.frontmatter.date) {
-            const $lang = $page.frontmatter.lang || $page._computed.$localeConfig.lang || lang;
-            $page.frontmatter.dateFormat = moment($page.frontmatter.date)
-                .utc().locale($lang)
-                .format('llll');
-        }
+        $page.frontmatter.__type__ = 'post';
+    }
+    if ($page.frontmatter.date) {
+        const $lang = $page.frontmatter.lang || $page._computed.$localeConfig.lang || lang;
+        $page.frontmatter.dateFormat = moment($page.frontmatter.date)
+            .utc().locale($lang)
+            .format('llll');
     }
 };

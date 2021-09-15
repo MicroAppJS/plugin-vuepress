@@ -2,12 +2,12 @@
 
 module.exports = function vuepressCommand(api, opts) {
 
-    api.assertVersion('>=0.3.0');
-
-    const registerMethods = require('./methods');
-    registerMethods(api);
+    api.assertVersion('>=0.3.17');
 
     const { chalk } = require('@micro-app/shared-utils');
+
+    // init command
+    require('./init')(api, opts);
 
     api.registerCommand('vuepress', {
         description: 'enhance vuepress cli.',
@@ -67,6 +67,13 @@ Examples:
             return api.runCommand('help', { _: [ 'vuepress' ] });
         }
 
+        if ([ 'init' ].includes(args._[0])) { // 初始化
+            return api.runCommand('init', { ...{
+                ...args,
+                _: args._.splice(1),
+            }, name: 'vuepress' });
+        }
+
         // do something
         if ([ 'deploy', 'create' ].includes(args._[0])) {
             const otherCommand = require(`./${args._[0]}`);
@@ -75,6 +82,8 @@ Examples:
         return runCommand(api, args, opts);
     });
 };
+
+module.exports.registerMethod = require('./methods');
 
 module.exports.configuration = {
     description: 'vuepress 终端命令合集.',

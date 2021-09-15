@@ -135,10 +135,10 @@ export default {
         },
     },
     mounted() {
-        this.$scroll.reveal(`.${this.$style.headerItem}`, { delay: 100 });
-        this.$scroll.reveal(`.${this.$style.title}`, { origin: 'top', distance: '100px' });
-        this.$scroll.reveal(`.${this.$style.description}`, { origin: 'bottom', distance: '100px' });
-        this.$scroll.reveal(`.${this.$style.badgesItem}`, { delay: 300, interval: 200 });
+        this.$scrollReveal(`.${this.$style.headerItem}`, { delay: 100 });
+        this.$scrollReveal(`.${this.$style.title}`, { origin: 'top', distance: '100px' });
+        this.$scrollReveal(`.${this.$style.description}`, { origin: 'bottom', distance: '100px' });
+        this.$scrollReveal(`.${this.$style.badgesItem}`, { delay: 300, interval: 200 });
     },
 };
 </script>

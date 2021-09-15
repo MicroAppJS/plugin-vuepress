@@ -1,6 +1,6 @@
 # Micro APP Plugin - VuePress
 
-[Plugin] adapter vuepress plugin.
+[Plugin] adapter vuepress plugin & theme.
 
 适配集成 vuepress 配置. 用于 `@micro-app/cli` 的插件.
 

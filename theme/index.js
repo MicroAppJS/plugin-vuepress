@@ -79,6 +79,16 @@ module.exports = (options, ctx) => {
                 .options({
                     name: 'assets/file/[path][name].[ext]',
                 });
+
+            // demo file
+            config.module
+                .rule('demo-file')
+                .test(/\/demo\/(.*)\.(\w+)(\?.*)?$/)
+                .use('file-loader')
+                .loader('file-loader')
+                .options({
+                    name: 'assets/file/[path][name].[ext]',
+                });
         },
         extendMarkdown: md => {
             md.set({ breaks: true });
@@ -86,10 +96,16 @@ module.exports = (options, ctx) => {
         chainMarkdown(config) {
             config
                 .plugin('custom-style')
-                .use(require('./plugins/markdown/mdCustomStyle'));
+                .use(require('./plugins/markdown/mdCustomStyle'))
+                .end();
             config
                 .plugin('code-result')
-                .use(require('./plugins/markdown/mdCodeResult'));
+                .use(require('./plugins/markdown/mdCodeResult'))
+                .end();
+            config
+                .plugin('img-alt')
+                .use(require('./plugins/markdown/mdAltImg'))
+                .end();
 
             // plugin
             config.plugin('sup').use(require('markdown-it-sup'));

@@ -1,14 +1,12 @@
 {
     "name": "@micro-app/plugin-vuepress",
-    "version": "0.1.23",
+    "version": "0.3.2",
     "description": "[Plugin] adapter vuepress plugin.",
     "main": "src/index.js",
-    "bin": {
-        "micro-app-vuepress": "bin/micro-app-vuepress"
-    },
     "scripts": {
         "prepublishOnly": "npm run test",
         "test": "jest",
+        "micro-app": "micro-app",
         "dev": "micro-app vuepress dev",
         "build": "micro-app vuepress build --base /plugin-vuepress/",
         "create": "micro-app vuepress create --type post --base __test --classify categories",
@@ -17,12 +15,10 @@
         "release": "micro-app release",
         "release:alpha": "npm run release -- --preRelease=alpha",
         "release:next": "npm run release -- --preRelease=next",
-        "release:minor": "npm run release minor",
-        "release:patch": "npm run release patch"
+        "release:minor": "npm run release -- minor",
+        "release:patch": "npm run release -- patch"
     },
     "files": [
-        "bin",
-        "scripts",
         "src",
         "theme"
     ],
@@ -48,36 +44,37 @@
     },
     "license": "MIT",
     "devDependencies": {
-        "@micro-app/plugin-deploy": "^0.0.7",
+        "@micro-app/plugin-deploy": "^0.0.9",
         "@types/jest": "^24.9.1",
-        "eslint-config-2o3t": "^2.0.1",
+        "eslint-config-2o3t": "^2.0.2",
         "jest": "^24.9.0"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.3.15",
-        "@vssue/api-github-v4": "^1.4.0",
-        "@vssue/vuepress-plugin-vssue": "^1.4.3",
-        "@vuepress/plugin-back-to-top": "^1.4.1",
-        "@vuepress/plugin-blog": "^1.9.2",
-        "@vuepress/plugin-google-analytics": "^1.4.1",
-        "@vuepress/plugin-medium-zoom": "^1.4.1",
-        "@vuepress/plugin-pwa": "^1.4.1",
-        "clipboard": "^2.0.6",
-        "markdown-it-footnote": "^3.0.2",
+        "@micro-app/cli": "^0.4.2",
+        "@vssue/api-github-v4": "^1.4.7",
+        "@vssue/vuepress-plugin-vssue": "^1.4.8",
+        "@vuepress/plugin-back-to-top": "^1.8.2",
+        "@vuepress/plugin-blog": "^1.9.4",
+        "@vuepress/plugin-google-analytics": "^1.8.2",
+        "@vuepress/plugin-medium-zoom": "^1.8.2",
+        "@vuepress/plugin-pwa": "^1.8.2",
+        "clipboard": "^2.0.8",
+        "generate-robotstxt": "^8.0.3",
+        "markdown-it-footnote": "^3.0.3",
         "markdown-it-imsize": "^2.0.1",
-        "markdown-it-mark": "^3.0.0",
+        "markdown-it-mark": "^3.0.1",
         "markdown-it-sub": "^1.0.0",
         "markdown-it-sup": "^1.0.0",
         "markdown-it-task-lists": "^2.1.1",
-        "moment": "^2.24.0",
+        "moment": "^2.29.1",
         "remove-markdown": "^0.3.0",
         "rss": "^1.2.2",
-        "scrollreveal": "^4.0.6",
-        "svg-sprite-loader": "^4.2.5",
+        "scrollreveal": "^4.0.9",
+        "svg-sprite-loader": "^4.3.0",
         "svgo": "^1.3.2",
-        "svgo-loader": "^2.2.1",
-        "vuepress": "^1.4.1",
+        "svgo-loader": "^2.2.2",
+        "vuepress": "^1.8.2",
         "vuepress-plugin-flowchart": "^1.4.3",
-        "vuepress-plugin-redirect": "^1.2.3"
+        "vuepress-plugin-redirect": "^1.2.5"
     }
 }

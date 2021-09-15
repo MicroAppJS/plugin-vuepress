@@ -67,4 +67,13 @@ export default function({ Vue }) {
     };
 
     Vue.mixin(mixins);
+
+    Vue.prototype.$withDemoBase = function(path) {
+        const url = this.$themeConfig.siteUrl || this.$site.siteUrl || '';
+        path = this.$withBase(path);
+        if (path.charAt(0) !== '/') {
+            return path;
+        }
+        return url.replace(/\/*$/, '') + path;
+    };
 }

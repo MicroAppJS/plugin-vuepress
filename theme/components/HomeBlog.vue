@@ -4,7 +4,7 @@
         <template v-else>
             <div>
                 <!-- 最新文章 -->
-                <PostCardBlocks :title="['最新', '博文']" :subtitle="['LATEST', 'POST']" />
+                <PostCardBlocks :title="['最新', '博文']" :subtitle="['LATEST', 'POST']" :max="9"/>
             </div>
             <div v-if="$categories && $categories.list && $categories.list.length">
                 <!-- 热门分类 -->

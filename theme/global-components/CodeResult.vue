@@ -12,6 +12,7 @@
             </div>
         </div>
         <div v-if="more" :class="$style.foot">
+            <!-- 可换位 iframe -->
             <slot>{{ output }}</slot>
         </div>
     </div>
@@ -128,5 +129,6 @@ export default {
 
 .foot {
     padding: 0.5rem;
+    margin-left: 3.5rem;
 }
 </style>

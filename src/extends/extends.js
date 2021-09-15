@@ -37,6 +37,7 @@ module.exports = (api, opts) => {
         ];
         const orgkeys2 = [
             'markdown', 'plugins',
+            'extraWatchFiles',
         ];
         const commonConfig = _.pick(selfVuepressConfig, [].concat(orgkeys).concat(orgkeys2));
         const sourceDir = commonConfig.sourceDir || '.';

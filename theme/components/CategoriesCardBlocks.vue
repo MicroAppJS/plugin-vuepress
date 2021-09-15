@@ -10,7 +10,8 @@
                     <h2 :class="$style.title">
                         <NavLink :item="item.path" line>{{ item.title }}</NavLink>
                     </h2>
-                    <div :class="$style.right">{{ item.size }} / {{ allCount }}</div>
+                    <div :class="$style.right">{{ item.size }}</div>
+                    <!-- <div :class="$style.right">{{ item.size }} / {{ allCount }}</div> -->
                 </div>
             </div>
         </template>
