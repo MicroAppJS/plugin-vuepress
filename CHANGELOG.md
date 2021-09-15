@@ -1,3 +1,10 @@
+## [0.3.4](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.3...v0.3.4) (2021-09-15)
+
+
+### Bug Fixes
+
+* fixed chinese url of blog ([216c5a6](https://github.com/MicroAppJS/plugin-vuepress/commit/216c5a6e8f3d7259e423557e1d1daa02547f2b1b))
+
 ## [0.3.3](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.2...v0.3.3) (2021-09-15)
 
 ## [0.3.2](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.1...v0.3.2) (2021-08-27)
