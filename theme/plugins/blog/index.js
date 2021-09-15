@@ -1,5 +1,24 @@
 const { path, _ } = require('@micro-app/shared-utils');
 
+// fixed chinese path...
+const blogPluginUtil = require('@vuepress/plugin-blog/lib/node/util.js');
+const oldCurryFrontmatterHandler = blogPluginUtil.curryFrontmatterHandler;
+const FIXED_PATH = Symbol('FIXED_PATH');
+blogPluginUtil.curryFrontmatterHandler = (scope, map, _path) => {
+    const fn = oldCurryFrontmatterHandler(scope, map, _path)
+    return (key, pageKey) => {
+        const r = fn(key, pageKey);
+        if (key) {
+            if (map[key] && map[key].path && !map[key][FIXED_PATH]) {
+                // map[key].path = `${path}${key}/`;
+                map[key].path = encodeURI(`${_path}${key}/`); // fixed path
+                map[key][FIXED_PATH] = true;
+            }
+        }
+        return r;
+    };
+};
+
 // 初始化默认值
 const initBlogConfig = require('./init');
 
