@@ -1,3 +1,5 @@
+## [0.3.3](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.2...v0.3.3) (2021-09-15)
+
 ## [0.3.2](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.1...v0.3.2) (2021-08-27)
 
 
