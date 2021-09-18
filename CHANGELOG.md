@@ -1,3 +1,10 @@
+## [0.3.5](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.4...v0.3.5) (2021-09-18)
+
+
+### Features
+
+* add code demo ([ead8efd](https://github.com/MicroAppJS/plugin-vuepress/commit/ead8efdec1d7b38430328379383bff3a6219798e))
+
 ## [0.3.4](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.3...v0.3.4) (2021-09-15)
 
 
