@@ -74,6 +74,7 @@
         "svgo": "^1.3.2",
         "svgo-loader": "^2.2.2",
         "vuepress": "^1.8.2",
+        "vuepress-plugin-demo-container-v2": "^2.3.4",
         "vuepress-plugin-flowchart": "^1.4.3",
         "vuepress-plugin-redirect": "^1.2.5"
     }

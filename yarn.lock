@@ -12462,6 +12462,11 @@ vuepress-plugin-dehydrate@1.1.5:
   dependencies:
     "@vuepress/shared-utils" "^1.2.0"
 
+vuepress-plugin-demo-container-v2@^2.3.4:
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-demo-container-v2/-/vuepress-plugin-demo-container-v2-2.3.4.tgz#80daef15aca102666fb5429a41dadaf7a0d4fa79"
+  integrity sha512-xyPocP7U8J0BVlStj8fkeT9Z9c/ScUiPgARg+NyPMFrjxC9I3Ae1DfnHs6cJC4zFB1DeyVLzeWuIaP7Q2d9wng==
+
 vuepress-plugin-disqus@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/vuepress-plugin-disqus/-/vuepress-plugin-disqus-0.2.0.tgz#0a5bde424f81e0185eda36fba23d7ac4cae6ff07"

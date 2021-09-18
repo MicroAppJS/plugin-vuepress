@@ -41,6 +41,9 @@ function registerPlugins(ctx) {
                 '/zh/': '警告',
             },
         }],
+
+        // vue-demo
+        'demo-container-v2',
     ];
 
     const siteConfig = ctx.siteConfig || {};
