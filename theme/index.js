@@ -8,6 +8,7 @@ module.exports = (options, ctx) => {
 
     const themeConfig = ctx.themeConfig = ctx.themeConfig || {};
 
+    const sourceDir = ctx.sourceDir;
     const vuepressDir = ctx.vuepressDir;
     const iconsDir = path.resolve(vuepressDir, 'public', 'icons');
     const iconsLibDir = path.resolve(__dirname, 'icons');
@@ -115,7 +116,22 @@ module.exports = (options, ctx) => {
             config.plugin('imsize').use(require('markdown-it-imsize'));
             config.plugin('task-lists').use(require('markdown-it-task-lists'), [{ label: true, labelAfter: true }]);
 
-            // const { PLUGINS } = require('@vuepress/markdown/lib/constant.js');
+            // include
+            config.plugin('include').use(require('markdown-it-include'), [ {
+                root: sourceDir, // root path
+                includeRe: /<<<include(.+)/i,
+                bracesAreOptional: true,
+                getRootDir(pluginOptions, state, startLine, endLine) {
+                    // const pos = state.bMarks[startLine] + state.tShift[startLine]
+                    // const max = state.eMarks[startLine]
+                    return pluginOptions.root;
+                },
+            } ])
+
+            const { PLUGINS } = require('@vuepress/markdown/lib/constant.js');
+            config.plugin(PLUGINS.SNIPPET).use(require('./plugins/markdown/snippet'), [ {
+                root: sourceDir, // root path
+            } ]);
             // config.plugin(PLUGINS.ANCHOR).tap(options => {
             //     return options.map(opt => {
             //         // opt.permalinkSymbol = '#$';

@@ -8105,6 +8105,11 @@ markdown-it-imsize@^2.0.1:
   resolved "https://registry.yarnpkg.com/markdown-it-imsize/-/markdown-it-imsize-2.0.1.tgz#cca0427905d05338a247cb9ca9d968c5cddd5170"
   integrity sha1-zKBCeQXQUziiR8ucqdloxc3dUXA=
 
+markdown-it-include@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-include/-/markdown-it-include-2.0.0.tgz#e86e3b3c68c8f0e0437e179ba919ffd28443127a"
+  integrity sha512-wfgIX92ZEYahYWiCk6Jx36XmHvAimeHN420csOWgfyZjpf171Y0xREqZWcm/Rwjzyd0RLYryY+cbNmrkYW2MDw==
+
 markdown-it-mark@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/markdown-it-mark/-/markdown-it-mark-3.0.1.tgz#51257db58787d78aaf46dc13418d99a9f3f0ebd3"

@@ -5,3 +5,9 @@ export default {
     extends: ParentLayout,
 };
 </script>
+
+<style>
+.sidebar-heading {
+    border-left: 0;
+}
+</style>

@@ -22,6 +22,8 @@ features:
 footer: true
 ---
 
+<<< config/svg-icon.md
+
 ::: warning
 请确保你的 Node.js 版本 >= 8.6。
 :::
