@@ -1,3 +1,15 @@
+## [0.3.6](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.5...v0.3.6) (2021-10-25)
+
+
+### Features
+
+* add include & enhance snippet ([62f6dd1](https://github.com/MicroAppJS/plugin-vuepress/commit/62f6dd187dbd7670ddaa53d3a81f54facd4d0931))
+
+
+### Reverts
+
+* some file ([6ee1592](https://github.com/MicroAppJS/plugin-vuepress/commit/6ee15921ce6581b618e0387df70840e91e7991b2))
+
 ## [0.3.5](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.4...v0.3.5) (2021-09-18)
 
 
