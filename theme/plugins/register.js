@@ -18,7 +18,8 @@ function registerPlugins(ctx) {
         '@vuepress/search',
         '@vuepress/plugin-nprogress',
         [ '@vuepress/active-header-links', themeConfig.activeHeaderLinks ],
-        [ 'smooth-scroll', themeConfig.smoothScroll ],
+        // [ 'smooth-scroll', themeConfig.smoothScroll ],
+        [ require('./smooth-scroll'), themeConfig.smoothScroll ],
 
         [ 'container', {
             type: 'tip',
