@@ -117,7 +117,7 @@ module.exports = (options, ctx) => {
             config.plugin('task-lists').use(require('markdown-it-task-lists'), [{ label: true, labelAfter: true }]);
 
             // include
-            config.plugin('include').use(require('markdown-it-include'), [ {
+            config.plugin('include').use(require('./plugins/markdown/markdown-it-include'), [ {
                 root: sourceDir, // root path
                 includeRe: /<<<include(.+)/i,
                 bracesAreOptional: true,
