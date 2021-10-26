@@ -62,7 +62,6 @@
         "generate-robotstxt": "^8.0.3",
         "markdown-it-footnote": "^3.0.3",
         "markdown-it-imsize": "^2.0.1",
-        "markdown-it-include": "^2.0.0",
         "markdown-it-mark": "^3.0.1",
         "markdown-it-sub": "^1.0.0",
         "markdown-it-sup": "^1.0.0",

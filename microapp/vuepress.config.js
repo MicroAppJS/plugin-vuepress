@@ -17,27 +17,15 @@ module.exports = {
         [ 'link', { rel: 'apple-touch-icon', href: '/icons/favicon@0,5x.png' }],
         [ 'link', { rel: 'mask-icon', href: '/icons/favicon.svg', color: '#EDB65B' }],
     ],
-    locales: {
-        '/zh/': {
-            lang: 'zh-CN',
-            title: 'Plugin - VuePress',
-            description: '一款简洁而优雅的 博客 & 文档 主题, 依赖于 Micro App 微应用框架',
+    lang: 'zh-CN',
+    title: 'MicroApp - VuePress',
+    description: '一款简洁而优雅的 博客 & 文档 主题, 依赖于 Micro App 微应用框架',
 
-            label: '简体中文',
-            selectText: '选择语言',
-            ariaLabel: '选择语言',
-            editLinkText: '在 GitHub 上编辑此页',
-            lastUpdated: '上次编辑时间',
-            repoLabel: '查看源码',
-            sidebar: getSidebar('/zh/'),
-            nav: getNav('/zh/'),
-        },
-        // '/en/': {
-        //     lang: 'en-US',
-        //     title: 'Plugin - VuePress',
-        //     description: 'Vue-powered Static Site Generator',
-        // },
-    },
+    editLinkText: '在 GitHub 上编辑此页',
+    lastUpdated: '上次编辑时间',
+    repoLabel: '查看源码',
+    sidebar: getSidebar(),
+    nav: getNav(),
 
     repoIcon: 'github',
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
@@ -102,21 +90,18 @@ module.exports = {
     },
 };
 
-function getSidebar(lang = '/zh/') {
-    switch (lang) {
-        case '/zh/':
-        default:
-            return {
-                [`${lang}guide/`]: getGuideSidebar('基础', '配置', '深入'),
-                [`${lang}config/`]: getConfigSidebar('进阶', '博客配置'),
-            };
-    }
+function getSidebar(lang = '/') {
+    return {
+        [`${lang}guide/`]: getGuideSidebar(),
+        [`${lang}config/`]: getConfigSidebar(),
+        [`${lang}markdown/`]: getMarkdownSidebar(),
+    };
 }
 
-function getGuideSidebar(groupA, groupB) {
+function getGuideSidebar() {
     return [
         {
-            title: groupA,
+            title: '基础',
             collapsable: false,
             children: [
                 '',
@@ -130,7 +115,7 @@ function getGuideSidebar(groupA, groupB) {
             ],
         },
         {
-            title: groupB,
+            title: '配置',
             collapsable: false,
             children: [
                 'deep/frontmatter',
@@ -143,10 +128,10 @@ function getGuideSidebar(groupA, groupB) {
 }
 
 
-function getConfigSidebar(groupA, groupB) {
+function getConfigSidebar() {
     return [
         {
-            title: groupA,
+            title: '进阶',
             collapsable: false,
             children: [
                 '',
@@ -161,7 +146,7 @@ function getConfigSidebar(groupA, groupB) {
             ],
         },
         {
-            title: groupB,
+            title: '博客配置',
             collapsable: false,
             children: [
                 'blog/',
@@ -177,78 +162,102 @@ function getConfigSidebar(groupA, groupB) {
     ];
 }
 
-function getNav(lang = '/zh/') {
-    switch (lang) {
-        case '/zh/':
-        default:
-            return [
-                {
-                    text: '指南',
-                    link: `${lang}guide/`,
-                    icon: 'guide',
-                },
-                {
-                    text: '文档',
-                    link: `${lang}config/`,
-                    icon: 'doc',
-                },
-                // {
-                //     text: '插件',
-                //     link: '/zh/plugin/',
-                // },
-                // {
-                //     text: '了解更多',
-                //     ariaLabel: '了解更多',
-                //     items: [
-                //         {
-                //             text: 'API',
-                //             items: [
-                //                 {
-                //                     text: 'CLI',
-                //                     link: '/zh/api/cli.html',
-                //                 },
-                //                 {
-                //                     text: 'Node',
-                //                     link: '/zh/api/node.html',
-                //                 },
-                //             ],
-                //         },
-                //         {
-                //             text: '开发指南',
-                //             items: [
-                //                 {
-                //                     text: '本地开发',
-                //                     link: '/zh/miscellaneous/local-development.html',
-                //                 },
-                //                 {
-                //                     text: '设计理念',
-                //                     link: '/zh/miscellaneous/design-concepts.html',
-                //                 },
-                //                 {
-                //                     text: 'FAQ',
-                //                     link: '/zh/faq/',
-                //                 },
-                //                 {
-                //                     text: '术语',
-                //                     link: '/zh/miscellaneous/glossary.html',
-                //                 },
-                //             ],
-                //         },
-                //         {
-                //             text: '其他',
-                //             items: [
-                //                 {
-                //                     text: '从 0.x 迁移',
-                //                     link: '/zh/miscellaneous/migration-guide.html',
-                //                 },
-                //                 {
-                //                     text: 'Changelog',
-                //                     link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md',
-                //                 },
-                //             ],
-                //         },
-                //     ],
-                // },
-            ];
-    }
+function getMarkdownSidebar() {
+    return [
+        {
+            title: '基础',
+            collapsable: false,
+            children: [
+                '',
+                ...require('fs-extra').readdirSync(require('path').resolve(__dirname, '../docs/markdown/basic'))
+                    .sort((a, b) => parseInt(a) - parseInt(b))
+                    .map(name => `basic/${name}`),
+            ],
+        },
+        {
+            title: '进阶',
+            collapsable: false,
+            children: [
+                ...require('fs-extra').readdirSync(require('path').resolve(__dirname, '../docs/markdown/advance'))
+                    .map(name => `advance/${name}`),
+            ],
+        },
+    ];
+}
+
+function getNav(lang = '/') {
+    return [
+        {
+            text: '指南',
+            link: `${lang}guide/`,
+            icon: 'guide',
+        },
+        {
+            text: '文档',
+            link: `${lang}config/`,
+            icon: 'doc',
+        },
+        {
+            text: 'Markdown',
+            link: `${lang}markdown/`,
+            icon: 'help',
+        },
+        // {
+        //     text: '插件',
+        //     link: '/zh/plugin/',
+        // },
+        // {
+        //     text: '了解更多',
+        //     ariaLabel: '了解更多',
+        //     items: [
+        //         {
+        //             text: 'API',
+        //             items: [
+        //                 {
+        //                     text: 'CLI',
+        //                     link: '/zh/api/cli.html',
+        //                 },
+        //                 {
+        //                     text: 'Node',
+        //                     link: '/zh/api/node.html',
+        //                 },
+        //             ],
+        //         },
+        //         {
+        //             text: '开发指南',
+        //             items: [
+        //                 {
+        //                     text: '本地开发',
+        //                     link: '/zh/miscellaneous/local-development.html',
+        //                 },
+        //                 {
+        //                     text: '设计理念',
+        //                     link: '/zh/miscellaneous/design-concepts.html',
+        //                 },
+        //                 {
+        //                     text: 'FAQ',
+        //                     link: '/zh/faq/',
+        //                 },
+        //                 {
+        //                     text: '术语',
+        //                     link: '/zh/miscellaneous/glossary.html',
+        //                 },
+        //             ],
+        //         },
+        //         {
+        //             text: '其他',
+        //             items: [
+        //                 {
+        //                     text: '从 0.x 迁移',
+        //                     link: '/zh/miscellaneous/migration-guide.html',
+        //                 },
+        //                 {
+        //                     text: 'Changelog',
+        //                     link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md',
+        //                 },
+        //             ],
+        //         },
+        //     ],
+        // },
+    ];
 }
