@@ -1,3 +1,16 @@
+## [0.3.7](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.6...v0.3.7) (2021-10-26)
+
+
+### Bug Fixes
+
+* fixed styles ([909eba0](https://github.com/MicroAppJS/plugin-vuepress/commit/909eba0a5d220f04956dbcf5448dc659c27c76a4))
+
+
+### Features
+
+* fork smooth-scroll ([3a30d92](https://github.com/MicroAppJS/plugin-vuepress/commit/3a30d923d640e5f598c37394cdf26453e550b531))
+* 更新文档 ([513eb63](https://github.com/MicroAppJS/plugin-vuepress/commit/513eb63b28f4f2064f846388ccc69044f097355c))
+
 ## [0.3.6](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.5...v0.3.6) (2021-10-25)
 
 
