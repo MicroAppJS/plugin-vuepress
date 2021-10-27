@@ -1,4 +1,4 @@
-# 高亮
+# 代码高亮
 
 ## 代码块中的语法高亮
 
@@ -29,11 +29,14 @@ export default {
 ````
 ``` html
 <ul>
-  <li
-    v-for="todo in todos"
-    :key="todo.id"
-  >
-    {{ todo.text }}
+  <li>
+    a
+  </li>
+  <li>
+    bb
+  </li>
+  <li>
+    ccc
   </li>
 </ul>
 ```
@@ -43,11 +46,14 @@ export default {
 
 ``` html
 <ul>
-  <li
-    v-for="todo in todos"
-    :key="todo.id"
-  >
-    {{ todo.text }}
+  <li>
+    a
+  </li>
+  <li>
+    bb
+  </li>
+  <li>
+    ccc
   </li>
 </ul>
 ```
@@ -139,30 +145,4 @@ module.exports = {
 
 - 示例:
 
-<picture>
-  <source srcset="/line-numbers-desktop.png" media="(min-width: 719px)">
-  <img class="line-numbers-desktop-snap" alt="Image">
-</picture>
-
-<picture>
-  <source srcset="/line-numbers-mobile.gif" media="(max-width: 719px)">
-  <img class="line-numbers-mobile-snap" alt="Image">
-</picture>
-
-<style>
-  @media screen and (min-width:  719px) {
-    .line-numbers-mobile-snap {
-       display: none;
-    }
-  }
-  @media screen and (max-width:  719px) {
-    .line-numbers-desktop-snap {
-       display: none;
-    }
-    .line-numbers-mobile-snap {
-      max-width: none!important;
-      margin: 0 -1.5rem;
-      width: 100vw;
-    }
-  }
-</style>
+![示例](./images/2021-10-26-21-54-27.png)

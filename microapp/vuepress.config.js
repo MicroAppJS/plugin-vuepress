@@ -170,6 +170,7 @@ function getMarkdownSidebar() {
             children: [
                 '',
                 ...require('fs-extra').readdirSync(require('path').resolve(__dirname, '../docs/markdown/basic'))
+                    .filter(name => /\.md$/ig.test(name))
                     .sort((a, b) => parseInt(a) - parseInt(b))
                     .map(name => `basic/${name}`),
             ],
@@ -179,6 +180,8 @@ function getMarkdownSidebar() {
             collapsable: false,
             children: [
                 ...require('fs-extra').readdirSync(require('path').resolve(__dirname, '../docs/markdown/advance'))
+                    .filter(name => /\.md$/ig.test(name))
+                    .sort((a, b) => parseInt(a) - parseInt(b))
                     .map(name => `advance/${name}`),
             ],
         },
