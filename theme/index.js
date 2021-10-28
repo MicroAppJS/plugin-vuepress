@@ -93,6 +93,15 @@ module.exports = (options, ctx) => {
         },
         extendMarkdown: md => {
             md.set({ breaks: true });
+
+            const render = md.render
+            md.render = (...args) => {
+                if (args.length > 1) {
+                    const [, { relativePath }] = args;
+                    md.$relativePath = relativePath;
+                }
+                return render.call(md, ...args);
+            };
         },
         chainMarkdown(config) {
             config
@@ -119,12 +128,17 @@ module.exports = (options, ctx) => {
             // include
             config.plugin('include').use(require('./plugins/markdown/markdown-it-include'), [ {
                 root: sourceDir, // root path
-                includeRe: /<<<include(.+)/i,
+                includeRe: /<{3}include(.+)/i,
                 bracesAreOptional: true,
                 getRootDir(pluginOptions, state, startLine, endLine) {
                     // const pos = state.bMarks[startLine] + state.tShift[startLine]
                     // const max = state.eMarks[startLine]
-                    return pluginOptions.root;
+                    const root = pluginOptions.root;
+                    const { $relativePath } = state.md || {};
+                    if (!$relativePath) {
+                        return root;
+                    }
+                    return path.resolve(root, path.dirname($relativePath));
                 },
             } ])
 

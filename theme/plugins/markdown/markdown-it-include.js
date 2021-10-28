@@ -52,7 +52,12 @@ const include_plugin = (md, options) => {
       }
 
       if (!errorMessage) {
-        const [ _includePath, _regionName ] = includePath ? includePath.split('#') : [''];
+        let [ _includePath, _regionName ] = includePath ? includePath.split('#') : [''];
+        try {
+          _includePath = require.resolve(_includePath);
+        } catch (e) {
+          _includePath = _includePath.trim().replace(/^@/, rootdir).trim()
+        }
         filePath = path.resolve(rootdir, _includePath);
         regionName = _regionName;
 
@@ -111,7 +116,8 @@ const include_plugin = (md, options) => {
   };
 
   const _includeFileParts = (state, startLine, endLine/*, silent*/) => {
-    state.src = _replaceIncludeByContent(state.src, options.getRootDir(options, state, startLine, endLine));
+    const root = options.getRootDir(options, state, startLine, endLine);
+    state.src = _replaceIncludeByContent(state.src, root);
   };
 
   md.core.ruler.before('normalize', 'include', _includeFileParts);

@@ -42,6 +42,7 @@ module.exports = function snippet (md, options = {}) {
   }
 
   function parser (state, startLine, endLine, silent) {
+    const { $relativePath } = state.md || {};
     const CH = '<'.charCodeAt(0)
     const pos = state.bMarks[startLine] + state.tShift[startLine]
     const max = state.eMarks[startLine]
@@ -76,14 +77,24 @@ module.exports = function snippet (md, options = {}) {
      */
     const rawPathRegexp = /^(.+?(?:\.([a-z]+))?)(?:(#[\w-]+))?(?: ?({\d+(?:[,-]\d+)*}))?$/
 
-    const rawPath = state.src.slice(start, end).trim()
+    // 通过 @ 识别根目录
+    const rawPath = state.src.slice(start, end).trim();
     const [filename = '', extension = '', region = '', meta = ''] = (rawPathRegexp.exec(rawPath) || []).slice(1)
+    let _filename = filename;
+    try {
+      _filename = require.resolve(_filename);
+    } catch (error) {
+      _filename = _filename.replace(/^@/, root).trim();
+    }
 
     state.line = startLine + 1
 
     const token = state.push('fence', 'code', 0)
     token.info = extension + meta
-    token.src = path.resolve(root, filename) + region
+    token.src = ($relativePath 
+      ? path.resolve(root, path.dirname($relativePath), _filename)  // 相对路径
+      : path.resolve(root, _filename)) + region
+    // token.src = path.resolve(root, filename) + region
     token.markup = '```'
     token.map = [startLine, startLine + 1]
 
