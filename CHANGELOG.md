@@ -1,3 +1,10 @@
+## [0.3.10](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.9...v0.3.10) (2021-10-29)
+
+
+### Bug Fixes
+
+* 修复嵌套逻辑时的根路径问题 ([cb62f8e](https://github.com/MicroAppJS/plugin-vuepress/commit/cb62f8e6b67bace2a0dd748db5cf3686de7b14e9))
+
 ## [0.3.9](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.8...v0.3.9) (2021-10-29)
 
 ## [0.3.8](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.7...v0.3.8) (2021-10-28)
