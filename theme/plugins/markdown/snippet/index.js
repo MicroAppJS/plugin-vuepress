@@ -91,9 +91,28 @@ module.exports = function snippet (md, options = {}) {
 
     const token = state.push('fence', 'code', 0)
     token.info = extension + meta
-    token.src = ($relativePath 
-      ? path.resolve(root, path.dirname($relativePath), _filename)  // 相对路径
-      : path.resolve(root, _filename)) + region
+    
+    if ($relativePath) {
+      const _parentRootFilePaths = [].concat(state.env.parentRootFilePaths);
+      let _p;
+      let _currParentRootFilePath = _parentRootFilePaths.shift();
+      while(_currParentRootFilePath) {
+        _p = path.resolve(root, path.dirname(_currParentRootFilePath), _filename);
+        if (fs.existsSync(_p)) {
+          break;
+        }
+        _p = null;
+        _currParentRootFilePath = _parentRootFilePaths.shift();
+      }
+      if (!_p) {
+        _p = path.resolve(root, path.dirname($relativePath), _filename);
+      }
+      token.src = _p + region;
+    } else {
+      token.src = path.resolve(root, _filename) + region;
+    }
+
+
     // token.src = path.resolve(root, filename) + region
     token.markup = '```'
     token.map = [startLine, startLine + 1]

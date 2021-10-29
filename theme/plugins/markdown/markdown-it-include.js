@@ -29,13 +29,15 @@ const include_plugin = (md, options) => {
     };
   }
 
-  const _replaceIncludeByContent = (src, rootdir, parentFilePath, filesProcessed) => {
+  const _replaceIncludeByContent = (src, rootdir, state, parentFilePath, filesProcessed) => {
     filesProcessed = filesProcessed ? filesProcessed.slice() : []; // making a copy
     let cap, filePath, mdSrc, errorMessage, regionName;
 
     // store parent file path to check circular references
     if (parentFilePath) {
       filesProcessed.push(parentFilePath);
+      // fixed 嵌套引用记录
+      state.env.parentRootFilePaths = filesProcessed;
     }
     while ((cap = options.includeRe.exec(src))) {
       let includePath = cap[1].trim();
@@ -81,7 +83,7 @@ const include_plugin = (md, options) => {
         // get content of child file
         mdSrc = fs.readFileSync(filePath, 'utf8');
         // check if child file also has includes
-        mdSrc = _replaceIncludeByContent(mdSrc, path.dirname(filePath), filePath, filesProcessed);
+        mdSrc = _replaceIncludeByContent(mdSrc, path.dirname(filePath), state, filePath, filesProcessed);
 
         if (regionName) {
           const lines = mdSrc.split(/\r?\n/)
@@ -117,7 +119,7 @@ const include_plugin = (md, options) => {
 
   const _includeFileParts = (state, startLine, endLine/*, silent*/) => {
     const root = options.getRootDir(options, state, startLine, endLine);
-    state.src = _replaceIncludeByContent(state.src, root);
+    state.src = _replaceIncludeByContent(state.src, root, state);
   };
 
   md.core.ruler.before('normalize', 'include', _includeFileParts);
