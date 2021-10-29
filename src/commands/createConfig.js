@@ -36,16 +36,41 @@ module.exports = function createConfig(api, args, opts) {
         const orginalChainWebpack = config.chainWebpack;
         config.chainWebpack = function(config, isServer) {
             if (isServer) {
-                return orginalChainWebpack(injectWebpackAlias(config, resolveShared, nodeModulesPaths), isServer);
+                orginalChainWebpack(injectWebpackAlias(config, resolveShared, nodeModulesPaths), isServer);
+            } else {
+                orginalChainWebpack(injectWebpackAlias(config, resolveAlias, nodeModulesPaths), isServer);
             }
-            return orginalChainWebpack(injectWebpackAlias(config, resolveAlias, nodeModulesPaths), isServer);
+            if (api.hasKey('resolveWebpackChain')) {
+                api.resolveWebpackChain(config, isServer);
+            }
         };
     } else {
         config.chainWebpack = function(config, isServer) {
             if (isServer) {
-                return injectWebpackAlias(config, resolveShared, nodeModulesPaths);
+                injectWebpackAlias(config, resolveShared, nodeModulesPaths);
+            } else {
+                injectWebpackAlias(config, resolveAlias, nodeModulesPaths);
             }
-            return injectWebpackAlias(config, resolveAlias, nodeModulesPaths);
+            if (api.hasKey('resolveWebpackChain')) {
+                api.resolveWebpackChain(config, isServer);
+            }
+        };
+    }
+
+    if (config.configureWebpack && _.isFunction(config.configureWebpack)) {
+        const orginalConfigWebpack = config.configureWebpack;
+        config.configureWebpack = function(config, isServer) {
+            if (api.hasKey('resolveWebpackConfig')) {
+                api.resolveWebpackConfig(config, isServer);
+            }
+            return orginalConfigWebpack(config, isServer);
+        };
+    } else {
+        config.chainWebpack = function(config, isServer) {
+            if (api.hasKey('resolveWebpackConfig')) {
+                return api.resolveWebpackConfig(config, isServer);
+            }
+            return config;
         };
     }
 
