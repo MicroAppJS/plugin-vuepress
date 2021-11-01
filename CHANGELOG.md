@@ -1,3 +1,10 @@
+## [0.3.11](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.10...v0.3.11) (2021-11-01)
+
+
+### Features
+
+* add mermaid ([eb504e2](https://github.com/MicroAppJS/plugin-vuepress/commit/eb504e2101523c8e5b79bf74ffbe1cc61525c199))
+
 ## [0.3.10](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.9...v0.3.10) (2021-10-29)
 
 
