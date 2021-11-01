@@ -52,6 +52,7 @@
     },
     "dependencies": {
         "@micro-app/cli": "^0.4.2",
+        "@renovamen/vuepress-plugin-mermaid": "^0.2.0",
         "@vssue/api-github-v4": "^1.4.7",
         "@vssue/vuepress-plugin-vssue": "^1.4.8",
         "@vuepress/plugin-back-to-top": "^1.8.2",
@@ -78,7 +79,6 @@
         "vuepress": "^1.8.2",
         "vuepress-plugin-demo-container-v2": "^2.3.4",
         "vuepress-plugin-flowchart": "^1.4.3",
-        "vuepress-plugin-mermaidjs": "^1.8.1",
         "vuepress-plugin-redirect": "^1.2.5"
     }
 }

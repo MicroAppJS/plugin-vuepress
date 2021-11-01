@@ -46,8 +46,8 @@ function registerPlugins(ctx) {
         // vue-demo
         'demo-container-v2',
 
-        // vuepress-plugin-mermaidjs
-        'vuepress-plugin-mermaidjs',
+        // mermaidjs
+        '@renovamen/vuepress-plugin-mermaid',
     ];
 
     const siteConfig = ctx.siteConfig || {};
