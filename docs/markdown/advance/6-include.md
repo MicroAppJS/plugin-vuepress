@@ -23,12 +23,12 @@
 **输入**
 
 ```
-<<< include(./markdown/advance/fragments/snippet.js)
+<<< include(./fragments/snippet.js)
 ```
 
 **输出**
 
-<<<include(./markdown/advance/fragments/snippet.js)
+<<<include(./fragments/snippet.js)
 
 
 为了只导入对应部分的代码，你也可运用 [VS Code region](https://code.visualstudio.com/docs/editor/codebasics#_folding)。你可以在文件路径后方的 `#` 紧接着提供一个自定义的区域名称（预设为 `snippet` ）
@@ -36,13 +36,13 @@
 **输入**
 
 ``` md
-<<< include(./markdown/advance/fragments/snippet-with-region.js#snippet)
+<<< include(./fragments/snippet-with-region.js#snippet)
 ```
 
 **代码文件**
 
-<<< ./markdown/advance/fragments/snippet-with-region.js
+<<< ./fragments/snippet-with-region.js
 
 **输出**
 
-<<<include(./markdown/advance/fragments/snippet-with-region.js#snippet)
+<<<include(./fragments/snippet-with-region.js#snippet)

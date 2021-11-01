@@ -1,6 +1,5 @@
-const path = require('path');
 const moment = require('moment');
-const { fs } = require('@micro-app/shared-utils');
+const { fs, path } = require('@micro-app/shared-utils');
 
 module.exports = (options, ctx) => {
     const defaultTheme = require('@vuepress/theme-default');
@@ -8,7 +7,6 @@ module.exports = (options, ctx) => {
 
     const themeConfig = ctx.themeConfig = ctx.themeConfig || {};
 
-    const sourceDir = ctx.sourceDir;
     const vuepressDir = ctx.vuepressDir;
     const iconsDir = path.resolve(vuepressDir, 'public', 'icons');
     const iconsLibDir = path.resolve(__dirname, 'icons');
@@ -90,6 +88,14 @@ module.exports = (options, ctx) => {
                 .options({
                     name: 'assets/file/[path][name].[ext]',
                 });
+
+            // markdown rule
+            const mdRule = config.module
+                .rule('markdown')
+                .test(/\.md$/);
+            mdRule
+                .use('markdown-loader')
+                .loader(require.resolve('./plugins/markdown/loader.js'));
         },
         extendMarkdown: md => {
             md.set({ breaks: true });
@@ -104,54 +110,7 @@ module.exports = (options, ctx) => {
             };
         },
         chainMarkdown(config) {
-            config
-                .plugin('custom-style')
-                .use(require('./plugins/markdown/mdCustomStyle'))
-                .end();
-            config
-                .plugin('code-result')
-                .use(require('./plugins/markdown/mdCodeResult'))
-                .end();
-            config
-                .plugin('img-alt')
-                .use(require('./plugins/markdown/mdAltImg'))
-                .end();
-
-            // plugin
-            config.plugin('sup').use(require('markdown-it-sup'));
-            config.plugin('sub').use(require('markdown-it-sub'));
-            config.plugin('mark').use(require('markdown-it-mark'));
-            config.plugin('footnote').use(require('markdown-it-footnote'));
-            config.plugin('imsize').use(require('markdown-it-imsize'));
-            config.plugin('task-lists').use(require('markdown-it-task-lists'), [{ label: true, labelAfter: true }]);
-
-            // include
-            config.plugin('include').use(require('./plugins/markdown/markdown-it-include'), [ {
-                root: sourceDir, // root path
-                includeRe: /<{3}include(.+)/i,
-                bracesAreOptional: true,
-                getRootDir(pluginOptions, state, startLine, endLine) {
-                    // const pos = state.bMarks[startLine] + state.tShift[startLine]
-                    // const max = state.eMarks[startLine]
-                    const root = pluginOptions.root;
-                    const { $relativePath } = state.md || {};
-                    if (!$relativePath) {
-                        return root;
-                    }
-                    return path.resolve(root, path.dirname($relativePath));
-                },
-            } ])
-
-            const { PLUGINS } = require('@vuepress/markdown/lib/constant.js');
-            config.plugin(PLUGINS.SNIPPET).use(require('./plugins/markdown/snippet'), [ {
-                root: sourceDir, // root path
-            } ]);
-            // config.plugin(PLUGINS.ANCHOR).tap(options => {
-            //     return options.map(opt => {
-            //         // opt.permalinkSymbol = '#$';
-            //         return opt;
-            //     });
-            // });
+            require('./plugins/markdown')(ctx, config);
         },
         plugins: [
             ...require('./plugins/register')(ctx),

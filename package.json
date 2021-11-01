@@ -10,6 +10,7 @@
         "dev": "micro-app vuepress dev",
         "build": "micro-app vuepress build --base /plugin-vuepress/",
         "create": "micro-app vuepress create --type post --base __test --classify categories",
+        "start": "micro-app start --mode production",
         "deploy": "micro-app deploy",
         "vp:deploy": "micro-app vuepress deploy --base /plugin-vuepress/",
         "release": "micro-app release",
@@ -77,6 +78,7 @@
         "vuepress": "^1.8.2",
         "vuepress-plugin-demo-container-v2": "^2.3.4",
         "vuepress-plugin-flowchart": "^1.4.3",
+        "vuepress-plugin-mermaidjs": "^1.8.1",
         "vuepress-plugin-redirect": "^1.2.5"
     }
 }
