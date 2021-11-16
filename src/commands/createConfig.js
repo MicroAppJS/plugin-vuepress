@@ -34,26 +34,26 @@ module.exports = function createConfig(api, args, opts) {
 
     if (config.chainWebpack && _.isFunction(config.chainWebpack)) {
         const orginalChainWebpack = config.chainWebpack;
-        config.chainWebpack = function(config, isServer) {
+        config.chainWebpack = function(_config, isServer) {
             if (isServer) {
-                orginalChainWebpack(injectWebpackAlias(config, resolveShared, nodeModulesPaths), isServer);
+                orginalChainWebpack(injectWebpackAlias(_config, resolveShared, nodeModulesPaths), isServer);
             } else {
-                orginalChainWebpack(injectWebpackAlias(config, resolveAlias, nodeModulesPaths), isServer);
+                orginalChainWebpack(injectWebpackAlias(_config, resolveAlias, nodeModulesPaths), isServer);
             }
-            if (api.hasKey('resolveWebpackChain')) {
-                api.resolveWebpackChain(config, isServer);
-            }
+            // if (api.hasKey('resolveWebpackChain')) {
+            //     api.resolveWebpackChain(_config, isServer);
+            // }
         };
     } else {
-        config.chainWebpack = function(config, isServer) {
+        config.chainWebpack = function(_config, isServer) {
             if (isServer) {
-                injectWebpackAlias(config, resolveShared, nodeModulesPaths);
+                injectWebpackAlias(_config, resolveShared, nodeModulesPaths);
             } else {
-                injectWebpackAlias(config, resolveAlias, nodeModulesPaths);
+                injectWebpackAlias(_config, resolveAlias, nodeModulesPaths);
             }
-            if (api.hasKey('resolveWebpackChain')) {
-                api.resolveWebpackChain(config, isServer);
-            }
+            // if (api.hasKey('resolveWebpackChain')) {
+            //     api.resolveWebpackChain(_config, isServer);
+            // }
         };
     }
 
