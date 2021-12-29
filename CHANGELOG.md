@@ -1,3 +1,11 @@
+## [0.3.12](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.11...v0.3.12) (2021-12-29)
+
+
+### Features
+
+* 替换依赖 ([d444f7e](https://github.com/MicroAppJS/plugin-vuepress/commit/d444f7e8dfb3dcfab44dcd9d0975c96e80b01dea))
+* 锁定版本 ([14e9593](https://github.com/MicroAppJS/plugin-vuepress/commit/14e9593630076c3050185354b3dbd159f3024c47))
+
 ## [0.3.11](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.10...v0.3.11) (2021-11-01)
 
 
