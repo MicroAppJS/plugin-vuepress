@@ -18,7 +18,7 @@ module.exports = md => {
 
         const rawCode = fence(...args);
         let mdMyCode = '';
-        if (['vue', 'html'].includes(lang) && !isInDemoContainer) {
+        if (['html'].includes(lang) && !isInDemoContainer) {
             mdMyCode = `<CodeResult lang="${lang}" code="${encodeURIComponent(code.trim())}">${code.trim()}</CodeResult>`;
         } else {
             mdMyCode = `<CodeResult lang="${lang}" code="${encodeURIComponent(code.trim())}"></CodeResult>`;
