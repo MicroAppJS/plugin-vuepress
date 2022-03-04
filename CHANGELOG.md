@@ -1,3 +1,10 @@
+## [0.3.14](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.13...v0.3.14) (2022-03-04)
+
+
+### Bug Fixes
+
+* 去除 vue 的特殊逻辑 ([f858984](https://github.com/MicroAppJS/plugin-vuepress/commit/f858984260982b400de95bc892ff420e63f1afaf))
+
 ## [0.3.13](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.12...v0.3.13) (2022-03-04)
 
 
