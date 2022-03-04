@@ -19,7 +19,7 @@
 </template>
 
 <script>
-const SUPPORT = [ 'vue', 'html' ];
+const SUPPORT = [ 'html' ];
 const SUPPORT_OTHERS = [
     // 'echarts',
 ];
