@@ -97,7 +97,7 @@ export default {
 .title {
     .sub {
         letter-spacing: 0.2rem;
-        font-size: 0.24rem;
+        font-size: 0.88rem;
         opacity: 0.65;
 
         &>span:first-child {
