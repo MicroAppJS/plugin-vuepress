@@ -1,3 +1,11 @@
+## [0.3.15](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.14...v0.3.15) (2023-11-27)
+
+
+### Features
+
+* add nvmrc ([8f383b1](https://github.com/MicroAppJS/plugin-vuepress/commit/8f383b18fe590f661af179ec3225e5cf7229b604))
+* update styles ([2f78e11](https://github.com/MicroAppJS/plugin-vuepress/commit/2f78e11352552a9dc0d1a97c3e104a423eefb4c8))
+
 ## [0.3.14](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.13...v0.3.14) (2022-03-04)
 
 
