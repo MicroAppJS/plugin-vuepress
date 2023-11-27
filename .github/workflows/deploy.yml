@@ -10,17 +10,22 @@ jobs:
             - name: Checkout
               uses: actions/checkout@master
 
+            - name: Setup
+              uses: actions/setup-node@master
+              with:
+                node-version: 16
+
             - name: Install
-              run: npm install
+              run: yarn
 
             - name: Build
-              run: npm run-script build
+              run: yarn run build
               env:
                   GAID: ${{ secrets.GAID }}
                   GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
                   GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
 
             - name: Deploy
-              run: npm run-script deploy
+              run: yarn run deploy
               env:
                   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
