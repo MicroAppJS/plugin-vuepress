@@ -69,15 +69,15 @@ module.exports = (options, ctx) => {
                     ],
                 });
 
-            // txt file
-            config.module
-                .rule('txt-file')
-                .test(/\.(txt)(\?.*)?$/)
-                .use('file-loader')
-                .loader('file-loader')
-                .options({
-                    name: 'assets/file/[path][name].[ext]',
-                });
+            // txt file (废弃)
+            // config.module
+            //     .rule('txt-file')
+            //     .test(/\.(txt)(\?.*)?$/)
+            //     .use('file-loader')
+            //     .loader('file-loader')
+            //     .options({
+            //         name: 'assets/file/[path][name].[ext]',
+            //     });
 
             // demo file
             config.module
