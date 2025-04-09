@@ -1,3 +1,11 @@
+## [0.3.16](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.15...v0.3.16) (2025-04-09)
+
+
+### Features
+
+* update ([8eff892](https://github.com/MicroAppJS/plugin-vuepress/commit/8eff89214ef0d72232854027eaf5b9fc1d3b29ce))
+* update deploy ([4a685e4](https://github.com/MicroAppJS/plugin-vuepress/commit/4a685e4d40f7fce7d23597c821140f79df602e27))
+
 ## [0.3.15](https://github.com/MicroAppJS/plugin-vuepress/compare/v0.3.14...v0.3.15) (2023-11-27)
 
 

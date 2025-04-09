@@ -1,6 +1,6 @@
 {
     "name": "@micro-app/plugin-vuepress",
-    "version": "0.3.15",
+    "version": "0.3.16",
     "description": "[Plugin] adapter vuepress plugin.",
     "main": "src/index.js",
     "scripts": {
